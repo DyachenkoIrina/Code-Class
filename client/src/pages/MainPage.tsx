@@ -3,6 +3,7 @@ import { Container } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import ModalFromRegistration from '../components/FormFromRegistration';
 import { toggleModal } from '../redux/slices/modal/modalReducer';
+import YandexMap from "../components/YandexMap";
 
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -14,10 +15,13 @@ export default function MainPage(): JSX.Element {
   
 
   return (
+    <>
     <Container sx={{ margin: 'auto' }}>
 
       <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
     </Container>
+    <YandexMap />
+    </>
   );
 
 }
