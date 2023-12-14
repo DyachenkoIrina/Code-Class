@@ -4,7 +4,7 @@ import GroupCard from '../components/GroupCard';
 
 
 export default function TeacherAccountForm(): JSX.Element {
-  const groups = useAppSelector((state) => state.tasksSlice.tasks);
+  const groups = useAppSelector((state) => );
   return (
     <Grid sx={{ marginTop: '50px', display: 'flex', justifyContent: 'center' }}>
   
