@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
+import { SaasProvider } from '@saas-ui/react';
 import LoginFormModal from './forms/LoginFormModal';
 import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
@@ -18,11 +19,10 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <ChakraProvider>
-      <SideBar />
-      <div style={{ width: '100%' }}>
-        123456789
-      </div>
+    <>
+      <SaasProvider>
+        <SideBar />
+      </SaasProvider>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginFormModal />} />
