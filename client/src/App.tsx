@@ -6,8 +6,7 @@ import NavBar from './components/NavBar';
 import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
-// import NotePage from './pages/ProductPage';
-import { checkUserThunk, refreshThunk } from './redux/slices/auth/authThunks';
+
 import MainPage from './pages/MainPage';
 import { apiNotesService } from './services/notes';
 import Loader from './components/Loader';
