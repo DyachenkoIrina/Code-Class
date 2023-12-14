@@ -1,23 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import type { AxiosError } from 'axios';
-import { useAppDispatch, useAppSelector } from './redux/hook';
-
 import LoginFormModal from './forms/LoginFormModal';
-
+import { ChakraProvider } from '@chakra-ui/react';
 import MainPage from './pages/MainPage';
+import TeacherAccountPage from './pages/TeacherAccountPage';
+
 
 function App(): JSX.Element {
-  // const dispatch = useAppDispatch();
-  // const auth = useAppSelector((store) => store.auth);
-
   return (
-    <Routes>
-      <>
-        <Route path="/" element={<MainPage />} />
+    <ChakraProvider>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
         <Route path="/login" element={<LoginFormModal />} />
-      </>
-    </Routes>
+        <Route path='/teacherlk' element={<TeacherAccountPage/>}/>
+      </Routes>
+    </ChakraProvider>
+
   );
 }
 
