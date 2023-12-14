@@ -1,12 +1,8 @@
-import type { CommentType } from '../comments';
-
 export type UserType = {
   id: number;
   name: string;
   email: string;
 };
-
-export type UserWithComments = UserType & { Comments: CommentType[] };
 
 export type BackendAuth = { user: UserType; accessToken: string };
 
