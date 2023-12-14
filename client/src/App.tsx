@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import LoginFormModal from './forms/LoginFormModal';
@@ -17,6 +18,7 @@ function App(): JSX.Element {
         <Route path="/teacherlk" element={<TeacherAccountPage />} />
       </Routes>
     </ChakraProvider>
+    
   );
 }
 

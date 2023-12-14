@@ -1,22 +1,26 @@
-import type { ModalAction, ModalState } from '../../../types/modal';
+import { createSlice } from '@reduxjs/toolkit';
+import type { ModalStatetupe } from '../../../types/modal/index';
 
-const initialState = {
+const initialState: ModalStatetupe = {
   isOpen: false,
-  noteId: 0,
 };
 
-export default function modalReducer(
-  // eslint-disable-next-line @typescript-eslint/default-param-last
-  state: ModalState = initialState,
-  action: ModalAction,
-): ModalState {
-  const { type } = action;
-  switch (type) {
-    case 'OPEN_MODAL':
-      return { isOpen: true, noteId: action.payload };
-    case 'CLOSE_MODAL':
-      return initialState;
-    default:
-      return state;
-  }
-}
+export const modalSlice = createSlice({
+  name: 'modal',
+  initialState,
+  reducers: {
+    openModal: (state) => {
+      state.isOpen = true;
+    },
+    closeModal: (state) => {
+      state.isOpen = false;
+    },
+    toggleModal: (state) => {
+      state.isOpen = !state.isOpen;
+    },
+  },
+});
+
+export const { openModal, closeModal, toggleModal } = modalSlice.actions;
+
+export default modalSlice.reducer;

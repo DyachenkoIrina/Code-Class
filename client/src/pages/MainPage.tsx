@@ -1,6 +1,23 @@
 import React from 'react';
-import { Button } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
+import { useAppDispatch, useAppSelector } from '../redux/hook';
+import ModalFromRegistration from '../components/FormFromRegistration';
+import { toggleModal } from '../redux/slices/modal/modalReducer';
 
 export default function MainPage(): JSX.Element {
-  return <Button>123</Button>;
+  const dispatch = useAppDispatch();
+  const modalState = useAppSelector((state) => state.modal);
+
+  const handleToggleModal = (): void => {
+    dispatch(toggleModal());
+  };
+  
+
+  return (
+    <Container sx={{ margin: 'auto' }}>
+
+      <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
+    </Container>
+  );
+
 }
