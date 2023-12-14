@@ -1,15 +1,6 @@
 import React from 'react';
-import { Container} from '@mui/material';
+import { Button } from '@chakra-ui/react';
 
 export default function MainPage(): JSX.Element {
-  
-  return(
-    
-    <Container sx={{ margin: 'auto' }}>
-    
-     
-   
-    </Container>
-    
-  )
+  return <Button>123</Button>;
 }
