@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use("/api/v1/notes", apiNotesRouter);
-app.use("api/v1/groups", groupRouter);
+app.use("/api/v1/teacherlk", groupRouter);
 app.use("/api/v1/tokens", tokensRouter);
 app.use("/api/v1/auth", authRouter);
 

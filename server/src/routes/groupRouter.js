@@ -6,6 +6,7 @@ const groupRouter = express.Router();
 groupRouter.get("/", async (req, res) => {
   try {
     const data = await Group.findAll();
+    console.log('findall****', data)
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });
