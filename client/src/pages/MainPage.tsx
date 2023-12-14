@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '../redux/hook';
 import ModalFromRegistration from '../components/FormFromRegistration';
 import { toggleModal } from '../redux/slices/modal/modalReducer';
 
-
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const modalState = useAppSelector((state) => state.modal);
@@ -20,4 +19,5 @@ export default function MainPage(): JSX.Element {
       <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
     </Container>
   );
+
 }
