@@ -1,8 +1,9 @@
 import type { NoteType } from '../notes';
 
-export type ModalState = {
+export type ModalStatetupe = {
   isOpen: boolean;
-  noteId: number;
+  // onClose: () => void;
+  // noteId: number;
 };
 
 export type ModalAction = { type: string; payload: NoteType['id'] };
