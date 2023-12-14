@@ -9,7 +9,6 @@ export const apiGroupServise = axios.create({
 class GroupServise {
   static async getGroups(): Promise<GroupType[]> {
     const response = await apiGroupServise.get<GroupType[]>('/');
-    console.log('class', response);
     if (response.status === 200) return response.data;
     return [];
   }
