@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import modalReducer from './slices/modal/modalReducer';
+import groupReducer from './slices/groups/groupReducer';
 
 export const store = configureStore({
   reducer: {
     modal: modalReducer,
+    groupsSlice: groupReducer,
   },
 });
 

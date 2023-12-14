@@ -9,7 +9,7 @@ type GroupTypeProps = {
 function GroupCard({ group }: GroupTypeProps): JSX.Element {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardBody>
+      <CardBody sx={{  display: 'flex', justifyContent: 'space-between'  }}>
         <Text fontSize='2xl'>
           {group.group}
         </Text>
