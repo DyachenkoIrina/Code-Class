@@ -14,8 +14,6 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useAppDispatch } from '../redux/hook';
-import type { LoginFormData } from '../types/auth';
-import { thunkAuthLogin } from '../redux/slices/auth/createAsyncThunk';
 
 export default function LoginFormModal(): JSX.Element {
   const dispatch = useAppDispatch();
