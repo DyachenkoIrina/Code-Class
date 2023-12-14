@@ -9,3 +9,9 @@ export type AuthHandlersType = {
   logoutHandler: LogoutHandlerType;
   signupHandler: SignupHandlerType;
 };
+
+export type AddUserFormData = {
+  name: string;
+  email: string;
+  password: string;
+};
