@@ -16,7 +16,7 @@ import {
 import { useAppDispatch } from '../redux/hook';
 import { openModal } from '../redux/slices/modal/modalReducer';
 // import type { AddUserFormData } from '../types/modal/index';
-import { thunkAuthSignup } from '../redux/slices/auth/createAsyncThunk';
+import { thunkSignup } from '../redux/slices/auth/createAsyncThunks';
 
 export default function ModalFromRegistration(): JSX.Element {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,7 +32,7 @@ export default function ModalFromRegistration(): JSX.Element {
 
   const onSave = (): void => {
     console.log('FormData:', formData);
-    dispatch(thunkAuthSignup(formData));
+    dispatch(thunkSignup(formData));
     onClose(); 
   };
 
