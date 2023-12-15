@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(Homework, { foreignKey: "taskId" });
       this.belongsToMany(User, { through: "HomeWork", foreignKey: "userId" });
-      this.hasMany(Topic, { foreignKey: "topicId" });
+      this.belongsTo(Topic, { foreignKey: "topicId" });
     }
   }
   Task.init(
