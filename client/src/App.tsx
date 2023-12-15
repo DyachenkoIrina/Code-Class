@@ -8,6 +8,7 @@ import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
+
 import { thunkGroupsLoad } from './redux/slices/groups/thunkActions';
 import { useAppDispatch } from './redux/hook';
 import thunkLoad from './redux/topics/createAsyncThunk';
@@ -24,6 +25,7 @@ function App(): JSX.Element {
   }, []);
 
   return (
+
     <Container>
       <ChakraProvider>
         <SaasProvider>
@@ -43,6 +45,7 @@ function App(): JSX.Element {
         {/* <Footer /> */}
       </ChakraProvider>
     </Container>
+
   );
 }
 
