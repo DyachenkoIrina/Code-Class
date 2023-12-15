@@ -1,5 +1,11 @@
 import React from 'react';
+import { Container } from '@chakra-ui/react';
+import QuestionContainer from '../components/TaskStudent/QuestionContainer';
 
 export default function TaskPage(): JSX.Element {
-  return <div>TaskPage</div>;
+  return (
+    <Container>
+      <QuestionContainer />
+    </Container>
+  );
 }

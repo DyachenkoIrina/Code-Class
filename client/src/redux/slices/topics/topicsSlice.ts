@@ -1,6 +1,6 @@
-import { createSlice,  } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import type { TopicSliceState, TopicType } from '../../types/topics/index';
+import type { TopicSliceState, TopicType } from '../../../types/topics/index';
 import thunkLoad from './createAsyncThunk';
 
 const initialState: TopicSliceState = {

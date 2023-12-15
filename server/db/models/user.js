@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       hashpass: DataTypes.STRING,
       role: DataTypes.STRING,
       groupId: DataTypes.INTEGER,
+      lastName: DataTypes.STRING,
+      profileImage: DataTypes.STRING,
     },
     {
       sequelize,

@@ -9,13 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Task }) {
       // define association here
-      this.hasMany(Task, { foreignKey: "taskId" });
+      this.belongsTo(Task, { foreignKey: "topicId" });
     }
   }
   Topic.init(
     {
       title: DataTypes.STRING,
-      taskId: DataTypes.INTEGER,
       img: DataTypes.STRING,
       description: DataTypes.STRING,
       complexity: DataTypes.STRING,

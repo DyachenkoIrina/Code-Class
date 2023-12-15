@@ -37,35 +37,50 @@ module.exports = {
       "Users",
       [
         {
-          name: "Василий1 Васильевич1",
+          name: "saul",
+          lastName: "goodman",
+          profileImage:
+            "https://i.pinimg.com/originals/67/b0/2e/67b02e5d0a4f3ee9b15db378963140c6.jpg",
           email: "0@0",
           hashpass: hashSync("1", 10),
           role: "Teacher",
           groupId: 1,
         },
         {
-          name: "Боб",
+          name: "Lalo",
+          lastName: "Salamanca",
+          profileImage:
+            "https://i.pinimg.com/564x/73/dc/57/73dc578749ff3241fe1ae0d65e8dacb9.jpg",
           email: "Email 1",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 1,
         },
         {
-          name: "Петя",
+          name: "hector",
+          lastName: "salamanca",
+          profileImage:
+            "https://i.pinimg.com/originals/9f/af/4d/9faf4df0c80864a9cb80e53e3199d434.jpg",
           email: "Email 2",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 2,
         },
         {
-          name: "Liza",
+          name: "KIM",
+          lastName: "WEXLER",
+          profileImage:
+            "https://i.pinimg.com/564x/60/9b/b7/609bb7c7031458d08d5e7bceac199bc7.jpg",
           email: "2@2",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 2,
         },
         {
-          name: "Лиза",
+          name: "Nacho",
+          lastName: "Varga",
+          profileImage:
+            "https://i.pinimg.com/564x/e9/09/22/e90922c3d831bb36d4f0c7114106de3f.jpg",
           email: "3@3",
           hashpass: hashSync("1", 10),
           role: "Student",
@@ -73,6 +88,8 @@ module.exports = {
         },
         {
           name: "Макс",
+          lastName: "Петров",
+          profileImage: "image.png",
           email: "4@4",
           hashpass: hashSync("1", 10),
           role: "Student",
@@ -80,6 +97,8 @@ module.exports = {
         },
         {
           name: "Василий Васильевич",
+          lastName: "Петров",
+          profileImage: "image.png",
           email: "5@5",
           hashpass: hashSync("1", 10),
           role: "Teacher",
@@ -90,12 +109,62 @@ module.exports = {
     );
 
     await queryInterface.bulkInsert(
+      "Topics",
+      [
+        {
+          title: "Topic 1",
+          description: "javascript",
+          complexity: "Easy",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+        },
+        {
+          title: "Topic 1",
+          description: "python",
+          complexity: "Easy",
+          img: "https://i.morioh.com/210209/e6e21880.webp",
+        },
+        {
+          title: "Topic 1",
+          description: "Swift",
+          complexity: "Easy",
+          img: "https://www.technotification.com/wp-content/uploads/2016/06/New-Programming-Languages-Swift.jpg",
+        },
+      ],
+      {}
+    );
+
+    await queryInterface.bulkInsert(
       "Tasks",
       [
         {
-          title: "title-1",
-          questions: "Напишите программу на JavaScript, которая выводит на экран фразу 'Hello, World!'.",
+          title: "JavaScript Task",
+          questions:
+            "Напишите программу на JavaScript, которая выводит на экран фразу 'Hello, World!'.",
           answer: "console.log('Hello, World!');",
+          topicId: 1,
+        },
+        {
+          title: "title-2",
+          questions:
+            "Напишите программу на Python, которая принимает число от пользователя и выводит его квадрат.",
+          answer:
+            "number = int(input('Введите число: '))\nprint(f'Квадрат числа: {number ** 2}')",
+            topicId: 2,
+        },
+        {
+          title: "title-3",
+          questions:
+            "Напишите программу на Java, которая проверяет, является ли введенное число четным.",
+          answer:
+            "import java.util.Scanner;\npublic class CheckEven {\n  public static void main(String[] args) {\n    Scanner scanner = new Scanner(System.in);\n    System.out.print('Введите число: ');\n    int number = scanner.nextInt();\n    if (number % 2 == 0) {\n      System.out.println('Число четное');\n    } else {\n      System.out.println('Число нечетное');\n    }\n  }\n}",
+            topicId: 3,
+        },
+        {
+          title: "JavaScript Task",
+          questions: "Write a JavaScript function that reverses a string.",
+          answer:
+            "function reverseString(str) {\n  return str.split('').reverse().join('');\n}\n\nconst originalString = 'Hello, World!';\nconst reversedString = reverseString(originalString);\nconsole.log(reversedString); // Output: '!dlroW ,olleH'",
+            topicId: 1
         },
       ],
       {}
@@ -113,34 +182,7 @@ module.exports = {
       {}
     );
 
-    await queryInterface.bulkInsert(
-      "Topics",
-      [
-        {
-          title: "Topic 1",
-          description: "javascript",
-          complexity: "Easy",
-          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
-          taskId: 1,
-        },
-        {
-          title: "Topic 1",
-          description: "python",
-          complexity: "Easy",
-          img: "https://i.morioh.com/210209/e6e21880.webp",
-          taskId: 1,
-        },
-        {
-          title: "Topic 1",
-          description: "Swift",
-          complexity: "Easy",
-          img: "https://www.technotification.com/wp-content/uploads/2016/06/New-Programming-Languages-Swift.jpg",
-          taskId: 1,
-        },
-      ],
-      {}
-    );
-      
+    
   },
 
   async down(queryInterface, Sequelize) {
