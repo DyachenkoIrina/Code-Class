@@ -27,7 +27,7 @@ import {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as LoginFormData;
-          void dispatch(thunkNewTask(formData));
+          void dispatch(thunkNewTaskAdd(formData));
         }}
       >
   

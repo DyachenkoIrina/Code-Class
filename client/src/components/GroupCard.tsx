@@ -2,9 +2,10 @@ import React from 'react';
 import { Button, Card, CardBody, useDisclosure } from '@chakra-ui/react';
 import type { GroupType } from '../types/groups';
 import { useAppDispatch } from '../redux/hook';
-import { openModal } from '../redux/slices/modal/modalReducer';
+
 import StudentFormModal from '../forms/StudentsFormModal';
 import { thunkFilterStudentsLoad } from '../redux/slices/students/thunkActions';
+import { openModal1 } from '../redux/slices/modal/modalReducer';
 
 type GroupTypeProps = {
   group: GroupType;
@@ -15,7 +16,7 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleOpenModal = (): void => {
-    dispatch(openModal());
+    dispatch(openModal1());
     void dispatch(thunkFilterStudentsLoad(group.id));
 
     onOpen();

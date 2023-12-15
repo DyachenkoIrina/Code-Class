@@ -10,6 +10,7 @@ export const store = configureStore({
     topics: topicsReducer,
     groupsSlice: groupReducer,
     studentsSlice: studentReducer,
+    task: taskReducer,
   },
 });
 
