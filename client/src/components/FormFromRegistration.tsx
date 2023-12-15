@@ -32,7 +32,9 @@ export default function ModalFromRegistration(): JSX.Element {
   const onSave = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.currentTarget)) as SignupFormData;
+    console.log(formData);
     dispatch(thunkSignup(formData));
+
     onClose();
   };
 

@@ -14,30 +14,32 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { closeModal, toggleModal } from '../redux/slices/modal/modalReducer';
+import { closeModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
 import { thunkLogin } from '../redux/slices/auth/createAsyncThunks';
 import type { LoginFormData } from '../types/auth';
 
 export default function LoginFormModal(): JSX.Element {
   const dispatch = useAppDispatch();
-  const show = useAppSelector((store) => store.modal.isOpen);
+  const show = useAppSelector((store) => store.modal.loginModal);
 
-  // const initialRef = React.useRef(null);
-  // const finalRef = React.useRef(null);
+  // const handleClose = (): void => {
+  //   dispatch(toggleModal());
+  // };
 
   return (
     <Modal onClose={() => dispatch(closeModal())} isOpen={show}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Create your account</ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton onClick={() => dispatch(openModallogin())}/>
         <ModalBody pb={6}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
               const formData = Object.fromEntries(new FormData(e.currentTarget)) as LoginFormData;
               void dispatch(thunkLogin(formData));
-              dispatch(closeModal());
+              dispatch(openModallogin())
+              // handleClose();
             }}
           >
             <FormControl>
@@ -49,15 +51,14 @@ export default function LoginFormModal(): JSX.Element {
               <FormLabel>Пароль</FormLabel>
               <Input name="password" type="text" placeholder="Почта" />
             </FormControl>
+            <Button type="submit" colorScheme="blue" mr={3}>
+              Войти
+            </Button>
+            <Button onClick={() => dispatch(openModallogin())}>Cancel</Button>
           </form>
         </ModalBody>
 
-        <ModalFooter>
-          <Button type="submit" colorScheme="blue" mr={3}>
-            Войти
-          </Button>
-          <Button onClick={() => dispatch(closeModal())}>Cancel</Button>
-        </ModalFooter>
+        <ModalFooter />
       </ModalContent>
     </Modal>
   );

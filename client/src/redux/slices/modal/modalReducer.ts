@@ -1,20 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { ModalStatetupe } from '../../../types/modal/index';
+import { Action } from '@remix-run/router';
 
 const initialState: ModalStatetupe = {
   isOpen: false,
+  loginModal:false,
+  groupModal:false,
+  registrModal:false
 };
 
 export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    openModal: (state) => {
-      state.isOpen = true;
-    },
-    openModal1: (state) => {
-      state.isOpen = true;
-    },
+    openModallogin: (state, action) => {
+      state.loginModal = !state.loginModal},
+    groupModal: (state, action) => {
+        state.groupModal = !state.groupModal},
+// const type = action;
+// switch(type){
+//   case 'login':
+// }
+    //   state.loginModal= true;
+    //   state.groupModal=true;
+    //   state.registrModal=true;
+    // },
     closeModal: (state) => {
       state.isOpen = false;
     },
@@ -24,6 +34,6 @@ export const modalSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal, toggleModal, openModal1 } = modalSlice.actions;
+export const { openModal, closeModal, toggleModal, groupModal, openModallogin } = modalSlice.actions;
 
 export default modalSlice.reducer;
