@@ -10,12 +10,15 @@ import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
 import { thunkGroupsLoad } from './redux/slices/groups/thunkActions';
 import { useAppDispatch } from './redux/hook';
+import StudentAccountPage from './pages/StudentAccountPage'
+import thunkLoad from './redux/topics/createAsyncThunk';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
+    void dispatch(thunkLoad());
   }, []);
 
   return (
@@ -27,9 +30,10 @@ function App(): JSX.Element {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginFormModal />} />
         <Route path="/teacherlk" element={<TeacherAccountPage />} />
+        <Route path="/studentlk" element={<StudentAccountPage />} />
       </Routes>
-      <YandexMap />
-      <Footer />
+      {/* <YandexMap /> */}
+      {/* <Footer /> */}
     </ChakraProvider>
   );
 }

@@ -84,6 +84,35 @@ module.exports = {
       ],
       {}
     );
+
+    await queryInterface.bulkInsert(
+      "Topics",
+      [
+        {
+          title: "Topic 1",
+          description: "javascript",
+          complexity: "Easy",
+          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+          taskId: 1,
+        },
+        {
+          title: "Topic 1",
+          description: "python",
+          complexity: "Easy",
+          img: "https://i.morioh.com/210209/e6e21880.webp",
+          taskId: 1,
+        },
+        {
+          title: "Topic 1",
+          description: "Swift",
+          complexity: "Easy",
+          img: "https://www.technotification.com/wp-content/uploads/2016/06/New-Programming-Languages-Swift.jpg",
+          taskId: 1,
+        },
+      ],
+      {}
+    );
+      
   },
 
   async down(queryInterface, Sequelize) {
