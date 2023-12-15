@@ -15,7 +15,6 @@ import {
 } from '@chakra-ui/react';
 import { useAppDispatch } from '../redux/hook';
 import { openModal } from '../redux/slices/modal/modalReducer';
-// import type { AddUserFormData } from '../types/modal/index';
 import { thunkSignup } from '../redux/slices/auth/createAsyncThunks';
 
 export default function ModalFromRegistration(): JSX.Element {
@@ -30,10 +29,11 @@ export default function ModalFromRegistration(): JSX.Element {
     onOpen();
   };
 
-  const onSave = (): void => {
-    console.log('FormData:', formData);
+  const onSave = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.currentTarget)) as SignupFormData;
     dispatch(thunkSignup(formData));
-    onClose(); 
+    onClose();
   };
 
   return (
@@ -59,7 +59,7 @@ export default function ModalFromRegistration(): JSX.Element {
           <ModalHeader>Create your account</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <form>
+            <form onSubmit={onSave}>
               <FormControl>
                 <FormLabel>Имя</FormLabel>
                 <Input name="name" type="text" ref={initialRef} placeholder="Имя" />
@@ -74,17 +74,14 @@ export default function ModalFromRegistration(): JSX.Element {
                 <FormLabel>Пароль</FormLabel>
                 <Input name="password" type="password" placeholder="Пароль" />
               </FormControl>
-              <Button onClick={onSave} colorScheme="blue" type="submit" mr={3}>
+              <Button colorScheme="blue" type="submit" mr={3}>
                 Save
               </Button>
             </form>
           </ModalBody>
 
           <ModalFooter>
-
-              <Button onClick={onClose}>Cancel</Button>
-
-
+            <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

@@ -7,7 +7,7 @@ import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
 import Footer from './components/Footer';
-import YandexMap from "./components/YandexMap";
+import YandexMap from './components/YandexMap';
 import { thunkGroupsLoad } from './redux/slices/groups/thunkActions';
 import { useAppDispatch } from './redux/hook';
 import { thunkStudentsLoad } from './redux/slices/students/thunkActions';
@@ -21,23 +21,19 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <>
+    <ChakraProvider>
       {/* <SaasProvider>
         <SideBar />
       </SaasProvider> */}
-      <ChakraProvider>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginFormModal />} />
         <Route path="/teacherlk" element={<TeacherAccountPage />} />
       </Routes>
-        <YandexMap />
+      <YandexMap />
       <Footer />
-      </ChakraProvider>
- </>
-    
+    </ChakraProvider>
   );
 }
 
 export default App;
-
