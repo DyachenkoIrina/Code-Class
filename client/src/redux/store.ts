@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import modalReducer from './slices/modal/modalReducer';
-import topicsReducer from './topics/topicsSlice';
+import topicsReducer from './slices/topics/topicsSlice';
+import tasksReducer from './slices/tasks/tasksSlice';
 import groupReducer from './slices/groups/groupReducer';
 import studentReducer from './slices/students/studentReduser';
 import authReducer from './slices/auth';
@@ -9,6 +10,7 @@ export const store = configureStore({
   reducer: {
     modal: modalReducer,
     topics: topicsReducer,
+    tasks: tasksReducer,
     groupsSlice: groupReducer,
     studentsSlice: studentReducer,
     authSlice: authReducer,

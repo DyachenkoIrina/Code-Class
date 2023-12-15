@@ -10,16 +10,22 @@ import { thunkGroupsLoad } from './redux/slices/groups/thunkActions';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
 import { useAppDispatch } from './redux/hook';
-import thunkLoad from './redux/topics/createAsyncThunk';
+import thunkLoad from './redux/slices/topics/createAsyncThunk';
 import StudentAccountPage from './pages/StudentAccountPage';
+import CarouselImg from './components/Carousel';
+import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
+import thunkLoadTask from './redux/slices/tasks/createAsyncThunk';
+import TaskPage from './pages/TaskPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
-    // void dispatch(thunkStudentsLoad())
+    void dispatch(thunkCheckAuth());
+    void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
+    void dispatch(thunkLoadTask());
   }, []);
 
   const theme = extendTheme({
@@ -47,6 +53,7 @@ function App(): JSX.Element {
           <Route path="/" element={<MainPage />} />
           <Route path="/teacherlk" element={<TeacherAccountPage />} />
           <Route path="/studentlk" element={<StudentAccountPage />} />
+          <Route path="/task" element={<TaskPage />} />
         </Routes>
         {/* <YandexMap /> */}
         {/* <Footer /> */}
