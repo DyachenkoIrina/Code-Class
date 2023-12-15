@@ -21,18 +21,19 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
     onOpen();
   };
   return (
+
     <>
-      <Card sx={{ height: '70px', maxWidth: 380, marginBottom: '10px' }}>
-        <CardBody sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Card sx={{ height: '70px', maxWidth: 340, marginBottom: '10px' }}>
+        <CardBody w='100%' h='200px' bgGradient='linear(to-r, green.200, pink.500)' sx={{ display: 'flex', justifyContent: 'space-between' }}>
           {/* <Text fontSize="2xl">{group.group}</Text> */}
-          <Button onClick={handleOpenModal}>
-            {/* <Button flex='1' variant='ghost' leftIcon={< />}> можно добаыить иконку */}
+          <Button  sx={{height: '50px', width:300, display: 'flex', justifyContent:'center'}} onClick={handleOpenModal}>
             {group.group}
           </Button>
         </CardBody>
       </Card>
       <StudentFormModal />
     </>
+
   );
 }
 

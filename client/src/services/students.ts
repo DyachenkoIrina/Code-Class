@@ -20,5 +20,6 @@ class StudentServise {
     if (response.status === 200) return response.data;
     return [];
   }
+
 }
 export default StudentServise;

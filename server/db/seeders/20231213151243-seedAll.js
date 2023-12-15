@@ -167,7 +167,7 @@ module.exports = {
             topicId: 1
         },
       ],
-      {}
+      {}  
     );
 
     await queryInterface.bulkInsert(

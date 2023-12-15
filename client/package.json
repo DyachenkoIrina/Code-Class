@@ -13,10 +13,15 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+
+    "@mui/lab": "^5.0.0-alpha.156",
+    "@mui/material": "^5.15.0",
+
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.15.0",
     "@mui/material": "^5.15.0",
     "@mui/styled-engine-sc": "^6.0.0-alpha.8",
+
     "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^1.9.7",
     "@saas-ui/core": "^2.2.4",

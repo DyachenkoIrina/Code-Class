@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ChakraProvider, Container } from '@chakra-ui/react';
-import { SaasProvider } from '@saas-ui/react';
+import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
+import { SaasProvider } from '@saas-ui/react'; 
 import LoginFormModal from './forms/LoginFormModal';
 import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
+import { thunkGroupsLoad } from './redux/slices/groups/thunkActions';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
-import { thunkGroupsLoad } from './redux/slices/groups/thunkActions';
 import { useAppDispatch } from './redux/hook';
 import thunkLoad from './redux/slices/topics/createAsyncThunk';
 import StudentAccountPage from './pages/StudentAccountPage';
@@ -28,25 +28,36 @@ function App(): JSX.Element {
     void dispatch(thunkLoadTask());
   }, []);
 
+  const theme = extendTheme({
+    colors: {
+      brand: {
+        100: "black",
+        900: "#1a202c",
+      },
+    },
+  })
+  
+
+
   return (
     <Container>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <SaasProvider>
           <SideBar />
         </SaasProvider>
         <Container style={{ margin: '0 auto', padding: '15px' }} />
 
-        {/* <CarouselImg /> */}
+       
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<LoginFormModal />} />
           <Route path="/teacherlk" element={<TeacherAccountPage />} />
           <Route path="/studentlk" element={<StudentAccountPage />} />
           <Route path="/task" element={<TaskPage />} />
         </Routes>
         {/* <YandexMap /> */}
         {/* <Footer /> */}
+        <LoginFormModal />
       </ChakraProvider>
     </Container>
   );
