@@ -11,13 +11,10 @@ export default function MainPage(): JSX.Element {
   const handleToggleModal = (): void => {
     dispatch(toggleModal());
   };
-  
 
   return (
     <Container sx={{ margin: 'auto' }}>
-
       <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
     </Container>
   );
-
 }
