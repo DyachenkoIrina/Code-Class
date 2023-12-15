@@ -10,6 +10,7 @@ export const thunkCheckAuth = createAsyncThunk<AuthState>('authSlice/thunkCheckA
 export const thunkLogin = createAsyncThunk(
   'authSlice/thunkLogin',
   async (formData: LoginFormData) => {
+    
     const backendAuth = await AuthService.login(formData);
     return { ...backendAuth, user: { ...backendAuth.user, status: 'authenticated' } };
   },
