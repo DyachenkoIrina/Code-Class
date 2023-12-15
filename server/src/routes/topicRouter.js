@@ -8,7 +8,8 @@ topicRouter.get("/", async (req, res) => {
     const data = await Topic.findAll();
     res.status(200).json(data);
   } catch ({ message }) {
-    res.status(400).json({ message });
+    console.log(message);
+    res.status(408).json({ message });
   }
 });
 module.exports = topicRouter;
