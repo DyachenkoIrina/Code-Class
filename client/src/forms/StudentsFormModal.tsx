@@ -31,7 +31,7 @@ export default function StudentFormModal(): JSX.Element {
       onClose={() => dispatch(closeModal())}
     >
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent w='100%' h='auto' bgGradient='linear(to-r, green.200, pink.500)'>
         <ModalHeader>Список учеников группы:</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>

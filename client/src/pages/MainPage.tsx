@@ -9,6 +9,10 @@ import YandexMap from '../components/YandexMap';
 import CourseOptions from '../components/CourseOptions';
 import CarouselImg from '../components/Carousel';
 import LoginFormModal from '../forms/LoginFormModal';
+import YandexMap from "../components/YandexMap";
+import CourseOptions  from '../components/CourseOptions';
+import CarouselImg from '../components/Carousel';
+
 
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -20,13 +24,12 @@ export default function MainPage(): JSX.Element {
 
   return (
     <>
-      {/* <LoginFormModal /> */}
-      <CarouselImg />
-      <Container sx={{ margin: 'auto' }}>
-        <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
-      </Container>
-      <CourseOptions />
-      <YandexMap />
+     <CarouselImg />
+    <Container sx={{ margin: 'auto' }}>
+      <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
+    </Container>
+    <CourseOptions/>
+    <YandexMap />
     </>
   );
 }
