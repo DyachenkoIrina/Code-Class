@@ -98,7 +98,7 @@ module.exports = {
           answer: "console.log('Hello, World!');",
         },
       ],
-      {}
+      {}  
     );
 
     await queryInterface.bulkInsert(

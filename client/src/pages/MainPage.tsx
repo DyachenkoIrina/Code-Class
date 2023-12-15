@@ -7,6 +7,7 @@ import ModalFromRegistration from '../components/FormFromRegistration';
 import { toggleModal } from '../redux/slices/modal/modalReducer';
 import YandexMap from "../components/YandexMap";
 import CourseOptions  from '../components/CourseOptions';
+import CarouselImg from '../components/Carousel';
 
 
 export default function MainPage(): JSX.Element {
@@ -19,6 +20,7 @@ export default function MainPage(): JSX.Element {
 
   return (
     <>
+     <CarouselImg />
     <Container sx={{ margin: 'auto' }}>
       <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
     </Container>

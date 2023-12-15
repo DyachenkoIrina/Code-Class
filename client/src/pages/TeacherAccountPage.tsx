@@ -5,7 +5,7 @@ import TeacherAccountForm from '../forms/TeacherAccountForm';
 export default function TeacherAccountPage(): JSX.Element {
     return (
       <Container >
-        <TeacherAccountForm/>
+        <TeacherAccountForm />
       </Container>
     );
   }
