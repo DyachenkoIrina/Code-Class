@@ -6,7 +6,15 @@ import { useAppSelector } from '../redux/hook';
 export default function TeacherAccountList(): JSX.Element {
   const groups1 = useAppSelector((state) => state.groupsSlice.groups);
   return (
-    <Grid sx={{ marginTop: '50px', display: 'flex', justifyContent: 'center' , flexDirection: 'column' }}>
+    <Grid
+      sx={{
+        marginTop: '70px',
+        marginBottom: '100px',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
       {groups1.map((group) => (
         <Grid key={group.id}>
           <GroupCard group={group} />

@@ -16,7 +16,6 @@ export default function MainPage(): JSX.Element {
   const handleToggleModal = (): void => {
     dispatch(toggleModal());
   };
-  
 
   return (
     <>
@@ -27,5 +26,4 @@ export default function MainPage(): JSX.Element {
     <YandexMap />
     </>
   );
-
 }
