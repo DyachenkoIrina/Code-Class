@@ -17,7 +17,7 @@ class AuthService {
 
   static async login(formData: LoginFormData): Promise<BackendAuth> {
     console.log(formData);
-
+    
     const response = await authInstance.post<BackendAuth>('/auth/login', formData);
     return response.data;
   }
@@ -30,7 +30,7 @@ class AuthService {
   }
 
   static async logout(): Promise<void> {
-    return authInstance.post('/auth/logout');
+    return authInstance.get('/auth/logout');
   }
 
   static async check(): Promise<BackendAuth> {
