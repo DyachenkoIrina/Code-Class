@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Spacer, IconButton, Image, useDisclosure } from '@chakra-ui/react';
+import { Box, Spacer, IconButton, Image, useDisclosure, Link } from '@chakra-ui/react';
 import {
   AppShell,
   Sidebar,
@@ -21,14 +21,15 @@ import {
 } from 'react-icons/fi';
 import { Button } from 'react-bootstrap';
 import LoginFormModal from '../forms/LoginFormModal';
-import { openModal, toggleModal } from '../redux/slices/modal/modalReducer';
-import { useAppDispatch } from '../redux/hook';
+import { openModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
+import { useAppDispatch, useAppSelector } from '../redux/hook';
 
 export default function SideBar(): JSX.Element {
   const { isOpen, onOpen, onToggle } = useDisclosure({
     defaultIsOpen: false,
   });
   const dispatch = useAppDispatch();
+  const auth = useAppSelector((store) => store.authSlice);
 
   return (
     <AppShell
@@ -70,13 +71,14 @@ export default function SideBar(): JSX.Element {
                 Главная
               </NavItem>
 
-              <NavItem onClick={() => dispatch(openModal())} icon={<FiUser />}>
+              <NavItem onClick={() => dispatch(openModallogin())} icon={<FiUser />}>
                 Войти
               </NavItem>
 
               <NavItem icon={<FiBook />}>О нас</NavItem>
             </NavGroup>
             <NavGroup>
+              <NavItem>{auth.user.status === 'authenticated'}</NavItem>
               <Button
                 style={{ width: '70px', background: 'none', border: 'none' }}
                 href="/teacherlk"
