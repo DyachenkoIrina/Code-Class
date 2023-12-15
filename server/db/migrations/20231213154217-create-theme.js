@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Themes', {
+    await queryInterface.createTable('Topics', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,6 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        type: Sequelize.STRING
+      },
+      img: {
+        type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.STRING
+      },
+      complexity: {
         type: Sequelize.STRING
       },
       taskId: {
@@ -33,6 +42,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Themes');
+    await queryInterface.dropTable('Topics');
   }
 };
