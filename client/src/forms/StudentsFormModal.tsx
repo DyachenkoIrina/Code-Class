@@ -12,12 +12,12 @@ import React, { useEffect } from 'react';
 
 import StudentCard from '../components/StudentCard';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { closeModal } from '../redux/slices/modal/modalReducer';
+import { closeModal, groupModal } from '../redux/slices/modal/modalReducer';
 
 export default function StudentFormModal(): JSX.Element {
   // const { isOpen, onOpen, onClose } = useDisclosure();
   const students = useAppSelector((state) => state.studentsSlice.students);
-  const isOpen = useAppSelector((state) => state.modal.isOpen);
+  const isOpen = useAppSelector((state) => state.modal.groupModal);
   const dispatch = useAppDispatch();
 
   const initialRef = React.useRef(null);
@@ -33,7 +33,7 @@ export default function StudentFormModal(): JSX.Element {
       <ModalOverlay />
       <ModalContent w='100%' h='auto' bgGradient='linear(to-r, green.200, pink.500)'>
         <ModalHeader>Список учеников группы:</ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton onClick={() => dispatch(groupModal())} />
         <ModalBody pb={6}>
           {/* <Grid
               sx={{
@@ -53,7 +53,7 @@ export default function StudentFormModal(): JSX.Element {
         </ModalBody>
 
         <ModalFooter>
-          <Button onClick={() => dispatch(closeModal())}>Выход</Button>
+          <Button onClick={() => dispatch(groupModal())}>Выход</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

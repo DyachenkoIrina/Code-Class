@@ -4,7 +4,7 @@ import topicsReducer from './slices/topics/topicsSlice';
 import tasksReducer from './slices/tasks/tasksSlice';
 import groupReducer from './slices/groups/groupReducer';
 import studentReducer from './slices/students/studentReduser';
-import authReducer from './slices/auth/index';
+import authReducer from './slices/auth';
 
 export const store = configureStore({
   reducer: {
