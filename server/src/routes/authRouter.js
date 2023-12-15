@@ -11,7 +11,9 @@ const authRouter = express.Router();
 authRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password)
     const user = await User.findOne({ where: { email } });
+    console.log(user);
     if (!user) return res.status(404).json({ message: "User not found" });
 
     const isValid = await bcrypt.compare(password, user.hashpass);
@@ -28,7 +30,7 @@ authRouter.post("/login", async (req, res) => {
       .json({ accessToken, user: plainUser });
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.status(407).json(error);
   }
 });
 

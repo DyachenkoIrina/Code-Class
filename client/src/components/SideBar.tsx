@@ -18,11 +18,14 @@ import {
   FiUser,
   FiBook,
   FiCircle,
+  FiLogOut,
 } from 'react-icons/fi';
 import { Button } from 'react-bootstrap';
 import LoginFormModal from '../forms/LoginFormModal';
 import { openModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
+import { thunkLogout } from '../redux/slices/auth/createAsyncThunks';
+
 
 export default function SideBar(): JSX.Element {
   const { isOpen, onOpen, onToggle } = useDisclosure({
@@ -70,15 +73,22 @@ export default function SideBar(): JSX.Element {
               <NavItem icon={<FiHome />} isActive>
                 Главная
               </NavItem>
-
-              <NavItem onClick={() => dispatch(openModallogin())} icon={<FiUser />}>
-                Войти
-              </NavItem>
+              {auth.user.status !== 'authenticated' ? (
+                <NavItem onClick={() => dispatch(openModallogin())} icon={<FiUser />}>
+                  Войти
+                </NavItem>
+              ) : (
+                <NavItem onClick={() => void dispatch(thunkLogout())} icon={<FiLogOut />}>
+                  Выйти
+                </NavItem>
+              )}
 
               <NavItem icon={<FiBook />}>О нас</NavItem>
             </NavGroup>
             <NavGroup>
-              <NavItem>{auth.user.status === 'authenticated'}</NavItem>
+              <NavItem>
+                {auth.user.status === 'authenticated' ? auth.user.name : 'Привет, гость!'}
+              </NavItem>
               <Button
                 style={{ width: '70px', background: 'none', border: 'none' }}
                 href="/teacherlk"
