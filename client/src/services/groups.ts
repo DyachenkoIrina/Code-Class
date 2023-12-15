@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { GroupType } from '../../types/groups';
+import type { GroupType } from '../types/groups';
 
 export const apiGroupServise = axios.create({
   baseURL: 'http://localhost:3001/api/v1/teacherlk',
