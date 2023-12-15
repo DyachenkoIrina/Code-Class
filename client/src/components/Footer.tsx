@@ -3,7 +3,7 @@ import type { LinkProps } from '@chakra-ui/react';
 import { Stack, HStack, Link, Divider, Image, IconButton } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import YandexMap from './YandexMap';
-import codeClassLogo from './code-class-logo.svg'
+import codeClassLogo from '../../public/code-class-logo.svg'
 
 
     
