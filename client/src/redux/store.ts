@@ -14,7 +14,6 @@ export const store = configureStore({
     groupsSlice: groupReducer,
     studentsSlice: studentReducer,
     authSlice: authReducer,
-    task: taskReducer,
   },
 });
 

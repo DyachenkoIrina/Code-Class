@@ -16,4 +16,18 @@ taskRouter.get("/", async (req, res) => {
   }
 });
 
+taskRouter.post("/", async (req, res) => {
+  try {
+    const { title, questions, answer } = req.body;
+    const note = await Task.create({
+      title,
+      questions,
+      answer,
+    });
+    res.status(201).json(note);
+  } catch ({ message }) {
+    res.json({ message });
+  }
+});
+
 module.exports = taskRouter;

@@ -5,7 +5,7 @@ import { useAppDispatch } from '../redux/hook';
 
 import StudentFormModal from '../forms/StudentsFormModal';
 import { thunkFilterStudentsLoad } from '../redux/slices/students/thunkActions';
-import { openModal1 } from '../redux/slices/modal/modalReducer';
+import { openModal } from '../redux/slices/modal/modalReducer';
 
 type GroupTypeProps = {
   group: GroupType;
@@ -16,9 +16,8 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleOpenModal = (): void => {
-    dispatch(openModal1());
+    dispatch(openModal());
     void dispatch(thunkFilterStudentsLoad(group.id));
-
     onOpen();
   };
   return (

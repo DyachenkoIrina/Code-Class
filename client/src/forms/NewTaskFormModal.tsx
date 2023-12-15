@@ -2,10 +2,8 @@ import {
     Modal,
     ModalOverlay,
     ModalContent,
-    ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton,
     useDisclosure,
     Button,
     FormControl,
@@ -13,11 +11,14 @@ import {
     Input,
   } from '@chakra-ui/react';
   import React from 'react';
-  import { useAppDispatch } from '../redux/hook';
+ 
+import { thunkTaskAdd } from '../redux/slices/tasks/createAsyncThunk';
+import type { AddTaskFormData } from '../types/task';
+import { useAppDispatch } from '../redux/hook';
   
-  export default function LoginFormModal(): JSX.Element {
+  export default function NewTaskFormModal(): JSX.Element {
     const dispatch = useAppDispatch();
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen,  onClose } = useDisclosure();
   
     const initialRef = React.useRef(null);
     const finalRef = React.useRef(null);
@@ -26,8 +27,8 @@ import {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = Object.fromEntries(new FormData(e.currentTarget)) as LoginFormData;
-          void dispatch(thunkNewTaskAdd(formData));
+          const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
+          void dispatch(thunkTaskAdd(formData));
         }}
       >
   
@@ -38,7 +39,7 @@ import {
           onClose={onClose}
         >
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent w='600' h='600' bgGradient='linear(to-r, green.500, pink.200)'>
             <ModalBody pb={6}>
             <FormControl>
                 <Input ref={initialRef} name="title" type="text" placeholder="Тема" />
