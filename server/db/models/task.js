@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(Homework, { foreignKey: "taskId" });
       this.belongsToMany(User, { through: "HomeWork", foreignKey: "userId" });
-      this.belongsTo(Topic, { foreignKey: "taskId" });
+      this.hasMany(Topic, { foreignKey: "topicId" });
     }
   }
   Task.init(
@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       questions: DataTypes.TEXT,
       answer: DataTypes.TEXT,
+      topicId: DataTypes.INTEGER,
     },
     {
       sequelize,
