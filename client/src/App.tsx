@@ -12,7 +12,6 @@ import YandexMap from './components/YandexMap';
 import { useAppDispatch } from './redux/hook';
 import thunkLoad from './redux/topics/createAsyncThunk';
 import StudentAccountPage from './pages/StudentAccountPage';
-import CarouselImg from './components/Carousel';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -35,27 +34,25 @@ function App(): JSX.Element {
 
 
   return (
-
     <Container>
       <ChakraProvider theme={theme}>
         <SaasProvider>
-        <SideBar />
-      </SaasProvider>
+          <SideBar />
+        </SaasProvider>
         <Container style={{ margin: '0 auto', padding: '15px' }} />
 
        
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<LoginFormModal />} />
           <Route path="/teacherlk" element={<TeacherAccountPage />} />
           <Route path="/studentlk" element={<StudentAccountPage />} />
         </Routes>
         {/* <YandexMap /> */}
         {/* <Footer /> */}
+        <LoginFormModal />
       </ChakraProvider>
     </Container>
-
   );
 }
 
