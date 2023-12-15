@@ -9,9 +9,7 @@ import YandexMap from '../components/YandexMap';
 import CourseOptions from '../components/CourseOptions';
 import CarouselImg from '../components/Carousel';
 import LoginFormModal from '../forms/LoginFormModal';
-import YandexMap from "../components/YandexMap";
-import CourseOptions  from '../components/CourseOptions';
-import CarouselImg from '../components/Carousel';
+
 
 
 export default function MainPage(): JSX.Element {

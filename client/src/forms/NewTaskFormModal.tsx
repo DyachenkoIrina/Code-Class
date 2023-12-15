@@ -27,13 +27,9 @@ import {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as LoginFormData;
-          void dispatch(thunkAuthLogin(formData));
+          void dispatch(thunkNewTask(formData));
         }}
       >
-        <Button onClick={onOpen}>Open Modal</Button>
-        <Button ml={4} ref={finalRef}>
-          I'll receive focus on close
-        </Button>
   
         <Modal
           initialFocusRef={initialRef}
@@ -54,15 +50,15 @@ import {
               </FormControl>
   
               <FormControl mt={4}>
-                <Input name="password" type="answer" placeholder="Ответ" />
+                <Input name="answer" type="text" placeholder="Ответ" />
               </FormControl>
             </ModalBody>
   
             <ModalFooter>
               <Button type="submit" colorScheme="blue" mr={3}>
-                Войти
+                Сохранить
               </Button>
-              <Button onClick={onClose}>Cancel</Button>
+              <Button onClick={onClose}>Выйти</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
