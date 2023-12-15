@@ -13,9 +13,19 @@ export default function YandexMap(): JSX.Element {
 
   return (
     <div>
-      <YMaps >
+      <YMaps query={{
+    ns: "use-load-option",
+    load: "Map,Placemark,control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon",
+  }}>
+        
         <Map defaultState={defaultState} style={containerStyle }>
-          <Placemark geometry={[55.706532556835974, 37.596959071758185]} />
+        <Placemark
+      defaultGeometry={[55.706532556835974, 37.596959071758185]}
+      properties={{
+        balloonContentBody:
+          "Кампус в Москве - ул.Орджоникидзе, д. 11 стр. 10 (м. Ленинский проспект)",
+      }}
+    />
         </Map>
       </YMaps>
     </div>

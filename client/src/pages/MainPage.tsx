@@ -1,9 +1,13 @@
 import React from 'react';
+import { StyledEngineProvider } from '@mui/material/styles';
 import { Container } from '@chakra-ui/react';
+import { Box, Tab, Tabs } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import ModalFromRegistration from '../components/FormFromRegistration';
 import { toggleModal } from '../redux/slices/modal/modalReducer';
 import YandexMap from "../components/YandexMap";
+import CourseOptions  from '../components/CourseOptions';
+
 
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -17,9 +21,9 @@ export default function MainPage(): JSX.Element {
   return (
     <>
     <Container sx={{ margin: 'auto' }}>
-
       <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
     </Container>
+    <CourseOptions/>
     <YandexMap />
     </>
   );

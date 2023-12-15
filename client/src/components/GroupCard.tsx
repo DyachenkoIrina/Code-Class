@@ -14,7 +14,6 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
           {group.group}
         </Text>
         <Button>
-          {/* <Button flex='1' variant='ghost' leftIcon={< />}> можно добаыить иконку */}
           Зайти
         </Button>
       </CardBody>
