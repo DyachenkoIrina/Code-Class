@@ -1,14 +1,20 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Card, CardHeader, CardBody, CardFooter, Heading, Text, Button } from '@chakra-ui/react';
-import {useAppSelector} from '../../redux/hook';
+import { useAppSelector } from '../../redux/hook';
 
 export default function QuestionContainer(): JSX.Element {
   const tasks = useAppSelector((state) => state.tasks.tasks);
-
-
-  const javascriptTasks = tasks.filter(obj => obj.title === 'JavaScript Task');
-  // console.log('javascriptTasks------->', javascriptTasks);
+  console.log('--tasks-->', tasks);
   
+
+  const { id } = useParams();
+  console.log(id);
+  
+
+  const javascriptTasks = tasks.filter((obj) => obj.title === 'JavaScript Task');
+  console.log('javascriptTasks------->', javascriptTasks[0].topicId);
+
   return (
     <Card align="center">
       <CardHeader>
@@ -16,7 +22,7 @@ export default function QuestionContainer(): JSX.Element {
       </CardHeader>
       <CardBody>
         <Text fontSize="50px" color="tomato">
-          {javascriptTasks[0].questions}
+          {javascriptTasks[id]?.questions}
         </Text>
       </CardBody>
       <CardFooter>
