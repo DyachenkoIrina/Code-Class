@@ -5,6 +5,7 @@ import tasksReducer from './slices/tasks/tasksSlice';
 import groupReducer from './slices/groups/groupReducer';
 import studentReducer from './slices/students/studentReduser';
 import authReducer from './slices/auth';
+import adminReducer from './slices/admin/adminReducer';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     groupsSlice: groupReducer,
     studentsSlice: studentReducer,
     authSlice: authReducer,
+    adminSlice: adminReducer,
   },
 });
 
