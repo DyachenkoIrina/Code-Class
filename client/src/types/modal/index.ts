@@ -3,14 +3,15 @@ export type ModalStatetupe = {
   loginModal: boolean;
   groupModal: boolean;
   registrModal: boolean;
+  newtaskModal: boolean;
   // onClose: () => void;
   // noteId: number;
 };
 
-export type ModalState =
-  | { status: 'login' }
-  | { status: 'group' }
-  | { status: 'newTask' }
-  | { status: 'registr' };
+// export type ModalState =
+//   | { status: 'login' }
+//   | { status: 'group' }
+//   | { status: 'newTask' }
+//   | { status: 'registr' };
 
 // export type ModalAction = { type: string; payload: NoteType['id'] };

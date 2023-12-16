@@ -2,7 +2,7 @@ import { Button, FormControl, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
 import TeacherAccountList from '../lists/TeacherAccountList';
 import { useAppDispatch } from '../redux/hook';
-import { openModal } from '../redux/slices/modal/modalReducer';
+import { newTaskModal } from '../redux/slices/modal/modalReducer';
 import NewTaskFormModal from './NewTaskFormModal';
 
 export default function TeacherAccountForm(): JSX.Element {
@@ -10,7 +10,7 @@ export default function TeacherAccountForm(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleOpenModal = (): void => {
-    dispatch(openModal());
+    dispatch(newTaskModal());
 
     onOpen();
   };
