@@ -24,7 +24,6 @@ function App(): JSX.Element {
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
-
     void dispatch(thunkLoadTask());
   }, []);
 
