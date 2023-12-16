@@ -31,14 +31,14 @@ export default function LoginFormModal(): JSX.Element {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Create your account</ModalHeader>
-        <ModalCloseButton onClick={() => dispatch(openModallogin())}/>
+        <ModalCloseButton onClick={() => dispatch(openModallogin())} />
         <ModalBody pb={6}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
               const formData = Object.fromEntries(new FormData(e.currentTarget)) as LoginFormData;
               void dispatch(thunkLogin(formData));
-              dispatch(openModallogin())
+              dispatch(openModallogin());
               // handleClose();
             }}
           >
