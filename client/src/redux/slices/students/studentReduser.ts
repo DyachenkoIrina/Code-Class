@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { thunkFilterStudentsLoad, thunkStudentsLoad } from './thunkActions';
+import {
+  thunkFilterStudentsLoad,
+  thunkOneStudentForTeacher,
+} from './thunkActions';
 import type { StudentsSliceState } from '../../../types/student';
 
 const initialState: StudentsSliceState = {
@@ -16,6 +19,9 @@ export const studentssSlice = createSlice({
     //   state.students = action.payload;
     // });
     builder.addCase(thunkFilterStudentsLoad.fulfilled, (state, action) => {
+      state.students = action.payload;
+    });
+    builder.addCase(thunkOneStudentForTeacher.fulfilled, (state, action) => {
       state.students = action.payload;
     });
   },

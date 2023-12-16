@@ -16,7 +16,12 @@ class StudentServise {
 
   static async getStudentsFilter(id: GroupType['id']): Promise<UserType[]> {
     const response = await apiStudentsServise.get<UserType[]>(`/students/${id}`);
-    console.log('---->---class!!', response);
+    if (response.status === 200) return response.data;
+    return [];
+  }
+
+  static async getOneStudentForTeacher(id: UserType['id']): Promise<UserType[]> {
+    const response = await apiStudentsServise.get<UserType[]>(`/studentsid/${id}`);
     if (response.status === 200) return response.data;
     return [];
   }
