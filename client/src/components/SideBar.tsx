@@ -94,22 +94,22 @@ export default function SideBar(): JSX.Element {
               {user.status === 'authenticated' && user.role === 'Teacher' ? (
                 <Button
                   style={{ width: '70px', background: 'none', border: 'none' }}
-                  href="/teacherlk"
-                >
-                  учитель
-                </Button>
-              ) : (
-                <></>
-              )}
-              {user.status === 'authenticated' && user.role === 'Student' ? (
-                <Button
-                  style={{ width: '70px', background: 'none', border: 'none' }}
-                  href="/studentlk"
+                  onClick={() => navigate('/teacherlk')}
                 >
                   <Image src={user.profileImage} mb="1" display={isOpen} borderRadius="full" />
                 </Button>
               ) : (
-                <></>
+                <> </>
+              )}
+              {user.status === 'authenticated' && user.role === 'Student' ? (
+                <Button
+                  style={{ width: '70px', background: 'none', border: 'none' }}
+                  onClick={() => navigate('/studentlk')}
+                >
+                  <Image src={user.profileImage} mb="1" display={isOpen} borderRadius="full" />
+                </Button>
+              ) : (
+                <> </>
               )}
             </NavGroup>
           </SidebarSection>
@@ -119,4 +119,3 @@ export default function SideBar(): JSX.Element {
     />
   );
 }
-

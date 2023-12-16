@@ -7,6 +7,7 @@ const initialState: ModalStatetupe = {
   groupModal: false,
   newtaskModal: false,
   registrModal: false,
+  editModal: false,
 };
 
 export const modalSlice = createSlice({
@@ -31,6 +32,9 @@ export const modalSlice = createSlice({
     toggleModal: (state) => {
       state.isOpen = !state.isOpen;
     },
+    userEditModal: (state) => {
+      state.editModal = !state.editModal;
+    },
   },
 });
 
@@ -40,6 +44,7 @@ export const {
   toggleModal,
   groupModal,
   openModallogin,
+  userEditModal,
   newTaskModal,
 } = modalSlice.actions;
 
