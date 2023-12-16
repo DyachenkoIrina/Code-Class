@@ -21,6 +21,7 @@ import {
   FiLogOut,
 } from 'react-icons/fi';
 import { Button } from 'react-bootstrap';
+
 import LoginFormModal from '../forms/LoginFormModal';
 import { openModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
@@ -109,3 +110,4 @@ export default function SideBar(): JSX.Element {
     />
   );
 }
+

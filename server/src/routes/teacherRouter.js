@@ -13,20 +13,21 @@ teacherRouter.get("/", async (req, res) => {
   }
 });
 
-teacherRouter.get("/students", async (req, res) => {
-  try {
-    const data = await User.findAll({ where: { role: "Student" } });
-    res.status(200).json(data);
-  } catch ({ message }) {
-    res.status(400).json({ message });
-  }
-});
+// teacherRouter.get("/students", async (req, res) => {
+//   try {
+//     const data = await User.findAll({ where: { role: "Student" } });
+//     res.status(200).json(data);
+//   } catch ({ message }) {
+//     res.status(400).json({ message });
+//   }
+// });
 
 teacherRouter.get("/students/:id", async (req, res) => {
   try {
     const data = await User.findAll({
       where: { role: "Student", groupId: req.params.id },
     });
+    console.log('--->server data', data)
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });

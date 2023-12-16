@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import  { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import type { TaskSliceState, TaskType } from '../../../types/task';
-import thunkLoadTask from './createAsyncThunk';
+import  { thunkLoadTask, thunkTaskAdd } from './createAsyncThunk';
 
 const initialState: TaskSliceState = {
   tasks: [],
@@ -11,10 +11,15 @@ const initialState: TaskSliceState = {
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-
+  reducers: {
+    
+  },
   extraReducers: (builder) => {
-    builder.addCase(thunkLoadTask.fulfilled, (state, action: PayloadAction<TaskType>) => {
+    builder.addCase(thunkLoadTask.fulfilled, (state, action) => {
       state.tasks = action.payload;
+    });
+    builder.addCase(thunkTaskAdd.fulfilled, (state, action) => {
+      state.tasks.unshift(action.payload);
     });
   },
 });
