@@ -16,6 +16,8 @@ import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsy
 import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
+import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
+import AdminPage from './pages/AdminPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -25,6 +27,7 @@ function App(): JSX.Element {
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
     void dispatch(thunkLoadTask());
+    void dispatch(thunkUsersLoad());
   }, []);
 
   const theme = extendTheme({
@@ -38,6 +41,7 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   console.log('applog------', user);
+  console.log('applog------', user.status);
 
   return (
     <Container>
@@ -49,12 +53,13 @@ function App(): JSX.Element {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}>
+          {/* <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}> */}
             <Route path="/teacherlk" element={<TeacherAccountPage />} />
             <Route path="/studentlk" element={<StudentAccountPage />} />
             <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/student/adminlk" element={<TaskPage />} />
-          </Route>
+            <Route path="/adminlk" element={<AdminPage />} />
+          {/* </Route> */}
         </Routes>
         {/* <YandexMap /> */}
         {/* <Footer /> */}
@@ -64,3 +69,4 @@ function App(): JSX.Element {
   );
 }
 
+export default App;
