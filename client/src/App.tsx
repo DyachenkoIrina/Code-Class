@@ -15,6 +15,7 @@ import StudentAccountPage from './pages/StudentAccountPage';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
 import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
+import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 
 
 function App(): JSX.Element {
@@ -47,7 +48,8 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/teacherlk" element={<TeacherAccountPage />} />
-          <Route path="/studentlk/:id" element={<StudentAccountPage />} />
+          <Route path="/teacherlk/studentid/:studentId" element={<TeacherAccountPageSt />} />
+          <Route path="/studentlk" element={<StudentAccountPage />} />
           <Route path='/student/task/:id' element={<TaskPage />} />
         </Routes>
         {/* <YandexMap /> */}

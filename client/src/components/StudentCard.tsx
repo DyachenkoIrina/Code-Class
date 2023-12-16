@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, CardBody, Text } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import type { UserType } from '../types/auth';
 
 type StudentsTypeProps = {
@@ -13,9 +14,9 @@ function StudentCard({student}:StudentsTypeProps): JSX.Element {
     <Card >
       <CardBody sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Text fontSize="2xl">{student.name}</Text>
-        <Button onClick={() => window.location.href = `/teacherlk/studentid:${student.id}`}>
-          Выбрать
-        </Button>
+        <Button as={Link} to={`/teacherlk/studentid/${student.id}`}>
+  Выбрать
+</Button>
       </CardBody>
     </Card>
   );
