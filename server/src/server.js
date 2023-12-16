@@ -7,10 +7,11 @@ const tokensRouter = require("./routes/tokensRouter");
 const apiNotesRouter = require("./routes/apiNotesRouter");
 const topicRouter = require('./routes/topicRouter');
 
-// const groupRouter = require("./routes/groupRouter")
-const taskRouter = require("./routes/tasksRouter")
+
+
 
 const teacherRouter = require("./routes/teacherRouter");
+const tasksRouter = require("./routes/tasksRouter");
 
 require("dotenv").config();
 
@@ -32,7 +33,7 @@ app.use(express.static("public"));
 app.use("/api/v1/notes", apiNotesRouter);
 app.use("/api/v1/topic", topicRouter);
 app.use("/api/v1/teacherlk", teacherRouter);
-app.use("/api/v1/task", taskRouter);
+app.use("/api/v1/task", tasksRouter);
 app.use("/api/v1/tokens", tokensRouter);
 app.use("/api/v1/auth", authRouter);
 

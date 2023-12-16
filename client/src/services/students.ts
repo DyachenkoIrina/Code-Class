@@ -16,7 +16,7 @@ class StudentServise {
 
   static async getStudentsFilter(id: GroupType['id']): Promise<UserType[]> {
     const response = await apiStudentsServise.get<UserType[]>(`/students/${id}`);
-    console.log('class!!', response);
+    console.log('---->---class!!', response);
     if (response.status === 200) return response.data;
     return [];
   }

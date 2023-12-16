@@ -13,19 +13,20 @@ import {
   Input,
   Button,
 } from '@chakra-ui/react';
-import { useAppDispatch } from '../redux/hook';
-import { openModal } from '../redux/slices/modal/modalReducer';
+import { useAppDispatch, useAppSelector } from '../redux/hook';
+import { closeModal, registrModal } from '../redux/slices/modal/modalReducer';
 import { thunkSignup } from '../redux/slices/auth/createAsyncThunks';
 
 export default function ModalFromRegistration(): JSX.Element {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen, onClose } = useDisclosure();
   const dispatch = useAppDispatch();
+  const isOpen = useAppSelector((state) => state.modal.registrModal);
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
   const handleOpenModal = (): void => {
-    dispatch(openModal());
+    dispatch(registrModal());
     onOpen();
   };
 
@@ -50,16 +51,17 @@ export default function ModalFromRegistration(): JSX.Element {
       >
         Регистрация
       </Button>
+
       <Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
-        onClose={onClose}
+        onClick={() => dispatch(registrModal())}
       >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Create your account</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton onClick={() => dispatch(registrModal())} />
           <ModalBody pb={6}>
             <form onSubmit={onSave}>
               <FormControl>
@@ -83,7 +85,7 @@ export default function ModalFromRegistration(): JSX.Element {
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={() => dispatch(registrModal())}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

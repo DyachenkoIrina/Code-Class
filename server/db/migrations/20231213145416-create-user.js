@@ -15,11 +15,11 @@ module.exports = {
       },
       lastName: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       profileImage: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
       },
       email: {
         type: Sequelize.STRING,
@@ -27,7 +27,8 @@ module.exports = {
         allowNull: false
       },
       hashpass: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       role: {
         type: Sequelize.STRING

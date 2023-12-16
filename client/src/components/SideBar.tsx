@@ -119,3 +119,4 @@ export default function SideBar(): JSX.Element {
     />
   );
 }
+
