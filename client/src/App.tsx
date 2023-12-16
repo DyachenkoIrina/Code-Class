@@ -15,7 +15,7 @@ import StudentAccountPage from './pages/StudentAccountPage';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
 import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
-
+import PrivateRouter from './components/HOC/PrivateRouter';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -36,6 +36,9 @@ function App(): JSX.Element {
     },
   });
 
+  const user = useAppSelector((store) => store.authSlice.user);
+  console.log('applog------', user);
+
   return (
     <Container>
       <ChakraProvider theme={theme}>
@@ -46,9 +49,12 @@ function App(): JSX.Element {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/teacherlk" element={<TeacherAccountPage />} />
-          <Route path="/studentlk" element={<StudentAccountPage />} />
-          <Route path='/student/task/:id' element={<TaskPage />} />
+          <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}>
+            <Route path="/teacherlk" element={<TeacherAccountPage />} />
+            <Route path="/studentlk" element={<StudentAccountPage />} />
+            <Route path="/student/task/:id" element={<TaskPage />} />
+            <Route path="/student/adminlk" element={<TaskPage />} />
+          </Route>
         </Routes>
         {/* <YandexMap /> */}
         {/* <Footer /> */}
