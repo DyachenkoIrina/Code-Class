@@ -28,7 +28,7 @@ export default function ProfileContainer(): JSX.Element {
         <Avatar
           size="xl"
           name={`${user.name} ${user.name}`}
-          src={user.profileImage} // Предполагается, что в user есть поле profileImageUrl с URL изображения
+          src={`http://localhost:3001/img/${user.profileImage}`} // Предполагается, что в user есть поле profileImageUrl с URL изображения
 
           mb={4}
         />

@@ -6,9 +6,9 @@ type TopicTypeProps = {
   topic: TopicType;
 };
 
-export default function TopicCard({ topic, key }: TopicTypeProps): JSX.Element {
+export default function TopicCard({ topic }: TopicTypeProps): JSX.Element {
 
-  console.log('_____>', topic.id);
+  console.log('_____>', topic);
   
 
   return (
