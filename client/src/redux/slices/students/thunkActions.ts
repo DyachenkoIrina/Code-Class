@@ -11,4 +11,8 @@ export const thunkFilterStudentsLoad = createAsyncThunk('studentsSlise/thunkFilt
   StudentServise.getStudentsFilter(id),
 );
 
+export const thunkOneStudentForTeacher = createAsyncThunk('studentsSlise/thunkOneStudentForTeacher', async (id: GroupType['id']) =>
+  StudentServise.getStudentsFilter(id),
+);
+
 
