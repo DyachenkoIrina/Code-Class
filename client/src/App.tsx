@@ -15,8 +15,6 @@ import StudentAccountPage from './pages/StudentAccountPage';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
 import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
-import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
-
 import PrivateRouter from './components/HOC/PrivateRouter';
 
 function App(): JSX.Element {
@@ -54,7 +52,6 @@ function App(): JSX.Element {
           <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}>
             <Route path="/teacherlk" element={<TeacherAccountPage />} />
             <Route path="/studentlk" element={<StudentAccountPage />} />
-            <Route path="/teacherlk/studentid/:studentId" element={<TeacherAccountPageSt />} />
             <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/student/adminlk" element={<TaskPage />} />
           </Route>
@@ -67,4 +64,3 @@ function App(): JSX.Element {
   );
 }
 
-export default App;
