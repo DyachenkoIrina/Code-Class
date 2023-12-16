@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { ModalStatetupe } from '../../../types/modal/index';
 
-
 const initialState: ModalStatetupe = {
   isOpen: false,
   loginModal: false,
   groupModal: false,
-  newtaskModal:false,
+  newtaskModal: false,
   registrModal: false,
 };
 
@@ -21,18 +20,27 @@ export const modalSlice = createSlice({
       state.groupModal = !state.groupModal;
     },
     newTaskModal: (state) => {
-      state.newtaskModal = !state.groupModal;
+      state.newtaskModal = !state.newtaskModal;
+    },
+    registrModal: (state) => {
+      state.registrModal = !state.registrModal;
     },
     closeModal: (state) => {
       state.isOpen = false;
     },
-    // toggleModal: (state) => {
-    //   state.isOpen = !state.isOpen;
-    // },
+    toggleModal: (state) => {
+      state.isOpen = !state.isOpen;
+    },
   },
 });
 
-export const { openModal, closeModal, toggleModal, groupModal, openModallogin, newTaskModal } =
-  modalSlice.actions;
+export const {
+  registrModal,
+  closeModal,
+  toggleModal,
+  groupModal,
+  openModallogin,
+  newTaskModal,
+} = modalSlice.actions;
 
 export default modalSlice.reducer;

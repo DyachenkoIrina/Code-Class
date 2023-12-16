@@ -27,7 +27,7 @@ export default function LoginFormModal(): JSX.Element {
   // };
 
   return (
-    <Modal onClose={() => dispatch(closeModal())} isOpen={show}>
+    <Modal onClose={() => dispatch(openModallogin())} isOpen={show}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Create your account</ModalHeader>

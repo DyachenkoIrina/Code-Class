@@ -17,14 +17,14 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
 
   const handleOpenModal = (): void => {
     dispatch(groupModal());
+    void dispatch(thunkFilterStudentsLoad(group.id));
     onOpen();
   };
   return (
 
     <>
       <Card sx={{ height: '70px', maxWidth: 340, marginBottom: '10px' }}>
-        <CardBody w='100%' h='200px' bgGradient='linear(to-r, green.200, pink.500)' sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          {/* <Text fontSize="2xl">{group.group}</Text> */}
+        <CardBody w='100%' h='200px' bgGradient='linear(to-r, gray.300, yellow.400, pink.200)' sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Button  sx={{height: '50px', width:300, display: 'flex', justifyContent:'center'}} onClick={handleOpenModal}>
             {group.group}
           </Button>

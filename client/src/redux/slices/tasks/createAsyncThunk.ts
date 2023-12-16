@@ -9,7 +9,7 @@ export const thunkLoadTask = createAsyncThunk('tasksSlice/thunkLoadTask', async 
 });
 
 export const thunkTaskAdd = createAsyncThunk(
-  'tasksSlise/thunkTaskAdd',
+  'tasksSlice/thunkTaskAdd',
   async (formData: AddTaskFormData) => TasksService.addTask(formData),
 );
 

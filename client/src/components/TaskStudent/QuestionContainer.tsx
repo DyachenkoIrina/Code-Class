@@ -13,7 +13,7 @@ export default function QuestionContainer(): JSX.Element {
   
 
   const javascriptTasks = tasks.filter((obj) => obj.title === 'JavaScript Task');
-  console.log('javascriptTasks------->', javascriptTasks[0].topicId);
+  console.log('javascriptTasks------->', javascriptTasks);
 
   return (
     <Card align="center">

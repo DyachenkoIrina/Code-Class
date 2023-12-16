@@ -1,9 +1,9 @@
 const express = require("express");
 const { Task } = require("../../db/models");
 
-const taskRouter = express.Router();
+const tasksRouter = express.Router();
 
-taskRouter.get("/", async (req, res) => {
+tasksRouter.get("/", async (req, res) => {
   try {
     const data = await Task.findAll({
       where: {
@@ -16,7 +16,7 @@ taskRouter.get("/", async (req, res) => {
   }
 });
 
-taskRouter.post("/", async (req, res) => {
+tasksRouter.post("/", async (req, res) => {
   try {
     const { title, questions, answer } = req.body;
     const note = await Task.create({
@@ -30,4 +30,4 @@ taskRouter.post("/", async (req, res) => {
   }
 });
 
-module.exports = taskRouter;
+module.exports = tasksRouter;
