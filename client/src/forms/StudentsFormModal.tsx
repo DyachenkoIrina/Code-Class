@@ -28,10 +28,10 @@ export default function StudentFormModal(): JSX.Element {
       initialFocusRef={initialRef}
       finalFocusRef={finalRef}
       isOpen={isOpen}
-      onClose={() => dispatch(closeModal())}
+      onClose={() => dispatch(groupModal())}
     >
       <ModalOverlay />
-      <ModalContent w='100%' h='auto' bgGradient='linear(to-r, green.200, pink.500)'>
+      <ModalContent w='100%' h='auto' bgGradient='linear(to-r, gray.300, yellow.400, pink.200)'>
         <ModalHeader>Список учеников группы:</ModalHeader>
         <ModalCloseButton onClick={() => dispatch(groupModal())} />
         <ModalBody pb={6}>

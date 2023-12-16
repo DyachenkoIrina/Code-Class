@@ -1,18 +1,15 @@
 import React from 'react';
-import { StyledEngineProvider } from '@mui/material/styles';
 import { Container } from '@chakra-ui/react';
-import { Box, Tab, Tabs } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import ModalFromRegistration from '../components/FormFromRegistration';
-import { toggleModal } from '../redux/slices/modal/modalReducer';
 import YandexMap from '../components/YandexMap';
 import CourseOptions from '../components/CourseOptions';
 import CarouselImg from '../components/Carousel';
-import LoginFormModal from '../forms/LoginFormModal';
+import { toggleModal } from '../redux/slices/modal/modalReducer';
 
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
-  const modalState = useAppSelector((state) => state.modal);
+  const modalState = useAppSelector((state) => state.modal.registrModal);
 
   const handleToggleModal = (): void => {
     dispatch(toggleModal());
@@ -22,7 +19,7 @@ export default function MainPage(): JSX.Element {
     <>
       <CarouselImg />
       <Container sx={{ margin: 'auto' }}>
-        <ModalFromRegistration isOpen={modalState.isOpen} onClose={handleToggleModal} />
+        <ModalFromRegistration isOpen={modalState} onClose={handleToggleModal} />
       </Container>
       <CourseOptions />
       <YandexMap />

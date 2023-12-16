@@ -6,7 +6,7 @@ import { useAppSelector } from '../redux/hook';
 export default function TeacherAccountList(): JSX.Element {
   const groups1 = useAppSelector((state) => state.groupsSlice.groups);
   return (
-    <Grid
+    <Grid 
       sx={{
         marginTop: '70px',
         marginBottom: '100px',

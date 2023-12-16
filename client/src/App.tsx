@@ -12,10 +12,10 @@ import YandexMap from './components/YandexMap';
 import { useAppDispatch, useAppSelector } from './redux/hook';
 import thunkLoad from './redux/slices/topics/createAsyncThunk';
 import StudentAccountPage from './pages/StudentAccountPage';
-import CarouselImg from './components/Carousel';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
-import thunkLoadTask from './redux/slices/tasks/createAsyncThunk';
 import TaskPage from './pages/TaskPage';
+import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
