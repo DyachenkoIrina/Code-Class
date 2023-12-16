@@ -47,7 +47,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/teacherlk" element={<TeacherAccountPage />} />
-          <Route path="/studentlk" element={<StudentAccountPage />} />
+          <Route path="/studentlk/:id" element={<StudentAccountPage />} />
           <Route path='/student/task/:id' element={<TaskPage />} />
         </Routes>
         {/* <YandexMap /> */}
