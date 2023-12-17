@@ -1,13 +1,14 @@
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Text, SimpleGrid } from '@chakra-ui/react';
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Text, SimpleGrid, Flex, Button, Center, } from '@chakra-ui/react';
 import React from 'react';
 import { useAppSelector } from '../redux/hook';
-import StudentList from '../components/AdminAccount/StudentList';
 import StudentCard from '../components/AdminAccount/StudentList';
 
 export default function UserSelector({}: Props) {
   const userList = useAppSelector((store) => store.adminSlice.userList);
+  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
+  console.log('123', teachers)
 
-  const teachers = userList.filter((user) => user.role === 'Teacher');
+
   const students = userList.filter((user) => user.role === 'Student');
   const applications = userList.filter((user) => user.role === 'Application');
 
@@ -20,15 +21,32 @@ export default function UserSelector({}: Props) {
         <Tab>Заявки</Tab>
       </TabList>
       <TabPanels align="center">
-        <TabPanel>
-          {teachers.map((teacher) => (
-            <Box key={teacher.id} p={4} borderWidth="1px" borderRadius="md">
-              <Text>{`Name: ${teacher.name}`}</Text>
-              <Text>{`Email: ${teacher.email}`}</Text>
-              {/* Add more details if needed */}
-            </Box>
-          ))}
-        </TabPanel>
+      <TabPanel>
+        {teachers.map((teacher) => (
+        <Box key={teacher.id} p={4} borderWidth="1px" borderRadius="md">
+        <Text>{`Name: ${teacher.name}`}</Text>
+        <Text>{`Email: ${teacher.email}`}</Text>
+        <Text>Groups:</Text>
+            <ul>
+              {teacher.Groups
+                .map((group) => (
+                  <li key={group.id}>{group.group}</li>
+                ))}
+            </ul>
+            <Center>
+            <Flex>
+              <Button colorScheme="red" mr={2} >
+                Delete
+              </Button>
+              <Button colorScheme="green" >
+                Edit
+              </Button>
+            </Flex>
+            </Center>
+          </Box>
+        ))}
+      </TabPanel>
+
         <TabPanel>
         <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
             {students.map((student) => (
