@@ -14,7 +14,6 @@ class TasksService {
 
   static async addTask(taskFormData: AddTaskFormData): Promise<TaskType> {
     const response = await apiService.post<TaskType>('/', taskFormData);
-    console.log('---> new task response', response)
     if (response.status === 201) return response.data;
     return Promise.reject(new Error('**server error adding task**'));
   }

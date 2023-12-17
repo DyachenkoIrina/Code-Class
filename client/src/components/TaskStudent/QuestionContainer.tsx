@@ -5,15 +5,15 @@ import { useAppSelector } from '../../redux/hook';
 
 export default function QuestionContainer(): JSX.Element {
   const tasks = useAppSelector((state) => state.tasks.tasks);
-  console.log('--tasks-->', tasks);
+
   
 
   const { id } = useParams();
-  console.log(id);
+
   
 
   const javascriptTasks = tasks.filter((obj) => obj.title === 'JavaScript Task');
-  console.log('javascriptTasks------->', javascriptTasks);
+
 
   return (
     <Card align="center">

@@ -6,7 +6,7 @@ import LoginFormModal from './forms/LoginFormModal';
 import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
-import { thunkGroupsLoad } from './redux/slices/groups/thunkActions';
+import { thunkGroupsLoad, thunkTeacherGroups } from './redux/slices/groups/thunkActions';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
 import { useAppDispatch, useAppSelector } from './redux/hook';
@@ -28,8 +28,10 @@ function App(): JSX.Element {
     void dispatch(thunkLoad());
     void dispatch(thunkLoadTask());
     void dispatch(thunkUsersLoad());
+    void dispatch(thunkTeacherGroups());
   }, []);
-
+  const groups = useAppSelector((state) => state.groupsSlice.teacherGroups)
+  console.log(groups)
   const theme = extendTheme({
     colors: {
       brand: {
@@ -40,8 +42,7 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
-  console.log('applog------', user);
-  console.log('applog------', user.status);
+
 
   return (
     <Container>

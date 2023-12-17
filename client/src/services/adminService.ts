@@ -7,7 +7,6 @@ export const apiAdminService = axios.create({
 
 class AdminService {
   static async getUserList() {
-    console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
     const response = await apiAdminService.get('/');
     if (response.status === 200) return response.data;
     return [];

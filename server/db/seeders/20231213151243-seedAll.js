@@ -107,6 +107,73 @@ module.exports = {
       ],
       {}
     );
+    await queryInterface.bulkInsert(
+      "Teachers",
+      [
+        {
+          name: "Max Verstappen",
+          avatar:
+            "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1701270073824.jpg",
+          email: "max@",
+          hashpass: hashSync("1", 10),
+        },
+        {
+          name: "Checo Perez",
+          avatar:
+            "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/perez.jpg.img.1536.high.jpg",
+          email: "checo@",
+          hashpass: hashSync("1", 10),
+        },
+        {
+          name: "Lando Norris",
+          avatar:
+            "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/norris.jpg.img.1536.high.jpg",
+          email: "lando@",
+          hashpass: hashSync("1", 10),
+        },
+        {
+          name: "Oscar Piastri",
+          avatar:
+            "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/piastri.jpg.img.1536.high.jpg",
+          email: "oscar@",
+          hashpass: hashSync("1", 10),
+        },
+        {
+          name: "Lewis Hamilton",
+          avatar:
+            "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/hamilton.jpg.img.1536.high.jpg",
+          email: "ham@",
+          hashpass: hashSync("1", 10),
+        },
+      ],
+      {}
+    );
+    await queryInterface.bulkInsert(
+      "TeacherGroups",
+      [
+        {
+          teacherId: 1,
+          groupId: 1,
+        },
+        {
+          teacherId: 1,
+          groupId: 2,
+        },
+        {
+          teacherId: 1,
+          groupId: 3,
+        },
+        {
+          teacherId: 2,
+          groupId: 1,
+        },
+        {
+          teacherId: 2,
+          groupId: 2,
+        },
+      ],
+      {}
+    );
 
     await queryInterface.bulkInsert(
       "Topics",
