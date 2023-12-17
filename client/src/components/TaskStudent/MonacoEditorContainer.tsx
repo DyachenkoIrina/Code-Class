@@ -31,7 +31,6 @@ export default function MonacoEditorContainer(): JSX.Element {
       });
 
       const data = await response.json();
-      console.log(data); // Вывод ответа от сервера
     } catch (error) {
       console.error('Произошла ошибка при отправке текста на сервер:', error);
     }

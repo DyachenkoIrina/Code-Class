@@ -10,7 +10,7 @@ export default function UserSelector({}: Props) {
   const teachers = userList.filter((user) => user.role === 'Teacher');
   const students = userList.filter((user) => user.role === 'Student');
   const applications = userList.filter((user) => user.role === 'Application');
-  console.log(students)
+
 
   return (
     <Tabs isFitted variant='enclosed'>

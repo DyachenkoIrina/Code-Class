@@ -5,10 +5,10 @@ import TopicCard from './TopicCard';
 
 export default function TopicContainer(): JSX.Element {
   const topics = useAppSelector((state) => state.topics.topics);
-  console.log('topics', topics);
+
 
   const topicIdArr = new Set(topics.map((topic) => topic.id));
-  console.log('topicIdArr', topicIdArr);
+
 
   return (
     <Container
