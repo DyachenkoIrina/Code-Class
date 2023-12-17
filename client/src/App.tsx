@@ -30,8 +30,7 @@ function App(): JSX.Element {
     void dispatch(thunkUsersLoad());
     void dispatch(thunkTeacherGroups());
   }, []);
-  const groups = useAppSelector((state) => state.groupsSlice.teacherGroups)
-  console.log(groups)
+ 
   const theme = extendTheme({
     colors: {
       brand: {
