@@ -7,10 +7,6 @@ type TopicTypeProps = {
 };
 
 export default function TopicCard({ topic }: TopicTypeProps): JSX.Element {
-
-
-  
-
   return (
     <Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" variant="outline">
       <Image
@@ -19,16 +15,17 @@ export default function TopicCard({ topic }: TopicTypeProps): JSX.Element {
         src={topic.img}
         alt="Caffe Latte"
       />
-
       <Stack>
         <CardBody>
           <Heading size="md">{topic.title}</Heading>
-
           <Text py="2">{topic.description}</Text>
         </CardBody>
-
         <CardFooter>
-          <Button onClick={() => window.location.href = `/student/task/${topic.id}`} variant="solid" colorScheme="blue">
+          <Button
+            onClick={() => (window.location.href = `/student/task/${topic.id}`)}
+            variant="solid"
+            colorScheme="blue"
+          >
             Пройти задачи!
           </Button>
         </CardFooter>

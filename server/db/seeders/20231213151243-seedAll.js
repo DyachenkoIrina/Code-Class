@@ -170,13 +170,13 @@ module.exports = {
           img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
         },
         {
-          title: "Topic 1",
+          title: "Topic 2",
           description: "python",
           complexity: "Easy",
           img: "https://i.morioh.com/210209/e6e21880.webp",
         },
         {
-          title: "Topic 1",
+          title: "Topic 3",
           description: "Swift",
           complexity: "Easy",
           img: "https://www.technotification.com/wp-content/uploads/2016/06/New-Programming-Languages-Swift.jpg",
@@ -189,14 +189,21 @@ module.exports = {
       "Tasks",
       [
         {
-          title: "JavaScript Task",
+          title: "JavaScript Task-1",
           questions:
             "Напишите программу на JavaScript, которая выводит на экран фразу 'Hello, World!'.",
           answer: "console.log('Hello, World!');",
           topicId: 1,
         },
         {
-          title: "title-2",
+          title: "JavaScript Task-2",
+          questions: "Write a JavaScript function that reverses a string.",
+          answer:
+            "function reverseString(str) {\n  return str.split('').reverse().join('');\n}\n\nconst originalString = 'Hello, World!';\nconst reversedString = reverseString(originalString);\nconsole.log(reversedString); // Output: '!dlroW ,olleH'",
+            topicId: 1
+        },
+        {
+          title: "python Task-1",
           questions:
             "Напишите программу на Python, которая принимает число от пользователя и выводит его квадрат.",
           answer:
@@ -204,20 +211,14 @@ module.exports = {
           topicId: 2,
         },
         {
-          title: "title-3",
+          title: "Swift Task-3",
           questions:
             "Напишите программу на Java, которая проверяет, является ли введенное число четным.",
           answer:
             "import java.util.Scanner;\npublic class CheckEven {\n  public static void main(String[] args) {\n    Scanner scanner = new Scanner(System.in);\n    System.out.print('Введите число: ');\n    int number = scanner.nextInt();\n    if (number % 2 == 0) {\n      System.out.println('Число четное');\n    } else {\n      System.out.println('Число нечетное');\n    }\n  }\n}",
           topicId: 3,
         },
-        {
-          title: "JavaScript Task",
-          questions: "Write a JavaScript function that reverses a string.",
-          answer:
-            "function reverseString(str) {\n  return str.split('').reverse().join('');\n}\n\nconst originalString = 'Hello, World!';\nconst reversedString = reverseString(originalString);\nconsole.log(reversedString); // Output: '!dlroW ,olleH'",
-          topicId: 1,
-        },
+
       ],
       {}
     );
