@@ -1,18 +1,20 @@
+import { GroupType } from '../groups';
+
 export type UserType = {
   id: number;
-  profileImage: string;
+  profileImage?: string;
   name: string;
   email: string;
-  role: string;
+  role?: string;
   groupId: number;
 };
 
 export type TeacherType = {
   id: number;
-  avatar: string;
+  avatar?: string;
   name: string;
   email: string;
-  role: string;
+  role?: string;
 };
 
 export type BackendAuth = { user: UserType; accessToken: string };
@@ -26,6 +28,7 @@ export type UserState =
 export type AuthState = {
   user: UserState;
   accessToken: string;
+  teacher: TeacherType | null;
 };
 
 export type LoginFormData = {
@@ -45,4 +48,5 @@ export type StudentsSliceState = {
 
 export type TeacherSliceState = {
   teachers: TeacherType[];
+  teacherGroups: GroupType[];
 };
