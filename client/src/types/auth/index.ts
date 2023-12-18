@@ -7,12 +7,19 @@ export type UserType = {
   groupId: number;
 };
 
+export type TeacherType = {
+  id: number;
+  avatar: string;
+  name: string;
+  email: string;
+};
+
 export type BackendAuth = { user: UserType; accessToken: string };
 
 export type UserState =
   | { status: 'pending' }
   | { status: 'guest' }
-  | ({ status: 'authenticated' } & UserType);
+  | ({ status: 'authenticated' } & UserType & TeacherType);
 
 // Redux Slice State
 export type AuthState = {
@@ -29,4 +36,12 @@ export type SignupFormData = {
   email: string;
   name: string;
   password: string;
+};
+
+export type StudentsSliceState = {
+  students: UserType[];
+};
+
+export type TeacherSliceState = {
+  teachers: TeacherType[];
 };

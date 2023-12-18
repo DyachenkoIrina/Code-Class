@@ -25,7 +25,6 @@ import { useNavigate } from 'react-router';
 import { openModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunks';
-import type { UserType } from '../types/auth';
 
 export default function SideBar(): JSX.Element {
   const { isOpen, onOpen, onToggle } = useDisclosure({
@@ -34,8 +33,10 @@ export default function SideBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
-  const navigate = useNavigate();
+  const teacher= useAppSelector((store)=>store.teacherSlice.teachers)
 
+  const navigate = useNavigate();
+console.log('---->', user)
   return (
     <AppShell
       sidebar={
@@ -120,7 +121,7 @@ export default function SideBar(): JSX.Element {
                   <Image
                     width="50px"
                     height="52px"
-                    src={user.profileImage}
+                    src={user.avatar}
                     mb="1"
                     display={isOpen}
                     borderRadius="full"
