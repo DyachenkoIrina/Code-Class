@@ -98,11 +98,12 @@ export default function SideBar(): JSX.Element {
                 </NavItem>
               )}
 
+             
               {auth.user.status === 'authenticated' && user.role === 'Teacher' ? (
                 <NavItem
                   width={isOpen ? '150px' : '8'}
                   icon={<FiUser />}
-                  onClick={() => navigate('/teacherlk')}
+                  onClick={() => navigate('/teacherlk:id')}
                 >
                   Личный кабинет
                 </NavItem>
