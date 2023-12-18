@@ -51,16 +51,16 @@ function App(): JSX.Element {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}>
+          {/* <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}> */}
             <Route path="/teacherlk" element={<TeacherAccountPage />} />
             <Route path="/studentlk" element={<StudentAccountPage />} />
             <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/student/adminlk" element={<TaskPage />} />
             <Route path="/adminlk" element={<AdminPage />} />
-          </Route>
+          {/* </Route>  */}
         </Routes>
 
-        <Footer />
+        {/* <Footer /> */}
         <LoginFormModal />
       </ChakraProvider>
     </Container>
