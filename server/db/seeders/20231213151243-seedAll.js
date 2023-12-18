@@ -181,6 +181,120 @@ module.exports = {
           complexity: "Easy",
           img: "https://www.technotification.com/wp-content/uploads/2016/06/New-Programming-Languages-Swift.jpg",
         },
+        {
+          title: "Topic 4",
+          description: "Основы программирования",
+          complexity: "Easy",
+          img: "https://i.pinimg.com/564x/21/5b/f2/215bf2ad433690a0cd4d3dd9e42c92d8.jpg",
+        },
+        {
+          title: "Topic 5",
+          description: "Структуры данных",
+          complexity: "Medium",
+          img: "https://i.pinimg.com/564x/43/77/79/43777972aa8e8099895ae32ceaf87ba6.jpg",
+        },
+        {
+          title: "Topic 6",
+          description: "Алгоритмы",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/564x/11/66/a0/1166a0200d1b5a3fe558160d7d205327.jpg",
+        },
+        {
+          title: "Topic 7",
+          description: "Объектно-ориентированное программирование (ООП)",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/474x/b2/34/4e/b2344eb9fc661f35ce30858428e3571d.jpg",
+        },
+        {
+          title: "Topic 8",
+          description: "Работа с файлами и ввод/вывод данных",
+          complexity: "Medium",
+          img: "https://i.pinimg.com/564x/64/d0/fb/64d0fbc6e0967e57aa30695b28dde06e.jpg",
+        },
+        {
+          title: "Topic 9",
+          description: "Сетевое программирование",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/564x/3a/39/1e/3a391e27fd358e4eb49001c27d39d845.jpg",
+        },
+        {
+          title: "Topic 10",
+          description: "Безопасность программирования",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/564x/61/aa/16/61aa162740bf0ca51734d5b83eec3d02.jpg",
+        },
+        {
+          title: "Topic 11",
+          description: "Разработка веб-приложений",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/564x/5e/2e/ea/5e2eea4c011bfe2ab68793001400b6c7.jpg",
+        },
+        {
+          title: "Topic 12",
+          description: "Асинхронное программирование в JavaScript",
+          complexity: "Medium",
+          img: "https://i.pinimg.com/564x/12/af/ce/12afcebaf06f08c2b475e78a00d83263.jpg",
+        },
+        {
+          title: "Topic 13",
+          description: "Работа с AJAX и Fetch API",
+          complexity: "Medium",
+          img: "https://i.pinimg.com/736x/66/9a/b9/669ab90dfd28b32c45430d27eea0882f.jpg",
+        },
+        {
+          title: "Topic 14",
+          description: "Тестирование в JavaScript",
+          complexity: "Easy",
+          img: "https://i.pinimg.com/564x/02/ac/bf/02acbfd5978fc628f168d84ba3a3f554.jpg",
+        },
+        {
+          title: "Topic 15",
+          description: "HTML и Веб-разработка",
+          complexity: "Easy",
+          img: "https://i.pinimg.com/564x/36/ab/26/36ab267d60087319ce20ef6b0cf1868a.jpg",
+        },
+        {
+          title: "Topic 16",
+          description: "Визуальное оформление с CSS: Стили и Разметка",
+          complexity: "Easy",
+          img: "https://i.pinimg.com/564x/99/0a/ff/990aff347709e48af64ad9e435b9a106.jpg",
+        },
+        {
+          title: "Topic 17",
+          description: "Введение в JavaScript и Взаимодействие с DOM",
+          complexity: "Easy",
+          img: "https://i.pinimg.com/564x/ed/8d/de/ed8ddef3db46d4ffb459366b9d29d6f7.jpg",
+        },
+        {
+          title: "Topic 18",
+          description: "Реактивный Фронт-енд: Введение в React",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/564x/fa/57/8a/fa578a33c4170e61221c4ea259c239d5.jpg",
+        },
+        {
+          title: "Topic 19",
+          description: "Создание Веб-Компонентов и Их Интеграция",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/564x/f1/c0/8e/f1c08e8abff73d04664af7b07abe2b5b.jpg",
+        },
+        {
+          title: "Topic 20",
+          description: "Введение в TypeScript для Фронт-енд Разработки",
+          complexity: "Hard",
+          img: "https://i.pinimg.com/564x/cb/1b/28/cb1b28b615147971ab740e6c48402148.jpg",
+        },
+        {
+          title: "Topic 21",
+          description: "Адаптивный Дизайн и Медиазапросы",
+          complexity: "Medium",
+          img: "https://i.pinimg.com/564x/ee/c8/01/eec8013ea59bfcdb92f3d247d5a52f46.jpg",
+        },
+        {
+          title: "Topic 22",
+          description: "Основы React и Компоненты",
+          complexity: "Medium",
+          img: "https://i.pinimg.com/736x/6e/22/35/6e223587652d2ce0df0f8b7b70aef4b4.jpg",
+        },
       ],
       {}
     );
@@ -200,7 +314,7 @@ module.exports = {
           questions: "Write a JavaScript function that reverses a string.",
           answer:
             "function reverseString(str) {\n  return str.split('').reverse().join('');\n}\n\nconst originalString = 'Hello, World!';\nconst reversedString = reverseString(originalString);\nconsole.log(reversedString); // Output: '!dlroW ,olleH'",
-            topicId: 1
+          topicId: 1,
         },
         {
           title: "python Task-1",
@@ -211,6 +325,30 @@ module.exports = {
           topicId: 2,
         },
         {
+          title: "python Task-2",
+          questions:
+            "Напишите программу на Python, которая запрашивает у пользователя его имя и затем выводит приветственное сообщение с использованием этого имени.",
+          answer:
+            "name = input('Введите ваше имя: ')\nprint('Привет, ' + name + '!'))",
+          topicId: 2,
+        },
+        {
+          title: "python Task-3",
+          questions:
+            "Напишите программу, которая запрашивает два числа у пользователя, затем складывает их и выводит результат.",
+          answer:
+            "num1 = float(input('Введите первое число: '))\nnum2 = float(input('Введите второе число: '))\nresult = num1 + num2\n print('Сумма чисел:', result)",
+          topicId: 2,
+        },
+        {
+          title: "python Task-4",
+          questions:
+            "Напишите программу, которая проверяет, является ли введенное пользователем число четным или нечетным.",
+          answer:
+            "number = int(input('Введите число: '))\nif number % 2 == 0:\nprint('Число четное.')\nelse:print('Число нечетное.')",
+          topicId: 2,
+        },
+        {
           title: "Swift Task-3",
           questions:
             "Напишите программу на Java, которая проверяет, является ли введенное число четным.",
@@ -218,7 +356,6 @@ module.exports = {
             "import java.util.Scanner;\npublic class CheckEven {\n  public static void main(String[] args) {\n    Scanner scanner = new Scanner(System.in);\n    System.out.print('Введите число: ');\n    int number = scanner.nextInt();\n    if (number % 2 == 0) {\n      System.out.println('Число четное');\n    } else {\n      System.out.println('Число нечетное');\n    }\n  }\n}",
           topicId: 3,
         },
-
       ],
       {}
     );
