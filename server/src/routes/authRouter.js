@@ -1,6 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
-const { User } = require("../../db/models");
+const { User, Teacher } = require("../../db/models");
 const generateTokens = require("../utils/generateTokens");
 const jwtConfig = require("../config/jwtConfig");
 const cookiesConfig = require("../config/cookiesConfig");
@@ -11,30 +11,43 @@ const authRouter = express.Router();
 authRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email, password)
-    const user = await User.findOne({ where: { email } });
-    console.log(user);
-    if (!user) return res.status(404).json({ message: "User not found" });
 
-    const isValid = await bcrypt.compare(password, user.hashpass);
+    const user = await User.findOne({ where: { email } });
+    const teacher = await Teacher.findOne({ where: { email } });
+
+    if (!user && !teacher)
+      return res.status(404).json({ message: "User not found" });
+
+    let entity;
+    let role;
+    if (user) {
+      entity = user;
+      role = "user";
+    } else if (teacher) {
+      entity = teacher;
+      role = "teacher";
+    }
+
+    const isValid = await bcrypt.compare(password, entity.hashpass);
     if (!isValid) return res.status(400).json({ message: "Invalid password" });
 
-    const plainUser = user.get();
-    delete plainUser.hashpass;
+    const plainEntity = entity.get();
+    delete plainEntity.hashpass;
     const { accessToken, refreshToken } = generateTokens({
-      user: plainUser,
+      user: plainEntity,
     });
+
     res
       .cookie(jwtConfig.refresh.name, refreshToken, cookiesConfig.refresh)
       .status(200)
-      .json({ accessToken, user: plainUser });
+      .json({ accessToken, user: plainEntity, role });
   } catch (error) {
     console.log(error);
     res.status(407).json(error);
   }
 });
 
-authRouter.post('/signup', async (req, res) => {
+authRouter.post("/signup", async (req, res) => {
   try {
     const { email, password, name } = req.body;
     const [user, created] = await User.findOrCreate({

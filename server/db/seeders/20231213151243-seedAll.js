@@ -37,31 +37,20 @@ module.exports = {
       "Users",
       [
         {
-          name: "saul",
-          lastName: "goodman",
-          profileImage:
-            "https://i.pinimg.com/originals/67/b0/2e/67b02e5d0a4f3ee9b15db378963140c6.jpg",
-          email: "0@0",
-          hashpass: hashSync("1", 10),
-          role: "Teacher",
-          groupId: 1,
-        },
-        {
           name: "Lalo",
           lastName: "Salamanca",
           profileImage:
             "https://i.pinimg.com/564x/73/dc/57/73dc578749ff3241fe1ae0d65e8dacb9.jpg",
-          email: "Email 1",
+          email: "1@1",
           hashpass: hashSync("1", 10),
-          role: "Student",
-          groupId: 1,
+          role: "Admin",
         },
         {
           name: "hector",
           lastName: "salamanca",
           profileImage:
             "https://i.pinimg.com/originals/9f/af/4d/9faf4df0c80864a9cb80e53e3199d434.jpg",
-          email: "Email 2",
+          email: "Email@2",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 2,
@@ -95,15 +84,6 @@ module.exports = {
           role: "Student",
           groupId: 2,
         },
-        {
-          name: "Василий Васильевич",
-          lastName: "Петров",
-          profileImage: "image.png",
-          email: "5@5",
-          hashpass: hashSync("1", 10),
-          role: "Teacher",
-          groupId: 1,
-        },
       ],
       {}
     );
@@ -116,6 +96,7 @@ module.exports = {
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1701270073824.jpg",
           email: "max@",
           hashpass: hashSync("1", 10),
+          role: "Teacher",
         },
         {
           name: "Checo Perez",
@@ -123,6 +104,7 @@ module.exports = {
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/perez.jpg.img.1536.high.jpg",
           email: "checo@",
           hashpass: hashSync("1", 10),
+          role: "Teacher",
         },
         {
           name: "Lando Norris",
@@ -130,6 +112,7 @@ module.exports = {
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/norris.jpg.img.1536.high.jpg",
           email: "lando@",
           hashpass: hashSync("1", 10),
+          role: "Teacher",
         },
         {
           name: "Oscar Piastri",
@@ -137,6 +120,7 @@ module.exports = {
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/piastri.jpg.img.1536.high.jpg",
           email: "oscar@",
           hashpass: hashSync("1", 10),
+          role: "Teacher",
         },
         {
           name: "Lewis Hamilton",
@@ -144,6 +128,7 @@ module.exports = {
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/hamilton.jpg.img.1536.high.jpg",
           email: "ham@",
           hashpass: hashSync("1", 10),
+          role: "Teacher",
         },
       ],
       {}
@@ -223,7 +208,7 @@ module.exports = {
             "Напишите программу на Python, которая принимает число от пользователя и выводит его квадрат.",
           answer:
             "number = int(input('Введите число: '))\nprint(f'Квадрат числа: {number ** 2}')",
-            topicId: 2,
+          topicId: 2,
         },
         {
           title: "Swift Task-3",
@@ -231,11 +216,11 @@ module.exports = {
             "Напишите программу на Java, которая проверяет, является ли введенное число четным.",
           answer:
             "import java.util.Scanner;\npublic class CheckEven {\n  public static void main(String[] args) {\n    Scanner scanner = new Scanner(System.in);\n    System.out.print('Введите число: ');\n    int number = scanner.nextInt();\n    if (number % 2 == 0) {\n      System.out.println('Число четное');\n    } else {\n      System.out.println('Число нечетное');\n    }\n  }\n}",
-            topicId: 3,
+          topicId: 3,
         },
 
       ],
-      {}  
+      {}
     );
 
     await queryInterface.bulkInsert(
@@ -249,8 +234,6 @@ module.exports = {
       ],
       {}
     );
-
-    
   },
 
   async down(queryInterface, Sequelize) {

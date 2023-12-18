@@ -11,11 +11,11 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
     <ChakraProvider>
-      <SaasProvider>
+      {/* <SaasProvider> */}
         <Provider store={store}>
           <App />
         </Provider>
-      </SaasProvider>
+      {/* </SaasProvider> */}
     </ChakraProvider>
   </BrowserRouter>,
 );
