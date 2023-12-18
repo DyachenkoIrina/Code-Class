@@ -99,7 +99,7 @@ export default function SideBar(): JSX.Element {
                 </NavItem>
               )}
 
-              {auth.user.status === 'authenticated' && teacher ? (
+              {auth.user.status === 'authenticated' && teacher.role === 'Teacher' ? (
                 <NavItem
                   width={isOpen ? '150px' : '8'}
                   icon={<FiUser />}

@@ -11,6 +11,7 @@ const theme = extendTheme({
         selectOnLineNumbers: true,
         theme: 'vs-dark', // Установка темы с черным фоном
         automaticLayout: true,
+        textAlign: 'left',
       },
     },
   },
