@@ -1,6 +1,6 @@
 const express = require("express");
 const { User } = require("../../db/models");
-const { Group , Teacher, TeacherGroup} = require("../../db/models");
+const { Group, Teacher, TeacherGroup } = require("../../db/models");
 
 const teacherRouter = express.Router();
 
@@ -14,12 +14,20 @@ const teacherRouter = express.Router();
 //   }
 // });
 
-// teacherRouter.get("/:id", async (req, res) => {
-//     try {
-//   const teacher = await Teacher.findByPk(req.body.id)
-//   const groupsTeasher= await TeacherGroup.findAll({where:{t}})
-//     }
-//   });
+teacherRouter.get("/:id", async (req, res) => {
+    console.log('--****---> teacher', req.params)
+  try {
+    const teacher = await Teacher.findByPk(req.params);
+    const groupsTeasher = await TeacherGroup.findAll({
+      where: { teacherId: req.params.id },
+      include: { model: Group, attributes: ["name"] },
+    });
+    console.log('-----> groups', groupsTeasher)
+    res.status(200).json(groupsTeasher);
+  } catch ({ message }) {
+    res.status(400).json({ message });
+  }
+});
 
 teacherRouter.get("/students/:id", async (req, res) => {
   try {

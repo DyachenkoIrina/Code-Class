@@ -1,6 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import TeacherServise from '../../../services/teacherService';
+import type { TeacherType } from '../../../types/auth';
 
-export const thunkTeacherLoad = createAsyncThunk('teachersSlise/thunkTeacherLoad', async () =>
-  TeacherServise.getTeacher()
+export const thunkTeacherGroupLoad = createAsyncThunk('teachersSlise/thunkTeacherGroupLoad', async (id: TeacherType['id']) =>{
+  console.log('----------------------',id)
+
+ const res = await TeacherServise.getGroups(id)
+ return res
+}
+ 
 );

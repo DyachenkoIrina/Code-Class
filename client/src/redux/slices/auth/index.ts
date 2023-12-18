@@ -14,6 +14,7 @@ const initialState: AuthState = {
   user: {
     status: 'pending',
   },
+  teacher: null,
 };
 
 export const authSlice = createSlice({
@@ -30,7 +31,12 @@ export const authSlice = createSlice({
     });
     builder.addCase(thunkLogin.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken;
-      state.user = { ...action.payload.user, status: 'authenticated' };
+      if (action.payload.user.role === 'Teacher') {
+        state.user = { ...action.payload.user, status: 'authenticated' };
+        state.teacher = action.payload.user;
+      } else {
+        state.user = { ...action.payload.user, status: 'authenticated' };
+      }
     });
     builder.addCase(thunkSignup.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken;

@@ -18,11 +18,13 @@ import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import AdminPage from './pages/AdminPage';
+import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
+    
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -51,13 +53,13 @@ function App(): JSX.Element {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}>
-            <Route path="/teacherlk" element={<TeacherAccountPage />} />
+          {/* <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}> */}
+            <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
             <Route path="/studentlk" element={<StudentAccountPage />} />
             <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/student/adminlk" element={<TaskPage />} />
             <Route path="/adminlk" element={<AdminPage />} />
-          </Route>
+          {/* </Route> */}
         </Routes>
 
         <Footer />

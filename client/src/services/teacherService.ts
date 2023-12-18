@@ -7,14 +7,15 @@ export const apiGroupServise = axios.create({
 });
 
 class TeacherServise {
-  static async getTeacher(): Promise<TeacherType[]> {
-    const response = await apiGroupServise.get<TeacherType[]>('/');
-    if (response.status === 200) return response.data;
-    return [];
-  }
+  // static async getTeacher(): Promise<TeacherType[]> {
+  //   const response = await apiGroupServise.get<TeacherType[]>('/');
+  //   if (response.status === 200) return response.data;
+  //   return [];
+  // }
 
-  static async getGroups(): Promise<GroupType[]> {
-    const response = await apiGroupServise.get<GroupType[]>('/');
+  static async getGroups(id: TeacherType['id']): Promise<GroupType[]> {
+    const response = await apiGroupServise.get<GroupType[]>(`/${id}`);
+    
     if (response.status === 200) return response.data;
     return [];
   }
