@@ -34,7 +34,6 @@ export default function SideBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
-  const teacher = useAppSelector((store) => store.teacherSlice.teachers);
 
   const navigate = useNavigate();
   return (
@@ -99,7 +98,7 @@ export default function SideBar(): JSX.Element {
                 </NavItem>
               )}
 
-              {auth.user.status === 'authenticated' && teacher.role === 'Teacher' ? (
+              {auth.user.status === 'authenticated' && user.role === 'Teacher' ? (
                 <NavItem
                   width={isOpen ? '150px' : '8'}
                   icon={<FiUser />}
