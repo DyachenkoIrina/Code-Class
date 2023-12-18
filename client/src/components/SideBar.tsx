@@ -26,7 +26,6 @@ import { useNavigate } from 'react-router';
 import { openModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunks';
-import type { UserType } from '../types/auth';
 
 export default function SideBar(): JSX.Element {
   const { isOpen, onOpen, onToggle } = useDisclosure({
@@ -35,8 +34,9 @@ export default function SideBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
-  const navigate = useNavigate();
+  const teacher = useAppSelector((store) => store.teacherSlice.teachers);
 
+  const navigate = useNavigate();
   return (
     <AppShell
       sidebar={
@@ -99,10 +99,9 @@ export default function SideBar(): JSX.Element {
                 </NavItem>
               )}
 
-              {auth.user.status === 'authenticated' && user.role === 'Teacher' ? (
+              {auth.user.status === 'authenticated' && teacher ? (
                 <NavItem
                   width={isOpen ? '150px' : '8'}
-                  onClick={() => void dispatch(thunkLogout())}
                   icon={<FiUser />}
                   onClick={() => navigate('/teacherlk')}
                 >
@@ -115,7 +114,6 @@ export default function SideBar(): JSX.Element {
               {auth.user.status === 'authenticated' && user.role === 'Student' ? (
                 <NavItem
                   width={isOpen ? '150px' : '8'}
-                  onClick={() => void dispatch(thunkLogout())}
                   icon={<FiUser />}
                   onClick={() => navigate('/studentlk')}
                 >
@@ -128,7 +126,6 @@ export default function SideBar(): JSX.Element {
               {auth.user.status === 'authenticated' && user.role === 'Admin' ? (
                 <NavItem
                   width={isOpen ? '150px' : '8'}
-                  onClick={() => void dispatch(thunkLogout())}
                   icon={<FiUser />}
                   onClick={() => navigate('/adminlk')}
                 >
