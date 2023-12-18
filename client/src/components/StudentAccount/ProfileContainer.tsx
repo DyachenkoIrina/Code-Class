@@ -13,7 +13,7 @@ export type UserType = {
 
 export default function ProfileContainer(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user);
-//   console.log('-------->', user.profileImage);
+
   
 
 

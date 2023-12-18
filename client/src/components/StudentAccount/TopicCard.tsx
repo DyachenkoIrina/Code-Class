@@ -8,7 +8,7 @@ type TopicTypeProps = {
 
 export default function TopicCard({ topic }: TopicTypeProps): JSX.Element {
 
-  console.log('_____>', topic);
+
   
 
   return (

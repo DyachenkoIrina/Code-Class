@@ -7,7 +7,6 @@ export const apiUserService = axios.create({
 
 class UserService {
   static async updateUser(data: SignupFormData): Promise<UserType> {
-    console.log('----------->', data.get('profileImage'));
 
     const response = await apiUserService.post<UserType>(`/api/users/1`, data, {
       headers: {
