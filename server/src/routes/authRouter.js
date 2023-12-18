@@ -1,23 +1,23 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const { User } = require('../../db/models');
-const generateTokens = require('../utils/generateTokens');
-const jwtConfig = require('../config/jwtConfig');
-const cookiesConfig = require('../config/cookiesConfig');
-const verifyRefreshToken = require('../middlewares/verifyRefreshToken');
+const express = require("express");
+const bcrypt = require("bcrypt");
+const { User } = require("../../db/models");
+const generateTokens = require("../utils/generateTokens");
+const jwtConfig = require("../config/jwtConfig");
+const cookiesConfig = require("../config/cookiesConfig");
+const verifyRefreshToken = require("../middlewares/verifyRefreshToken");
 
 const authRouter = express.Router();
 
-authRouter.post('/login', async (req, res) => {
+authRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password)
     const user = await User.findOne({ where: { email } });
-    if (!user)
-      return res.status(404).json({ message: 'User not found' });
+    console.log(user);
+    if (!user) return res.status(404).json({ message: "User not found" });
 
     const isValid = await bcrypt.compare(password, user.hashpass);
-    if (!isValid)
-      return res.status(400).json({ message: 'Invalid password' });
+    if (!isValid) return res.status(400).json({ message: "Invalid password" });
 
     const plainUser = user.get();
     delete plainUser.hashpass;
@@ -25,16 +25,12 @@ authRouter.post('/login', async (req, res) => {
       user: plainUser,
     });
     res
-      .cookie(
-        jwtConfig.refresh.name,
-        refreshToken,
-        cookiesConfig.refresh,
-      )
+      .cookie(jwtConfig.refresh.name, refreshToken, cookiesConfig.refresh)
       .status(200)
       .json({ accessToken, user: plainUser });
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.status(407).json(error);
   }
 });
 
@@ -46,9 +42,7 @@ authRouter.post('/signup', async (req, res) => {
       defaults: { name, hashpass: await bcrypt.hash(password, 10) },
     });
     if (!created)
-      return res
-        .status(400)
-        .json({ message: 'Email already exists' });
+      return res.status(400).json({ message: "Email already exists" });
 
     const plainUser = user.get();
     delete plainUser.hashpass;
@@ -56,11 +50,7 @@ authRouter.post('/signup', async (req, res) => {
       user: plainUser,
     });
     res
-      .cookie(
-        jwtConfig.refresh.name,
-        refreshToken,
-        cookiesConfig.refresh,
-      )
+      .cookie(jwtConfig.refresh.name, refreshToken, cookiesConfig.refresh)
       .status(200)
       .json({ accessToken, user: plainUser });
   } catch (error) {
@@ -69,12 +59,12 @@ authRouter.post('/signup', async (req, res) => {
   }
 });
 
-authRouter.get('/logout', (req, res) => {
+authRouter.get("/logout", (req, res) => {
   res.clearCookie(jwtConfig.refresh.name).sendStatus(200);
 });
 
-authRouter.get('/check', verifyRefreshToken, (req, res) => {
-  res.json({ user: res.locals.user, accessToken: '' });
+authRouter.get("/check", verifyRefreshToken, (req, res) => {
+  res.json({ user: res.locals.user, accessToken: "" });
 });
 
 module.exports = authRouter;

@@ -4,7 +4,14 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./routes/authRouter");
 const tokensRouter = require("./routes/tokensRouter");
-const apiNotesRouter = require("./routes/apiNotesRouter");
+const topicRouter = require("./routes/topicRouter");
+
+const teacherRouter = require("./routes/teacherRouter");
+const tasksRouter = require("./routes/tasksRouter");
+const apiUsersRouter = require("./routes/apiUserRouter");
+const adminRouter = require("./routes/adminRouter");
+const groupRouter = require("./routes/groupRouter");
+
 require("dotenv").config();
 
 const app = express();
@@ -22,8 +29,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.use("/api/v1/notes", apiNotesRouter);
+app.use("/api/v1/topic", topicRouter);
+app.use("/api/v1/adminlk", adminRouter);
+app.use("/api/v1/teacherlk", teacherRouter);
+app.use("/api/v1/task", tasksRouter);
 app.use("/api/v1/tokens", tokensRouter);
+app.use("/api//v1/groupRouter", groupRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/users", apiUsersRouter);
+
+
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

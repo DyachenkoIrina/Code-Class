@@ -3,3 +3,13 @@ export type GroupType = {
   group: string;
   teacher: string;
 };
+
+
+export type GroupsState = {
+groups: GroupType[];
+};
+
+export type GroupsSliceState = {
+  groups: GroupType[];
+  teacherGroups: [];
+};

@@ -1,22 +1,51 @@
-import type { ModalAction, ModalState } from '../../../types/modal';
+import { createSlice } from '@reduxjs/toolkit';
+import type { ModalStatetupe } from '../../../types/modal/index';
 
-const initialState = {
+const initialState: ModalStatetupe = {
   isOpen: false,
-  noteId: 0,
+  loginModal: false,
+  groupModal: false,
+  newtaskModal: false,
+  registrModal: false,
+  editModal: false,
 };
 
-export default function modalReducer(
-  // eslint-disable-next-line @typescript-eslint/default-param-last
-  state: ModalState = initialState,
-  action: ModalAction,
-): ModalState {
-  const { type } = action;
-  switch (type) {
-    case 'OPEN_MODAL':
-      return { isOpen: true, noteId: action.payload };
-    case 'CLOSE_MODAL':
-      return initialState;
-    default:
-      return state;
-  }
-}
+export const modalSlice = createSlice({
+  name: 'modal',
+  initialState,
+  reducers: {
+    openModallogin: (state) => {
+      state.loginModal = !state.loginModal;
+    },
+    groupModal: (state) => {
+      state.groupModal = !state.groupModal;
+    },
+    newTaskModal: (state) => {
+      state.newtaskModal = !state.newtaskModal;
+    },
+    registrModal: (state) => {
+      state.registrModal = !state.registrModal;
+    },
+    closeModal: (state) => {
+      state.isOpen = false;
+    },
+    toggleModal: (state) => {
+      state.isOpen = !state.isOpen;
+    },
+    userEditModal: (state) => {
+      state.editModal = !state.editModal;
+    },
+  },
+});
+
+export const {
+  registrModal,
+  closeModal,
+  toggleModal,
+  groupModal,
+  openModallogin,
+  userEditModal,
+  newTaskModal,
+} = modalSlice.actions;
+
+export default modalSlice.reducer;

@@ -18,6 +18,13 @@ module.exports = {
       answer: {
         type: Sequelize.TEXT
       },
+      topicId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Topics',
+          key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
