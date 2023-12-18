@@ -43,30 +43,32 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
-  const teacher = useAppSelector((store) => store.teacherSlice.teachers);
+//   const teacher = useAppSelector((store) => store.authSlice.teacher);
+// console.log('>>>App>>>>>>>teacher', teacher)
 
+console.log('>>>>App>>>>>>user', user)
   return (
     <Container>
       <ChakraProvider theme={theme}>
         <SaasProvider>
           <SideBar />
         </SaasProvider>
-
+  
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route
+          {/* <Route
             element={
               <PrivateRouter
-                isAllowed={user.status !== 'authenticated' && teacher.role === 'Teacher'}
+                isAllowed={user.status === 'authenticated' && user?.role === 'Teacher'}
               />
             }
-          >
-            <Route path="/teacherlk" element={<TeacherAccountPage />} />
-          </Route>
+          > */}
+            <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+          {/* </Route> */}
           <Route
             element={
               <PrivateRouter
-                isAllowed={user.status !== 'authenticated' && user.role === 'Student'}
+                isAllowed={user.status === 'authenticated' && user?.role === 'Student'}
               />
             }
           >
@@ -75,13 +77,13 @@ function App(): JSX.Element {
           <Route path="/student/task/:id" element={<TaskPage />} />
           <Route
             element={
-              <PrivateRouter isAllowed={user.status !== 'authenticated' && user.role === 'Admin'} />
+              <PrivateRouter isAllowed={user.status === 'authenticated' && user?.role === 'Admin'} />
             }
           >
             <Route path="/adminlk" element={<AdminPage />} />
-          {/* </Route> */}
+          </Route>
         </Routes>
-
+  
         <Footer />
         <LoginFormModal />
       </ChakraProvider>

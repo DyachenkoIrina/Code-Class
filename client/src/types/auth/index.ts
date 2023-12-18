@@ -5,7 +5,7 @@ export type UserType = {
   profileImage?: string;
   name: string;
   email: string;
-  role: string;
+  role?: string;
   groupId: number;
 };
 
@@ -14,7 +14,7 @@ export type TeacherType = {
   avatar?: string;
   name: string;
   email: string;
-  role: string;
+  role?: string;
 };
 
 export type BackendAuth = { user: UserType; accessToken: string };
