@@ -44,16 +44,16 @@ export default function SideBar(): JSX.Element {
           variant={isOpen ? 'default' : 'compact'}
           transition="width"
           transitionDuration="normal"
-          width={isOpen ? '280px' : '14'}
+          width={isOpen ? '260px' : '14'}
           height="100vh"
           minWidth="auto"
+          zIndex="1"
         >
           <SidebarSection direction={isOpen ? 'row' : 'column'}>
             <Image
-              src="https://saas-ui.dev/favicons/favicon-96x96.png"
-              boxSize="6"
-              mb="1"
-              display={isOpen}
+              src="../../public/Codeclass.svg"
+              paddingLeft="20"
+              width={isOpen ? '150px' : '14'}
             />
             <Spacer />
             <IconButton
@@ -70,40 +70,73 @@ export default function SideBar(): JSX.Element {
             overflowY="auto"
             overflowX="hidden"
             justifyContent="space-between"
+            alignItems="center"
           >
             <NavGroup>
-              <NavItem onClick={() => navigate('/')} icon={<FiHome />} isActive>
+              <NavItem
+                width={isOpen ? '150px' : '8'}
+                onClick={() => navigate('/')}
+                icon={<FiHome />}
+              >
                 Главная
               </NavItem>
               {auth.user.status !== 'authenticated' ? (
-                <NavItem onClick={() => dispatch(openModallogin())} icon={<FiUser />}>
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  onClick={() => dispatch(openModallogin())}
+                  icon={<FiUser />}
+                >
                   Войти
                 </NavItem>
               ) : (
-                <NavItem onClick={() => void dispatch(thunkLogout())} icon={<FiLogOut />}>
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  onClick={() => void dispatch(thunkLogout())}
+                  icon={<FiLogOut />}
+                >
                   Выйти
                 </NavItem>
               )}
 
-              <NavItem icon={<FiBook />}>О нас</NavItem>
+              <NavItem width={isOpen ? '150px' : '8'} icon={<FiBook />}>
+                О нас
+              </NavItem>
             </NavGroup>
             <NavGroup>
-              <NavItem>
+              <NavItem fontWeight={600}
+              fontSize={15}>
                 {auth.user.status === 'authenticated' ? auth.user.name : 'Привет, гость!'}
               </NavItem>
               {user.status === 'authenticated' && user.role === 'Teacher' ? (
                 <Button
-                  style={{ width: '70px', background: 'none', border: 'none' }}
+                  style={{
+                    width: '80px',
+                    height: '80px',
+                    background: 'none',
+                    border: 'none',
+                  }}
                   onClick={() => navigate('/teacherlk')}
                 >
-                  <Image src={user.profileImage} mb="1" display={isOpen} borderRadius="full" />
+                  <Image
+                    width="50px"
+                    height="52px"
+                    src={user.profileImage}
+                    mb="1"
+                    display={isOpen}
+                    borderRadius="full"
+                  />
                 </Button>
               ) : (
                 <> </>
               )}
               {user.status === 'authenticated' && user.role === 'Student' ? (
                 <Button
-                  style={{ width: '70px', background: 'none', border: 'none' }}
+                  style={{
+                    width: '50px',
+                    height: '70px',
+                    background: 'none',
+                    border: 'none',
+                  }}
                   onClick={() => navigate('/studentlk')}
                 >
                   <Image src={user.profileImage} mb="1" display={isOpen} borderRadius="full" />

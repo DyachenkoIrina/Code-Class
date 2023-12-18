@@ -48,6 +48,8 @@ export default function ModalFromRegistration(): JSX.Element {
         width="200px"
         border="2px"
         borderColor="green.500"
+        marginLeft="135px"
+        marginBottom="80px"
       >
         Регистрация
       </Button>

@@ -6,6 +6,7 @@ import YandexMap from '../components/YandexMap';
 import CourseOptions from '../components/CourseOptions';
 import CarouselImg from '../components/Carousel';
 import { toggleModal } from '../redux/slices/modal/modalReducer';
+import '../index.css';
 
 export default function MainPage(): JSX.Element {
   const dispatch = useAppDispatch();
