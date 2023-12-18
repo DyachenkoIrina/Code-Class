@@ -37,16 +37,6 @@ module.exports = {
       "Users",
       [
         {
-          name: "saul",
-          lastName: "goodman",
-          profileImage:
-            "https://i.pinimg.com/originals/67/b0/2e/67b02e5d0a4f3ee9b15db378963140c6.jpg",
-          email: "0@0",
-          hashpass: hashSync("1", 10),
-          role: "Teacher",
-          groupId: 1,
-        },
-        {
           name: "Lalo",
           lastName: "Salamanca",
           profileImage:
@@ -94,15 +84,6 @@ module.exports = {
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 2,
-        },
-        {
-          name: "Василий Васильевич",
-          lastName: "Петров",
-          profileImage: "image.png",
-          email: "5@5",
-          hashpass: hashSync("1", 10),
-          role: "Teacher",
-          groupId: 1,
         },
       ],
       {}
