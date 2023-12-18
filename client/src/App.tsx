@@ -30,7 +30,7 @@ function App(): JSX.Element {
     void dispatch(thunkUsersLoad());
     void dispatch(thunkTeacherGroups());
   }, []);
- 
+
   const theme = extendTheme({
     colors: {
       brand: {
@@ -42,7 +42,6 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
 
-
   return (
     <Container>
       <ChakraProvider theme={theme}>
@@ -52,15 +51,15 @@ function App(): JSX.Element {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          {/* <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}> */}
+          <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}>
             <Route path="/teacherlk" element={<TeacherAccountPage />} />
             <Route path="/studentlk" element={<StudentAccountPage />} />
             <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/student/adminlk" element={<TaskPage />} />
             <Route path="/adminlk" element={<AdminPage />} />
-          {/* </Route> */}
+          </Route>
         </Routes>
-        <YandexMap />
+
         <Footer />
         <LoginFormModal />
       </ChakraProvider>

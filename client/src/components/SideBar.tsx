@@ -19,6 +19,7 @@ import {
   FiBook,
   FiCircle,
   FiLogOut,
+  FiLogIn,
 } from 'react-icons/fi';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
@@ -33,10 +34,9 @@ export default function SideBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
-  const teacher= useAppSelector((store)=>store.teacherSlice.teachers)
+  const teacher = useAppSelector((store) => store.teacherSlice.teachers);
 
   const navigate = useNavigate();
-console.log('---->', user)
   return (
     <AppShell
       sidebar={
@@ -85,7 +85,7 @@ console.log('---->', user)
                 <NavItem
                   width={isOpen ? '150px' : '8'}
                   onClick={() => dispatch(openModallogin())}
-                  icon={<FiUser />}
+                  icon={<FiLogIn />}
                 >
                   Войти
                 </NavItem>
@@ -99,52 +99,50 @@ console.log('---->', user)
                 </NavItem>
               )}
 
+              {auth.user.status === 'authenticated' && teacher ? (
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  icon={<FiUser />}
+                  onClick={() => navigate('/teacherlk')}
+                >
+                  Личный кабинет
+                </NavItem>
+              ) : (
+                <> </>
+              )}
+
+              {auth.user.status === 'authenticated' && user.role === 'Student' ? (
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  icon={<FiUser />}
+                  onClick={() => navigate('/studentlk')}
+                >
+                  Личный кабинет
+                </NavItem>
+              ) : (
+                <> </>
+              )}
+
+              {auth.user.status === 'authenticated' && user.role === 'Admin' ? (
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  icon={<FiUser />}
+                  onClick={() => navigate('/adminlk')}
+                >
+                  Личный кабинет
+                </NavItem>
+              ) : (
+                <> </>
+              )}
+
               <NavItem width={isOpen ? '150px' : '8'} icon={<FiBook />}>
                 О нас
               </NavItem>
             </NavGroup>
             <NavGroup>
-              <NavItem fontWeight={600}
-              fontSize={15}>
+              <NavItem fontWeight={600} fontSize={isOpen ? '12px' : '7px'}>
                 {auth.user.status === 'authenticated' ? auth.user.name : 'Привет, гость!'}
               </NavItem>
-              {user.status === 'authenticated' && user.role === 'Teacher' ? (
-                <Button
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                    background: 'none',
-                    border: 'none',
-                  }}
-                  onClick={() => navigate('/teacherlk')}
-                >
-                  <Image
-                    width="50px"
-                    height="52px"
-                    src={user.avatar}
-                    mb="1"
-                    display={isOpen}
-                    borderRadius="full"
-                  />
-                </Button>
-              ) : (
-                <> </>
-              )}
-              {user.status === 'authenticated' && user.role === 'Student' ? (
-                <Button
-                  style={{
-                    width: '50px',
-                    height: '70px',
-                    background: 'none',
-                    border: 'none',
-                  }}
-                  onClick={() => navigate('/studentlk')}
-                >
-                  <Image src={user.profileImage} mb="1" display={isOpen} borderRadius="full" />
-                </Button>
-              ) : (
-                <> </>
-              )}
             </NavGroup>
           </SidebarSection>
           <SidebarOverlay zIndex="1" />
