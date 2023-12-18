@@ -49,7 +49,6 @@ function App(): JSX.Element {
         <SaasProvider>
           <SideBar />
         </SaasProvider>
-        <Container style={{ margin: '0 auto', padding: '15px' }} />
 
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -61,8 +60,8 @@ function App(): JSX.Element {
             <Route path="/adminlk" element={<AdminPage />} />
           {/* </Route> */}
         </Routes>
-        {/* <YandexMap /> */}
-        {/* <Footer /> */}
+        <YandexMap />
+        <Footer />
         <LoginFormModal />
       </ChakraProvider>
     </Container>

@@ -10,19 +10,34 @@ export default function CarouselImg(): JSX.Element {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'start',
-          height: '100vh',
-          marginTop: '50px',
         }}
       >
-        <Carousel id="carouselExampleControls" style={{ width: '900px', height: '600px' }}>
-          <Carousel.Item>
+        <Carousel
+          id="carouselExampleControls"
+          style={{
+            marginTop: '50px',
+            marginBottom: '80px',
+            width: '900px',
+          }}
+        >
+          <Carousel.Item
+            style={{
+              width: '900px',
+              height: '600px',
+            }}
+          >
             <img
               className="d-block w-100 h-100 object-fit-cover"
               src="https://hi-news.ru/wp-content/uploads/2016/12/kids-computer-2.jpg"
               alt="First slide"
             />
           </Carousel.Item>
-          <Carousel.Item>
+          <Carousel.Item
+            style={{
+              width: '900px',
+              height: '600px',
+            }}
+          >
             <img
               className="d-block w-100 h-100 object-fit-cover"
               src="https://hi-news.ru/wp-content/uploads/2016/12/kids-computer-2.jpg"
@@ -30,7 +45,12 @@ export default function CarouselImg(): JSX.Element {
             />
           </Carousel.Item>
 
-          <Carousel.Item>
+          <Carousel.Item
+            style={{
+              width: '900px',
+              height: '600px',
+            }}
+          >
             <img
               className="d-block w-100 h-100 object-fit-cover"
               src="https://cdnn1.inosmi.ru/img/21003/38/210033896_0:0:1024:702_1240x0_80_0_0_759d60cbafef6cc2ee4632e28d52eff6.jpg"
