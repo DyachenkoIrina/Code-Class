@@ -41,6 +41,7 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
+  const teacher = useAppSelector((store) => store.teacherSlice.teachers);
 
   return (
     <Container>
@@ -51,11 +52,30 @@ function App(): JSX.Element {
 
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route element={<PrivateRouter isAllowed={user.status !== 'authenticated'} />}>
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status !== 'authenticated' && teacher.role === 'Teacher'}
+              />
+            }
+          >
             <Route path="/teacherlk" element={<TeacherAccountPage />} />
+          </Route>
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status !== 'authenticated' && user.role === 'Student'}
+              />
+            }
+          >
             <Route path="/studentlk" element={<StudentAccountPage />} />
-            <Route path="/student/task/:id" element={<TaskPage />} />
-            <Route path="/student/adminlk" element={<TaskPage />} />
+          </Route>
+          <Route path="/student/task/:id" element={<TaskPage />} />
+          <Route
+            element={
+              <PrivateRouter isAllowed={user.status !== 'authenticated' && user.role === 'Admin'} />
+            }
+          >
             <Route path="/adminlk" element={<AdminPage />} />
           </Route>
         </Routes>
