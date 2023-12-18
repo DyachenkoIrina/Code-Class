@@ -23,10 +23,10 @@ authRouter.post("/login", async (req, res) => {
     let role;
     if (user) {
       entity = user;
-      role = "user";
+      role = "Student";
     } else if (teacher) {
       entity = teacher;
-      role = "teacher";
+      role = "Teacher";
     }
 
     const isValid = await bcrypt.compare(password, entity.hashpass);

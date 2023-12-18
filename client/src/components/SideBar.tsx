@@ -34,7 +34,11 @@ export default function SideBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
-  const teacher = useAppSelector((store) => store.teacherSlice.teachers);
+  const teacher = useAppSelector((store) => store.authSlice.teacher);
+
+  console.log('---sidebar----teacher', teacher);
+
+  console.log('----sidebar------user', user);
 
   const navigate = useNavigate();
   return (
@@ -99,11 +103,11 @@ export default function SideBar(): JSX.Element {
                 </NavItem>
               )}
 
-              {auth.user.status === 'authenticated' && teacher ? (
+              {auth.user.status === 'authenticated' && user.role === 'Teacher' ? (
                 <NavItem
                   width={isOpen ? '150px' : '8'}
                   icon={<FiUser />}
-                  onClick={() => navigate('/teacherlk')}
+                  onClick={() => navigate('/teacherlk:id')}
                 >
                   Личный кабинет
                 </NavItem>
