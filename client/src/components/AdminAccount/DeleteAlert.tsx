@@ -13,12 +13,11 @@ import {
 import { useAppDispatch } from '../../redux/hook';
 import { thunkDeleteTeacher } from '../../redux/slices/admin/thunkActionsAdmin';
 
-export default function AlertDialogExample(teacher) {
+export default function AlertDialogExample(teacher: any): any {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = React.useRef()
     const dispatch = useAppDispatch();
-    // console.log(teacher)
 
   
     return (

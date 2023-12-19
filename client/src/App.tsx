@@ -7,6 +7,7 @@ import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
 import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
+import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
 import { useAppDispatch, useAppSelector } from './redux/hook';
@@ -16,25 +17,29 @@ import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsy
 import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
-import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import AdminPage from './pages/AdminPage';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
+import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
 import MainPageFlex from './pages/MainPageFlex';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    // void dispatch(thunkGroupsLoad());
 
+  useEffect(() => {
+    void dispatch(thunkGroupsLoad());
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
     void dispatch(thunkLoadTask());
     void dispatch(thunkUsersLoad());
-    // void dispatch(thunkTeacherGroups());
+    void dispatch(thunkTeacherGroups());
   }, []);
 
+  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
+
+
+  console.log('HEHEHEHEHEHEHEHE', groups)
   const theme = extendTheme({
     colors: {
       brand: {
@@ -45,11 +50,14 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
+  const teacher = useAppSelector((store) => store.authSlice.teacher);
+console.log('>>>App>>>>>>>teacher', teacher)
 
   return (
     <>
       <SaasProvider>
         <SideBar />
+
       </SaasProvider>
       <Container class="logo_wrapper">
         {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
@@ -103,3 +111,4 @@ function App(): JSX.Element {
 }
 
 export default App;
+

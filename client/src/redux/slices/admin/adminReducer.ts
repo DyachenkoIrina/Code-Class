@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { GroupsSliceState } from "../../../types/groups";
-import { thunkDeleteTeacher, thunkUsersLoad } from "./thunkActionsAdmin";
+import { thunkDeleteTeacher, thunkGroupsLoad, thunkUsersLoad } from "./thunkActionsAdmin";
+import { AdminSliceState } from "../../../types/admin";
 
 
 const initialState: AdminSliceState = {
   userList: [],
   selectedTeacher: null,
-  teacherToDelete: null
+  teacherToDelete: null,
+  groups: [],
 };
 
 export const adminSlice = createSlice({
@@ -35,7 +37,7 @@ export const adminSlice = createSlice({
     setTeacherToDelete:(state, action) => {
       state.teacherToDelete = action.payload
     },
-    clearTeacherToDelete:(state, action) => {
+    clearTeacherToDelete:(state) => {
       state.teacherToDelete = null;
     }
   },
@@ -43,9 +45,9 @@ export const adminSlice = createSlice({
     builder.addCase(thunkUsersLoad.fulfilled, (state, action) => {
       state.userList = action.payload;
     });
-    builder.addCase(thunkDeleteTeacher.fulfilled, (state, action) => {
-      state.accessToken = '';
-      state.user.status = 'guest';
+    
+    builder.addCase(thunkGroupsLoad.fulfilled, (state, action) => {
+      state.groups = action.payload;
     });
   },
 });
