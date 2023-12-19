@@ -63,7 +63,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
 
       </SaasProvider>
       <ChakraProvider theme={theme}>
-        <Container>
+       
           <Routes>
             <Route path="/" element={<MainPage />} />
             {/* <Route
@@ -102,7 +102,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
 
           <Footer />
           <LoginFormModal />
-        </Container>
+      
       </ChakraProvider>
     </>
   );

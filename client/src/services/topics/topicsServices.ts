@@ -8,10 +8,11 @@ export const apiService = axios.create({
 class TopicsService {
   static async getTopics(): Promise<TopicType[]> {
     const response = await apiService.get<TopicType[]>('/');
-
     if (response.status === 200) return response.data;
     return [];
   }
+
+  static async AddFavoriteTopics(id):Promise<TopicType[]>
 }
 
 export default TopicsService;

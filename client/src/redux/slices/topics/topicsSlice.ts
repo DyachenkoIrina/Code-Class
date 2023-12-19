@@ -6,6 +6,7 @@ import thunkLoad from './createAsyncThunk';
 const initialState: TopicSliceState = {
   topics: [],
   currentTopic: null,
+  favoritesTopic: null,
 };
 
 export const topicsSlice = createSlice({
@@ -15,6 +16,9 @@ export const topicsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(thunkLoad.fulfilled, (state, action: PayloadAction<TopicType>) => {
       state.topics = action.payload;
+    });
+    builder.addCase(thunkAddFavoriteTopic.fulfilled, (state, action: PayloadAction<TopicType>) => {
+      state.favoritesTopic = action.payload;
     });
   },
 });

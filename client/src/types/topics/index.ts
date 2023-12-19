@@ -8,4 +8,5 @@ export type TopicType = {
 export type TopicSliceState = {
   topics: TopicType[];
   currentTopic: TopicType | null;
+  favoritesTopic: TopicType[];
 };
