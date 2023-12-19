@@ -5,16 +5,15 @@ const { Group, Teacher, TeacherGroup } = require("../../db/models");
 const teacherRouter = express.Router();
 
 
-
 teacherRouter.get("/:id", async (req, res) => {
-    console.log('--****---> teacher', req.params)
   try {
-    const teacher = await Teacher.findByPk(req.params);
+    // const teacher = await Teacher.findByPk(req.params.id);
+    // console.log("---@@@@@@@@@@--> teacher", teacher);
     const groupsTeasher = await TeacherGroup.findAll({
       where: { teacherId: req.params.id },
-      include: { model: Group, attributes: ["name"] },
+      include: { model: Group , attributes:['group']},
     });
-    console.log('-----> groups', groupsTeasher)
+    console.log("---%%%%%%%%%%--> groups", groupsTeasher);
     res.status(200).json(groupsTeasher);
   } catch ({ message }) {
     res.status(400).json({ message });

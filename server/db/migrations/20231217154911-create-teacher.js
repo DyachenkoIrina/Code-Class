@@ -18,7 +18,7 @@ module.exports = {
       hashpass: {
         type: Sequelize.STRING
       },
-      avatar: {
+      profileImage: {
         type: Sequelize.STRING
       },
       role: {
