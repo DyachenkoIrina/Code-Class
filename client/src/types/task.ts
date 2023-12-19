@@ -9,12 +9,12 @@ export type TaskType = {
 export type TaskSliceState = {
   tasks: TaskType[];
   currentTask: TaskType | null;
+ 
 };
 
 export type TasksState = {
   tasks: TaskType[];
 };
-
 
 export type AddTaskFormData = {
   title: string;

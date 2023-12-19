@@ -2,6 +2,24 @@ body {
 }
 .saas-app-shell__inner {
 }
+.logo_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.logo,
+.text {
+  width: 200px;
+  margin: 20px;
+  position: absolute;
+}
+
+.text {
+  margin-top: 400px;
+  margin-right: 80px;
+  font-weight: 600;
+}
 
 .saas-app-shell__main {
   background-color: white;
@@ -9,10 +27,13 @@ body {
   border-top-right-radius: 20px;
   z-index: -1;
 }
+.css-vhc7ah {
+}
 
 /* .container {
   width: 200px;
   background-color: #c1ffbc;
+ 
 } */
 
 .chakra-ui-light {
@@ -26,7 +47,7 @@ body {
 }
 
 .heading {
-  margin-top: 50px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
 }
@@ -35,7 +56,35 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  /* flex-wrap: wrap;  //добавить в медиа */
   gap: 200px;
   margin-bottom: 90px;
 }
 
+.corses_text {
+  font-weight: 600;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.chakra-tabs {
+}
+.chakra-tabs__tab-panels {
+}
+.chakra-tabs__tab-panel {
+}
+.chakra-card {
+}
+.course_card {
+}
+
+.video_wrapper {
+  max-width: 1300px;
+  max-height: 800px;
+}
+
+.videoBackgraund {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}

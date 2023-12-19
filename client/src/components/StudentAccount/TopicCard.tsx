@@ -1,12 +1,18 @@
 import React from 'react';
-import { Card, Heading, CardBody, CardFooter, Stack, Button, Image, Text } from '@chakra-ui/react';
-import type { TopicType } from '../../types/topics/index';
+import {
+  Card,
+  Heading,
+  CardBody,
+  CardFooter,
+  Stack,
+  Button,
+  Image,
+  Text,
+  ButtonGroup,
+} from '@chakra-ui/react';
+import type { TopicTypeCard } from '../../types/topics/index';
 
-type TopicTypeProps = {
-  topic: TopicType;
-};
-
-export default function TopicCard({ topic }: TopicTypeProps): JSX.Element {
+export default function TopicCard({ topic }: TopicTypeCard): JSX.Element {
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -22,8 +28,8 @@ export default function TopicCard({ topic }: TopicTypeProps): JSX.Element {
     >
       <Image
         objectFit="cover"
-        maxW='100px'
-        maxH='100px'
+        maxW="100px"
+        maxH="100px"
         // width="300px" // Установите ширину изображения
         // height="200px" // Установите высоту изображения
         src={topic.img}
@@ -35,13 +41,17 @@ export default function TopicCard({ topic }: TopicTypeProps): JSX.Element {
           <Text py="3">{topic.description}</Text>
         </CardBody>
         <CardFooter>
-          <Button
-            onClick={() => (window.location.href = `/student/task/${topic.id}`)}
-            variant="solid"
-            colorScheme="blue"
-          >
-            Пройти задачи!
-          </Button>
+          <ButtonGroup variant="outline" spacing="6">
+            <Button
+              onClick={() => {
+                window.location.href = `/student/task/${topic.id}`;
+              }}
+              variant="solid"
+              colorScheme="yellow"
+            >
+              Пройти задачи!
+            </Button>
+          </ButtonGroup>
         </CardFooter>
       </Stack>
     </Card>

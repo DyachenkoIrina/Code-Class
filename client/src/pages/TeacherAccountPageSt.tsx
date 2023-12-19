@@ -1,12 +1,18 @@
 import React from 'react';
-import { Container } from "@chakra-ui/react";
+import { Center, Container } from '@chakra-ui/react';
 import TeacherAccountFormSt from '../forms/TeacherAccountFormSt';
 
-
 export default function TeacherAccountPageSt(): JSX.Element {
-    return (
-      <Container>
-        <TeacherAccountFormSt/>
-      </Container>
-    );
-  }
+  return (
+    <div
+      style={{
+        marginTop: '20px',
+        marginLeft: '50px',
+        display: 'flex',
+        justifyContent: 'space-around',
+      }}
+    >
+      <TeacherAccountFormSt />
+    </div>
+  );
+}

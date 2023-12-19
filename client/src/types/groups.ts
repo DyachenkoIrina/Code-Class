@@ -11,7 +11,7 @@ export type GroupType = {
 
 
 export type GroupsState = {
-groups: GroupType[];
+  groups: GroupType[];
 };
 
 export type GroupsSliceState = {

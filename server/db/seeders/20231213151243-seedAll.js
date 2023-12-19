@@ -369,11 +369,11 @@ module.exports = {
     );
 
     await queryInterface.bulkInsert(
-      "Homeworks",
+      "Homework",
       [
         {
           userId: 1,
-          tsakId: 1,
+          // taskId: 1,
           status: "Pending",
         },
       ],

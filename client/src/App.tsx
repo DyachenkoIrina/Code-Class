@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, Container, Image } from '@chakra-ui/react';
 import { SaasProvider } from '@saas-ui/react';
 import LoginFormModal from './forms/LoginFormModal';
-import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
-import {  thunkTeacherGroups } from './redux/slices/groups/thunkActions';
-import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
+import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
+import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
-import YandexMap from './components/YandexMap';
+
 import { useAppDispatch, useAppSelector } from './redux/hook';
 import thunkLoad from './redux/slices/topics/createAsyncThunk';
 import StudentAccountPage from './pages/StudentAccountPage';
@@ -18,15 +17,23 @@ import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import AdminPage from './pages/AdminPage';
+
+import { thunkLoadHomeWork } from './redux/slices/homeWork/createAsyncThunk';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
 import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
+import HomeWork from './pages/HomeWork';
+
+import MainPageFlex from './pages/MainPageFlex';
+import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    void dispatch(thunkGroupsLoad());
+   // void dispatch(thunkGroupsLoad());
+    void dispatch(thunkLoadHomeWork());
+
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -35,17 +42,18 @@ function App(): JSX.Element {
     void dispatch(thunkTeacherGroups());
   }, []);
 
-  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
+  // const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
 
 
-  const theme = extendTheme({
-    colors: {
-      brand: {
-        100: 'black',
-        900: '#1a202c',
-      },
-    },
-  });
+
+  // const theme = extendTheme({
+  //   colors: {
+  //     brand: {
+  //       100: 'black',
+  //       900: '#1a202c',
+  //     },
+  //   },
+  // });
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
@@ -56,53 +64,57 @@ function App(): JSX.Element {
         <SideBar />
 
       </SaasProvider>
-      <ChakraProvider theme={theme}>
-        <Container>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            {/* <Route
-              element={
-                <PrivateRouter
-                  isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
-                />
-              }
-            > */}
-              <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+      <Container className="logo_wrapper">
+        {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
+        <Image className="logo" src="../../public/Logo.png" alt="Dan Abramov" />
 
-            {/* </Route>  */}
-             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
-            {/* <Route
+        <p className="text">
+          Урок длится 60 минут Вы сможете познакомиться с преподавателем и понаблюдать за тем, как
+          проходит урок Ребенок познакомится с программированием в среде Scratch и сделает игру
+          «Догони робота» или «Фруктовый ниндзя».
+        </p>
+      </Container>
 
-              element={
-                <PrivateRouter
-                  isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
-                />
-              }
-            >
-              <Route path="/studentlk" element={<StudentAccountPage />} />
-            </Route>
-             {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
-            <Route path="/student/task/:id" element={<TaskPage />} />
-            {/* <Route
-              element={
-                <PrivateRouter
-                  isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
-                />
-              }
-            > */}
-              <Route path="/adminlk" element={<AdminPage />} />
-            {/* </Route> */}
-            {/* <Route path="/adminlk" element={<AdminPage />} /> */}
-          </Routes>
+      <ChakraProvider>
+        <Routes>
+          <Route path="/" element={<MainPageFlex />} />
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
+              />
+            }
+          >
+            <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+            <Route path="/teacherlk/studentid/:id" element={<TeacherAccountPageSt />} />
+          </Route>
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
+              />
+            }
+          >
+            <Route path="/studentlk" element={<StudentAccountPage />} />
+          </Route>
+          <Route path="/student/task/:id" element={<TaskPage />} />
+          <Route path="/homework" element={<HomeWork />} />
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
+              />
+            }
+          >
+            <Route path="/adminlk" element={<AdminPage />} />
+          </Route>
+        </Routes>
 
-          <Footer />
-          <LoginFormModal />
-        </Container>
+        <Footer />
+        <LoginFormModal />
       </ChakraProvider>
     </>
   );
 }
 
 export default App;
-
