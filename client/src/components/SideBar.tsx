@@ -55,7 +55,7 @@ export default function SideBar(): JSX.Element {
           transition="width"
           transitionDuration="normal"
           width={isOpen ? '260px' : '14'}
-          height="226vh"
+          height="285vh"
           minWidth="auto"
           zIndex="1"
         >

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, Container, Image, extendTheme } from '@chakra-ui/react';
 import { SaasProvider } from '@saas-ui/react';
 import LoginFormModal from './forms/LoginFormModal';
 import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
-import {  thunkTeacherGroups } from './redux/slices/groups/thunkActions';
+import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
 import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
@@ -21,6 +21,7 @@ import AdminPage from './pages/AdminPage';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
 import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
+import MainPageFlex from './pages/MainPageFlex';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -58,49 +59,52 @@ console.log('>>>App>>>>>>>teacher', teacher)
         <SideBar />
 
       </SaasProvider>
+      <Container class="logo_wrapper">
+        {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
+        <Image class="logo" src="../../public/Logo.png" alt="Dan Abramov" />
+
+        <p className="text">
+          Урок длится 60 минут Вы сможете познакомиться с преподавателем и понаблюдать за тем, как
+          проходит урок Ребенок познакомится с программированием в среде Scratch и сделает игру
+          «Догони робота» или «Фруктовый ниндзя».
+        </p>
+      </Container>
+
       <ChakraProvider theme={theme}>
-        <Container>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route
-              element={
-                <PrivateRouter
-                  isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
-                />
-              }
-            >
-              <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+        <Routes>
+          <Route path="/" element={<MainPageFlex />} />
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
+              />
+            }
+          >
+            <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+          </Route>
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
+              />
+            }
+          >
+            <Route path="/studentlk" element={<StudentAccountPage />} />
+          </Route>
+          <Route path="/student/task/:id" element={<TaskPage />} />
+          <Route
+            element={
+              <PrivateRouter
+                isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
+              />
+            }
+          >
+            <Route path="/adminlk" element={<AdminPage />} />
+          </Route>
+        </Routes>
 
-            </Route> */}
-             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
-            {/* <Route
-
-              element={
-                <PrivateRouter
-                  isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
-                />
-              }
-            >
-              <Route path="/studentlk" element={<StudentAccountPage />} />
-            </Route>
-             {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
-            <Route path="/student/task/:id" element={<TaskPage />} />
-            <Route
-              element={
-                <PrivateRouter
-                  isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
-                />
-              }
-            >
-              <Route path="/adminlk" element={<AdminPage />} />
-            </Route>
-            {/* <Route path="/adminlk" element={<AdminPage />} /> */}
-          </Routes>
-
-          <Footer />
-          <LoginFormModal />
-        </Container>
+        <Footer />
+        <LoginFormModal />
       </ChakraProvider>
     </>
   );

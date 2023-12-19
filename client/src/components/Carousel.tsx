@@ -15,7 +15,7 @@ export default function CarouselImg(): JSX.Element {
         <Carousel
           id="carouselExampleControls"
           style={{
-            marginTop: '50px',
+            marginTop: '100px',
             marginBottom: '80px',
             width: '500px',
           }}
