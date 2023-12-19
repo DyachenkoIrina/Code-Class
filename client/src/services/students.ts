@@ -14,14 +14,14 @@ class StudentServise {
   }
 
   static async getStudentsFilter(id: GroupType['id']): Promise<UserType[]> {
-    const response = await apiStudentsServise.get<UserType[]>(`/students/${id}`);
+    const response = await apiStudentsServise.get<UserType[]>(`/student/${id}`);
     if (response.status === 200) return response.data;
     return [];
   }
 
   static async getOneStudentForTeacher(id: UserType['id']): Promise<UserType[]> {
     const response = await apiStudentsServise.get<UserType[]>(`/studentid/${id}`);
-    console.log('----->class one student', response);
+    // console.log('----->class one student', response);
 
     if (response.status === 200) return response.data;
     return [];

@@ -21,6 +21,15 @@ class TeacherServise {
     if (response.status === 200) return response.data;
     return [];
   }
+
+  static async getTask(id: TeacherType['id']): Promise<GroupType[]> {
+    console.log('****--class--> id', id)
+    const response = await apiGroupServise.get<GroupType[]>(`task/${id}`);
+    console.log('class!----->get groups', response.data);
+
+    if (response.status === 200) return response.data;
+    return [];
+  }
 }
 
 export default TeacherServise;

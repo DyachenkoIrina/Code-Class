@@ -76,7 +76,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
               <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
             </Route> */}
              <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-             <Route path="/teacherlk/student/:id" element={<TeacherAccountFormSt/>} />
+             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
             {/* <Route
               element={
                 <PrivateRouter

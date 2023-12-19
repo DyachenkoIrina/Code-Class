@@ -7,17 +7,17 @@ import { useParams } from 'react-router-dom';
 
 export default function ProfileContainerSt(): JSX.Element {
   const dispatch = useAppDispatch();
-  // const { studentId } = useParams();
-  // console.log('***---->container', studentId );
+  const { id } = useParams();
+  //console.log('***---->container', id );
   const student = useAppSelector((state) => state.studentsSlice.currentStudent);
-  console.log('****----->component', student);
+ // console.log('****----->component', student);
 
   // через current Student сделать!!
   useEffect(() => {
-    if (student?.id) {
-      void dispatch(thunkgetOneStudentForTeacher(student?.id));
+    if (id) {
+      void dispatch(thunkgetOneStudentForTeacher(id));
     }
-  }, [student?.id]);
+  }, [id]);
 
   return (
     <Container bg="yellow" border="2px solid gray" borderRadius="25px" p={10}>
@@ -29,6 +29,9 @@ export default function ProfileContainerSt(): JSX.Element {
 
           mb={4}
         />
+        <Text fontSize="xl" fontWeight="bold" mb={2}>
+          {`${student?.name} ${student?.lastName}`}
+        </Text>
         <Text fontSize="xl" fontWeight="bold" mb={2}>
           {`${student?.email}`}
         </Text>
