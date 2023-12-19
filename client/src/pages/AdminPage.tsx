@@ -13,7 +13,6 @@ export default function UserSelector({}: Props) {
   const groups = useAppSelector((state) => state.groupsSlice.groups)
   const dispatch = useAppDispatch()
   const [checkedItems, setCheckedItems] = React.useState([false, false])
-  console.log(teachers)
 
   const allChecked = checkedItems.every(Boolean)
   const isIndeterminate = checkedItems.some(Boolean) && !allChecked

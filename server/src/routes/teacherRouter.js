@@ -4,15 +4,7 @@ const { Group, Teacher, TeacherGroup } = require("../../db/models");
 
 const teacherRouter = express.Router();
 
-// teacherRouter.get("/", async (req, res) => {
-//   try {
-//     const data = await Group.findAll({where: });
-//     console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", data);
-//     res.status(200).json(data);
-//   } catch ({ message }) {
-//     res.status(400).json({ message });
-//   }
-// });
+
 
 teacherRouter.get("/:id", async (req, res) => {
     console.log('--****---> teacher', req.params)

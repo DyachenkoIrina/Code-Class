@@ -22,9 +22,9 @@ import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
-    
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -43,10 +43,7 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
-//   const teacher = useAppSelector((store) => store.authSlice.teacher);
-// console.log('>>>App>>>>>>>teacher', teacher)
 
-console.log('>>>>App>>>>>>user', user)
   return (
     <Container>
       <ChakraProvider theme={theme}>
@@ -56,15 +53,15 @@ console.log('>>>>App>>>>>>user', user)
   
         <Routes>
           <Route path="/" element={<MainPage />} />
-          {/* <Route
+          <Route
             element={
               <PrivateRouter
                 isAllowed={user.status === 'authenticated' && user?.role === 'Teacher'}
               />
             }
-          > */}
+          >
             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-          {/* </Route> */}
+          </Route>
           <Route
             element={
               <PrivateRouter
@@ -81,7 +78,7 @@ console.log('>>>>App>>>>>>user', user)
             }
           >
             <Route path="/adminlk" element={<AdminPage />} />
-          {/* </Route>  */}
+          </Route>
         </Routes>
   
         <Footer />
@@ -92,3 +89,4 @@ console.log('>>>>App>>>>>>user', user)
 }
 
 export default App;
+

@@ -19,6 +19,7 @@ export default function EditTeacherModal(): JSX.Element {
   const selectedTeacher = useAppSelector((store) => store.adminSlice.selectedTeacher);
   const groups = useAppSelector((store) => store.groupsSlice.groups);
   const dispatch = useAppDispatch();
+  console.log(selectedTeacher)
 
   const handleCheckboxChange = (group, id) => {
     console.log(group, id)
