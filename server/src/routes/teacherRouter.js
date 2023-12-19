@@ -1,13 +1,29 @@
 const express = require("express");
-const { Group } = require("../../db/models");
 const { User } = require("../../db/models");
+const { Group, Teacher, TeacherGroup } = require("../../db/models");
 
 const teacherRouter = express.Router();
 
-teacherRouter.get("/", async (req, res) => {
+// teacherRouter.get("/", async (req, res) => {
+//   try {
+//     const data = await Group.findAll({where: });
+//     console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", data);
+//     res.status(200).json(data);
+//   } catch ({ message }) {
+//     res.status(400).json({ message });
+//   }
+// });
+
+teacherRouter.get("/:id", async (req, res) => {
+    console.log('--****---> teacher', req.params)
   try {
-    const data = await Group.findAll();
-    res.status(200).json(data);
+    const teacher = await Teacher.findByPk(req.params);
+    const groupsTeasher = await TeacherGroup.findAll({
+      where: { teacherId: req.params.id },
+      include: { model: Group, attributes: ["name"] },
+    });
+    console.log('-----> groups', groupsTeasher)
+    res.status(200).json(groupsTeasher);
   } catch ({ message }) {
     res.status(400).json({ message });
   }
@@ -24,13 +40,13 @@ teacherRouter.get("/students/:id", async (req, res) => {
   }
 });
 
-teacherRouter.get("/studentid/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const data = await User.findByPk(id);
-    res.status(200).json(data);
-  } catch ({ message }) {
-    res.status(400).json({ message });
-  }
-});
+// teacherRouter.get("/studentid/:id", async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const data = await User.findByPk(id);
+//     res.status(200).json(data);
+//   } catch ({ message }) {
+//     res.status(400).json({ message });
+//   }
+// });
 module.exports = teacherRouter;

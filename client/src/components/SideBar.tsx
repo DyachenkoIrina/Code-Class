@@ -19,13 +19,13 @@ import {
   FiBook,
   FiCircle,
   FiLogOut,
+  FiLogIn,
 } from 'react-icons/fi';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { openModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunks';
-import type { UserType } from '../types/auth';
 
 export default function SideBar(): JSX.Element {
   const { isOpen, onOpen, onToggle } = useDisclosure({
@@ -34,8 +34,13 @@ export default function SideBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
-  const navigate = useNavigate();
+  const teacher = useAppSelector((store) => store.authSlice.teacher);
 
+  console.log('---sidebar----teacher', teacher);
+
+  console.log('----sidebar------user', user);
+
+  const navigate = useNavigate();
   return (
     <AppShell
       sidebar={
@@ -84,7 +89,7 @@ export default function SideBar(): JSX.Element {
                 <NavItem
                   width={isOpen ? '150px' : '8'}
                   onClick={() => dispatch(openModallogin())}
-                  icon={<FiUser />}
+                  icon={<FiLogIn />}
                 >
                   Войти
                 </NavItem>
@@ -98,52 +103,50 @@ export default function SideBar(): JSX.Element {
                 </NavItem>
               )}
 
+              {auth.user.status === 'authenticated' && user.role === 'Teacher' ? (
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  icon={<FiUser />}
+                  onClick={() => navigate('/teacherlk:id')}
+                >
+                  Личный кабинет
+                </NavItem>
+              ) : (
+                <> </>
+              )}
+
+              {auth.user.status === 'authenticated' && user.role === 'Student' ? (
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  icon={<FiUser />}
+                  onClick={() => navigate('/studentlk')}
+                >
+                  Личный кабинет
+                </NavItem>
+              ) : (
+                <> </>
+              )}
+
+              {auth.user.status === 'authenticated' && user.role === 'Admin' ? (
+                <NavItem
+                  width={isOpen ? '150px' : '8'}
+                  icon={<FiUser />}
+                  onClick={() => navigate('/adminlk')}
+                >
+                  Личный кабинет
+                </NavItem>
+              ) : (
+                <> </>
+              )}
+
               <NavItem width={isOpen ? '150px' : '8'} icon={<FiBook />}>
                 О нас
               </NavItem>
             </NavGroup>
             <NavGroup>
-              <NavItem fontWeight={600}
-              fontSize={15}>
+              <NavItem fontWeight={600} fontSize={isOpen ? '12px' : '7px'}>
                 {auth.user.status === 'authenticated' ? auth.user.name : 'Привет, гость!'}
               </NavItem>
-              {user.status === 'authenticated' && user.role === 'Teacher' ? (
-                <Button
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                    background: 'none',
-                    border: 'none',
-                  }}
-                  onClick={() => navigate('/teacherlk')}
-                >
-                  <Image
-                    width="50px"
-                    height="52px"
-                    src={user.profileImage}
-                    mb="1"
-                    display={isOpen}
-                    borderRadius="full"
-                  />
-                </Button>
-              ) : (
-                <> </>
-              )}
-              {user.status === 'authenticated' && user.role === 'Student' ? (
-                <Button
-                  style={{
-                    width: '50px',
-                    height: '70px',
-                    background: 'none',
-                    border: 'none',
-                  }}
-                  onClick={() => navigate('/studentlk')}
-                >
-                  <Image src={user.profileImage} mb="1" display={isOpen} borderRadius="full" />
-                </Button>
-              ) : (
-                <> </>
-              )}
             </NavGroup>
           </SidebarSection>
           <SidebarOverlay zIndex="1" />

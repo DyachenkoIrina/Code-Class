@@ -31,8 +31,6 @@ export default function NewTaskFormModal(): JSX.Element {
       finalFocusRef={finalRef}
       isOpen={isOpen}
       onClose={() => dispatch(newTaskModal())}
-   
-      
     >
       <form
         onSubmit={(e) => {
