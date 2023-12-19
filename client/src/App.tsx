@@ -60,7 +60,7 @@ function App(): JSX.Element {
         <Container>
           <Routes>
             <Route path="/" element={<MainPage />} />
-            {/* <Route
+            <Route
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
@@ -68,9 +68,9 @@ function App(): JSX.Element {
               }
             >
               <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-            </Route> */}
-             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-            {/* <Route
+            </Route>
+             {/* <Route path="/teacherlk/:id" element={<TeacherAccountPage />} /> */}
+            <Route
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
@@ -78,10 +78,10 @@ function App(): JSX.Element {
               }
             >
               <Route path="/studentlk" element={<StudentAccountPage />} />
-            </Route> */}
-             <Route path="/studentlk" element={<StudentAccountPage />} />
+            </Route>
+             {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
             <Route path="/student/task/:id" element={<TaskPage />} />
-            {/* <Route
+            <Route
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
@@ -89,8 +89,8 @@ function App(): JSX.Element {
               }
             >
               <Route path="/adminlk" element={<AdminPage />} />
-            </Route> */}
-            <Route path="/adminlk" element={<AdminPage />} />
+            </Route>
+            {/* <Route path="/adminlk" element={<AdminPage />} /> */}
           </Routes>
 
           <Footer />
