@@ -43,10 +43,7 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
-//   const teacher = useAppSelector((store) => store.authSlice.teacher);
-// console.log('>>>App>>>>>>>teacher', teacher)
 
-console.log('>>>>App>>>>>>user', user)
   return (
     <Container>
       <ChakraProvider theme={theme}>
@@ -65,21 +62,21 @@ console.log('>>>>App>>>>>>user', user)
           > */}
             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
           {/* </Route> */}
-          <Route
+          {/* <Route
             element={
               <PrivateRouter
                 isAllowed={user.status === 'authenticated' && user?.role === 'Student'}
               />
             }
-          >
+          > */}
             <Route path="/studentlk" element={<StudentAccountPage />} />
-          </Route>
+          {/* </Route> */}
           <Route path="/student/task/:id" element={<TaskPage />} />
-          <Route
+          {/* <Route
             element={
               <PrivateRouter isAllowed={user.status === 'authenticated' && user?.role === 'Admin'} />
             }
-          >
+          > */}
             <Route path="/adminlk" element={<AdminPage />} />
           {/* </Route>  */}
         </Routes>

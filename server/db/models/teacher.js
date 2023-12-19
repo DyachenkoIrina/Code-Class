@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({ Group }) {
-      this.belongsToMany(Group, {
-        through: "TeacherGroups",
-        foreignKey: "teacherId",
-      });
+      // this.belongsToMany(Group, {
+      //   through: "TeacherGroups",
+      //   foreignKey: "teacherId",
+      // });
     }
   }
   Teacher.init(
