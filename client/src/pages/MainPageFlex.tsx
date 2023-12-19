@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Image, Flex, Box } from '@chakra-ui/react';
+import { Container, Flex, Box } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import ModalFromRegistration from '../components/FormFromRegistration';
 import YandexMap from '../components/YandexMap';
@@ -20,7 +20,7 @@ export default function MainPageFlex(): JSX.Element {
   };
 
   return (
-    <Flex flexDirection='column'>
+    <Flex flexDirection="column">
       <Box flex="1">
         <Video />
       </Box>

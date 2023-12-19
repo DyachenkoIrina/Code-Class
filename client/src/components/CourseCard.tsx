@@ -1,23 +1,25 @@
 import React from 'react';
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Stack,
   Heading,
   Divider,
   Image,
-  Text,
-  ButtonGroup,
-  Button,
   UnorderedList,
   ListItem,
 } from '@chakra-ui/react';
 
-type Props = {};
+type Props = {
+  path: PathType;
+};
+type PathType = {
+  img: string;
+  name: string;
+  description: string[];
+};
 
-export default function CourseCard({ path }: Props) {
+export default function CourseCard({ path }: Props): JSX.Element {
   return (
     <Card border="2px solid" maxWidth="600px">
       <CardBody>

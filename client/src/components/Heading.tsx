@@ -1,12 +1,8 @@
 import React from 'react';
 import { Heading } from '@chakra-ui/react';
-import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { toggleModal } from '../redux/slices/modal/modalReducer';
 import '../index.css';
 
 export default function HeadingComponent(): JSX.Element {
-
-
   return (
     <>
       <Heading fontWeight="600">Школа программирования для детей</Heading>
