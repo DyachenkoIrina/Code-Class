@@ -4,6 +4,7 @@ const { Group, Teacher, TeacherGroup } = require("../../db/models");
 
 const teacherRouter = express.Router();
 
+
 teacherRouter.get("/:id", async (req, res) => {
   try {
     // const teacher = await Teacher.findByPk(req.params.id);

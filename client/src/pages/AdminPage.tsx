@@ -11,9 +11,10 @@ export default function UserSelector({}: Props) {
   const userList = useAppSelector((store) => store.adminSlice.userList);
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
   const groups = useAppSelector((state) => state.groupsSlice.groups)
+  const teacherToDelete = useAppSelector((state) => state.adminSlice.teacherToDelete)
   const dispatch = useAppDispatch()
   const [checkedItems, setCheckedItems] = React.useState([false, false])
-  console.log(teachers)
+  console.log('UFGHDVKDHEFBDHEFBDHFHDVBHVBDHVBDFHVBDFHBDFBH', teacherToDelete )
 
   const allChecked = checkedItems.every(Boolean)
   const isIndeterminate = checkedItems.some(Boolean) && !allChecked
