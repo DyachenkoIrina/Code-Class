@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {
-  thunkFilterStudentsLoad,
-  thunkOneStudentForTeacher,
-} from './thunkActions';
-import type { StudentsSliceState } from '../../../types/student';
+import { thunkFilterStudentsLoad, thunkgetOneStudentForTeacher } from './thunkActions';
+import type { StudentsSliceState } from '../../../types/auth';
 
 const initialState: StudentsSliceState = {
   students: [],
+  currentStudent: null,
 };
 
 export const studentssSlice = createSlice({
@@ -21,11 +19,11 @@ export const studentssSlice = createSlice({
     builder.addCase(thunkFilterStudentsLoad.fulfilled, (state, action) => {
       state.students = action.payload;
     });
-    builder.addCase(thunkOneStudentForTeacher.fulfilled, (state, action) => {
-      state.students = action.payload;
+    builder.addCase(thunkgetOneStudentForTeacher.fulfilled, (state, action) => {
+      state.currentStudent = action.payload;
     });
   },
 });
 
-// export const { setCurrentTask, clearCurrentTask, addFavoritesTask } = tasksSlice.actions;
+
 export default studentssSlice.reducer;

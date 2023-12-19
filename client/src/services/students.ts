@@ -4,7 +4,6 @@ import type { GroupType } from '../types/groups';
 
 export const apiStudentsServise = axios.create({
   baseURL: 'http://localhost:3001/api/v1/teacherlk',
-  // VITE_SERVER_BASEURL=http://localhost:3000/api/v1/
 });
 
 class StudentServise {
@@ -21,10 +20,11 @@ class StudentServise {
   }
 
   static async getOneStudentForTeacher(id: UserType['id']): Promise<UserType[]> {
-    const response = await apiStudentsServise.get<UserType[]>(`/studentsid/${id}`);
+    const response = await apiStudentsServise.get<UserType[]>(`/studentid/${id}`);
+    console.log('----->class one student', response);
+
     if (response.status === 200) return response.data;
     return [];
   }
-
 }
 export default StudentServise;

@@ -81,7 +81,7 @@ adminRouter.delete("/", async (req, res) => {
 adminRouter.get("/groups", async (req, res) => {
   try {
     const data = await Group.findAll();
-    console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", data);
+    // console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", data);
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });

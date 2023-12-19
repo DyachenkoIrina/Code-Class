@@ -1,4 +1,4 @@
-import { GroupType } from '../groups';
+import type { GroupType } from '../groups';
 
 export type UserType = {
   id: number;
@@ -44,6 +44,7 @@ export type SignupFormData = {
 
 export type StudentsSliceState = {
   students: UserType[];
+  currentStudent: UserType | null;
 };
 
 export type TeacherSliceState = {
