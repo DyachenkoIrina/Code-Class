@@ -13,7 +13,17 @@ import {
   TabPanels,
   Tab,
   TabPanel,
-  useColorModeValue
+  useColorModeValue,
+  Box,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
 } from '@chakra-ui/react';
 import { useAppSelector } from '../../redux/hook';
 
@@ -24,7 +34,7 @@ export default function QuestionContainer(): JSX.Element {
 
   const javascriptTasks = tasks.filter((task) => task.topicId === parseInt(id, 10));
 
-  console.log('---javascriptTasks---->', javascriptTasks);
+  console.log('----javascriptTasks----->', javascriptTasks);
 
   const colors = useColorModeValue(
     ['red.50', 'teal.50', 'blue.50'],
@@ -35,27 +45,49 @@ export default function QuestionContainer(): JSX.Element {
   const bg = colors[tabIndex];
 
   return (
-    <Card align="center">
-      <CardHeader>
-        <Tabs onChange={(index) => setTabIndex(index)} bg={bg}>
-          <TabList>
-            <Tab>Red</Tab>
-            <Tab>Teal</Tab>
-            <Tab>Blue</Tab>
-          </TabList>
-          <TabPanels p="2rem">
-            <TabPanel>{javascriptTasks[0]?.questions}</TabPanel>
-            <TabPanel>{javascriptTasks[1]?.questions}</TabPanel>
-            <TabPanel>{javascriptTasks[2]?.questions}</TabPanel>
-          </TabPanels>
-        </Tabs>
-      </CardHeader>
-      <CardBody>
-        <Text fontSize="4xl">{javascriptTasks[0]?.questions}</Text>
-      </CardBody>
-      <CardFooter>
-        <Button colorScheme="blue">View here</Button>
-      </CardFooter>
-    </Card>
+    <Tabs onChange={(index) => setTabIndex(index)}>
+      <Card align="center" position="relative">
+        <CardHeader>
+          <Box
+            position="sticky"
+            top="50px" // Здесь устанавливаем высоту для TabList, чтобы она оставалась под фиксированной навигацией
+            left="0"
+            width="100%"
+            p="2"
+            bg={bg}
+            zIndex="1"
+            overflow="hidden"
+          >
+            <TabList>
+              {javascriptTasks.map((task, index) => (
+                <Tab key={index}>{task?.title}</Tab>
+              ))}
+            </TabList>
+          </Box>
+        </CardHeader>
+        <TabPanels p="2rem" marginTop="50px">
+          {javascriptTasks.map((task, index) => (
+            <TabPanel key={index} fontSize="3xl" fontFamily="monospace">
+              {task?.questions}
+              <Popover isLazy>
+                <PopoverTrigger>
+                  <Button>Посмотреть подсказку</Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverHeader fontWeight="semibold">
+                    Постарайся решать задачи без подсказок{' '}
+                  </PopoverHeader>
+                  <PopoverArrow />
+                  <PopoverCloseButton />
+
+                  <PopoverBody>{task?.answer}</PopoverBody>
+                </PopoverContent>
+              </Popover>
+            </TabPanel>
+          ))}
+        </TabPanels>
+        <CardFooter />
+      </Card>
+    </Tabs>
   );
 }

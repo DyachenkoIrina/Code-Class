@@ -81,7 +81,7 @@ console.log('>>>>App>>>>>>user', user)
             }
           >
             <Route path="/adminlk" element={<AdminPage />} />
-          </Route>
+          {/* </Route>  */}
         </Routes>
   
         <Footer />

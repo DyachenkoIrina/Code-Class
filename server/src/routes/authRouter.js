@@ -11,6 +11,7 @@ const authRouter = express.Router();
 authRouter.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
 
     const user = await User.findOne({ where: { email } });
     const teacher = await Teacher.findOne({ where: { email } });
