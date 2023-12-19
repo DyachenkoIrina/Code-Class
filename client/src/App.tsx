@@ -24,14 +24,13 @@ import './index.css';
 import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
 import HomeWork from './pages/HomeWork';
 import MainPageFlex from './pages/MainPageFlex';
+import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    void dispatch(thunkGroupsLoad());
-
-
+   // void dispatch(thunkGroupsLoad());
     void dispatch(thunkLoadHomeWork());
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
@@ -44,7 +43,7 @@ function App(): JSX.Element {
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
 
 
-  console.log('HEHEHEHEHEHEHEHE', groups)
+
   const theme = extendTheme({
     colors: {
       brand: {
@@ -61,7 +60,7 @@ function App(): JSX.Element {
   return (
     <>
       <SaasProvider>
-        {/* <SideBar /> */}
+        <SideBar />
 
       </SaasProvider>
       <Container class="logo_wrapper">
@@ -86,6 +85,7 @@ function App(): JSX.Element {
             }
           >
             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+            <Route path="/teacherlk/studentid/:id" element={<TeacherAccountPageSt />} />
           </Route>
           <Route
             element={

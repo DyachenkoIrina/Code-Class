@@ -35,5 +35,5 @@ topicRouter.get("/", async (req, res) => {
 //     res.status(400).json({ message });
 //   }
 
-});
+// });
 module.exports = topicRouter;

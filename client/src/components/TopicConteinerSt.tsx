@@ -10,7 +10,7 @@ export default function TopicContainerSt(): JSX.Element {
 
   return (
     <Container
-      maxW="900px"
+      // maxW="900px"
       bg="#D7E8D7"
       border="2px solid gray"
       borderRadius="25px"

@@ -29,7 +29,7 @@ class AdminService {
 
   static async getGroups(): Promise<GroupType[]> {
     const response = await apiAdminService.get<GroupType[]>('/groups');
-    console.log(response.data, 'HAHAHAHHAAHHAHAHAHAHAHAHAHAH')
+    // console.log(response.data, 'HAHAHAHHAAHHAHAHAHAHAHAHAHAH')
     if (response.status === 200) return response.data;
     return [];
   }

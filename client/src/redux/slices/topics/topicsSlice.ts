@@ -17,9 +17,9 @@ export const topicsSlice = createSlice({
     builder.addCase(thunkLoad.fulfilled, (state, action: PayloadAction<TopicType>) => {
       state.topics = action.payload;
     });
-    builder.addCase(thunkAddFavoriteTopic.fulfilled, (state, action: PayloadAction<TopicType>) => {
-      state.favoritesTopic = action.payload;
-    });
+    // builder.addCase(thunkAddFavoriteTopic.fulfilled, (state, action: PayloadAction<TopicType>) => {
+    //   state.favoritesTopic = action.payload;
+    // });
   },
 });
 

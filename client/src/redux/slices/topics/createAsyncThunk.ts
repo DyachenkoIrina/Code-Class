@@ -7,9 +7,9 @@ const thunkLoad = createAsyncThunk('topicsSlice/thunkLoad', async () => {
   return response;
 });
 
-const thunkAddFavoriteTopic=createAsyncThunk('topicsSlice/thunkAddFavoriteTopic', async (id: TopicType['id'])=>{
-  const response = await TopicsService.AddFavoriteTopics(id);
-  return response;
-})
+// const thunkAddFavoriteTopic=createAsyncThunk('topicsSlice/thunkAddFavoriteTopic', async (id: TopicType['id'])=>{
+//   const response = await TopicsService.AddFavoriteTopics(id);
+//   return response;
+// })
 
 export default thunkLoad;

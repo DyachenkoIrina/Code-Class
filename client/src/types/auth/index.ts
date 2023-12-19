@@ -7,6 +7,7 @@ export type UserType = {
   email: string;
   role?: string;
   groupId: number;
+  lastName: string;
 };
 
 export type TeacherType = {

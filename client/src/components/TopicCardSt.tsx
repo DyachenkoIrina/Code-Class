@@ -8,12 +8,12 @@ import {
   Button,
   Image,
   Text,
+  Link,
 } from '@chakra-ui/react';
-import type { TopicType } from '../../types/topics/index';
+import type { TopicType } from '../types/topics';
 
 type TopicTypeProps = {
   topic: TopicType;
-
 };
 
 export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
@@ -36,7 +36,7 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
         maxH="250px"
         // width="300px" // Установите ширину изображения
         // height="200px" // Установите высоту изображения
-        src={topic.img}
+        src={topic?.img}
         alt="Caffe Latte"
       />
       <Stack>
@@ -45,11 +45,7 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
           <Text py="3">{topic.description}</Text>
         </CardBody>
         <CardFooter>
-          <Button
-            onClick={() => (window.location.href = `/student/task/${topic.id}`)}
-            variant="solid"
-            colorScheme="blue"
-          >
+          <Button as={Link} to={`/student/task/${topic?.id}`}>
             Дать задание ученику!
           </Button>
         </CardFooter>
