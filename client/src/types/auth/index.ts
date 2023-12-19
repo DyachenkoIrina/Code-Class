@@ -5,7 +5,7 @@ export type UserType = {
   profileImage?: string;
   name: string;
   email: string;
-  role?: string;
+  role: string;
   groupId: number;
   lastName: string;
 };
@@ -16,20 +16,22 @@ export type TeacherType = {
   name: string;
   email: string;
   role?: string;
+  teacherId: number;
 };
 
 export type BackendAuth = { user: UserType; accessToken: string };
 
 export type UserState =
-  | { status: 'pending' }
-  | { status: 'guest' }
-  | ({ status: 'authenticated' } & UserType & TeacherType);
+  | ({ status: 'pending' } & UserType & TeacherType & { id: number })
+  | ({ status: 'guest' } & UserType & TeacherType & { id: number })
+  | ({ status: 'authenticated' } & UserType & TeacherType & { id: number });
 
 // Redux Slice State
 export type AuthState = {
   user: UserState;
   accessToken: string;
   teacher: UserState;
+  id: number;
 };
 
 export type LoginFormData = {
