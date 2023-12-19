@@ -6,7 +6,7 @@ import LoginFormModal from './forms/LoginFormModal';
 import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
-import { thunkGroupsLoad, thunkTeacherGroups } from './redux/slices/groups/thunkActions';
+import {  thunkTeacherGroups } from './redux/slices/groups/thunkActions';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
 import { useAppDispatch, useAppSelector } from './redux/hook';
@@ -23,14 +23,14 @@ import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    void dispatch(thunkGroupsLoad());
+  //  void dispatch(thunkGroupsLoad());
     
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
     void dispatch(thunkLoadTask());
     void dispatch(thunkUsersLoad());
-    void dispatch(thunkTeacherGroups());
+    // void dispatch(thunkTeacherGroups());
   }, []);
 
   const theme = extendTheme({
