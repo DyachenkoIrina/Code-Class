@@ -20,6 +20,7 @@ import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import AdminPage from './pages/AdminPage';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
+import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -40,7 +41,7 @@ function App(): JSX.Element {
   }, []);
 
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
-  console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++", teachers)
+  // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++", teachers)
 
   const theme = extendTheme({
     colors: {
@@ -52,7 +53,8 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
-
+  const teacher = useAppSelector((store) => store.authSlice.teacher);
+console.log('>>>App>>>>>>>teacher', teacher)
 
   return (
     <>
@@ -74,6 +76,7 @@ function App(): JSX.Element {
               <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
             </Route> */}
              <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
             {/* <Route
               element={
                 <PrivateRouter

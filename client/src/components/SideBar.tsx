@@ -39,9 +39,9 @@ export default function SideBar(): JSX.Element {
     return state.authSlice.teacher?.id
   });
 
-  console.log('---sidebar----teacher', idTeacher);
+  // console.log('---sidebar----teacher', idTeacher);
 
-  console.log('----sidebar------user', user);
+  // console.log('----sidebar------user', user);
 
   const navigate = useNavigate();
   return (
