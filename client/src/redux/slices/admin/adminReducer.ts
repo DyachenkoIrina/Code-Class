@@ -35,7 +35,7 @@ export const adminSlice = createSlice({
     setTeacherToDelete:(state, action) => {
       state.teacherToDelete = action.payload
     },
-    clearTeacherToDelete:(state, action) => {
+    clearTeacherToDelete:(state) => {
       state.teacherToDelete = null;
     }
   },
