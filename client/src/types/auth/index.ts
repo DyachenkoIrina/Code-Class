@@ -1,4 +1,4 @@
-import { GroupType } from '../groups';
+import type { GroupType } from '../groups';
 
 export type UserType = {
   id: number;

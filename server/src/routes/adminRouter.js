@@ -1,5 +1,5 @@
 const express = require("express");
-const { User, Group, TeacherGroup } = require("../../db/models");
+const { User, Group, TeacherGroup, Teacher } = require("../../db/models");
 const { Op } = require("sequelize");
 const e = require("express");
 
@@ -21,6 +21,14 @@ adminRouter.get("/", async (req, res) => {
   }
 });
 
+adminRouter.get("/groups", async (req, res) => {
+  try {
+    const data = await Group.findAll();
+    res.status(200).json(data);
+  } catch ({ message }) {
+    res.status(400).json({ message });
+  }
+});
 
 
 adminRouter.post("/", async (req, res) => {
@@ -74,8 +82,10 @@ adminRouter.post("/", async (req, res) => {
   }
 });
 
-adminRouter.delete("/", async (req, res) => {
-  console.log(req.body)
+adminRouter.delete("/:id", async (req, res) => {
+  await TeacherGroup.destroy({ where: { teacherId: req.params.id } });
+  await Teacher.destroy({ where: { id: req.params.id } });
+  res.sendStatus(200);
 });
 
 adminRouter.get("/groups", async (req, res) => {
