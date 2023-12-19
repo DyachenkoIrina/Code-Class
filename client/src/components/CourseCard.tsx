@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Divider, Image, Text, ButtonGroup, Button, UnorderedList, ListItem } from '@chakra-ui/react'
 
-type Props = {}
 
 export default function CourseCard({ path }: Props) {
   return (

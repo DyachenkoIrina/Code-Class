@@ -38,7 +38,6 @@ function App(): JSX.Element {
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
 
 
-  console.log('HEHEHEHEHEHEHEHE', groups)
   const theme = extendTheme({
     colors: {
       brand: {
@@ -50,7 +49,6 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-console.log('>>>App>>>>>>>teacher', teacher)
 
   return (
     <>
@@ -62,16 +60,16 @@ console.log('>>>App>>>>>>>teacher', teacher)
         <Container>
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route
+            {/* <Route
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
                 />
               }
-            >
+            > */}
               <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
 
-            </Route> */}
+            {/* </Route>  */}
              <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
              <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
             {/* <Route
@@ -86,15 +84,15 @@ console.log('>>>App>>>>>>>teacher', teacher)
             </Route>
              {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
             <Route path="/student/task/:id" element={<TaskPage />} />
-            <Route
+            {/* <Route
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
                 />
               }
-            >
+            > */}
               <Route path="/adminlk" element={<AdminPage />} />
-            </Route>
+            {/* </Route> */}
             {/* <Route path="/adminlk" element={<AdminPage />} /> */}
           </Routes>
 

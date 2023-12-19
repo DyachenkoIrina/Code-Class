@@ -16,7 +16,6 @@ export const thunkgetOneStudentForTeacher = createAsyncThunk(
   'teachersSlise/thunkgetOneStudentForTeacher',
   async (id: UserType['id']) => {
     const res = await StudentServise.getOneStudentForTeacher(id);
-    console.log('-->thunk currenStudent', res);
     return res;
   },
 );
