@@ -26,7 +26,7 @@ export default function DeleteTeacherModal(teacher) {
         <AlertDialog
           isOpen={!!teacherToDelete}
           leastDestructiveRef={cancelRef}
-          onClose={dispatch(clearTeacherToDelete())}
+          onClose={() => dispatch(clearTeacherToDelete())}
         >
           <AlertDialogOverlay>
             <AlertDialogContent>
@@ -37,7 +37,7 @@ export default function DeleteTeacherModal(teacher) {
                 Вы уверены? Вы не сможете отменить действие после удаления.
               </AlertDialogBody>
               <AlertDialogFooter>
-                <Button ref={cancelRef} onClick={onClose}>
+                <Button ref={cancelRef} onClick={() => dispatch(clearTeacherToDelete())}>
                   Отменить
                 </Button>
                 <Button colorScheme='red' onClick={onClose} ml={3}>

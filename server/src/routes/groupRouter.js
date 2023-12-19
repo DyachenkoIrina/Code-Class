@@ -4,14 +4,15 @@ const { Group, TeacherGroup, Teacher } = require("../../db/models");
 const groupRouter = express.Router();
 
 groupRouter.get("/", async (req, res) => {
-
   try {
     const data = await Teacher.findAll({
-        include: {
-          model: Group,
-        },
-      });
-
+      include: {
+        model: Group,
+      },
+      order: [
+        ['name', 'ASC'], // Sort by teacher's name in ascending order
+      ],
+    });
 
     res.status(200).json(data);
   } catch (error) {
