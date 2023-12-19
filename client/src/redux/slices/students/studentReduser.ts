@@ -24,7 +24,7 @@ export const studentssSlice = createSlice({
       });
     },
   });
-  console.log('studentssSlice',studentssSlice)
+
 
 
 export default studentssSlice.reducer;

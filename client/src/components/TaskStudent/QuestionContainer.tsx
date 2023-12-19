@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import {
   Card,
   CardHeader,
-  CardBody,
   CardFooter,
-  Heading,
-  Text,
   Button,
   Tabs,
   TabList,
@@ -20,22 +16,12 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
 } from '@chakra-ui/react';
-import { useAppSelector } from '../../redux/hook';
+import type { TasksState } from '../../types/task';
 
-export default function QuestionContainer(): JSX.Element {
-  const tasks = useAppSelector((state) => state.tasks.tasks);
-
-  const { id } = useParams();
-
-  const javascriptTasks = tasks.filter((task) => task.topicId === parseInt(id, 10));
-
-
-
+export default function QuestionContainer({ tasks }: TasksState): JSX.Element {
   const colors = useColorModeValue(
     ['red.50', 'teal.50', 'blue.50'],
     ['red.900', 'teal.900', 'blue.900'],
@@ -59,14 +45,14 @@ export default function QuestionContainer(): JSX.Element {
             overflow="hidden"
           >
             <TabList>
-              {javascriptTasks.map((task, index) => (
+              {tasks.map((task, index) => (
                 <Tab key={index}>{task?.title}</Tab>
               ))}
             </TabList>
           </Box>
         </CardHeader>
         <TabPanels p="2rem" marginTop="50px">
-          {javascriptTasks.map((task, index) => (
+          {tasks.map((task, index) => (
             <TabPanel key={index} fontSize="3xl" fontFamily="monospace">
               {task?.questions}
               <Popover isLazy>

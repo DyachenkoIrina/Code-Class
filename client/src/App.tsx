@@ -18,9 +18,11 @@ import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import AdminPage from './pages/AdminPage';
+import { thunkLoadHomeWork } from './redux/slices/homeWork/createAsyncThunk';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
 import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
+import HomeWork from './pages/HomeWork';
 import MainPageFlex from './pages/MainPageFlex';
 
 function App(): JSX.Element {
@@ -28,6 +30,9 @@ function App(): JSX.Element {
 
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
+
+
+    void dispatch(thunkLoadHomeWork());
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -51,12 +56,12 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-console.log('>>>App>>>>>>>teacher', teacher)
+
 
   return (
     <>
       <SaasProvider>
-        <SideBar />
+        {/* <SideBar /> */}
 
       </SaasProvider>
       <Container class="logo_wrapper">
@@ -92,6 +97,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
             <Route path="/studentlk" element={<StudentAccountPage />} />
           </Route>
           <Route path="/student/task/:id" element={<TaskPage />} />
+          <Route path="/homework" element={<HomeWork />} />
           <Route
             element={
               <PrivateRouter

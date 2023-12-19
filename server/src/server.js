@@ -11,6 +11,7 @@ const tasksRouter = require("./routes/tasksRouter");
 const apiUsersRouter = require("./routes/apiUserRouter");
 const adminRouter = require("./routes/adminRouter");
 const groupRouter = require("./routes/groupRouter");
+const homeworkRouter = require("./routes/homeWork");
 
 require("dotenv").config();
 
@@ -37,6 +38,7 @@ app.use("/api/v1/tokens", tokensRouter);
 app.use("/api/v1/groupRouter", groupRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/users", apiUsersRouter);
+app.use("/api/v1/homework", homeworkRouter);
 
 
 
