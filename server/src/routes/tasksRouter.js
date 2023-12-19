@@ -12,6 +12,7 @@ tasksRouter.get("/", async (req, res) => {
   }
 });
 
+
 tasksRouter.post("/", async (req, res) => {
   try {
     const { studentWork, user } = req.body;
@@ -22,13 +23,12 @@ tasksRouter.post("/", async (req, res) => {
         .json({ message: "Text is required in the request body!!!!!" });
     }
 
-    const createdHomework = await Homework.create({
+    await Homework.create({
       checkWork: studentWork,
       // status: "Pending",
       userId: user.id,
     });
 
-    // console.log("----createdHomework---->", createdHomework);
     return res.sendStatus(201);
   } catch (error) {
     console.error("Error:", error);

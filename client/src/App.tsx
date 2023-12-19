@@ -18,9 +18,11 @@ import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import AdminPage from './pages/AdminPage';
+import { thunkLoadHomeWork } from './redux/slices/homeWork/createAsyncThunk';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
 import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
+import HomeWork from './pages/HomeWork';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -31,7 +33,7 @@ function App(): JSX.Element {
     void dispatch(thunkGroupsLoad());
 
 
-
+    void dispatch(thunkLoadHomeWork());
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -54,16 +56,16 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-console.log('>>>App>>>>>>>teacher', teacher)
+
 
   return (
     <>
       <SaasProvider>
-        <SideBar />
+        {/* <SideBar /> */}
 
       </SaasProvider>
       <ChakraProvider theme={theme}>
-        <Container>
+        {/* <Container> */}
           <Routes>
             <Route path="/" element={<MainPage />} />
             {/* <Route
@@ -88,6 +90,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
             </Route> */}
              <Route path="/studentlk" element={<StudentAccountPage />} />
             <Route path="/student/task/:id" element={<TaskPage />} />
+            <Route path="/homework" element={<HomeWork />} />
             {/* <Route
               element={
                 <PrivateRouter
@@ -102,7 +105,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
 
           <Footer />
           <LoginFormModal />
-        </Container>
+        {/* </Container> */}
       </ChakraProvider>
     </>
   );

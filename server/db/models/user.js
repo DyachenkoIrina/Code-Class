@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Group, Homework, Task }) {
       // define association here
       // this.belongsTo(Group, { foreignKey: "groupId" });
-      this.hasMany(Homework, { foreignKey: "userId" });
+      // this.hasMany(Homework, { foreignKey: "userId" });
       // this.belongsToMany(Task, {
       //   through: "Homework",
       //   foreignKey: "userId",
