@@ -1,19 +1,83 @@
 const express = require("express");
-const { User, Group } = require("../../db/models");
+const { User, Group, TeacherGroup } = require("../../db/models");
+const { Op } = require("sequelize");
+const e = require("express");
 
 const adminRouter = express.Router();
 
 adminRouter.get("/", async (req, res) => {
-    try {
-        const data = await User.findAll({
-          include: {
-            model: Group          },
-        });
-        res.status(200).json(data);
-      } catch ({ message }) {
+  try {
+    const data = await User.findAll({
+      include: {
+        model: Group,
+      },
+      order: [
+        ["name", "ASC"], 
+      ],
+    });
+    res.status(200).json(data);
+  } catch ({ message }) {
     res.status(400).json({ message });
   }
 });
+
+
+
+adminRouter.post("/", async (req, res) => {
+  try {
+    const groupNamesToFind = req.body.Groups.map((el) => el.name);
+    const groups = await Group.findAll({
+      attributes: ['id', 'group'],
+      where: {
+        group: {
+          [Op.in]: groupNamesToFind,
+        },
+      },
+    });
+
+    const groupss = groups.map((el) => el.dataValues);
+
+    for (let i = 0; i < req.body.Groups.length; i++) {
+      req.body.Groups[i].id = groupss[i].id;
+    }
+
+    const trueGroups = req.body.Groups.filter((el) => el.manages === true);
+
+    console.log(trueGroups);
+
+    // Assuming TeacherGroup has a model associated with it
+    await TeacherGroup.destroy({
+      where: {
+        teacherId: req.body.id,
+      },
+    });
+
+    const createTeacherGroupRows = async () => {
+      const createPromises = trueGroups.map(async (el) => {
+        if (el.manages) {
+          await TeacherGroup.create({
+            teacherId: req.body.id,
+            groupId: el.id,
+          });
+        }
+      });
+
+      await Promise.all(createPromises);
+    };
+
+    await createTeacherGroupRows();
+
+    res.status(200).json({ message: 'Operation successful' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+adminRouter.delete("/", async (req, res) => {
+  console.log(req.body)
+});
+
 
 
 module.exports = adminRouter;
