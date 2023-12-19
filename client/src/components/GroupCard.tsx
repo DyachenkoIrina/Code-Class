@@ -26,7 +26,7 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
         <CardBody
           w="100%"
           h="200px"
-          bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
+          bgGradient="linear(to-r, #C1FFBC, #D9D0FF, #D7E8D7)"
           sx={{ display: 'flex', justifyContent: 'space-between' }}
         >
           <Button

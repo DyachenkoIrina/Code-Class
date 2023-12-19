@@ -37,13 +37,14 @@ export default function NewTaskFormModal(): JSX.Element {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
           void dispatch(thunkTaskAdd(formData));
+          dispatch(newTaskModal());
         }}
       >
         <ModalOverlay />
         <ModalContent
-          w="900"
+          w="500"
           h="auto"
-          bgGradient="linear(to-r, gray.300, yellow.400, pink.200)"
+          bgGradient="linear(to-r, #C1FFBC, #D9D0FF, #D7E8D7)"
           sx={{
             marginTop: '150px',
           }}

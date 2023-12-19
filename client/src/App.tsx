@@ -47,24 +47,28 @@ function App(): JSX.Element {
 // console.log('>>>App>>>>>>>teacher', teacher)
 
 console.log('>>>>App>>>>>>user', user)
-  return (
-    <Container>
-      <ChakraProvider theme={theme}>
-        <SaasProvider>
-          <SideBar />
-        </SaasProvider>
-  
+return (
+  <Container>
+    <ChakraProvider theme={theme}>
+      <SaasProvider>
+        <SideBar />
+
         <Routes>
           <Route path="/" element={<MainPage />} />
+
+         
           {/* <Route
             element={
               <PrivateRouter
                 isAllowed={user.status === 'authenticated' && user?.role === 'Teacher'}
               />
             }
-          > */}
+          >
             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-          {/* </Route> */}
+          </Route>
+          */}
+<Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+
           <Route
             element={
               <PrivateRouter
@@ -74,21 +78,26 @@ console.log('>>>>App>>>>>>user', user)
           >
             <Route path="/studentlk" element={<StudentAccountPage />} />
           </Route>
+          
           <Route path="/student/task/:id" element={<TaskPage />} />
+
           <Route
             element={
-              <PrivateRouter isAllowed={user.status === 'authenticated' && user?.role === 'Admin'} />
+              <PrivateRouter
+                isAllowed={user.status === 'authenticated' && user?.role === 'Admin'}
+              />
             }
           >
             <Route path="/adminlk" element={<AdminPage />} />
-          {/* </Route>  */}
+          </Route>
         </Routes>
-  
+
         <Footer />
         <LoginFormModal />
-      </ChakraProvider>
-    </Container>
-  );
+      </SaasProvider>
+    </ChakraProvider>
+  </Container>
+);
 }
 
 export default App;
