@@ -14,7 +14,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { closeModal, registrModal } from '../redux/slices/modal/modalReducer';
+import { registrModal } from '../redux/slices/modal/modalReducer';
 import { thunkSignup } from '../redux/slices/auth/createAsyncThunks';
 
 export default function ModalFromRegistration(): JSX.Element {

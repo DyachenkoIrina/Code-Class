@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ChakraProvider, Container, Image, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, Container, Image } from '@chakra-ui/react';
 import { SaasProvider } from '@saas-ui/react';
 import LoginFormModal from './forms/LoginFormModal';
-import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
 import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
-import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
+import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
-import YandexMap from './components/YandexMap';
+
 import { useAppDispatch, useAppSelector } from './redux/hook';
 import thunkLoad from './redux/slices/topics/createAsyncThunk';
 import StudentAccountPage from './pages/StudentAccountPage';
@@ -18,16 +17,16 @@ import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import AdminPage from './pages/AdminPage';
-import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
+
 import './index.css';
-import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
+
 import MainPageFlex from './pages/MainPageFlex';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    void dispatch(thunkGroupsLoad());
+    // void dispatch(thunkGroupsLoad());
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -36,32 +35,30 @@ function App(): JSX.Element {
     void dispatch(thunkTeacherGroups());
   }, []);
 
-  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
+  // const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
 
-
-  console.log('HEHEHEHEHEHEHEHE', groups)
-  const theme = extendTheme({
-    colors: {
-      brand: {
-        100: 'black',
-        900: '#1a202c',
-      },
-    },
-  });
+  // console.log('HEHEHEHEHEHEHEHE', groups)
+  // const theme = extendTheme({
+  //   colors: {
+  //     brand: {
+  //       100: 'black',
+  //       900: '#1a202c',
+  //     },
+  //   },
+  // });
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-console.log('>>>App>>>>>>>teacher', teacher)
+  console.log('>>>App>>>>>>>teacher', teacher);
 
   return (
     <>
       <SaasProvider>
         <SideBar />
-
       </SaasProvider>
-      <Container class="logo_wrapper">
+      <Container className="logo_wrapper">
         {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
-        <Image class="logo" src="../../public/Logo.png" alt="Dan Abramov" />
+        <Image className="logo" src="../../public/Logo.png" alt="Dan Abramov" />
 
         <p className="text">
           Урок длится 60 минут Вы сможете познакомиться с преподавателем и понаблюдать за тем, как
@@ -70,7 +67,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
         </p>
       </Container>
 
-      <ChakraProvider theme={theme}>
+      <ChakraProvider>
         <Routes>
           <Route path="/" element={<MainPageFlex />} />
           <Route
@@ -111,4 +108,3 @@ console.log('>>>App>>>>>>>teacher', teacher)
 }
 
 export default App;
-

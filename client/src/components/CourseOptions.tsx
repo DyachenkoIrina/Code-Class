@@ -3,7 +3,7 @@ import React from 'react';
 import CourseCard from './CourseCard';
 import '../index.css';
 
-export default function CourseOptions({}: Props) {
+export default function CourseOptions(): JSX.Element {
   const learningPaths = [
     {
       img: 'https://static.tildacdn.com/tild3437-6464-4461-a664-636635356432/photo.png',
@@ -55,10 +55,10 @@ export default function CourseOptions({}: Props) {
           High
         </Tab>
       </TabList>
-      <TabPanels width="500px" align="center">
+      <TabPanels width="500px">
         {learningPaths.map((path) => (
           <TabPanel>
-            <CourseCard class="course_card" path={path} />
+            <CourseCard  path={path} />
           </TabPanel>
         ))}
       </TabPanels>
