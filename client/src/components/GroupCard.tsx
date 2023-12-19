@@ -19,7 +19,6 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
     void dispatch(thunkFilterStudentsLoad(group.groupId));
     onOpen();
   };
-  console.log('11111111', group);
   return (
     <>
       <Card sx={{ height: '70px', maxWidth: 340, marginBottom: '10px' }}>

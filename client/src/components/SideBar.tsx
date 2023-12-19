@@ -35,12 +35,11 @@ export default function SideBar(): JSX.Element {
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
   const idTeacher = useAppSelector((state) => {
+
     return state.authSlice.teacher?.id
   });
 
-  // console.log('---sidebar----teacher', idTeacher);
 
-  // console.log('----sidebar------user', user);
 
   const navigate = useNavigate();
   return (
@@ -56,7 +55,7 @@ export default function SideBar(): JSX.Element {
           transition="width"
           transitionDuration="normal"
           width={isOpen ? '260px' : '14'}
-          height="226vh"
+          height="285vh"
           minWidth="auto"
           zIndex="1"
         >

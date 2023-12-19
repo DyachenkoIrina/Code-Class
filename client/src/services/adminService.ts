@@ -13,15 +13,23 @@ class AdminService {
   }
   
   static async changeGroupManage(selectedTeacher) {
-    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO', selectedTeacher)
+  
     const response = await apiAdminService.post('/', selectedTeacher);
     if (response.status === 200) return response.data;
     return [];
   }
 
   static async deleteTeacher(teacherToDelete) {
-    console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO', teacher)
-    const response = await apiAdminService.delete('/', teacher);
+    console.log('||||||||||||||||||||||||||||||||||||||||||||', teacherToDelete)
+    const response = await apiAdminService.delete(`${teacherToDelete.id}`);
+    console.log('///////////////////////////////////////////////////////())()()()(()()()()()()()()()', response)
+    if (response.status === 200) return teacherToDelete.id;
+    return [];
+  }
+
+  static async getGroups(): Promise<GroupType[]> {
+    const response = await apiAdminService.get<GroupType[]>('/groups');
+    console.log(response.data, 'HAHAHAHHAAHHAHAHAHAHAHAHAHAH')
     if (response.status === 200) return response.data;
     return [];
   }

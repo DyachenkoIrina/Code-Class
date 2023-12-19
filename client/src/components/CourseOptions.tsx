@@ -44,15 +44,21 @@ export default function CourseOptions({}: Props) {
 
   return (
     <Tabs isFitted variant="enclosed">
-      <TabList mb="1em">
-        <Tab _hover={{ background: '#D7E8D7' }}>Junior</Tab>
-        <Tab _hover={{ background: '#D7E8D7' }}>Middle</Tab>
-        <Tab _hover={{ background: '#D7E8D7' }}>High</Tab>
+      <TabList width="100%" mb="1em">
+        <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+          Junior
+        </Tab>
+        <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+          Middle
+        </Tab>
+        <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+          High
+        </Tab>
       </TabList>
-      <TabPanels align="center">
+      <TabPanels width="500px" align="center">
         {learningPaths.map((path) => (
           <TabPanel>
-            <CourseCard path={path} />
+            <CourseCard class="course_card" path={path} />
           </TabPanel>
         ))}
       </TabPanels>

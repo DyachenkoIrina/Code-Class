@@ -8,7 +8,9 @@ export const apiGroupServise = axios.create({
 
 class teacherGroupService {
   static async getTeacherGroups() {
+ 
     const response = await apiGroupServise.get('/');
+    
     if (response.status === 200) return response.data;
     return [];
   }
