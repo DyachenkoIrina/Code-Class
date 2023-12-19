@@ -48,12 +48,16 @@ export default function SideBar(): JSX.Element {
     <AppShell
       sidebar={
         <Sidebar
+          borderTopLeftRadius="20px"
+          borderBottomLeftRadius="20px"
+          backgroundColor="#D9D0FF"
+          // position="fixed"
           toggleBreakpoint={false}
           variant={isOpen ? 'default' : 'compact'}
           transition="width"
           transitionDuration="normal"
           width={isOpen ? '260px' : '14'}
-          height="100vh"
+          height="226vh"
           minWidth="auto"
           zIndex="1"
         >
