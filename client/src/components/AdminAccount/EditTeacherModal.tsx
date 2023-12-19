@@ -21,11 +21,10 @@ export default function EditTeacherModal(): JSX.Element {
 
   const dispatch = useAppDispatch();
   console.log(selectedTeacher)
-
-  const handleCheckboxChange = (group, id) => {
-    console.log(group, id)
+  const handleCheckboxChange = (group, id): void => {
+    
     dispatch(changeCheckbox({selectedTeacher, group, id}))
-    console.log(selectedTeacher)
+    
   };
 
 

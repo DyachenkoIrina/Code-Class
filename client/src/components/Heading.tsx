@@ -5,7 +5,7 @@ import { toggleModal } from '../redux/slices/modal/modalReducer';
 import '../index.css';
 
 export default function HeadingComponent(): JSX.Element {
-  const dispatch = useAppDispatch();
+
 
   return (
     <>

@@ -34,7 +34,7 @@ export default function QuestionContainer(): JSX.Element {
 
   const javascriptTasks = tasks.filter((task) => task.topicId === parseInt(id, 10));
 
-  console.log('----javascriptTasks----->', javascriptTasks);
+
 
   const colors = useColorModeValue(
     ['red.50', 'teal.50', 'blue.50'],
