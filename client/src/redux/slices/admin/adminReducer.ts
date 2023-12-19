@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { GroupsSliceState } from "../../../types/groups";
 import { thunkDeleteTeacher, thunkGroupsLoad, thunkUsersLoad } from "./thunkActionsAdmin";
-import { AdminSliceState } from "../../../types/admin";
+import type{ AdminSliceState } from "../../../types/admin";
 
 
 const initialState: AdminSliceState = {

@@ -1,13 +1,22 @@
-import { FormControl} from '@chakra-ui/react';
+import { Center, FormControl } from '@chakra-ui/react';
 import React from 'react';
-import TopicContainer from '../components/StudentAccount/TopicContainer';
+
 import ProfileContainerSt from '../components/ProfileContainerSt';
+import TopicContainerSt from '../components/TopicConteinerSt';
 
 export default function TeacherAccountFormSt(): JSX.Element {
   return (
-    <FormControl sx={{width: '1400px', }} >
-    <TopicContainer />
-    <ProfileContainerSt />
-    </FormControl>
+    <Center>
+      <FormControl
+        sx={{
+          display: 'flex',
+          gap: '20px',
+          margin:'70px'
+        }}
+      >
+        <ProfileContainerSt />
+        <TopicContainerSt />
+      </FormControl>
+    </Center>
   );
 }
