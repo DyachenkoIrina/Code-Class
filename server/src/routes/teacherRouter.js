@@ -30,13 +30,13 @@ teacherRouter.get("/students/:id", async (req, res) => {
   }
 });
 
-// teacherRouter.get("/studentid/:id", async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const data = await User.findByPk(id);
-//     res.status(200).json(data);
-//   } catch ({ message }) {
-//     res.status(400).json({ message });
-//   }
-// });
+teacherRouter.get("/studentid/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = await User.findByPk(id);
+    res.status(200).json(data);
+  } catch ({ message }) {
+    res.status(400).json({ message });
+  }
+});
 module.exports = teacherRouter;
