@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import TopicsService from '../../../services/topics/topicsServices';
-import { TopicType } from '../../../types/topics';
+import type { TopicType } from '../../../types/topics';
 
 const thunkLoad = createAsyncThunk('topicsSlice/thunkLoad', async () => {
   const response = await TopicsService.getTopics();

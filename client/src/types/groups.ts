@@ -15,5 +15,4 @@ groups: GroupType[];
 export type GroupsSliceState = {
   groups: GroupType[];
   teacherGroups: TeacherGroupType[]
-  teacherToDelete:
-};
+}

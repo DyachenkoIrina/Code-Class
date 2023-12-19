@@ -11,7 +11,7 @@ export type UserType = {
 
 export type TeacherType = {
   id: number;
-  avatar?: string;
+  profileImage?: string;
   name: string;
   email: string;
   role?: string;
