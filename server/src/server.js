@@ -34,7 +34,7 @@ app.use("/api/v1/adminlk", adminRouter);
 app.use("/api/v1/teacherlk", teacherRouter);
 app.use("/api/v1/task", tasksRouter);
 app.use("/api/v1/tokens", tokensRouter);
-app.use("/api//v1/groupRouter", groupRouter);
+app.use("/api/v1/groupRouter", groupRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/users", apiUsersRouter);
 

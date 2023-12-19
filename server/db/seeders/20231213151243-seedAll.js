@@ -66,6 +66,14 @@ module.exports = {
           groupId: 2,
         },
         {
+          name: "Lando Norris",
+          profileImage:
+            "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/norris.jpg.img.1536.high.jpg",
+          email: "lando@",
+          hashpass: hashSync("1", 10),
+          role: "Teacher",
+        },
+        {
           name: "Nacho",
           lastName: "Varga",
           profileImage:
@@ -92,7 +100,7 @@ module.exports = {
       [
         {
           name: "Max Verstappen",
-          avatar:
+          profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1701270073824.jpg",
           email: "max@",
           hashpass: hashSync("1", 10),
@@ -100,7 +108,7 @@ module.exports = {
         },
         {
           name: "Checo Perez",
-          avatar:
+          profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/perez.jpg.img.1536.high.jpg",
           email: "checo@",
           hashpass: hashSync("1", 10),
@@ -108,7 +116,7 @@ module.exports = {
         },
         {
           name: "Lando Norris",
-          avatar:
+          profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/norris.jpg.img.1536.high.jpg",
           email: "lando@",
           hashpass: hashSync("1", 10),
@@ -116,7 +124,7 @@ module.exports = {
         },
         {
           name: "Oscar Piastri",
-          avatar:
+          profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/piastri.jpg.img.1536.high.jpg",
           email: "oscar@",
           hashpass: hashSync("1", 10),
@@ -124,7 +132,7 @@ module.exports = {
         },
         {
           name: "Lewis Hamilton",
-          avatar:
+          profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/hamilton.jpg.img.1536.high.jpg",
           email: "ham@",
           hashpass: hashSync("1", 10),

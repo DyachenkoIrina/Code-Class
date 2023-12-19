@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { GroupsSliceState } from "../../../types/groups";
-import { thunkGroupsLoad, thunkTeacherGroups } from "./thunkActions";
+import {  thunkTeacherGroups } from "./thunkActions";
+import { thunkTeacherGroupLoad } from "../teacher/thunkActions";
 
 
 const initialState: GroupsSliceState = {
@@ -13,7 +14,7 @@ export const groupsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(thunkGroupsLoad.fulfilled, (state, action) => {
+    builder.addCase(thunkTeacherGroupLoad.fulfilled, (state, action) => {
       state.groups = action.payload;
     });
     builder.addCase(thunkTeacherGroups.fulfilled, (state, action) => {

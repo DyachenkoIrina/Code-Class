@@ -6,7 +6,7 @@ import LoginFormModal from './forms/LoginFormModal';
 import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
-import { thunkGroupsLoad, thunkTeacherGroups } from './redux/slices/groups/thunkActions';
+import {  thunkGroupsLoad, thunkTeacherGroups } from './redux/slices/groups/thunkActions';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
 import { useAppDispatch, useAppSelector } from './redux/hook';
@@ -19,12 +19,19 @@ import PrivateRouter from './components/HOC/PrivateRouter';
 import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import AdminPage from './pages/AdminPage';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
+import './index.css';
+import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
+
+
     void dispatch(thunkGroupsLoad());
-    
+
+
+
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -32,6 +39,9 @@ function App(): JSX.Element {
     void dispatch(thunkUsersLoad());
     void dispatch(thunkTeacherGroups());
   }, []);
+
+  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
+  // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++", teachers)
 
   const theme = extendTheme({
     colors: {
@@ -43,49 +53,60 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
+  const teacher = useAppSelector((store) => store.authSlice.teacher);
+console.log('>>>App>>>>>>>teacher', teacher)
 
   return (
-    <Container>
+    <>
+      <SaasProvider>
+        <SideBar />
+
+      </SaasProvider>
       <ChakraProvider theme={theme}>
-        <SaasProvider>
-          <SideBar />
-        </SaasProvider>
-  
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          {/* <Route
-            element={
-              <PrivateRouter
-                isAllowed={user.status === 'authenticated' && user?.role === 'Teacher'}
-              />
-            }
-          > */}
-            <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-          {/* </Route> */}
-          {/* <Route
-            element={
-              <PrivateRouter
-                isAllowed={user.status === 'authenticated' && user?.role === 'Student'}
-              />
-            }
-          > */}
-            <Route path="/studentlk" element={<StudentAccountPage />} />
-          {/* </Route> */}
-          <Route path="/student/task/:id" element={<TaskPage />} />
-          {/* <Route
-            element={
-              <PrivateRouter isAllowed={user.status === 'authenticated' && user?.role === 'Admin'} />
-            }
-          > */}
+        <Container>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            {/* <Route
+              element={
+                <PrivateRouter
+                  isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
+                />
+              }
+            >
+              <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+            </Route> */}
+             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
+            {/* <Route
+              element={
+                <PrivateRouter
+                  isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
+                />
+              }
+            >
+              <Route path="/studentlk" element={<StudentAccountPage />} />
+            </Route> */}
+             <Route path="/studentlk" element={<StudentAccountPage />} />
+            <Route path="/student/task/:id" element={<TaskPage />} />
+            {/* <Route
+              element={
+                <PrivateRouter
+                  isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
+                />
+              }
+            >
+              <Route path="/adminlk" element={<AdminPage />} />
+            </Route> */}
             <Route path="/adminlk" element={<AdminPage />} />
-          {/* </Route>  */}
-        </Routes>
-  
-        <Footer />
-        <LoginFormModal />
+          </Routes>
+
+          <Footer />
+          <LoginFormModal />
+        </Container>
       </ChakraProvider>
-    </Container>
+    </>
   );
 }
 
 export default App;
+

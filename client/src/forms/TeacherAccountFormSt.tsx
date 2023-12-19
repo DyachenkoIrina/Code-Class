@@ -5,9 +5,9 @@ import ProfileContainerSt from '../components/ProfileContainerSt';
 
 export default function TeacherAccountFormSt(): JSX.Element {
   return (
-    <FormControl sx={{marginTop:'20px', display: 'flex', justifyContent: 'space-around' }} >
+    <FormControl sx={{width: '1400px', }} >
     <TopicContainer />
-      <ProfileContainerSt />
+    <ProfileContainerSt />
     </FormControl>
   );
 }

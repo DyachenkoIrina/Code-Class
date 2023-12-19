@@ -42,16 +42,20 @@ export default function ModalFromRegistration(): JSX.Element {
   return (
     <>
       <Button
+        fontWeight="400"
+        boxShadow="dark-lg"
+        p="6"
+        rounded="md"
+        bg="#D7E8D7"
+        _hover={{ background: '#D9D0FF' }}
         onClick={handleOpenModal}
         size="md"
-        height="48px"
-        width="200px"
-        border="2px"
-        borderColor="green.500"
-        marginLeft="135px"
-        marginBottom="80px"
+        height="60px"
+        width="280px"
+        border="none"
+        marginTop= "20px"
       >
-        Регистрация
+        Записаться на пробное занятие
       </Button>
 
       <Modal
