@@ -1,5 +1,5 @@
 const express = require("express");
-const { Task } = require("../../db/models");
+const { Homework, Task } = require("../../db/models");
 
 const tasksRouter = express.Router();
 
@@ -15,15 +15,27 @@ tasksRouter.get("/", async (req, res) => {
 
 tasksRouter.post("/", async (req, res) => {
   try {
-    const { title, questions, answer } = req.body;
-    const note = await Task.create({
-      title,
-      questions,
-      answer,
+    const { studentWork, user } = req.body;
+
+    if (!studentWork) {
+      return res
+        .sendStatus(400)
+        .json({ message: "Text is required in the request body!!!!!" });
+    }
+
+    await Homework.create({
+      checkWork: studentWork,
+      // status: "Pending",
+      userId: user.id,
     });
-    res.status(201).json(note);
-  } catch ({ message }) {
-    res.json({ message });
+
+    return res.sendStatus(201);
+  } catch (error) {
+    console.error("Error:", error);
+
+    return res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
   }
 });
 
