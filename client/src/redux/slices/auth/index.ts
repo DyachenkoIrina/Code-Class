@@ -23,9 +23,11 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(thunkCheckAuth.fulfilled, (state, action) => {
-   
+
+      // console.log('checkAuth---teacher------>', action.payload)
       if (action.payload.user.role === 'Teacher') {
-    
+        // console.log('>>>>>>!!!!_________',action.payload.user.role )
+
         state.user = { ...action.payload.user, status: 'authenticated' };
         state.teacher = action.payload.user;
       } else {

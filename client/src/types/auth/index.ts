@@ -28,7 +28,7 @@ export type UserState =
 export type AuthState = {
   user: UserState;
   accessToken: string;
-  teacher: TeacherType | null;
+  teacher: UserState;
 };
 
 export type LoginFormData = {
@@ -44,6 +44,7 @@ export type SignupFormData = {
 
 export type StudentsSliceState = {
   students: UserType[];
+  currentStudent: UserType | null;
 };
 
 export type TeacherSliceState = {

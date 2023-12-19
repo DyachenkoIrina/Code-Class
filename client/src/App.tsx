@@ -20,6 +20,7 @@ import PrivateRouter from './components/HOC/PrivateRouter';
 import AdminPage from './pages/AdminPage';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
+import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ function App(): JSX.Element {
   }, []);
 
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
-  const groups = useAppSelector((state) => state.adminSlice.groups)
+
 
   console.log('HEHEHEHEHEHEHEHE', groups)
   const theme = extendTheme({
@@ -48,7 +49,8 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
-
+  const teacher = useAppSelector((store) => store.authSlice.teacher);
+console.log('>>>App>>>>>>>teacher', teacher)
 
   return (
     <>
@@ -68,9 +70,12 @@ function App(): JSX.Element {
               }
             >
               <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
-            </Route>
-             {/* <Route path="/teacherlk/:id" element={<TeacherAccountPage />} /> */}
-            <Route
+
+            </Route> */}
+             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
+            {/* <Route
+
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}

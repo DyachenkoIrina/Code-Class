@@ -1,31 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {
-  thunkFilterStudentsLoad,
-  thunkOneStudentForTeacher,
-} from './thunkActions';
-import type { StudentsSliceState } from '../../../types/student';
+import { thunkFilterStudentsLoad, thunkgetOneStudentForTeacher } from './thunkActions';
+import type { StudentsSliceState } from '../../../types/auth';
 
 const initialState: StudentsSliceState = {
   students: [],
+  currentStudent: null,
 };
-
+console.log('initialState', initialState);
 export const studentssSlice = createSlice({
   name: 'students',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     // builder.addCase(thunkStudentsLoad.fulfilled, (state, action) => {
-    //   state.students = action.payload;
-    // });
-    builder.addCase(thunkFilterStudentsLoad.fulfilled, (state, action) => {
-      state.students = action.payload;
-    });
-    builder.addCase(thunkOneStudentForTeacher.fulfilled, (state, action) => {
-      state.students = action.payload;
-    });
-  },
-});
+      //   state.students = action.payload;
+      // });
+      builder.addCase(thunkFilterStudentsLoad.fulfilled, (state, action) => {
+        state.students = action.payload;
+      });
+      builder.addCase(thunkgetOneStudentForTeacher.fulfilled, (state, action) => {
+        state.currentStudent = action.payload;
+      });
+    },
+  });
+  console.log('studentssSlice',studentssSlice)
 
-// export const { setCurrentTask, clearCurrentTask, addFavoritesTask } = tasksSlice.actions;
+
 export default studentssSlice.reducer;

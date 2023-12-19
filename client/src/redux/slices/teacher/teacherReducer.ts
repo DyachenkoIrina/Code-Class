@@ -11,12 +11,9 @@ export const teacherSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-
     builder.addCase(thunkTeacherGroupLoad.fulfilled, (state, action) => {
       state.teacherGroups = action.payload;
     });
-
-
   },
 });
 
