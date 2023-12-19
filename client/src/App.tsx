@@ -6,7 +6,8 @@ import LoginFormModal from './forms/LoginFormModal';
 import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
-import {  thunkGroupsLoad, thunkTeacherGroups } from './redux/slices/groups/thunkActions';
+import {  thunkTeacherGroups } from './redux/slices/groups/thunkActions';
+import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
 import YandexMap from './components/YandexMap';
 import { useAppDispatch, useAppSelector } from './redux/hook';
@@ -16,7 +17,6 @@ import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsy
 import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
-import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import AdminPage from './pages/AdminPage';
 import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
@@ -26,12 +26,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-
-
     void dispatch(thunkGroupsLoad());
-
-
-
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -41,8 +36,9 @@ function App(): JSX.Element {
   }, []);
 
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
-  // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++", teachers)
 
+
+  console.log('HEHEHEHEHEHEHEHE', groups)
   const theme = extendTheme({
     colors: {
       brand: {
@@ -66,7 +62,7 @@ console.log('>>>App>>>>>>>teacher', teacher)
         <Container>
           <Routes>
             <Route path="/" element={<MainPage />} />
-            {/* <Route
+            <Route
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
@@ -74,10 +70,12 @@ console.log('>>>App>>>>>>>teacher', teacher)
               }
             >
               <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+
             </Route> */}
              <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
              <Route path="/teacherlk/studentid/:id" element={<TeacherAccountFormSt/>} />
             {/* <Route
+
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
@@ -85,10 +83,10 @@ console.log('>>>App>>>>>>>teacher', teacher)
               }
             >
               <Route path="/studentlk" element={<StudentAccountPage />} />
-            </Route> */}
-             <Route path="/studentlk" element={<StudentAccountPage />} />
+            </Route>
+             {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
             <Route path="/student/task/:id" element={<TaskPage />} />
-            {/* <Route
+            <Route
               element={
                 <PrivateRouter
                   isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
@@ -96,8 +94,8 @@ console.log('>>>App>>>>>>>teacher', teacher)
               }
             >
               <Route path="/adminlk" element={<AdminPage />} />
-            </Route> */}
-            <Route path="/adminlk" element={<AdminPage />} />
+            </Route>
+            {/* <Route path="/adminlk" element={<AdminPage />} /> */}
           </Routes>
 
           <Footer />

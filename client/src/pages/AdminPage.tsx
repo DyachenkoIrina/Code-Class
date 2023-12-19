@@ -1,26 +1,27 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Text, SimpleGrid, Flex, Button, Center, Checkbox, } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import StudentCard from '../components/AdminAccount/StudentList';
-import { Stack } from 'react-bootstrap';
 import EditTeacherModal from '../components/AdminAccount/EditTeacherModal';
 import { setSelectedTeacher, setTeacherToDelete } from '../redux/slices/admin/adminReducer';
 import DeleteTeacherModal from '../components/AdminAccount/DeleteTeacherModal';
+import { UserType } from '../types/auth';
 
-export default function UserSelector({}: Props) {
-  const userList = useAppSelector((store) => store.adminSlice.userList);
+export default function UserSelector(): JSX.Element {
+  const userList= useAppSelector((store) => store.adminSlice.userList);
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
-  const groups = useAppSelector((state) => state.groupsSlice.groups)
+  const groups= useAppSelector((state) => state.adminSlice.groups)
   const teacherToDelete = useAppSelector((state) => state.adminSlice.teacherToDelete)
   const dispatch = useAppDispatch()
   const [checkedItems, setCheckedItems] = React.useState([false, false])
-  console.log('UFGHDVKDHEFBDHEFBDHFHDVBHVBDHVBDFHVBDFHBDFBH', teacherToDelete )
 
   const allChecked = checkedItems.every(Boolean)
   const isIndeterminate = checkedItems.some(Boolean) && !allChecked
 
-  const students = userList.filter((user) => user.role === 'Student');
+  const students = userList.filter((user: UserType):boolean => user.role === 'Student');
   const applications = userList.filter((user) => user.role === 'Application');
+  useEffect(() => {
+  }, []);
 
 
   return (

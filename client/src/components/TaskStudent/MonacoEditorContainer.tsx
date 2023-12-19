@@ -19,7 +19,7 @@ const theme = extendTheme({
 
 export default function MonacoEditorContainer(): JSX.Element {
   const [editorValue, setEditorValue] = useState();
-  // console.log(editorValue);
+
 
   const saveTextToDatabase = async () => {
     try {

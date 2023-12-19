@@ -3,7 +3,6 @@ import type { GroupType } from '../types/groups';
 
 export const apiGroupServise = axios.create({
   baseURL: 'http://localhost:3001/api/v1/adminlk/groups',
-  // VITE_SERVER_BASEURL=http://localhost:3000/api/v1/
 });
 
 class GroupServise {
