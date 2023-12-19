@@ -5,27 +5,21 @@ import {
     AlertDialogHeader,
     AlertDialogContent,
     AlertDialogOverlay,
-    AlertDialogCloseButton,
     Button,
-    useDisclosure,
   } from '@chakra-ui/react'
-  import React from 'react';
+import React, { useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import { clearTeacherToDelete } from '../../redux/slices/admin/adminReducer';
 import { thunkDeleteTeacher } from '../../redux/slices/groups/thunkActions';
 
-export default function DeleteTeacherModal(teacher: any): any {
+export default function DeleteTeacherModal(): JSX.Element {
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const cancelRef = React.useRef()
+ 
+    const cancelRef = useRef<HTMLButtonElement>(null);
     const dispatch = useAppDispatch();
-    const teacherList = useAppSelector((state) => state.groupsSlice.teacherGroups)
     const teacherToDelete = useAppSelector((store) => store.adminSlice.teacherToDelete)
-    console.log(teacherToDelete)
-    function deleteHandler(){
-      console.log('111111111111111111111111111',teacherToDelete)
-      console.log('222222222222222222222222222222',teacherList)
-      dispatch(thunkDeleteTeacher(teacherToDelete))
+    function deleteHandler(): void{
+      void dispatch(thunkDeleteTeacher(teacherToDelete))
       dispatch(clearTeacherToDelete())
     }
     return (

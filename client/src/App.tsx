@@ -46,20 +46,17 @@ function App(): JSX.Element {
 
 
 
-  const theme = extendTheme({
-    colors: {
-      brand: {
-        100: 'black',
-        900: '#1a202c',
-      },
-    },
-  });
+  // const theme = extendTheme({
+  //   colors: {
+  //     brand: {
+  //       100: 'black',
+  //       900: '#1a202c',
+  //     },
+  //   },
+  // });
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-
-  console.log('>>>App>>>>>>>teacher', teacher);
-
 
   return (
     <>

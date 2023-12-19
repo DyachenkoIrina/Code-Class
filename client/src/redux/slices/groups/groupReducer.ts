@@ -21,7 +21,6 @@ export const groupsSlice = createSlice({
       state.teacherGroups = action.payload;
     });
     builder.addCase(thunkDeleteTeacher.fulfilled, (state, action) => {
-      console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO', action.payload, state.teacherGroups)
       const updatedTeachers = state.teacherGroups.filter((el) => el.id !== action.payload)
       state.teacherGroups = updatedTeachers
     });
