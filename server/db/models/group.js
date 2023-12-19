@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate({
-      User, Teacher
+      User, Teacher, TeacherGroup
     }) {
       // define association here
       this.hasMany(User, { foreignKey: 'groupId' });
-      this.belongsToMany(Teacher, { through: 'TeacherGroups', foreignKey: 'groupId'})
+      this.belongsToMany(Teacher, { through: TeacherGroup, foreignKey: 'groupId'})
     }
   }
   Group.init({

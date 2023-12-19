@@ -47,6 +47,5 @@ export type StudentsSliceState = {
 };
 
 export type TeacherSliceState = {
-  teachers: TeacherType[];
   teacherGroups: GroupType[];
 };
