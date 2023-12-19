@@ -4,6 +4,7 @@ const { Group, TeacherGroup, Teacher } = require("../../db/models");
 const groupRouter = express.Router();
 
 groupRouter.get("/", async (req, res) => {
+  console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ")
   try {
     const data = await Teacher.findAll({
       include: {
