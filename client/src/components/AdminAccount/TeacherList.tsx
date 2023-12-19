@@ -30,7 +30,7 @@ export default function TeacherCard({ teacher }: Props) {
         </CardHeader>
         <CardBody>
           <Text>Email: {teacher.email}</Text>
-          {/* <Text>Название: {teacher.Group.group || 'N/A'}</Text> */}
+          
           <Center>
             <Button>View here</Button>
           </Center>
