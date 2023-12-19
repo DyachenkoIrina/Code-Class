@@ -13,7 +13,7 @@ export const store = configureStore({
     modal: modalReducer,
     topics: topicsReducer,
     tasks: tasksReducer,
-    groupsSlice: groupReducer,
+    // groupsSlice: groupReducer,
     studentsSlice: studentReducer,
     authSlice: authReducer,
     adminSlice: adminReducer,
