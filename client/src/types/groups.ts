@@ -1,6 +1,10 @@
 import type { TeacherGroupType } from "./admin";
 
 
+type Group = {
+   group:string
+  }
+
 export type GroupType = {
   id?: number;
   group?: string;
@@ -9,7 +13,16 @@ export type GroupType = {
   manages?: boolean;
 }
 
-
+export type GroupCardType = {
+  id?: number;
+  group?: string;
+  teacher?: string;
+  name?: string ;
+  manages?: boolean;
+  groupId?: number;
+  teacherId?: number;
+  Group: Group
+}
 export type GroupsState = {
   groups: GroupType[];
 };
