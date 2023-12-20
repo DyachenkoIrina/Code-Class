@@ -8,11 +8,11 @@ import {
   ModalCloseButton,
   Button,
 } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import StudentCard from '../components/StudentCard';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { closeModal, groupModal } from '../redux/slices/modal/modalReducer';
+import {  groupModal } from '../redux/slices/modal/modalReducer';
 
 export default function StudentFormModal(): JSX.Element {
   // const { isOpen, onOpen, onClose } = useDisclosure();
