@@ -22,6 +22,7 @@ import { setCurrentTask } from '../../redux/slices/tasks/tasksSlice';
 
 export default function QuestionContainer({ tasks }: TasksState): JSX.Element {
   const dispatch = useAppDispatch();
+console.log('*****', tasks);
 
   const [tabIndex, setTabIndex] = useState(0);
 

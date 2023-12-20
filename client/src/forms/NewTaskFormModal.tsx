@@ -39,7 +39,7 @@ export default function NewTaskFormModal(): JSX.Element {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
-          formData.theme = selectedTopic;
+          formData.topicId = selectedTopic;
           void dispatch(thunkTaskAdd(formData));
           dispatch(newTaskModal());
         }}
