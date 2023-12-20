@@ -4,26 +4,29 @@ import {
   ModalContent,
   ModalFooter,
   ModalBody,
-  useDisclosure,
   Button,
   FormControl,
   FormLabel,
   Input,
   ModalCloseButton,
+  Select,
 } from '@chakra-ui/react';
 import React from 'react';
 
 import { thunkTaskAdd } from '../redux/slices/tasks/createAsyncThunk';
 import type { AddTaskFormData } from '../types/task';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { closeModal, newTaskModal } from '../redux/slices/modal/modalReducer';
+import { newTaskModal } from '../redux/slices/modal/modalReducer';
 
 export default function NewTaskFormModal(): JSX.Element {
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.modal.newtaskModal);
+  const topics = useAppSelector((state) => state.topics.topics);
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
+
+  const [selectedTopic, setSelectedTopic] = React.useState('');
 
   return (
     <Modal
@@ -36,6 +39,7 @@ export default function NewTaskFormModal(): JSX.Element {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
+          formData.theme = selectedTopic;
           void dispatch(thunkTaskAdd(formData));
           dispatch(newTaskModal());
         }}
@@ -62,7 +66,18 @@ export default function NewTaskFormModal(): JSX.Element {
               >
                 Выбор темы
               </FormLabel>
-              <Input ref={initialRef} name="title" type="text" placeholder="Тема" />
+              <Select
+                placeholder="Выберите тему"
+                value={selectedTopic}
+                onChange={(e) => setSelectedTopic(e.target.value)}
+              >
+               {topics.map((topic) => (
+                  <option key={topic.id} value={topic.id}>
+                    {topic.title}
+                  </option>
+                ))} 
+              </Select>
+              {/* <Input ref={initialRef} name="title" type="text" placeholder="Тема" /> */}
             </FormControl>
 
             <FormControl>

@@ -20,4 +20,5 @@ export type AddTaskFormData = {
   title: string;
   questions: string;
   answer: string;
+  theme:string
 };

@@ -12,8 +12,8 @@ export default function TopicContainerSt(): JSX.Element {
   return (
     <Container
     style={{
-      backgroundColor: '#D7E8D7',
-      border: '2px solid gray',
+      // backgroundColor: '#D7E8D7',
+      //  border: '2px solid gray',
       borderRadius: '25px',
       padding: '4px',
       overflowY: 'auto',
