@@ -69,17 +69,6 @@ body {
   margin-bottom: 50px;
 }
 
-.chakra-tabs {
-}
-.chakra-tabs__tab-panels {
-}
-.chakra-tabs__tab-panel {
-}
-.chakra-card {
-}
-.course_card {
-}
-
 .video_wrapper {
   max-width: 1300px;
   max-height: 800px;
@@ -136,4 +125,96 @@ body {
 .login_btn:hover,
 .login_closebtn:hover {
   background-color: #d9d0ff;
+}
+
+.edit_profile_btn {
+  margin: 25px 25px 0px 18px;
+}
+
+.edit_profile_btn,
+.edit_profile_closebtn {
+  width: 150px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.edit_profile_btn:hover,
+.edit_profile_closebtn:hover {
+  background-color: #d9d0ff;
+}
+
+.new_task_input {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #d9d0ff;
+  border-radius: 10px;
+}
+
+.new_task_input::placeholder {
+  padding-left: 15px;
+}
+
+.newtask_add_btn {
+  margin-right: 20px;
+}
+
+.newtask_add_btn,
+.newtask__closebtn {
+  width: 150px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.newtask_add_btn:hover,
+.newtask__closebtn:hover {
+  background-color: #d9d0ff;
+}
+
+.students_list_modal {
+  width: 30%;
+  height: 70%;
+  border: 5px solid #d9d0ff;
+  border-radius: 20px;
+  margin: auto;
+  background: #ffffff;
+}
+
+.one_student_card {
+  border: 1px solid #d7e8d7;
+  margin: 15px;
+  padding: 20px 0px 5px 30px;
+  border-radius: 20px;
+}
+
+.student_btn {
+  width: 100px;
+  margin: 0px 35px 15px 15px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.student_list_btn {
+  width: 150px;
+  margin: 0 auto;
+  margin-top: -30px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.add_task_btn {
+  margin-top: 50px;
+  box-sizing: border-box;
+  width: 200px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
 }

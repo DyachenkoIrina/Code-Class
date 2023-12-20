@@ -61,6 +61,7 @@ export const authSlice = createSlice({
       state.user.status = 'guest';
     });
     builder.addCase(thunkUpdateUser.fulfilled, (state, action) => {
+      console.log('<><>><><>><>><>',action.payload)
       state.user = { ...action.payload, status: 'authenticated' };
     });
   },

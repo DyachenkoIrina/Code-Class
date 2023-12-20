@@ -12,12 +12,12 @@ import Video from '../components/Video';
 import '../index.css';
 
 export default function MainPageFlex(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const modalState = useAppSelector((state) => state.modal.registrModal);
+  // const dispatch = useAppDispatch();
+  // const modalState = useAppSelector((state) => state.modal.registrModal);
 
-  const handleToggleModal = (): void => {
-    dispatch(toggleModal());
-  };
+  // const handleToggleModal = (): void => {
+  //   dispatch(toggleModal());
+  // };
 
   return (
     <Flex flexDirection="column">
@@ -35,9 +35,9 @@ export default function MainPageFlex(): JSX.Element {
             <Container class="heading">
               <HeadingComponent class="heading_text" />
               <ModalFromRegistration
-                class="heading_btn"
-                isOpen={modalState}
-                onClose={handleToggleModal}
+                // class="heading_btn"
+                // isOpen={modalState}
+                // onClose={handleToggleModal}
               />
             </Container>
             <CarouselImg />
