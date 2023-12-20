@@ -14,7 +14,7 @@ class TopicsService {
 
   static async AddFavoriteTopics(id: TopicType['id']): Promise<TopicType> {
     try {
-      const response = await apiService.post<TopicType>('/favor', id);
+      const response = await apiService.post<TopicType>('/forUser/:id', id);
       if (response.status === 200) {
         return response.data;
       }

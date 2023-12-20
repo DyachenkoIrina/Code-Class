@@ -1,5 +1,5 @@
 const express = require("express");
-const { Topic } = require("../../db/models");
+const { Topic, GetTopic } = require("../../db/models");
 
 const topicRouter = express.Router();
 
@@ -13,27 +13,19 @@ topicRouter.get("/", async (req, res) => {
   }
 });
 
-// topicRouter.get("/favor", async (req, res) => {
-//   try {
-//     const data = await Topic.();
-//     res.status(200).json(data);
-//   } catch ({ message }) {
-//     console.log(message);
-//     res.status(408).json({ message });
-//   }
+topicRouter.post("/forUser/:id", async (req, res) => {
+  console.log ('--->forUserfavorite', req.params)
+  try {
+    const data = await GetTopic.findAll({
+      where:{userId:req.params.id},
+      include: { model: Topic , attributes:['title']},
+ });
+ console.log('filtertopic---->',data)
+    res.status(200).json(data);
+  } catch ({ message }) {
+    console.log(message);
+    res.status(400).json({ message });
+  }
+  });
 
-//   try {
-//     // const teacher = await Teacher.findByPk(req.params.id);
-//     // console.log("---@@@@@@@@@@--> teacher", teacher);
-//     const groupsTeasher = await TeacherGroup.findAll({
-//       where: { teacherId: req.params.id },
-//       include: { model: Group , attributes:['group']},
-//     });
-//     // console.log("---%%%%%%%%%%--> groups", groupsTeasher);
-//     res.status(200).json(groupsTeasher);
-//   } catch ({ message }) {
-//     res.status(400).json({ message });
-//   }
-
-// });
 module.exports = topicRouter;
