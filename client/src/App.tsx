@@ -31,7 +31,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-   void dispatch(thunkGroupsLoad());
+    void dispatch(thunkGroupsLoad());
     void dispatch(thunkLoadHomeWork());
 
     void dispatch(thunkCheckAuth());
@@ -42,30 +42,16 @@ function App(): JSX.Element {
     void dispatch(thunkTeacherGroups());
   }, []);
 
-  // const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
-
-
-
-
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
 
   return (
     <>
       <SaasProvider>
-        <SideBar />
-
+        <Container>
+          <SideBar />
+        </Container>
       </SaasProvider>
-      <Container className="logo_wrapper">
-        {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
-        <Image className="logo" src="../../public/Logo.png" alt="Dan Abramov" />
-
-        <p className="text">
-          Урок длится 60 минут Вы сможете познакомиться с преподавателем и понаблюдать за тем, как
-          проходит урок Ребенок познакомится с программированием в среде Scratch и сделает игру
-          «Догони робота» или «Фруктовый ниндзя».
-        </p>
-      </Container>
 
       <ChakraProvider>
         <Routes>

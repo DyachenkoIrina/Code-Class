@@ -9,6 +9,7 @@ import {
   Image,
   Text,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import type { TopicType } from '../types/topics';
 import { Link } from 'react-router-dom';
 

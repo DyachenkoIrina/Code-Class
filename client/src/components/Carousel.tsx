@@ -41,7 +41,7 @@ export default function CarouselImg(): JSX.Element {
           >
             <img
               className="d-block w-100 h-100 object-fit-cover"
-              src="https://hi-news.ru/wp-content/uploads/2016/12/kids-computer-2.jpg"
+              src="https://s0.rbk.ru/v6_top_pics/media/img/7/80/756164097242807.jpg"
               alt="Second slide"
               style={{ borderRadius: '20px' }}
             />
