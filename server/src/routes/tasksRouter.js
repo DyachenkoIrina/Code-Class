@@ -1,5 +1,5 @@
 const express = require("express");
-const { Homework, Task } = require("../../db/models");
+const { Task } = require("../../db/models");
 
 const tasksRouter = express.Router();
 

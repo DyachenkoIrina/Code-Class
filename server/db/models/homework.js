@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Homework.init(
     {
       userId: DataTypes.INTEGER,
-      // taskId: DataTypes.INTEGER,
+      taskId: DataTypes.INTEGER,
       status: DataTypes.STRING,
       checkWork: DataTypes.TEXT,
     },
