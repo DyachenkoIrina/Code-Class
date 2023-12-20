@@ -31,7 +31,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-   void dispatch(thunkGroupsLoad());
+    void dispatch(thunkGroupsLoad());
     void dispatch(thunkLoadHomeWork());
 
     void dispatch(thunkCheckAuth());
@@ -42,29 +42,16 @@ function App(): JSX.Element {
     void dispatch(thunkTeacherGroups());
   }, []);
 
-  // const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
-
-
-
-  // const theme = extendTheme({
-  //   colors: {
-  //     brand: {
-  //       100: 'black',
-  //       900: '#1a202c',
-  //     },
-  //   },
-  // });
-
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
 
   return (
     <>
       <SaasProvider>
-        <SideBar />
-
+        <Container>
+          <SideBar />
+        </Container>
       </SaasProvider>
-     
 
       <ChakraProvider>
         <Routes>

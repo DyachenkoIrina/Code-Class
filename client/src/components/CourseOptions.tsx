@@ -55,10 +55,10 @@ export default function CourseOptions(): JSX.Element {
           High
         </Tab>
       </TabList>
-      <TabPanels width="500px">
+      <TabPanels width="500px" marginBottom="50px">
         {learningPaths.map((path) => (
           <TabPanel>
-            <CourseCard  path={path} />
+            <CourseCard path={path} />
           </TabPanel>
         ))}
       </TabPanels>
