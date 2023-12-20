@@ -14,15 +14,15 @@ topicRouter.get("/", async (req, res) => {
 });
 
 topicRouter.post("/forUser/:id", async (req, res) => {
-  console.log("--->forUserfavorite", req.params);
-  console.log("--->f!!!!orUserfavorite", req.body);
+  // console.log("--->forUserfavorite", req.params);
+  // console.log("--->f!!!!orUserfavorite", req.body);
   try {
     const userId = req.params.id;
     const {id} = req.body;
     
     const data = await GetTopic.create({ userId, topicId:id });
 
-    console.log("filtertopic---->", data);
+    // console.log("filtertopic---->", data);
     res.status(200);
   } catch ({ message }) {
     console.log(message);
