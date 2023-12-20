@@ -13,6 +13,7 @@ export default function UserSelector(): JSX.Element {
   const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
   const groups= useAppSelector((state) => state.adminSlice.groups)
   const dispatch = useAppDispatch()
+  console.log('!!!!!!!!!!!!!', teachers, groups)
  
 
   const students = userList.filter((user: UserType):boolean => user.role === 'Student');
