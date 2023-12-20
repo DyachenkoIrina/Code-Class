@@ -11,6 +11,7 @@ export type GroupType = {
   teacher?: string;
   name?: string ;
   manages?: boolean;
+  Group?: Group
 }
 
 export type GroupCardType = {
@@ -21,7 +22,7 @@ export type GroupCardType = {
   manages?: boolean;
   groupId?: number;
   teacherId?: number;
-  Group: Group
+  Group?: Group
 }
 export type GroupsState = {
   groups: GroupType[];

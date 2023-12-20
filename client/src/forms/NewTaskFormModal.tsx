@@ -16,7 +16,9 @@ import React from 'react';
 import { thunkTaskAdd } from '../redux/slices/tasks/createAsyncThunk';
 import type { AddTaskFormData } from '../types/task';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { newTaskModal } from '../redux/slices/modal/modalReducer';
+
+import {  newTaskModal } from '../redux/slices/modal/modalReducer';
+
 
 export default function NewTaskFormModal(): JSX.Element {
   const dispatch = useAppDispatch();
