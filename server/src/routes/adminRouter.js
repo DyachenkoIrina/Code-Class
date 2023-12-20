@@ -93,9 +93,14 @@ adminRouter.post("/", async (req, res) => {
 });
 
 adminRouter.delete("/:id", async (req, res) => {
+  try{
   await TeacherGroup.destroy({ where: { teacherId: req.params.id } });
   await Teacher.destroy({ where: { id: req.params.id } });
   res.sendStatus(200);
+  }
+  catch(error){
+    res.status(500).console.log(error)
+  }
 });
 
 adminRouter.get("/groups", async (req, res) => {
