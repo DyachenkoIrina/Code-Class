@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import type { TopicType } from '../types/topics';
-import { Link } from 'react-router-dom';
+
 
 type TopicTypeProps = {
   topic: TopicType;

@@ -13,19 +13,19 @@ topicRouter.get("/", async (req, res) => {
   }
 });
 
-// topicRouter.post("/forUser/:id", async (req, res) => {
-//   console.log ('--->forUserfavorite', req.params)
-//   try {
-//     const data = await GetTopic.findAll({
-//       where:{userId:req.params.id},
-//       include: { model: Topic , attributes:['title']},
-//  });
-//  console.log('filtertopic---->',data)
-//     res.status(200).json(data);
-//   } catch ({ message }) {
-//     console.log(message);
-//     res.status(400).json({ message });
-//   }
-//   });
+topicRouter.post("/forUser/:id", async (req, res) => {
+  console.log ('--->forUserfavorite', req.params)
+  try {
+    const data = await GetTopic.findAll({
+      where:{userId:req.params.id},
+      include: { model: Topic , attributes:['title']},
+ });
+ console.log('filtertopic---->',data)
+    res.status(200).json(data);
+  } catch ({ message }) {
+    console.log(message);
+    res.status(400).json({ message });
+  }
+  });
 
 module.exports = topicRouter;
