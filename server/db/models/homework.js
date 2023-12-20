@@ -10,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ User, Task }) {
       // define association here
       this.belongsTo(User, { foreignKey: "userId" });
-      // this.belongsTo(Task, { foreignKey: "taskId" });
+      this.belongsTo(Task, { foreignKey: "taskId" });
     }
   }
   Homework.init(
     {
       userId: DataTypes.INTEGER,
-      // taskId: DataTypes.INTEGER,
+      taskId: DataTypes.INTEGER,
       status: DataTypes.STRING,
       checkWork: DataTypes.TEXT,
     },

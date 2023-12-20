@@ -50,7 +50,7 @@ export default function HomeWork(): JSX.Element {
             options={editorOptions}
           />
         </Box>
-        <Button>Сохранить в базу данных</Button>
+        <Button>Отправить на проверку</Button>
       </div>
     </ChakraProvider>
   );

@@ -36,6 +36,5 @@ class AdminService {
     if (response.status === 200) return response.data;
     return [];
   }
-
 }
 export default AdminService;

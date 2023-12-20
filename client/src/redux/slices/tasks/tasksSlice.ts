@@ -1,5 +1,5 @@
-import  { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
+import  { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { TaskSliceState, TaskType } from '../../../types/task';
 import  { thunkLoadTask, thunkTaskAdd } from './createAsyncThunk';
 
@@ -12,7 +12,9 @@ export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    
+    setCurrentTask: (state, action: PayloadAction<TaskSliceState>) => {
+      state.currentTask = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(thunkLoadTask.fulfilled, (state, action) => {
@@ -23,5 +25,7 @@ export const tasksSlice = createSlice({
     });
   },
 });
+
+export const { setCurrentTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

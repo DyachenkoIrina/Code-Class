@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Button, Box, extendTheme, ChakraProvider } from '@chakra-ui/react';
+import {
+  Button,
+  Box,
+  extendTheme,
+  ChakraProvider,
+  Stack,
+  Alert,
+  AlertIcon,
+} from '@chakra-ui/react';
 import Editor from 'react-monaco-editor';
 import { useAppSelector } from '../../redux/hook';
 import type { TasksState } from '../../types/task';
@@ -8,10 +16,10 @@ const theme = extendTheme({
   styles: {
     global: {
       '.editor-container': {
-        width: '100%', // Например, 100% ширины родительского контейнера
+        width: '100%',
         height: '400px',
         selectOnLineNumbers: true,
-        theme: 'vs-dark', // Установка темы с черным фоном
+        theme: 'vs-dark',
         automaticLayout: true,
         textAlign: 'left',
       },
@@ -19,15 +27,18 @@ const theme = extendTheme({
   },
 });
 
+export default function MonacoEditorContainer({ tasks }: TasksState): JSX.Element {
+  const taskId = useAppSelector((state) => state.tasks.currentTask);
+  console.log('taskId', taskId);
 
-export default function MonacoEditorContainer({tasks}: TasksState): JSX.Element {
   const userState = useAppSelector((state) => state.authSlice.user);
   const [editorValue, setEditorValue] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   console.log('user', userState);
 
   const saveTextToDatabase = async (): Promise<void> => {
     try {
-      await fetch('http://localhost:3001/api/v1/task', {
+      await fetch('http://localhost:3001/api/v1/homework', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,9 +46,13 @@ export default function MonacoEditorContainer({tasks}: TasksState): JSX.Element 
         body: JSON.stringify({
           user: userState,
           studentWork: editorValue,
-          task: tasks
+          task: taskId,
         }),
       });
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
     } catch (error) {
       console.error('Произошла ошибка при отправке текста на сервер:', error);
     }
@@ -45,7 +60,7 @@ export default function MonacoEditorContainer({tasks}: TasksState): JSX.Element 
 
   const editorOptions = {
     selectOnLineNumbers: true,
-    theme: 'vs-dark', // Установка темы с черным фоном
+    theme: 'vs-dark',
     automaticLayout: true,
   };
 
@@ -60,7 +75,25 @@ export default function MonacoEditorContainer({tasks}: TasksState): JSX.Element 
             options={editorOptions}
           />
         </Box>
-        <Button onClick={saveTextToDatabase}>Сохранить в базу данных</Button>
+        <Button
+          size="md"
+          height="48px"
+          width="200px"
+          border="2px"
+          borderColor="green.500"
+          marginTop="30px"
+          onClick={saveTextToDatabase}
+        >
+          Отправить на проверку
+        </Button>
+        {showAlert && (
+          <Stack spacing={3} marginTop="20px">
+            <Alert status="success" variant="subtle">
+              <AlertIcon />
+              Задача отправлена на проверку!
+            </Alert>
+          </Stack>
+        )}
       </div>
     </ChakraProvider>
   );

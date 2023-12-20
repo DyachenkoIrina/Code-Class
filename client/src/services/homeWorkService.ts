@@ -8,8 +8,7 @@ export const apiService = axios.create({
 class HomeWorksService {
   static async getHomeWork(): Promise<HomeWorkType[]> {
     const response = await apiService.get<HomeWorkType[]>('/');
-    console.log('----server----->', response.data);
-    
+
     if (response.status === 200) return response.data;
     return [];
   }

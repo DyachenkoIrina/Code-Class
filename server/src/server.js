@@ -40,6 +40,4 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/users", apiUsersRouter);
 app.use("/api/v1/homework", homeworkRouter);
 
-
-
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
