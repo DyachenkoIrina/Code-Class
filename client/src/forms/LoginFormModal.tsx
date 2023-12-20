@@ -13,9 +13,10 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { openModallogin} from '../redux/slices/modal/modalReducer';
+import { openModallogin } from '../redux/slices/modal/modalReducer';
 import { thunkLogin } from '../redux/slices/auth/createAsyncThunks';
 import type { LoginFormData } from '../types/auth';
+import '../index.css';
 
 export default function LoginFormModal(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -28,9 +29,9 @@ export default function LoginFormModal(): JSX.Element {
   return (
     <Modal onClose={() => dispatch(openModallogin())} isOpen={show}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Create your account</ModalHeader>
-        <ModalCloseButton onClick={() => dispatch(openModallogin())} />
+      <ModalContent class="login_modal">
+        <ModalHeader class="login_modal_header">Авторизация</ModalHeader>
+        {/* <ModalCloseButton onClick={() => dispatch(openModallogin())} /> */}
         <ModalBody pb={6}>
           <form
             onSubmit={(e) => {
@@ -43,17 +44,17 @@ export default function LoginFormModal(): JSX.Element {
           >
             <FormControl>
               <FormLabel>Email</FormLabel>
-              <Input name="email" type="text" placeholder="Почта" />
+              <Input class="login_input" name="email" type="text" placeholder="Почта" />
             </FormControl>
 
             <FormControl mt={4}>
               <FormLabel>Пароль</FormLabel>
-              <Input name="password" type="text" placeholder="Почта" />
+              <Input class="login_input" name="password" type="text" placeholder="Пароль" />
             </FormControl>
-            <Button type="submit" colorScheme="blue" mr={3}>
+            <Button class="login_btn" type="submit" mr={3}>
               Войти
             </Button>
-            <Button onClick={() => dispatch(openModallogin())}>Cancel</Button>
+            <Button class="login_closebtn" onClick={() => dispatch(openModallogin())}>Отмена</Button>
           </form>
         </ModalBody>
 

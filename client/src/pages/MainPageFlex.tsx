@@ -27,6 +27,7 @@ export default function MainPageFlex(): JSX.Element {
       <Image className="logo" src="../../public/Logo.png" alt="codeClass logo" />
       <Box flex="1">
         <p className="text">Школа программирования для детей</p>
+       
       </Box>
       <Box flex="2">
         <Container>

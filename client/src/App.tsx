@@ -48,9 +48,9 @@ function App(): JSX.Element {
   return (
     <>
       <SaasProvider>
-        <Container>
+        
           <SideBar />
-        </Container>
+       
       </SaasProvider>
 
       <ChakraProvider>
