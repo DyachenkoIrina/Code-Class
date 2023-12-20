@@ -8,8 +8,8 @@ import {
   Button,
   Image,
   Text,
-  Link,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import type { TopicType } from '../types/topics';
 
 type TopicTypeProps = {

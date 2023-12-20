@@ -19,7 +19,6 @@ import type { GroupType } from '../../types/groups';
 
 export default function EditTeacherModal(): JSX.Element {
   const selectedTeacher = useAppSelector((store) => store.adminSlice.selectedTeacher);
-  const groups = useAppSelector((store) => store.groupsSlice.groups);
 
   const dispatch = useAppDispatch();
   console.log('123123123123123123123', selectedTeacher)

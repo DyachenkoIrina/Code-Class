@@ -39,6 +39,8 @@ export default function ModalFromRegistration(): JSX.Element {
     onClose();
   };
 
+  
+
   return (
     <>
       <Button

@@ -6,7 +6,6 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
   Button,
   FormControl,
   FormLabel,
@@ -14,10 +13,10 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { openModallogin, userEditModal } from '../redux/slices/modal/modalReducer';
+import { userEditModal } from '../redux/slices/modal/modalReducer';
 import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
 
-export default function EditFormModal({ show, setShow }): JSX.Element {
+export default function EditFormModal({ show , setShow } : {show : any , setShow : any}): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.authSlice.user);
 
