@@ -14,7 +14,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import {  registrModal } from '../redux/slices/modal/modalReducer';
+import { registrModal } from '../redux/slices/modal/modalReducer';
 import { thunkSignup } from '../redux/slices/auth/createAsyncThunks';
 import type { SignupFormData } from '../types/auth';
 
@@ -39,6 +39,8 @@ export default function ModalFromRegistration(): JSX.Element {
     onClose();
   };
 
+  
+
   return (
     <>
       <Button
@@ -53,7 +55,7 @@ export default function ModalFromRegistration(): JSX.Element {
         height="60px"
         width="280px"
         border="none"
-        marginTop= "20px"
+        marginTop="20px"
       >
         Записаться на пробное занятие
       </Button>
@@ -65,34 +67,41 @@ export default function ModalFromRegistration(): JSX.Element {
         onClick={() => dispatch(registrModal())}
       >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Create your account</ModalHeader>
+        <ModalContent class="login_modal">
+          <ModalHeader class="login_modal_header">
+            Пожалуйста, <br /> зарегистрируйтесь
+          </ModalHeader>
           <ModalCloseButton onClick={() => dispatch(registrModal())} />
           <ModalBody pb={6}>
             <form onSubmit={onSave}>
               <FormControl>
                 <FormLabel>Имя</FormLabel>
-                <Input name="name" type="text" ref={initialRef} placeholder="Имя" />
+                <Input
+                  class="login_input"
+                  name="name"
+                  type="text"
+                  ref={initialRef}
+                  placeholder="Имя"
+                />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Почта</FormLabel>
-                <Input name="email" type="email" placeholder="email" />
+                <Input class="login_input" name="email" type="email" placeholder="Почта" />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Пароль</FormLabel>
-                <Input name="password" type="password" placeholder="Пароль" />
+                <Input class="login_input" name="password" type="password" placeholder="Пароль" />
               </FormControl>
-              <Button colorScheme="blue" type="submit" mr={3}>
+              <Button class="login_btn" colorScheme="blue" type="submit" mr={3}>
                 Save
+              </Button>
+              <Button class="login_closebtn" onClick={() => dispatch(registrModal())}>
+                Cancel
               </Button>
             </form>
           </ModalBody>
-
-          <ModalFooter>
-            <Button onClick={() => dispatch(registrModal())}>Cancel</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>

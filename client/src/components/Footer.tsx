@@ -1,12 +1,9 @@
 import React from 'react';
 
-import { Stack, Link,  Image, IconButton } from '@chakra-ui/react';
+import { Stack, Link, Image, IconButton } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-import codeClassLogo from '../../public/code-class-logo.svg'
-
-
-    
+import codeClassLogo from '../../public/Logo.png';
 
 // function CustomLink({ children, ...props }: LinkProps) {
 //     return (
@@ -19,27 +16,26 @@ import codeClassLogo from '../../public/code-class-logo.svg'
 
 const accounts = [
   {
-    url: 'https://github.com/MA-Ahmad/templateskart',
+    url: 'https://github.com/DyachenkoIrina/Code-Class',
     label: 'Github Account',
     type: 'gray',
-    icon: <FaGithub />
+    icon: <FaGithub />,
   },
   {
     url: 'https://twitter.com/muhammad_ahmaad',
     label: 'Twitter Account',
     type: 'twitter',
-    icon: <FaTwitter />
+    icon: <FaTwitter />,
   },
   {
     url: 'https://linkedin.com/in/muhammad-ahmad20',
     label: 'LinkedIn Account',
     type: 'linkedin',
-    icon: <FaLinkedin />
-  }
+    icon: <FaLinkedin />,
+  },
 ];
 
 function Footer(): JSX.Element {
-    
   return (
     <Stack
       maxW="5xl"
@@ -53,15 +49,14 @@ function Footer(): JSX.Element {
       <Link href="https://templateskart.com" isExternal>
         <Image w="100px" src={codeClassLogo} alt="TemplatesKart" />
       </Link>
-        {/* <YandexMap/> */}
-      
+      {/* <YandexMap/> */}
+
       {/* Desktop Screen */}
       {/* <HStack spacing={4} alignItems="center" d={{ base: 'none', md: 'flex' }}>
         {links.map((link, index) => (
           <CustomLink key={index}>{link}</CustomLink>
         ))}
       </HStack> */}
-
 
       {/* Mobile and Tablet Screens */}
       {/* <Stack d={{ base: 'flex', md: 'none' }} alignItems="center">
@@ -97,7 +92,5 @@ function Footer(): JSX.Element {
     </Stack>
   );
 }
-
-
 
 export default Footer;

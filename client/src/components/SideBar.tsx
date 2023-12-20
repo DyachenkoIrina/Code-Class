@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spacer, IconButton, Image, useDisclosure } from '@chakra-ui/react';
+import { Spacer, IconButton, Image, useDisclosure, Flex } from '@chakra-ui/react';
 import {
   AppShell,
   Sidebar,
@@ -40,13 +40,12 @@ export default function SideBar(): JSX.Element {
           borderTopLeftRadius="20px"
           borderBottomLeftRadius="20px"
           backgroundColor="#D9D0FF"
-          // position="fixed"
           toggleBreakpoint={false}
           variant={isOpen ? 'default' : 'compact'}
           transition="width"
           transitionDuration="normal"
           width={isOpen ? '260px' : '14'}
-          height="285vh"
+          height="100%"
           minWidth="auto"
           zIndex="1"
         >

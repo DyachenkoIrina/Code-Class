@@ -3,22 +3,23 @@ body {
 .saas-app-shell__inner {
 }
 .logo_wrapper {
-  display: flex;
-  justify-content: flex-end;
   position: relative;
 }
 
 .logo,
 .text {
   width: 200px;
-  margin: 20px;
+  right: 50px;
+  top: 50px;
   position: absolute;
 }
 
 .text {
-  margin-top: 400px;
-  margin-right: 80px;
+  width: 430px;
+  margin-top: 700px;
   font-weight: 600;
+  font-size: 30px;
+  text-align: center;
 }
 
 .saas-app-shell__main {
@@ -38,7 +39,7 @@ body {
 
 .chakra-ui-light {
   background-color: #d7e8d7;
-  margin: 80px 90px 80px 90px;
+  margin: 30px 40px 30px 40px;
   border-radius: 20px;
 }
 
@@ -63,7 +64,7 @@ body {
 
 .corses_text {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 50px;
   text-align: center;
   margin-bottom: 50px;
 }
@@ -87,4 +88,52 @@ body {
 .videoBackgraund {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+}
+
+.login_modal {
+  border: 5px solid #d9d0ff;
+  border-radius: 20px;
+  margin: auto;
+  background: #ffffff;
+}
+
+.login_modal_header {
+  font-size: 20px;
+  padding: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.login_input {
+  width: 220px;
+  height: 30px;
+  border: 1px solid #d9d0ff;
+  border-radius: 10px;
+}
+
+.login_input::placeholder {
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+/* .login_input:focus {
+  border: none;
+} */
+
+.login_btn {
+  margin: 25px 25px 0px 0px;
+}
+
+.login_btn,
+.login_closebtn {
+  width: 100px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.login_btn:hover,
+.login_closebtn:hover {
+  background-color: #d9d0ff;
 }
