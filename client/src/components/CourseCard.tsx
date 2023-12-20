@@ -21,11 +21,11 @@ type PathType = {
 
 export default function CourseCard({ path }: Props): JSX.Element {
   return (
-    <Card border="2px solid" maxWidth="600px">
+    <Card border="10px solid #D9D0FF" borderRadius="20px" maxWidth="600px">
       <CardBody>
         <Image src={path.img} alt="Green double couch with wooden legs" borderRadius="lg" />
         <Stack mt="6" spacing="3">
-          <Heading size="md">{path.name}</Heading>
+          <Heading textAlign="center" paddingLeft="50px" size="lg">{path.name}</Heading>
           <UnorderedList>
             {path.description.map((el) => (
               <ListItem>{el}</ListItem>
@@ -33,7 +33,6 @@ export default function CourseCard({ path }: Props): JSX.Element {
           </UnorderedList>
         </Stack>
       </CardBody>
-      <Divider />
     </Card>
   );
 }
