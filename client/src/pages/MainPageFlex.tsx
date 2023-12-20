@@ -23,8 +23,8 @@ export default function MainPageFlex(): JSX.Element {
       </Box>
       <Box flex="2">
         <Container>
-          <Container class="heading_wrapper">
-            <Container class="heading">
+          <Container className="heading_wrapper">
+            <Container className="heading">
               <HeadingComponent class="heading_text" />
               <ModalFromRegistration
               

@@ -14,7 +14,7 @@ import {
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { userEditModal } from '../redux/slices/modal/modalReducer';
-import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
+// import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
 
 export default function EditFormModal({ show , setShow } : {show : any , setShow : any}): JSX.Element {
   const dispatch = useAppDispatch();
@@ -29,18 +29,19 @@ export default function EditFormModal({ show , setShow } : {show : any , setShow
         <ModalBody pb={6}>
           <form
             onSubmit={(e) => {
-              e.preventDefault();
-              const formData = new FormData();
-              formData.append('id', user.id);
-              formData.append('lastName', e.currentTarget.lastName.value);
-              formData.append('name', e.currentTarget.name.value);
-              formData.append('profileImage', e.currentTarget.profileImage.files[0]);
-              formData.append('email', e.currentTarget.email.value);
-              formData.append('role', e.currentTarget.role.value);
+              // e.preventDefault();
+              // const formData = new FormData();
+              // formData.append('id', user.id); // было просто user.id TSERROR
+              // formData.append('lastName', e.currentTarget.lastName.value);
+              // formData.append('name', e.currentTarget.name.value);
+              // formData.append('profileImage', e.currentTarget.profileImage.files[0]);
+              // formData.append('email', e.currentTarget.email.value);
+              // formData.append('role', e.currentTarget.role.value);
 
-              // dispatch(thunkUpdateUser({ id: user.id, data: formData }));
-              dispatch(thunkUpdateUser(formData));
-              setShow(false);
+              // // dispatch(thunkUpdateUser({ id: user.id, data: formData }));
+              // dispatch(thunkUpdateUser(formData));
+              // setShow(false);
+              console.log(e)
             }}
           >
             <FormControl>
@@ -68,10 +69,10 @@ export default function EditFormModal({ show , setShow } : {show : any , setShow
               <Input defaultValue={user.email} name="email" type="text" placeholder="Почта" />
             </FormControl>
 
-            <FormControl mt={4}>
+            {/* <FormControl mt={4}>
               <FormLabel>Роль</FormLabel>
               <Input defaultValue={user.role} name="role" type="text" placeholder="Роль" />
-            </FormControl>
+            </FormControl> */}
 
             <Button type="submit" colorScheme="blue" mr={3}>
               Применить

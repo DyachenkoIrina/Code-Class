@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Editor from 'react-monaco-editor';
 import { useAppSelector } from '../redux/hook';
-import { HomeWorkType } from '../types/homeWork';
 
 export default function HomeWork(): JSX.Element {
   const homeWork = useAppSelector((state) => state.homeWorksSlice.homeWork);
