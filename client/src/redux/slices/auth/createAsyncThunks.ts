@@ -3,7 +3,7 @@ import AuthService from '../../../services/authService';
 import type { AuthState, LoginFormData, SignupFormData } from '../../../types/auth';
 import UserService from '../../../services/userService';
 
-export const thunkCheckAuth = createAsyncThunk<AuthState>('authSlice/thunkCheckAuth', async () => {
+export const thunkCheckAuth = createAsyncThunk('authSlice/thunkCheckAuth', async ()=> {
   const backendAuth = await AuthService.check();
   return { ...backendAuth, user: { ...backendAuth.user, status: 'authenticated' } };
 });

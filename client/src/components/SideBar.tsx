@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spacer, IconButton, Image, useDisclosure, Flex } from '@chakra-ui/react';
+import { Spacer, IconButton, Image, useDisclosure} from '@chakra-ui/react';
 import {
   AppShell,
   Sidebar,

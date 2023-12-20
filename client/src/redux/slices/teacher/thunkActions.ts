@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import TeacherServise from '../../../services/teacherService';
-import type { TeacherType, UserType } from '../../../types/auth';
-import StudentServise from '../../../services/students';
+import type { TeacherType} from '../../../types/auth';
+
 
 // eslint-disable-next-line import/prefer-default-export
 export const thunkTeacherGroupLoad = createAsyncThunk(

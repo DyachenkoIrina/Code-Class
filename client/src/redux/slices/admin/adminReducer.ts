@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { GroupType, GroupsSliceState } from "../../../types/groups";
-import { thunkDeleteTeacher, thunkGroupsLoad, thunkUsersLoad } from "./thunkActionsAdmin";
+import type { GroupType} from "../../../types/groups";
+import {  thunkGroupsLoad, thunkUsersLoad } from "./thunkActionsAdmin";
 import type { AdminSliceState, TeacherGroupType } from "../../../types/admin";
 
 
@@ -23,7 +23,7 @@ export const adminSlice = createSlice({
     setSelectedTeacher: (state, action:{payload: SelectedTeacherType, type: string}) => {
       const { teacher, groups } = action.payload;
       const teacherGroupNames = teacher.Groups.map((group) => group.group)
-      const groupsChecked = groups.map((group, id) => {
+      const groupsChecked = groups.map((group) => {
         if (teacherGroupNames.includes(group.group)){
           return {name: group.group, manages: true}
         }
@@ -32,9 +32,12 @@ export const adminSlice = createSlice({
       const data = {...teacher, Groups: groupsChecked}
       state.selectedTeacher = data;
     },
-    changeCheckbox:(state, action) => {
-      const {id} = action.payload
-      state.selectedTeacher.Groups[id].manages = !state.selectedTeacher.Groups[id].manages
+    changeCheckbox: (state, action) => {
+      const { id } = action.payload;
+    
+      if (state.selectedTeacher) {
+        state.selectedTeacher.Groups[id].manages = !state.selectedTeacher.Groups[id].manages;
+      }
     },
     clearSelectedTeacher: (state) => {
       state.selectedTeacher = null;

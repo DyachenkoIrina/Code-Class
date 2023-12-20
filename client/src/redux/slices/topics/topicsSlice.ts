@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { TopicSliceState, TopicType } from '../../../types/topics/index';
+import type { TopicSliceState } from '../../../types/topics/index';
 import thunkLoad from './createAsyncThunk';
 
 const initialState: TopicSliceState = {
@@ -12,9 +12,10 @@ const initialState: TopicSliceState = {
 export const topicsSlice = createSlice({
   name: 'topics',
   initialState,
+  reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(thunkLoad.fulfilled, (state, action: PayloadAction<TopicType>) => {
+    builder.addCase(thunkLoad.fulfilled, (state, action ) => {
       state.topics = action.payload;
     });
     // builder.addCase(thunkAddFavoriteTopic.fulfilled, (state, action: PayloadAction<TopicType>) => {

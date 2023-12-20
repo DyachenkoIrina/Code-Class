@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { ChakraProvider, Container, Image } from '@chakra-ui/react';
+import { ChakraProvider, Container} from '@chakra-ui/react';
 import { SaasProvider } from '@saas-ui/react';
 import LoginFormModal from './forms/LoginFormModal';
 import SideBar from './components/SideBar';
@@ -19,9 +19,9 @@ import PrivateRouter from './components/HOC/PrivateRouter';
 import AdminPage from './pages/AdminPage';
 
 import { thunkLoadHomeWork } from './redux/slices/homeWork/createAsyncThunk';
-import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
+
 import './index.css';
-import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
+
 import HomeWork from './pages/HomeWork';
 
 import MainPageFlex from './pages/MainPageFlex';
@@ -43,7 +43,6 @@ function App(): JSX.Element {
   }, []);
 
   const user = useAppSelector((store) => store.authSlice.user);
-  const teacher = useAppSelector((store) => store.authSlice.teacher);
 
   return (
     <>

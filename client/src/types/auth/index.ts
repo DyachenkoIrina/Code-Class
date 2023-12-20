@@ -1,13 +1,13 @@
 import type { GroupType } from '../groups';
 
 export type UserType = {
-  id: number;
+  id?: number;
   profileImage?: string;
-  name: string;
-  email: string;
-  role: string;
-  groupId: number;
-  lastName: string;
+  name?: string;
+  email?: string;
+  role?: string;
+  groupId?: number;
+  lastName?: string;
 };
 
 export type TeacherType = {
@@ -16,7 +16,7 @@ export type TeacherType = {
   name: string;
   email: string;
   role?: string;
-  teacherId: number;
+  teacherId?: number;
 };
 
 export type BackendAuth = { user: UserType; accessToken: string };
@@ -26,7 +26,7 @@ export type UserState =
   | ({ status: 'guest' } & UserType & TeacherType & { id: number })
   | ({ status: 'authenticated' } & UserType & TeacherType & { id: number });
 
-// Redux Slice State
+
 export type AuthState = {
   user: UserState;
   accessToken: string;
@@ -44,6 +44,7 @@ export type SignupFormData = {
   name: string;
   password: string;
 };
+
 
 export type StudentsSliceState = {
   students: UserType[];

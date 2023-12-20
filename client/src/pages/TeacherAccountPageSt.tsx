@@ -1,5 +1,4 @@
 import React from 'react';
-import { Center, Container } from '@chakra-ui/react';
 import TeacherAccountFormSt from '../forms/TeacherAccountFormSt';
 
 export default function TeacherAccountPageSt(): JSX.Element {

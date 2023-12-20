@@ -4,7 +4,6 @@ import {
   CardBody,
   Stack,
   Heading,
-  Divider,
   Image,
   UnorderedList,
   ListItem,

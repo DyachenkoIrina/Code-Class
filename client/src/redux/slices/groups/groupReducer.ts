@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { GroupsSliceState } from "../../../types/groups";
 import {  thunkDeleteTeacher, thunkTeacherGroups } from "./thunkActions";
 import { thunkTeacherGroupLoad } from "../teacher/thunkActions";
+import type { TeacherGroupType } from "../../../types/admin";
 
 
 const initialState: GroupsSliceState = {
   groups: [],
   teacherGroups: [],
+  teacherToDelete: {} as TeacherGroupType,
 };
 
 export const groupsSlice = createSlice({

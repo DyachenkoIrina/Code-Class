@@ -4,6 +4,7 @@ export type ModalStatetupe = {
   groupModal: boolean;
   registrModal: boolean;
   newtaskModal: boolean;
+  editModal: boolean;
   // onClose: () => void;
   // noteId: number;
 };

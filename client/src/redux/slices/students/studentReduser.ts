@@ -18,9 +18,10 @@ export const studentssSlice = createSlice({
       builder.addCase(thunkFilterStudentsLoad.fulfilled, (state, action) => {
         state.students = action.payload;
       });
-      builder.addCase(thunkgetOneStudentForTeacher.fulfilled, (state, action) => {
-        state.currentStudent = action.payload;
-      });
+    builder.addCase(thunkgetOneStudentForTeacher.fulfilled, (state, action) => {
+        const [firstStudent] = action.payload; // Assuming you are getting an array of students
+       state.currentStudent = firstStudent || null; // Set the first student or null if the array is empty
+});
     },
   });
 

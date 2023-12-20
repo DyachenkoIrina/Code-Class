@@ -1,6 +1,6 @@
-import  { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import  { createSlice } from '@reduxjs/toolkit';
 
-import type { TaskSliceState, TaskType } from '../../../types/task';
+import type { TaskSliceState} from '../../../types/task';
 import  { thunkLoadTask, thunkTaskAdd } from './createAsyncThunk';
 
 const initialState: TaskSliceState = {

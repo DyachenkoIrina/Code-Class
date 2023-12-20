@@ -64,7 +64,7 @@ export default function ModalFromRegistration(): JSX.Element {
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
-        onClick={() => dispatch(registrModal())}
+        onClose={() => dispatch(registrModal())}
       >
         <ModalOverlay />
         <ModalContent>

@@ -14,5 +14,5 @@ export type TopicTypeCard = {
 export type TopicSliceState = {
   topics: TopicType[];
   currentTopic: TopicType | null;
-  favoritesTopic: TopicType[];
+  favoritesTopic: TopicType[] | null;
 };
