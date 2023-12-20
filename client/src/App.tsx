@@ -10,7 +10,7 @@ import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActio
 import Footer from './components/Footer';
 
 import { useAppDispatch, useAppSelector } from './redux/hook';
-import thunkLoad from './redux/slices/topics/createAsyncThunk';
+
 import StudentAccountPage from './pages/StudentAccountPage';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
 import TaskPage from './pages/TaskPage';
@@ -26,6 +26,7 @@ import HomeWork from './pages/HomeWork';
 
 import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
+import { thunkLoad } from './redux/slices/topics/createAsyncThunk';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -44,7 +45,7 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-  const stor = useAppSelector((store) => console.log('--->store--->', store));
+  // const stor = useAppSelector((store) => console.log('--->store--->', store));
   return (
     <>
       <SaasProvider>

@@ -1,7 +1,20 @@
 import React from 'react';
-import { Card, Heading, CardBody, CardFooter, Stack, Button, Image, Text, TagLabel, FormLabel } from '@chakra-ui/react';
+import {
+  Card,
+  Heading,
+  CardBody,
+  CardFooter,
+  Stack,
+  Button,
+  Image,
+  Text,
+  TagLabel,
+  FormLabel,
+} from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
 import type { TopicType } from '../types/topics';
 import { useAppDispatch } from '../redux/hook';
+import { thunkAddFavoriteTopic } from '../redux/slices/topics/createAsyncThunk';
 
 type TopicTypeProps = {
   topic: TopicType;
@@ -9,7 +22,9 @@ type TopicTypeProps = {
 
 export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
   const dispatch = useAppDispatch();
-
+  const { id } = useParams();
+  const studentId = Number(id);
+  console.log('$$$$---->', studentId);
   return (
     <Card
       style={{
@@ -49,9 +64,13 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
           }}
         >
           <FormLabel>Тема:</FormLabel>
-          <Text size="sm" style={{ overflowWrap: 'break-word' }}>{topic.title}</Text>
+          <Text size="sm" style={{ overflowWrap: 'break-word' }}>
+            {topic.title}
+          </Text>
           {/* <Text size="md">{topic.description}</Text> */}
-          <Button>Дать задание ученику!</Button>
+          <Button onClick={() => dispatch(thunkAddFavoriteTopic({ studentId, id: topic.id }))}>
+            Дать задание ученику!
+          </Button>
         </CardBody>
 
         {/* <Button onClick={dispatch()=>{}}>

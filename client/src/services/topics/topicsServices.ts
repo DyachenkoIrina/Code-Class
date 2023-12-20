@@ -12,9 +12,9 @@ class TopicsService {
     return [];
   }
 
-  static async AddFavoriteTopics(id: TopicType['id']): Promise<TopicType> {
+  static async AddFavoriteTopics(studentId: number, id: TopicType['id']): Promise<TopicType> {
     try {
-      const response = await apiService.post<TopicType>('/forUser/:id', id);
+      const response = await apiService.post<TopicType>(`/forUser/${studentId}`, { id: id });
       if (response.status === 200) {
         return response.data;
       }
