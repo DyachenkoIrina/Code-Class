@@ -2,8 +2,8 @@ import axios from 'axios';
 import type { GroupType } from '../types/groups';
 
 export const apiGroupServise = axios.create({
-  baseURL: 'http://localhost:3001/api/v1/adminlk/groups',
-});
+baseURL:  `${import.meta.env.VITE_SERVER_BASEURL}adminlk/groups`,
+})
 
 class GroupServise {
   static async getGroups(): Promise<GroupType[]> {

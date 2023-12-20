@@ -37,7 +37,7 @@ app.use("/api/v1/task", tasksRouter);
 app.use("/api/v1/tokens", tokensRouter);
 app.use("/api/v1/groupRouter", groupRouter);
 app.use("/api/v1/auth", authRouter);
-app.use("/api/users", apiUsersRouter);
+app.use("api/v1/api/users", apiUsersRouter);
 app.use("/api/v1/homework", homeworkRouter);
 
 

@@ -3,7 +3,7 @@ import type { GroupType } from '../types/groups';
 import type { AdminStudentCard, TeacherGroupType} from '../types/admin';
 
 export const apiAdminService = axios.create({
-  baseURL: 'http://localhost:3001/api/v1/adminlk',
+  baseURL:  `${import.meta.env.VITE_SERVER_BASEURL}adminlk/`,
 });
 
 interface ServerResponse {

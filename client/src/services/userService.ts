@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { UserType, SignupFormData } from '../types/auth';
 
 export const apiUserService = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: `${import.meta.env.VITE_SERVER_BASEURL}`,
 });
 
 class UserService {

@@ -3,7 +3,7 @@ import { TeacherGroupArr } from '../types/admin';
 
 
 export const apiGroupServise = axios.create({
-  baseURL: 'http://localhost:3001/api/v1/groupRouter',
+  baseURL: `${import.meta.env.VITE_SERVER_BASEURL}groupRouter`,
   // VITE_SERVER_BASEURL=http://localhost:3000/api/v1/
 });
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { HomeWorkType } from '../types/homeWork';
 
 export const apiService = axios.create({
-  baseURL: 'http://localhost:3001/api/v1/homework',
+  baseURL: `${import.meta.env.VITE_SERVER_BASEURL}homework`,
 });
 
 class HomeWorksService {

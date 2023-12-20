@@ -3,7 +3,7 @@ import type { UserType } from '../types/auth';
 import type { GroupType } from '../types/groups';
 
 export const apiStudentsServise = axios.create({
-  baseURL: 'http://localhost:3001/api/v1/teacherlk',
+  baseURL: `${import.meta.env.VITE_SERVER_BASEURL}teacherlk`,
 });
 
 class StudentServise {
