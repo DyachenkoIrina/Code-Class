@@ -64,16 +64,7 @@ function App(): JSX.Element {
         <SideBar />
 
       </SaasProvider>
-      <Container className="logo_wrapper">
-        {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
-        <Image className="logo" src="../../public/Logo.png" alt="Dan Abramov" />
-
-        <p className="text">
-          Урок длится 60 минут Вы сможете познакомиться с преподавателем и понаблюдать за тем, как
-          проходит урок Ребенок познакомится с программированием в среде Scratch и сделает игру
-          «Догони робота» или «Фруктовый ниндзя».
-        </p>
-      </Container>
+     
 
       <ChakraProvider>
         <Routes>
