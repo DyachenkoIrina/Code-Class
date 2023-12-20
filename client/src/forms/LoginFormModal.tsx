@@ -31,7 +31,7 @@ export default function LoginFormModal(): JSX.Element {
       <ModalOverlay />
       <ModalContent class="login_modal">
         <ModalHeader class="login_modal_header">Авторизация</ModalHeader>
-        {/* <ModalCloseButton onClick={() => dispatch(openModallogin())} /> */}
+       
         <ModalBody pb={6}>
           <form
             onSubmit={(e) => {

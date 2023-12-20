@@ -69,7 +69,6 @@ export default function ModalFromRegistration(): JSX.Element {
           <ModalHeader class="login_modal_header">
             Пожалуйста, <br /> зарегистрируйтесь
           </ModalHeader>
-          <ModalCloseButton onClick={() => dispatch(registrModal())} />
           <ModalBody pb={6}>
             <form onSubmit={onSave}>
               <FormControl>

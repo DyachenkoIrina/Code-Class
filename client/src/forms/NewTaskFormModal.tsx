@@ -4,6 +4,8 @@ import {
   ModalContent,
   ModalFooter,
   ModalBody,
+  Textarea,
+  useDisclosure,
   Button,
   FormControl,
   FormLabel,
@@ -40,82 +42,65 @@ export default function NewTaskFormModal(): JSX.Element {
         }}
       >
         <ModalOverlay />
-        <ModalContent
-          w="500"
-          h="auto"
-          bgGradient="linear(to-r, #C1FFBC, #D9D0FF, #D7E8D7)"
-          sx={{
-            marginTop: '150px',
-          }}
-        >
+        <ModalContent class="login_modal">
           <ModalBody pb={6}>
-            <ModalCloseButton onClick={() => dispatch(newTaskModal())} />
             <FormControl>
               <FormLabel
                 sx={{
                   fontSize: '18px',
-                  fontWeight: 'bold',
-                  color: 'gray.700',
-                  mb: '2',
+                  fontWeight: '600',
+                  color: 'black',
+                  marginTop: '15px',
                 }}
               >
                 Выбор темы
               </FormLabel>
-              <Input ref={initialRef} name="title" type="text" placeholder="Тема" />
+              <Input
+                class="new_task_input"
+                ref={initialRef}
+                name="title"
+                type="text"
+                placeholder="Тема"
+              />
             </FormControl>
 
             <FormControl>
               <FormLabel
                 sx={{
                   fontSize: '18px',
-                  fontWeight: 'bold',
-                  color: 'gray.700',
-                  mb: '2',
+                  fontWeight: '600',
+                  color: 'black',
+                  marginTop: '15px',
                 }}
               >
                 Придумай задание
               </FormLabel>
-              <Input ref={initialRef} name="questions" type="text" placeholder="Задание" />
+              <Textarea
+                class="new_task_input"
+                ref={initialRef}
+                name="questions"
+                placeholder="Задание"
+              />
             </FormControl>
 
             <FormControl>
               <FormLabel
                 sx={{
                   fontSize: '18px',
-                  fontWeight: 'bold',
-                  color: 'gray.700',
-                  mb: '2',
+                  fontWeight: '600',
+                  color: 'black',
+                  marginTop: '15px',
                 }}
               >
                 Ответ
               </FormLabel>
-              <Input name="answer" type="text" placeholder="Ответ" />
+              <Textarea class="new_task_input" name="answer" type="text" placeholder="Ответ" />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button
-              sx={{
-                height: '40px',
-                width: 300,
-                bg: 'gray.400',
-                _hover: {
-                  bg: 'gray.500',
-                },
-              }}
-              type="submit"
-              mr={3}
-            >
-              Сохранить
-            </Button>
-            <Button
-              sx={{
-                bg: 'gray.400',
-              }}
-              onClick={() => dispatch(newTaskModal())}
-            >
-              Выйти
-            </Button>
+            <Button class="newtask_add_btn">Сохранить</Button>
+            <Button class="newtask__closebtn">Выйти</Button>
           </ModalFooter>
         </ModalContent>
       </form>
