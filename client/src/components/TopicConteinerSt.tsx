@@ -1,15 +1,17 @@
 import React from 'react';
-import { Container, Grid, GridItem } from '@chakra-ui/react';
-import { useAppSelector } from '../../redux/hook';
-import TopicCard from './TopicCard';
+import { Grid, GridItem } from '@chakra-ui/layout';
+import { Container } from 'react-bootstrap';
+import { useAppSelector } from '../redux/hook';
+import TopicCardSt from './TopicCardSt';
 
-export default function TopicContainer(): JSX.Element {
+
+export default function TopicContainerSt(): JSX.Element {
   const topics = useAppSelector((state) => state.topics.topics);
 
   return (
     <Container
-      maxW="900px"
-      // bg="#D7E8D7"
+      // maxW="900px"
+      bg="#D7E8D7"
       border="2px solid gray"
       borderRadius="25px"
       p={4}
@@ -19,7 +21,7 @@ export default function TopicContainer(): JSX.Element {
       <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
         {topics.map((topic) => (
           <GridItem key={topic.id} minWidth="0" overflow="visible">
-            <TopicCard topic={topic} />
+            <TopicCardSt topic={topic} />
           </GridItem>
         ))}
       </Grid>

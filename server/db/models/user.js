@@ -12,10 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(Group, { foreignKey: "groupId" });
       this.hasMany(Homework, { foreignKey: "userId" });
       this.belongsToMany(Task, {
-        through: "HomeWork",
+        through: "HomeworkTask",
         foreignKey: "userId",
-
-      });
+      }); // Внес изменение здесь
     }
   }
   User.init(

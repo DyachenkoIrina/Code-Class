@@ -7,11 +7,12 @@ export type UserType = {
   email: string;
   role: string;
   groupId: number;
+  lastName: string;
 };
 
 export type TeacherType = {
   id: number;
-  avatar?: string;
+  profileImage?: string;
   name: string;
   email: string;
   role?: string;

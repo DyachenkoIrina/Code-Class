@@ -6,7 +6,7 @@ import LoginFormModal from './forms/LoginFormModal';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
 import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
-import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
+import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
 
 import { useAppDispatch, useAppSelector } from './redux/hook';
@@ -18,15 +18,22 @@ import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import AdminPage from './pages/AdminPage';
 
+import { thunkLoadHomeWork } from './redux/slices/homeWork/createAsyncThunk';
+import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
 import './index.css';
+import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
+import HomeWork from './pages/HomeWork';
 
 import MainPageFlex from './pages/MainPageFlex';
+import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    // void dispatch(thunkGroupsLoad());
+   void dispatch(thunkGroupsLoad());
+    void dispatch(thunkLoadHomeWork());
+
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -37,7 +44,8 @@ function App(): JSX.Element {
 
   // const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
 
-  // console.log('HEHEHEHEHEHEHEHE', groups)
+
+
   // const theme = extendTheme({
   //   colors: {
   //     brand: {
@@ -49,12 +57,12 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-  console.log('>>>App>>>>>>>teacher', teacher);
 
   return (
     <>
       <SaasProvider>
         <SideBar />
+
       </SaasProvider>
       <Container className="logo_wrapper">
         {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
@@ -78,6 +86,7 @@ function App(): JSX.Element {
             }
           >
             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+            <Route path="/teacherlk/studentid/:id" element={<TeacherAccountPageSt />} />
           </Route>
           <Route
             element={
@@ -89,6 +98,7 @@ function App(): JSX.Element {
             <Route path="/studentlk" element={<StudentAccountPage />} />
           </Route>
           <Route path="/student/task/:id" element={<TaskPage />} />
+          <Route path="/homework" element={<HomeWork />} />
           <Route
             element={
               <PrivateRouter

@@ -1,4 +1,4 @@
-// import type { LoginFormData, SignupFormData } from '.';
+import type { LoginFormData, SignupFormData } from '.';
 
 export type LoginHandlerType = (formData: LoginFormData) => Promise<void>;
 export type LogoutHandlerType = () => Promise<void>;
