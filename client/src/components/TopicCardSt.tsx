@@ -8,9 +8,9 @@ import {
   Button,
   Image,
   Text,
-  Link,
 } from '@chakra-ui/react';
 import type { TopicType } from '../types/topics';
+import { Link } from 'react-router-dom';
 
 type TopicTypeProps = {
   topic: TopicType;
@@ -22,7 +22,7 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"
       variant="outline"
-      maxW="600px" // Установите максимальную ширину
+      maxW="650px" // Установите максимальную ширину
       maxH="1500px" // Установите максимальную высоту
       p="1" // Установите внутренний отступ
       transition="transform 0.3s" // Добавляем плавный переход при изменении стилей

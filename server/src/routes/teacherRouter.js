@@ -1,6 +1,6 @@
 const express = require("express");
 const { User } = require("../../db/models");
-const { Group, Teacher, TeacherGroup } = require("../../db/models");
+const { Group, TeacherGroup } = require("../../db/models");
 
 const teacherRouter = express.Router();
 
@@ -42,4 +42,6 @@ teacherRouter.get("/studentid/:id", async (req, res) => {
     res.status(400).json({ message });
   }
 });
+
+
 module.exports = teacherRouter;
