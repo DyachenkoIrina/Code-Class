@@ -31,7 +31,6 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
 
-
     void dispatch(thunkLoadHomeWork());
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
@@ -41,10 +40,6 @@ function App(): JSX.Element {
     void dispatch(thunkTeacherGroups());
   }, []);
 
-  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
-
-
-  console.log('HEHEHEHEHEHEHEHE', groups)
   const theme = extendTheme({
     colors: {
       brand: {
@@ -55,14 +50,11 @@ function App(): JSX.Element {
   });
 
   const user = useAppSelector((store) => store.authSlice.user);
-  const teacher = useAppSelector((store) => store.authSlice.teacher);
-
 
   return (
     <>
       <SaasProvider>
-        {/* <SideBar /> */}
-
+        <SideBar />
       </SaasProvider>
       <Container class="logo_wrapper">
         {/* <video className="videoBackgraund" autoPlay loop muted src="/public/video.mp4" /> */}
@@ -107,6 +99,7 @@ function App(): JSX.Element {
           >
             <Route path="/adminlk" element={<AdminPage />} />
           </Route>
+          
         </Routes>
 
         <Footer />
@@ -117,4 +110,3 @@ function App(): JSX.Element {
 }
 
 export default App;
-

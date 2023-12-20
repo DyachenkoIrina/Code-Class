@@ -6,7 +6,7 @@ const homeworkRouter = express.Router();
 homeworkRouter.get("/", async (req, res) => {
   try {
     const data = await Homework.findAll();
-    console.log('----server----->', data);
+
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });
