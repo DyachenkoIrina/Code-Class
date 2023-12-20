@@ -86,6 +86,7 @@ function App(): JSX.Element {
           >
             <Route path="/adminlk" element={<AdminPage />} />
           </Route>
+          
         </Routes>
 
         <Footer />

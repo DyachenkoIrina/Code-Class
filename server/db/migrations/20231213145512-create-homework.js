@@ -11,17 +11,19 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users',
-          key: 'id'
-        }
+          model: "Users",
+          key: "id",
+        },
+        onDelete: "CASCADE",
       },
-      // taskId: {
-      //   type: Sequelize.INTEGER,
-      //   references: {
-      //     model: 'Tasks',
-      //     key: 'id'
-      //   }
-      // },
+      taskId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Tasks",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+      },
       checkWork: {
         type: Sequelize.TEXT,
       },

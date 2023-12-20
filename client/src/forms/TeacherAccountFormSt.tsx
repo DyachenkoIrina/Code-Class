@@ -1,4 +1,4 @@
-import { Center, FormControl } from '@chakra-ui/react';
+import { Button, Center, FormControl } from '@chakra-ui/react';
 import React from 'react';
 
 import ProfileContainerSt from '../components/ProfileContainerSt';
@@ -16,6 +16,7 @@ export default function TeacherAccountFormSt(): JSX.Element {
       >
         <ProfileContainerSt />
         <TopicContainerSt />
+    
       </FormControl>
     </Center>
   );

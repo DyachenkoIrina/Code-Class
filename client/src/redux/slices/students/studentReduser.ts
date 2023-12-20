@@ -13,17 +13,15 @@ export const studentssSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     // builder.addCase(thunkStudentsLoad.fulfilled, (state, action) => {
-      //   state.students = action.payload;
-      // });
-      builder.addCase(thunkFilterStudentsLoad.fulfilled, (state, action) => {
-        state.students = action.payload;
-      });
-      builder.addCase(thunkgetOneStudentForTeacher.fulfilled, (state, action) => {
-        state.currentStudent = action.payload;
-      });
-    },
-  });
-
-
+    //   state.students = action.payload;
+    // });
+    builder.addCase(thunkFilterStudentsLoad.fulfilled, (state, action) => {
+      state.students = action.payload;
+    });
+    builder.addCase(thunkgetOneStudentForTeacher.fulfilled, (state, action) => {
+      state.currentStudent = action.payload;
+    });
+  },
+});
 
 export default studentssSlice.reducer;

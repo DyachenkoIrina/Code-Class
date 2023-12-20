@@ -36,7 +36,7 @@ function GroupCard({ group }: GroupTypeProps): JSX.Element {
             sx={{ height: '50px', width: 300, display: 'flex', justifyContent: 'center' }}
             onClick={handleOpenModal}
           >
-            {group.Group.group}
+            {group.Group?.group}
           </Button>
         </CardBody>
       </Card>

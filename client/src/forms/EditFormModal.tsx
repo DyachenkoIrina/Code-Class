@@ -14,7 +14,7 @@ import {
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { userEditModal } from '../redux/slices/modal/modalReducer';
-import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
+// import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
 
 export default function EditFormModal({ show, setShow }: { show: any; setShow: any }): JSX.Element {
   const dispatch = useAppDispatch();
@@ -29,20 +29,19 @@ export default function EditFormModal({ show, setShow }: { show: any; setShow: a
         <ModalBody pb={6}>
           <form
             onSubmit={(e) => {
-              console.log(e.currentTarget.profileImage.files[0], 'oaoaooaao');
-              
-              e.preventDefault();
-              const formData = new FormData();
-              formData.append('id', user.id);
-              formData.append('lastName', e.currentTarget.lastName.value);
-              formData.append('name', e.currentTarget.name.value);
-              formData.append('profileImage', e.currentTarget.profileImage.files[0]);
-              formData.append('email', e.currentTarget.email.value);
+              // e.preventDefault();
+              // const formData = new FormData();
+              // formData.append('id', user.id); // было просто user.id TSERROR
+              // formData.append('lastName', e.currentTarget.lastName.value);
+              // formData.append('name', e.currentTarget.name.value);
+              // formData.append('profileImage', e.currentTarget.profileImage.files[0]);
+              // formData.append('email', e.currentTarget.email.value);
               // formData.append('role', e.currentTarget.role.value);
 
-              // dispatch(thunkUpdateUser({ id: user.id, data: formData }));
-              dispatch(thunkUpdateUser(formData));
-              setShow(false);
+              // // dispatch(thunkUpdateUser({ id: user.id, data: formData }));
+              // dispatch(thunkUpdateUser(formData));
+              // setShow(false);
+              console.log(e)
             }}
           >
             <FormControl>

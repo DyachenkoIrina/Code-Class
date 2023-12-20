@@ -12,6 +12,7 @@ const apiUsersRouter = require("./routes/apiUserRouter");
 const adminRouter = require("./routes/adminRouter");
 const groupRouter = require("./routes/groupRouter");
 const homeworkRouter = require("./routes/homeWork");
+const getnewtaskRouter = require("./routes/getNewTaskRouter");
 
 require("dotenv").config();
 
@@ -34,12 +35,11 @@ app.use("/api/v1/topic", topicRouter);
 app.use("/api/v1/adminlk", adminRouter);
 app.use("/api/v1/teacherlk", teacherRouter);
 app.use("/api/v1/task", tasksRouter);
+app.use("/api/v1/newtask", getnewtaskRouter);
 app.use("/api/v1/tokens", tokensRouter);
 app.use("/api/v1/groupRouter", groupRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/users", apiUsersRouter);
 app.use("/api/v1/homework", homeworkRouter);
-
-
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
