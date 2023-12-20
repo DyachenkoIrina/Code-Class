@@ -1,20 +1,20 @@
 import React from 'react';
-import type { LinkProps } from '@chakra-ui/react';
-import { Stack, HStack, Link, Divider, Image, IconButton } from '@chakra-ui/react';
+
+import { Stack, Link,  Image, IconButton } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import YandexMap from './YandexMap';
+
 import codeClassLogo from '../../public/code-class-logo.svg'
 
 
     
 
-function CustomLink({ children, ...props }: LinkProps) {
-    return (
-      <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} {...props}>
-        {children}
-      </Link>
-    );
-  }
+// function CustomLink({ children, ...props }: LinkProps) {
+//     return (
+//       <Link href="#" fontSize="sm" _hover={{ textDecoration: 'underline' }} {...props}>
+//         {children}
+//       </Link>
+//     );
+//   }
 //  const links = ['Blog', 'Documentation', 'Careers', 'Sign up', 'Terms of use', 'Privacy policy'];
 
 const accounts = [
@@ -38,7 +38,7 @@ const accounts = [
   }
 ];
 
-function Footer() {
+function Footer(): JSX.Element {
     
   return (
     <Stack

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -12,16 +12,18 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
-import { changeCheckbox, clearSelectedTeacher, updateTeacherGroups } from '../../redux/slices/admin/adminReducer';
+import { changeCheckbox, clearSelectedTeacher } from '../../redux/slices/admin/adminReducer';
 import { thunkTeacherManages } from '../../redux/slices/admin/thunkActionsAdmin';
+import type { GroupType } from '../../types/groups';
+
 
 export default function EditTeacherModal(): JSX.Element {
   const selectedTeacher = useAppSelector((store) => store.adminSlice.selectedTeacher);
   const groups = useAppSelector((store) => store.groupsSlice.groups);
 
   const dispatch = useAppDispatch();
-  console.log(selectedTeacher)
-  const handleCheckboxChange = (group, id): void => {
+  console.log('123123123123123123123', selectedTeacher)
+  const handleCheckboxChange = (group: GroupType, id: number): void => {
     
     dispatch(changeCheckbox({selectedTeacher, group, id}))
     
@@ -39,7 +41,7 @@ export default function EditTeacherModal(): JSX.Element {
           <Center>
             <div>{selectedTeacher?.name}</div>
           </Center>
-          {selectedTeacher?.Groups.map((group, id) => (
+          {selectedTeacher?.Groups.map((group:GroupType , id) => (
             <Center key={id}>
               <label>
                 <input
@@ -53,7 +55,7 @@ export default function EditTeacherModal(): JSX.Element {
           ))}
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme="green" mr={3} onClick={() => dispatch(thunkTeacherManages(selectedTeacher))}>
+          <Button colorScheme="green" mr={3} onClick={() => void dispatch(thunkTeacherManages(selectedTeacher))}>
             Сохранить изменения
           </Button>
           <Button onClick={() => dispatch(clearSelectedTeacher())}>Закрыть</Button>

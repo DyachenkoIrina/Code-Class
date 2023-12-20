@@ -1,5 +1,6 @@
 import axios from 'axios';
-import type { GroupType } from '../types/groups';
+import { TeacherGroupArr } from '../types/admin';
+
 
 export const apiGroupServise = axios.create({
   baseURL: 'http://localhost:3001/api/v1/groupRouter',
@@ -7,9 +8,9 @@ export const apiGroupServise = axios.create({
 });
 
 class teacherGroupService {
-  static async getTeacherGroups() {
+  static async getTeacherGroups(): Promise<TeacherGroupArr> {
  
-    const response = await apiGroupServise.get('/');
+    const response = await apiGroupServise.get<TeacherGroupArr>('/');
     
     if (response.status === 200) return response.data;
     return [];

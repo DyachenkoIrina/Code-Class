@@ -1,19 +1,10 @@
 import React from 'react';
-import { Avatar, Card, CardHeader, CardBody, CardFooter, SimpleGrid, Heading, Text, Flex, Button, Center } from '@chakra-ui/react';
+import { Avatar, Card, CardHeader, CardBody, SimpleGrid, Heading, Text,  Button, Center } from '@chakra-ui/react';
+import type { AdminStudentCard } from '../../types/admin';
 
-type Student = {
-  id: number;
-  name: string;
-  email: string;
-  groupId: string;
-  // Add more properties as needed
-};
 
-type Props = {
-  student: Student;
-};
 
-export default function StudentCard({ student }: Props) {
+export default function StudentCard({ student }: { student : AdminStudentCard}): JSX.Element {
   return (
     <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
       <Card>

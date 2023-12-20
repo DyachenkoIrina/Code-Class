@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { GroupsSliceState } from "../../../types/groups";
+import type { GroupType, GroupsSliceState } from "../../../types/groups";
 import { thunkDeleteTeacher, thunkGroupsLoad, thunkUsersLoad } from "./thunkActionsAdmin";
-import type{ AdminSliceState } from "../../../types/admin";
+import type { AdminSliceState, TeacherGroupType } from "../../../types/admin";
 
 
 const initialState: AdminSliceState = {
@@ -11,11 +11,16 @@ const initialState: AdminSliceState = {
   groups: [],
 };
 
+type SelectedTeacherType = {
+  teacher: TeacherGroupType;
+  groups: GroupType[]
+}
+
 export const adminSlice = createSlice({
   name: 'admin',
   initialState,
   reducers: {
-    setSelectedTeacher: (state, action) => {
+    setSelectedTeacher: (state, action:{payload: SelectedTeacherType, type: string}) => {
       const { teacher, groups } = action.payload;
       const teacherGroupNames = teacher.Groups.map((group) => group.group)
       const groupsChecked = groups.map((group, id) => {
@@ -28,7 +33,7 @@ export const adminSlice = createSlice({
       state.selectedTeacher = data;
     },
     changeCheckbox:(state, action) => {
-      const {selectedTeacher, group, id} = action.payload
+      const {id} = action.payload
       state.selectedTeacher.Groups[id].manages = !state.selectedTeacher.Groups[id].manages
     },
     clearSelectedTeacher: (state) => {

@@ -7,7 +7,6 @@ const initialState: StudentsSliceState = {
   students: [],
   currentStudent: null,
 };
-console.log('initialState', initialState);
 export const studentssSlice = createSlice({
   name: 'students',
   initialState,

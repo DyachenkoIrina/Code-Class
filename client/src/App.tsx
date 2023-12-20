@@ -6,7 +6,7 @@ import LoginFormModal from './forms/LoginFormModal';
 import SideBar from './components/SideBar';
 import TeacherAccountPage from './pages/TeacherAccountPage';
 import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
-import { thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
+import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
 
 import { useAppDispatch, useAppSelector } from './redux/hook';
@@ -31,7 +31,7 @@ function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-   // void dispatch(thunkGroupsLoad());
+   void dispatch(thunkGroupsLoad());
     void dispatch(thunkLoadHomeWork());
 
     void dispatch(thunkCheckAuth());
@@ -49,9 +49,6 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-
-  console.log('>>>App>>>>>>>teacher', teacher);
-
 
   return (
     <>
