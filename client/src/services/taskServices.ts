@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AddTaskFormData, TaskType } from '../types/task';
 
 export const apiService = axios.create({
-  baseURL: 'http://localhost:3001/api/v1/task',
+  baseURL: 'http://localhost:3001/api/v1/newtask',
 });
 
 class TasksService {

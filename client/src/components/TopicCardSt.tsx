@@ -1,38 +1,34 @@
 import React from 'react';
-import {
-  Card,
-  Heading,
-  CardBody,
-  CardFooter,
-  Stack,
-  Button,
-  Image,
-  Text,
-} from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Card, Heading, CardBody, CardFooter, Stack, Button, Image, Text } from '@chakra-ui/react';
 import type { TopicType } from '../types/topics';
+import { useAppDispatch } from '../redux/hook';
 
 type TopicTypeProps = {
   topic: TopicType;
 };
 
 export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
+  const dispatch = useAppDispatch();
   return (
     <Card
-      direction={{ base: 'column', sm: 'row' }}
-      overflow="hidden"
-      variant="outline"
-      maxW="600px" // Установите максимальную ширину
-      maxH="1500px" // Установите максимальную высоту
-      p="1" // Установите внутренний отступ
-      transition="transform 0.3s" // Добавляем плавный переход при изменении стилей
-      _hover={{
-        transform: 'scale(1.1)', // Масштабируем компонент при наведении
+      style={{
+        flexDirection: { base: 'column', sm: 'row' },
+        overflow: 'hidden',
+        border: '1px solid', // Выберите цвет границы по вашему вкусу
+        borderRadius: '4px', // Выберите радиус границы по вашему вкусу
+        maxWidth: '850px',
+        maxHeight: '1500px',
+        padding: '1',
+        transition: 'transform 0.3s',
       }}
+      _hover={{
+        transform: 'scale(1.1)',
+      }}
+      variant="outline"
     >
       <Image
         objectFit="cover"
-        maxW="100px"
+        maxW="200px"
         maxH="250px"
         // width="300px" // Установите ширину изображения
         // height="200px" // Установите высоту изображения
@@ -40,15 +36,25 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
         alt="Caffe Latte"
       />
       <Stack>
-        <CardBody maxW="500px" maxH="10px">
+        <CardBody
+          style={{
+            width: '300px',
+            height: '200px',
+            margin: '10px',
+            padding: '20px',
+            border: '1px solid #ccc',
+            borderRadius: '10px',
+            overflow: 'hidden',
+          }}
+        >
           <Heading size="md">{topic.title}</Heading>
-          <Text py="3">{topic.description}</Text>
+          {/* <Text size="md">{topic.description}</Text> */}
+          <Button>Дать задание ученику!</Button>
         </CardBody>
-        <CardFooter>
-          <Button as={Link} to={`/student/task/${topic?.id}`}>
+
+        {/* <Button onClick={dispatch()=>{}}>
             Дать задание ученику!
-          </Button>
-        </CardFooter>
+          </Button> */}
       </Stack>
     </Card>
   );

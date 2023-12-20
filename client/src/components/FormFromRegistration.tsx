@@ -35,7 +35,7 @@ export default function ModalFromRegistration(): JSX.Element {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.currentTarget)) as SignupFormData;
     void dispatch(thunkSignup(formData));
-
+    dispatch(registrModal());
     onClose();
   };
 
