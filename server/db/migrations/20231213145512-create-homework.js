@@ -15,13 +15,13 @@ module.exports = {
           key: 'id'
         }
       },
-      // taskId: {
-      //   type: Sequelize.INTEGER,
-      //   references: {
-      //     model: 'Tasks',
-      //     key: 'id'
-      //   }
-      // },
+      taskId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Tasks',
+          key: 'id'
+        }
+      },
       checkWork: {
         type: Sequelize.TEXT,
       },

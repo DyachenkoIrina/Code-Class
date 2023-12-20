@@ -1,19 +1,21 @@
 import type { TeacherGroupType } from "./admin";
-import type { TeacherType } from "./auth";
+
 
 export type GroupType = {
-  id: number;
-  group: string;
-  teacher: string;
-};
+  id?: number;
+  group?: string;
+  teacher?: string;
+  name?: string ;
+  manages?: boolean;
+}
 
 
 export type GroupsState = {
-groups: GroupType[];
+  groups: GroupType[];
 };
 
 export type GroupsSliceState = {
   groups: GroupType[];
-  teacherGroups: TeacherGroupType[]
-  // teacherToDelete:
-};
+  teacherGroups: TeacherGroupType[];
+  teacherToDelete: TeacherGroupType;
+}

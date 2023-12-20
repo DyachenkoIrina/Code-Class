@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Spacer, IconButton, Image, useDisclosure, Link } from '@chakra-ui/react';
+import { Spacer, IconButton, Image, useDisclosure } from '@chakra-ui/react';
 import {
   AppShell,
   Sidebar,
@@ -10,36 +10,27 @@ import {
 } from '@saas-ui/react';
 import {
   FiHome,
-  FiUsers,
-  FiSettings,
-  FiStar,
   FiChevronsLeft,
   FiChevronsRight,
   FiUser,
   FiBook,
-  FiCircle,
   FiLogOut,
   FiLogIn,
 } from 'react-icons/fi';
-import { Button } from 'react-bootstrap';
+
 import { useNavigate } from 'react-router';
-import { openModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
+import { openModallogin } from '../redux/slices/modal/modalReducer';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunks';
 
 export default function SideBar(): JSX.Element {
-  const { isOpen, onOpen, onToggle } = useDisclosure({
+  const { isOpen, onToggle } = useDisclosure({
     defaultIsOpen: false,
   });
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
-  const idTeacher = useAppSelector((state) => {
-
-    return state.authSlice.teacher?.id
-  });
-
-
+  const idTeacher = useAppSelector((state) => state.authSlice.teacher?.id);
 
   const navigate = useNavigate();
   return (

@@ -14,8 +14,9 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { closeModal, registrModal } from '../redux/slices/modal/modalReducer';
+import {  registrModal } from '../redux/slices/modal/modalReducer';
 import { thunkSignup } from '../redux/slices/auth/createAsyncThunks';
+import type { SignupFormData } from '../types/auth';
 
 export default function ModalFromRegistration(): JSX.Element {
   const { onOpen, onClose } = useDisclosure();
@@ -33,8 +34,7 @@ export default function ModalFromRegistration(): JSX.Element {
   const onSave = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.currentTarget)) as SignupFormData;
-
-    dispatch(thunkSignup(formData));
+    void dispatch(thunkSignup(formData));
 
     onClose();
   };

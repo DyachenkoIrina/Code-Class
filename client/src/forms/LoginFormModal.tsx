@@ -6,7 +6,6 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
   Button,
   FormControl,
   FormLabel,
@@ -14,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
-import { closeModal, openModallogin, toggleModal } from '../redux/slices/modal/modalReducer';
+import { openModallogin} from '../redux/slices/modal/modalReducer';
 import { thunkLogin } from '../redux/slices/auth/createAsyncThunks';
 import type { LoginFormData } from '../types/auth';
 
