@@ -19,9 +19,9 @@ class AdminService {
   }
   
   static async changeGroupManage(selectedTeacher: null | TeacherGroupType): Promise<ServerResponse> {
-  
     const response = await apiAdminService.post<ServerResponse>('/', selectedTeacher);
-    if (response.status === 200) return response;
+    console.log(response.data, 'asdasjkldl;aks;dkas;dka;sldj;asjf;ljfgk;asdgklahlkghfadls')
+    if (response.status === 200) return response.data;
     return response;
   }
 

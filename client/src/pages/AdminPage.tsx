@@ -18,8 +18,6 @@ export default function UserSelector(): JSX.Element {
 
   const students = userList.filter((user: UserType):boolean => user.role === 'Student');
   const applications = userList.filter((user) => user.role === 'Application');
-  useEffect(() => {
-  }, []);
 
 
   return (
