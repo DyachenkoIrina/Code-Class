@@ -21,8 +21,6 @@ import { useAppDispatch, useAppSelector } from '../redux/hook';
 
 import { newTaskModal } from '../redux/slices/modal/modalReducer';
 
-
-
 export default function NewTaskFormModal(): JSX.Element {
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.modal.newtaskModal);
@@ -44,7 +42,9 @@ export default function NewTaskFormModal(): JSX.Element {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
-          formData.topicId = selectedTopic;
+          console.log('formdata front---->', formData);
+          
+          // formData.topicId = selectedTopic;
           void dispatch(thunkTaskAdd(formData));
           dispatch(newTaskModal());
         }}
@@ -122,8 +122,12 @@ export default function NewTaskFormModal(): JSX.Element {
           </ModalBody>
 
           <ModalFooter>
-            <Button class="newtask_add_btn">Сохранить</Button>
-            <Button class="newtask__closebtn">Выйти</Button>
+            <Button type="submit" class="newtask_add_btn">
+              Сохранить
+            </Button>
+            <Button onClick={() => dispatch(newTaskModal())} class="newtask__closebtn">
+              Выйти
+            </Button>
           </ModalFooter>
         </ModalContent>
       </form>

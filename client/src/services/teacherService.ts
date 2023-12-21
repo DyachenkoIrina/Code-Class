@@ -33,12 +33,14 @@ class TeacherServise {
     if (response.status === 200) return response.data;
     return [];
   }
-  
-  static async getChekTopic(id: UserType['id']): Promise<UserType[]> {
+
+  static async getChekTask(id: UserType['id']): Promise<UserType[]> {
     const response = await apiGroupServise.get<GroupType[]>(`/studentid/${id}/homework`);
     if (response.status === 200) return response.data;
     return [];
   }
-}
 
+  
+
+}
 export default TeacherServise;

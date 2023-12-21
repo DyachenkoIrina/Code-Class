@@ -109,40 +109,40 @@ module.exports = {
           name: "Max Verstappen",
           profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/verstappen.jpg.img.640.medium.jpg/1701270073824.jpg",
-          email: "max@",
-          hashpass: hashSync("1", 10),
+          email: "max@gmail.com",
+          hashpass: hashSync("1111", 10),
           role: "Teacher",
         },
         {
           name: "Checo Perez",
           profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/perez.jpg.img.1536.high.jpg",
-          email: "checo@",
-          hashpass: hashSync("1", 10),
+          email: "checo@gmail.com",
+          hashpass: hashSync("1111", 10),
           role: "Teacher",
         },
         {
           name: "Lando Norris",
           profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/norris.jpg.img.1536.high.jpg",
-          email: "lando@",
-          hashpass: hashSync("1", 10),
+          email: "lando@gmail.com",
+          hashpass: hashSync("1111", 10),
           role: "Teacher",
         },
         {
           name: "Oscar Piastri",
           profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/piastri.jpg.img.1536.high.jpg",
-          email: "oscar@",
-          hashpass: hashSync("1", 10),
+          email: "oscar@gmail.com",
+          hashpass: hashSync("1111", 10),
           role: "Teacher",
         },
         {
           name: "Lewis Hamilton",
           profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/hamilton.jpg.img.1536.high.jpg",
-          email: "ham@",
-          hashpass: hashSync("1", 10),
+          email: "ham@gmail.com",
+          hashpass: hashSync("1111", 10),
           role: "Teacher",
         },
       ],
@@ -180,21 +180,21 @@ module.exports = {
       [
         {
           description: "Topic 1",
-          title: "javascript",
+          title: "Javascript",
           complexity: "Easy",
-          img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+          img: "https://i.pinimg.com/564x/1a/9c/39/1a9c3904e4a7bac215219ed9a3452332.jpg",
         },
         {
           description: "Topic 2",
-          title: "python",
+          title: "Python",
           complexity: "Easy",
-          img: "https://i.morioh.com/210209/e6e21880.webp",
+          img: "https://i.pinimg.com/564x/23/8e/a6/238ea679ba9cecce8b3f8c4ebf9d151d.jpg",
         },
         {
           description: "Topic 3",
           title: "Swift",
           complexity: "Easy",
-          img: "https://www.technotification.com/wp-content/uploads/2016/06/New-Programming-Languages-Swift.jpg",
+          img: "https://i.pinimg.com/736x/c9/39/7c/c9397c3be42b8ccefca7dcde7fbcad96.jpg",
         },
         {
           description: "Topic 4",
