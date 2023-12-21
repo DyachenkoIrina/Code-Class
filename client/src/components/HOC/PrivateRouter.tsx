@@ -12,6 +12,6 @@ export default function PrivateRouter({
   isAllowed,
   redirectPath = '/',
 }: PrivateRouterProps): JSX.Element {
-  if (isAllowed) return <Navigate to={redirectPath} />;
+  if (!isAllowed) return <Navigate to={redirectPath} />;
   return children || <Outlet />;
 }

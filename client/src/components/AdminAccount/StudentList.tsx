@@ -8,7 +8,7 @@ export default function StudentCard({ student }: { student: AdminStudentCard }):
   const groups = useAppSelector((state) => state.adminSlice.groups);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group.group || 'N/A');
 
-  const handleGroupSelect = (group: { id: number; group?: string | undefined }) => {
+  const handleGroupSelect = (group: { id: number; group?: string | undefined }):void => {
     setSelectedGroup(group.group || 'N/A');
     console.log(selectedGroup);
   };
