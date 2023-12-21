@@ -37,3 +37,7 @@ export const thunkRefreshToken = createAsyncThunk<AuthState['accessToken']>(
 export const thunkUpdateUser = createAsyncThunk('authSlice/thunkUpdateUaser', async (data) =>
   UserService.updateUser(data),
 );
+
+export const thunkConfirm = createAsyncThunk('authSlice/thunkConfirm', async (formData) => {
+  await AuthService.confirm(formData);
+});
