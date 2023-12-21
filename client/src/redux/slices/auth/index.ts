@@ -25,9 +25,9 @@ export const authSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(thunkCheckAuth.fulfilled, (state, action) => {
 
-      // console.log('checkAuth---teacher------>', action.payload)
+     
       if (action.payload.user.role === 'Teacher') {
-        // console.log('>>>>>>!!!!_________',action.payload.user.role )
+        
 
         state.user = { ...action.payload.user, status: 'authenticated' };
         state.teacher = action.payload.user;
@@ -46,7 +46,7 @@ export const authSlice = createSlice({
     builder.addCase(thunkLogin.fulfilled, (state, action) => {
       state.accessToken = action.payload.accessToken;
       if (action.payload.user.role === 'Teacher') {
-        console.log('>>>>>>!!!!_________',action.payload.user.role )
+        
         state.user = { ...action.payload.user, status: 'authenticated' };
         state.teacher = { ...action.payload.user, status: 'authenticated' }
       } else {
@@ -63,7 +63,7 @@ export const authSlice = createSlice({
       state.user.role = null;
     });
     builder.addCase(thunkUpdateUser.fulfilled, (state, action) => {
-      console.log('<><>><><>><>><>',action.payload)
+      
       state.user = { ...action.payload, status: 'authenticated' };
     });
   },

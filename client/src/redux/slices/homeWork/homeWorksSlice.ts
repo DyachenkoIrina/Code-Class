@@ -16,9 +16,7 @@ export const homeWorksSlice = createSlice({
     builder.addCase(thunkLoadHomeWork.fulfilled, (state, action) => {
       state.homeWork = action.payload;
     });
-    // builder.addCase(thunkCheckTopic.fulfilled, (state, action) => {
-    //   state.t= action.payload;
-    // });
+    
   },
 });
 
