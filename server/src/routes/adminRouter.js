@@ -38,10 +38,11 @@ adminRouter.put("/", async (req, res) => {
         id: id
       }
     });
+    req.body.role = 'Student'
 
-    console.log('User role updated:', updatedUser);
+    console.log('User role updated:', req.body);
 
-    res.status(200).json(updatedUser);
+    res.status(200).json(req.body);
   } catch (error) {
     console.error('Error updating user role:', error);
     res.status(500).json({ error: 'Internal Server Error' });
