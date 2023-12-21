@@ -17,13 +17,9 @@ import TaskPage from './pages/TaskPage';
 import { thunkLoadTask } from './redux/slices/tasks/createAsyncThunk';
 import PrivateRouter from './components/HOC/PrivateRouter';
 import AdminPage from './pages/AdminPage';
-
-import { thunkLoadHomeWork } from './redux/slices/homeWork/createAsyncThunk';
-import { thunkTeacherGroupLoad } from './redux/slices/teacher/thunkActions';
-import './index.css';
-import TeacherAccountFormSt from './forms/TeacherAccountFormSt';
 import HomeWork from './pages/HomeWork';
-
+import { thunkLoadHomeWork } from './redux/slices/homeWork/createAsyncThunk';
+import './index.css';
 import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 import Loader from './components/HOC/Loader';

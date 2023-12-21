@@ -16,13 +16,8 @@ class TopicsService {
   }
 
   static async getOneTopic(id: UserType['id']): Promise<UserType> {
-    console.log('YYYYYYY YYid', id);
     const response = await apiService.post<UserType>('/studenttopics', {id:id});
-    console.log('YYYYYYY YY', response);
-    
     if (response.status === 200) return response.data;
-   
-    
     return [];
   }
 

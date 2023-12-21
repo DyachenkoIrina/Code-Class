@@ -30,6 +30,25 @@ adminRouter.get("/groups", async (req, res) => {
   }
 });
 
+adminRouter.put("/", async (req, res) => {
+  try {
+    const { id } = req.body;
+    const updatedUser = await User.update({ role: 'Student' }, {
+      where: {
+        id: id
+      }
+    });
+    req.body.role = 'Student'
+
+    console.log('User role updated:', req.body);
+
+    res.status(200).json(req.body);
+  } catch (error) {
+    console.error('Error updating user role:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 adminRouter.post("/", async (req, res) => {
   try {
@@ -51,7 +70,6 @@ adminRouter.post("/", async (req, res) => {
 
     const trueGroups = req.body.Groups.filter((el) => el.manages === true);
 
-    // Assuming TeacherGroup has a model associated with it
     await TeacherGroup.destroy({
       where: {
         teacherId: req.body.id,
@@ -101,11 +119,10 @@ adminRouter.delete("/:id", async (req, res) => {
 });
 
 adminRouter.get("/groups", async (req, res) => {
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+ 
 
   try {
     const data = await Group.findAll();
-    console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEeeeeeeeeeeeeee", data);
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });

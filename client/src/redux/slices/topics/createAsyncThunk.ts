@@ -20,7 +20,7 @@ export const thunkOneTopic = createAsyncThunk(
   'topicsSlice/thunkOneTopic',
   async (id: UserType['id']) => {
     const response = await TopicsService.getOneTopic(id);
-    console.log('^^^^^^^',response)
+   
 
     return response;
   },

@@ -7,7 +7,14 @@ import TopicCardSt from './TopicCardSt';
 
 
 export default function CheckTopicContainerSt(): JSX.Element {
+    // const dispatch = useAppDispatch();
   const topics = useAppSelector((state) => state.topics.topics);
+  // const userId = useAppSelector((state) => state.authSlice.user);
+  
+  // useEffect(() => {
+  //   if(userId)
+  //   void dispatch(thunkChekTopic(userId?.id));
+  // }, [userId]);
 
   return (
     <Container

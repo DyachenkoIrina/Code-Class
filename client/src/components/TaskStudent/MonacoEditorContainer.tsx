@@ -29,12 +29,12 @@ const theme = extendTheme({
 
 export default function MonacoEditorContainer({ tasks }: TasksState): JSX.Element {
   const taskId = useAppSelector((state) => state.tasks.currentTask);
-  console.log('taskId', taskId);
+
 
   const userState = useAppSelector((state) => state.authSlice.user);
   const [editorValue, setEditorValue] = useState('');
   const [showAlert, setShowAlert] = useState(false);
-  console.log('user', userState);
+
 
   const saveTextToDatabase = async (): Promise<void> => {
     try {

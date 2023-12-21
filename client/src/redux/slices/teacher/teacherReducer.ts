@@ -4,6 +4,7 @@ import { thunkTeacherGroupLoad } from './thunkActions';
 
 const initialState: TeacherSliceState = {
   teacherGroups: [],
+  currettask:[]
 };
 
 export const teacherSlice = createSlice({
@@ -14,6 +15,10 @@ export const teacherSlice = createSlice({
     builder.addCase(thunkTeacherGroupLoad.fulfilled, (state, action) => {
       state.teacherGroups = action.payload;
     });
+
+    // builder.addCase(thunkCheckTopic.fulfilled, (state, action) => {
+    //   state.currentTask= action.payload;
+    // });
   },
 });
 
