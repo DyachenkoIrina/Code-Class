@@ -46,16 +46,13 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
+
   const stor = useAppSelector((store) => console.log('--->store--->', store));
-  console.log('000000000000000000000000000000', user)
-  console.log('0000000000000000000000000012121211212120000', teacher)
   
   return (
     <>
       <SaasProvider>
-        
-          <SideBar />
-       
+        <SideBar />
       </SaasProvider>
       <Loader isLoading={user.status === 'pending'}>
       <ChakraProvider>
@@ -92,7 +89,6 @@ function App(): JSX.Element {
           >
             <Route path="/adminlk" element={<AdminPage />} />
           </Route>
-          
         </Routes>
 
         <Footer />
