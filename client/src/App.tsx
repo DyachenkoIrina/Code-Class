@@ -10,7 +10,7 @@ import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActio
 import Footer from './components/Footer';
 
 import { useAppDispatch, useAppSelector } from './redux/hook';
-import thunkLoad from './redux/slices/topics/createAsyncThunk';
+
 import StudentAccountPage from './pages/StudentAccountPage';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
 import TaskPage from './pages/TaskPage';
@@ -30,6 +30,7 @@ import Loader from './components/HOC/Loader';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const userId = useAppSelector((store) => store.authSlice.user.id);
 
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
@@ -39,6 +40,7 @@ function App(): JSX.Element {
     void dispatch(thunkLoad());
     void dispatch(thunkLoadTask());
     void dispatch(thunkUsersLoad());
+
     void dispatch(thunkTeacherGroups());
   }, []);
 
@@ -51,10 +53,10 @@ function App(): JSX.Element {
 
   
   const teacher = useAppSelector((store) => store.authSlice.teacher);
+  const topics = useAppSelector((state) => state.topics.topics);
 
-  const groups = useAppSelector((store) => store.adminSlice.groups);
 
-  
+  const stor = useAppSelector((store) => console.log('--->store--->', store));
   return (
     <>
       <SaasProvider>
@@ -82,7 +84,8 @@ function App(): JSX.Element {
               />
             }
           >
-            <Route path={`/studentlk/${userId}`} element={<StudentAccountPage />} />
+            {/* <Route path={`/studentlk/${userId}`} element={<StudentAccountPage />} /> */}
+            <Route path="/studentlk" element={<StudentAccountPage />} />
             <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/homework" element={<HomeWork />} />
           </Route>

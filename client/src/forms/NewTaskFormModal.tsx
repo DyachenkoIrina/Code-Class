@@ -44,9 +44,7 @@ export default function NewTaskFormModal(): JSX.Element {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
-
-          formData.theme = selectedTopic;
-
+          formData.topicId = selectedTopic;
           void dispatch(thunkTaskAdd(formData));
           dispatch(newTaskModal());
         }}
@@ -66,17 +64,27 @@ export default function NewTaskFormModal(): JSX.Element {
                 Выбор темы
               </FormLabel>
               <Select
+                class="new_task_input"
+                ref={initialRef}
+                name="title"
+                type="text"
                 placeholder="Выберите тему"
                 value={selectedTopic}
                 onChange={(e) => setSelectedTopic(e.target.value)}
               >
-               {topics.map((topic) => (
+                {topics.map((topic) => (
                   <option key={topic.id} value={topic.id}>
                     {topic.title}
                   </option>
-                ))} 
+                ))}
               </Select>
-              {/* <Input ref={initialRef} name="title" type="text" placeholder="Тема" /> */}
+              {/* <Input
+                class="new_task_input"
+                ref={initialRef}
+                name="title"
+                type="text"
+                placeholder="Тема"
+              /> */}
             </FormControl>
 
             <FormControl>

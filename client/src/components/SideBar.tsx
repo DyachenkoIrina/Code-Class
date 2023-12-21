@@ -22,6 +22,7 @@ import { useNavigate } from 'react-router';
 import { openModallogin } from '../redux/slices/modal/modalReducer';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { thunkLogout } from '../redux/slices/auth/createAsyncThunks';
+import { store } from '../redux/store';
 
 export default function SideBar(): JSX.Element {
   const { isOpen, onToggle } = useDisclosure({
@@ -30,6 +31,7 @@ export default function SideBar(): JSX.Element {
   const dispatch = useAppDispatch();
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
+  const userId = useAppSelector((store) => store.authSlice.user.id);
   const idTeacher = useAppSelector((state) => state.authSlice.teacher?.id);
   const userId = useAppSelector((store) => store.authSlice.user.id);
 

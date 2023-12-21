@@ -126,7 +126,7 @@
 //                     errorBorderColor="red.300"
 //                     class="login_input"
 //                     name="confirmCode"
-//                     type="password"
+//                     type="password" 
 //                     placeholder="Почта2"
 //                   />
 //                 </FormControl>
