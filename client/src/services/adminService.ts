@@ -21,7 +21,7 @@ class AdminService {
   
   static async changeGroupManage(selectedTeacher: null | TeacherGroupType): Promise<ServerResponse> {
     const response = await apiAdminService.post<ServerResponse>('/', selectedTeacher);
-    console.log(response.data, 'asdasjkldl;aks;dkas;dka;sldj;asjf;ljfgk;asdgklahlkghfadls')
+    // console.log(response.data, 'asdasjkldl;aks;dkas;dka;sldj;asjf;ljfgk;asdgklahlkghfadls')
     if (response.status === 200) return response.data;
     return response;
   }
@@ -42,7 +42,11 @@ class AdminService {
   }
 
   static async getGroups(): Promise<GroupType[]> {
+
+    // console.log('ЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕРЗАПРОС НА СЕРЕВЕР')
     const response = await apiAdminService.get<GroupType[]>('/groups');
+    // console.log('ОТВЕТ ОТ СЕРВЕРА ОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРАОТВЕТ ОТ СЕРВЕРА', response)
+
     if (response.status === 200) return response.data;
     return [];
   }

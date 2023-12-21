@@ -52,10 +52,11 @@ export const adminSlice = createSlice({
     });
     
     builder.addCase(thunkGroupsLoad.fulfilled, (state, action) => {
+
       state.groups = action.payload;
     });
     builder.addCase(thunkGiveRole.fulfilled, (state, action) => {
-      console.log(action.payload, 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW')
+     
       const targetId = action.payload.id;
       
       const indexOfUser = state.userList.findIndex(user => user.id === targetId);

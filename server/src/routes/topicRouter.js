@@ -24,7 +24,7 @@ topicRouter.post("/studenttopics", async (req, res) => {
         },
       },
     });
-    console.log("%%%%%%%%%%user------>", topics);
+    // console.log("%%%%%%%%%%user------>", topics);
     res.status(200).json(topics);
   } catch ({ message }) {
     console.log(message);
@@ -58,7 +58,7 @@ topicRouter.post("/studenttopics", async (req, res) => {
         },
       },
     });
-    console.log("%%%%%%%%%%user------>", topics);
+    // console.log("%%%%%%%%%%user------>", topics);
     res.status(200).json(topics);
   } catch ({ message }) {
     console.log(message);

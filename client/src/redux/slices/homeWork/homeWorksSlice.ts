@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { HomeWorkSliceState } from '../../../types/homeWork';
-import { thunkLoadHomeWork } from './createAsyncThunk';
+import { thunkCheckTopic, thunkLoadHomeWork } from './createAsyncThunk';
 
 const initialState: HomeWorkSliceState = {
   homeWork: [],
@@ -16,7 +16,15 @@ export const homeWorksSlice = createSlice({
     builder.addCase(thunkLoadHomeWork.fulfilled, (state, action) => {
       state.homeWork = action.payload;
     });
+    // builder.addCase(thunkCheckTopic.fulfilled, (state, action) => {
+    //   state.t= action.payload;
+    // });
   },
 });
+
+
+
+
+
 
 export default homeWorksSlice.reducer;
