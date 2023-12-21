@@ -14,6 +14,7 @@ interface ServerResponse {
 class AdminService {
   static async getUserList(): Promise<AdminStudentCard[]> {
     const response = await apiAdminService.get<AdminStudentCard[]>('/');
+    console.log('', response)
     if (response.status === 200) return response.data;
     return [];
   }
@@ -28,6 +29,15 @@ class AdminService {
   static async deleteTeacher(teacherToDelete: TeacherGroupType): Promise< [] | number> {
     const response = await apiAdminService.delete(`${teacherToDelete.id}`);
     if (response.status === 200) return teacherToDelete.id;
+    return [];
+  }
+  
+  static async giveRole(student: TeacherGroupType): Promise< [] | number> {
+    console.log(student, 'sdfuibghjkubsdfgjkbsdfgbhjksdafgkbjsdfgbhjksdfbjgkhbksdfhjgbsfhjkbsdbhjksdf')
+    const response = await apiAdminService.put('/', student);
+    console.log(response, 'RESPONSERESPONSERESPONSERESPON!!!!!!!!!!!!!!!!!!!!!!!!!!SERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSE')
+
+    if (response.status === 200) return response.data;
     return [];
   }
 
