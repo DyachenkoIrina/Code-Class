@@ -22,8 +22,8 @@ export type TeacherType = {
 export type BackendAuth = { user: UserType; accessToken: string };
 
 export type UserState =
-  | ({ status: 'pending' } & UserType & TeacherType & { id: number })
-  | ({ status: 'guest' } & UserType & TeacherType & { id: number })
+  | ({ status: 'pending' } )
+  | ({ status: 'guest' } )
   | ({ status: 'authenticated' } & UserType & TeacherType & { id: number });
 
 // Redux Slice State

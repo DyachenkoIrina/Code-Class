@@ -16,13 +16,13 @@ export default function TeacherAccountForm(): JSX.Element {
   };
   return (
     <>
-    <FormControl sx={{ marginTop: '20px' }}>
-      <Button onClick={handleOpenModal} type="submit">
-        Создать новое задание
-      </Button>
-      <TeacherAccountList />
-    </FormControl>
-    <NewTaskFormModal/>
+      <FormControl>
+        <Button class="add_task_btn" onClick={handleOpenModal} type="submit">
+          Создать новое задание
+        </Button>
+        <TeacherAccountList />
+      </FormControl>
+      <NewTaskFormModal />
     </>
   );
 }

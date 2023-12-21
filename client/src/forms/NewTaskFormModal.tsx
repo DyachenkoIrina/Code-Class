@@ -4,6 +4,8 @@ import {
   ModalContent,
   ModalFooter,
   ModalBody,
+  Textarea,
+  useDisclosure,
   Button,
   FormControl,
   FormLabel,
@@ -17,7 +19,8 @@ import { thunkTaskAdd } from '../redux/slices/tasks/createAsyncThunk';
 import type { AddTaskFormData } from '../types/task';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 
-import {  newTaskModal } from '../redux/slices/modal/modalReducer';
+import { newTaskModal } from '../redux/slices/modal/modalReducer';
+
 
 
 export default function NewTaskFormModal(): JSX.Element {
@@ -41,29 +44,23 @@ export default function NewTaskFormModal(): JSX.Element {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
-          formData.topicId = selectedTopic;
+
+          formData.theme = selectedTopic;
+
           void dispatch(thunkTaskAdd(formData));
           dispatch(newTaskModal());
         }}
       >
         <ModalOverlay />
-        <ModalContent
-          w="500"
-          h="auto"
-          bgGradient="linear(to-r, #C1FFBC, #D9D0FF, #D7E8D7)"
-          sx={{
-            marginTop: '150px',
-          }}
-        >
+        <ModalContent class="login_modal">
           <ModalBody pb={6}>
-            <ModalCloseButton onClick={() => dispatch(newTaskModal())} />
             <FormControl>
               <FormLabel
                 sx={{
                   fontSize: '18px',
-                  fontWeight: 'bold',
-                  color: 'gray.700',
-                  mb: '2',
+                  fontWeight: '600',
+                  color: 'black',
+                  marginTop: '15px',
                 }}
               >
                 Выбор темы
@@ -86,54 +83,39 @@ export default function NewTaskFormModal(): JSX.Element {
               <FormLabel
                 sx={{
                   fontSize: '18px',
-                  fontWeight: 'bold',
-                  color: 'gray.700',
-                  mb: '2',
+                  fontWeight: '600',
+                  color: 'black',
+                  marginTop: '15px',
                 }}
               >
                 Придумай задание
               </FormLabel>
-              <Input ref={initialRef} name="questions" type="text" placeholder="Задание" />
+              <Textarea
+                class="new_task_input"
+                ref={initialRef}
+                name="questions"
+                placeholder="Задание"
+              />
             </FormControl>
 
             <FormControl>
               <FormLabel
                 sx={{
                   fontSize: '18px',
-                  fontWeight: 'bold',
-                  color: 'gray.700',
-                  mb: '2',
+                  fontWeight: '600',
+                  color: 'black',
+                  marginTop: '15px',
                 }}
               >
                 Ответ
               </FormLabel>
-              <Input name="answer" type="text" placeholder="Ответ" />
+              <Textarea class="new_task_input" name="answer" type="text" placeholder="Ответ" />
             </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button
-              sx={{
-                height: '40px',
-                width: 300,
-                bg: 'gray.400',
-                _hover: {
-                  bg: 'gray.500',
-                },
-              }}
-              type="submit"
-              mr={3}
-            >
-              Сохранить
-            </Button>
-            <Button
-              sx={{
-                bg: 'gray.400',
-              }}
-              onClick={() => dispatch(newTaskModal())}
-            >
-              Выйти
-            </Button>
+            <Button class="newtask_add_btn">Сохранить</Button>
+            <Button class="newtask__closebtn">Выйти</Button>
           </ModalFooter>
         </ModalContent>
       </form>

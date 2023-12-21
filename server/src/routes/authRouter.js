@@ -9,6 +9,7 @@ const verifyRefreshToken = require("../middlewares/verifyRefreshToken");
 const authRouter = express.Router();
 
 authRouter.post("/login", async (req, res) => {
+  
   try {
     const { email, password } = req.body;
     console.log(req.body);
@@ -53,7 +54,8 @@ authRouter.post("/signup", async (req, res) => {
     const { email, password, name } = req.body;
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { name, hashpass: await bcrypt.hash(password, 10) },
+      defaults: { name, hashpass: await bcrypt.hash(password, 10), role: 'Student' },
+      
     });
     if (!created)
       return res.status(400).json({ message: "Email already exists" });

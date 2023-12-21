@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { GroupType, GroupsSliceState } from "../../../types/groups";
-import { thunkDeleteTeacher, thunkGroupsLoad, thunkUsersLoad } from "./thunkActionsAdmin";
+import { thunkDeleteTeacher, thunkGroupsLoad, thunkTeacherManages, thunkUsersLoad } from "./thunkActionsAdmin";
 import type { AdminSliceState, TeacherGroupType } from "../../../types/admin";
 
 
@@ -53,6 +53,7 @@ export const adminSlice = createSlice({
     
     builder.addCase(thunkGroupsLoad.fulfilled, (state, action) => {
       state.groups = action.payload;
+      
     });
   },
 });

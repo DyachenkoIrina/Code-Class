@@ -11,10 +11,12 @@ type StudentsTypeProps = {
 function StudentCard({student}:StudentsTypeProps): JSX.Element {
 
   return (
-    <Card >
+    <Card class="one_student_card">
       <CardBody sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Text fontSize="2xl">{student.name}</Text>
-        <Button as={Link} to={`/teacherlk/studentid/${student.id}`}>
+
+
+        <Button class='student_btn' as={Link} to={`/teacherlk/studentid/${student.id}`}>
   Выбрать
 </Button>
       </CardBody>
