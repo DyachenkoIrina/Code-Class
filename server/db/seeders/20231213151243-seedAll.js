@@ -42,6 +42,7 @@ module.exports = {
           profileImage:
             "https://i.pinimg.com/564x/73/dc/57/73dc578749ff3241fe1ae0d65e8dacb9.jpg",
           email: "1@1",
+          confirmCode: "4343",
           hashpass: hashSync("1", 10),
           role: "Admin",
         },
@@ -51,6 +52,7 @@ module.exports = {
           profileImage:
             "https://i.pinimg.com/originals/9f/af/4d/9faf4df0c80864a9cb80e53e3199d434.jpg",
           email: "Email@2",
+          confirmCode: "4143",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 2,
@@ -61,6 +63,7 @@ module.exports = {
           profileImage:
             "https://i.pinimg.com/564x/60/9b/b7/609bb7c7031458d08d5e7bceac199bc7.jpg",
           email: "2@2",
+          confirmCode: "4147",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 2,
@@ -70,6 +73,7 @@ module.exports = {
           profileImage:
             "https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/norris.jpg.img.1536.high.jpg",
           email: "lando@",
+          confirmCode: "4143",
           hashpass: hashSync("1", 10),
           role: "Teacher",
         },
@@ -79,6 +83,7 @@ module.exports = {
           profileImage:
             "https://i.pinimg.com/564x/e9/09/22/e90922c3d831bb36d4f0c7114106de3f.jpg",
           email: "3@3",
+          confirmCode: "4443",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 3,
@@ -88,6 +93,7 @@ module.exports = {
           lastName: "Петров",
           profileImage: "image.png",
           email: "4@4",
+          confirmCode: "4743",
           hashpass: hashSync("1", 10),
           role: "Student",
           groupId: 2,
@@ -95,6 +101,7 @@ module.exports = {
       ],
       {}
     );
+
     await queryInterface.bulkInsert(
       "Teachers",
       [

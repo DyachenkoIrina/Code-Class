@@ -16,17 +16,19 @@ class AuthService {
   }
 
   static async login(formData: LoginFormData): Promise<BackendAuth> {
-
-    
     const response = await authInstance.post<BackendAuth>('/auth/login', formData);
     return response.data;
   }
 
   static async signup(formData: SignupFormData): Promise<BackendAuth> {
- 
-
     const response = await authInstance.post<BackendAuth>('/auth/signup', formData);
     return response.data;
+  }
+
+  static async confirm(formData: SignupFormData): Promise<void> {
+    const response = await authInstance.post('/auth/confirm', formData);
+    console.log('response confirm service', response);
+    
   }
 
   static async logout(): Promise<void> {
