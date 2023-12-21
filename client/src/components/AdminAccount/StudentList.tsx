@@ -19,21 +19,20 @@ import type { AdminStudentCard } from '../../types/admin';
 import { useAppSelector } from '../../redux/hook';
 
 export default function StudentCard({ student }: { student: AdminStudentCard }): JSX.Element {
-
   const groups = useAppSelector((state) => state.adminSlice.groups);
-  const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group?.group || 'Ученик без группы');
+  const [selectedGroup, setSelectedGroup] = useState<string | null>(
+    student.Group?.group || 'Ученик без группы',
+  );
 
   const handleGroupSelect = (group: { id: number; group?: string | undefined }): void => {
-
     setSelectedGroup(group.group || 'Ученик без группы');
 
     console.log(selectedGroup);
   };
 
   return (
-
     <Flex display="flex">
-      <Card>
+      <Card borderRadius="20px">
         <Center>
           <Avatar
             size="xl"
@@ -56,22 +55,22 @@ export default function StudentCard({ student }: { student: AdminStudentCard }):
                     backgroundColor="#D9D0FF"
                     _hover={{ backgroundColor: '#c3b8f7' }}
                     isActive={isOpen}
-                    as={Button }
+                    as={Button}
                     rightIcon={<ChevronDownIcon />}
                   >
                     {isOpen ? 'Закрыть' : 'Список групп'}
                   </MenuButton>
                   <MenuList>
-                  {groups.map((group) => (
-  <MenuItem
-    key={group.id}
-    onClick={() =>
-      handleGroupSelect({ id: group.id || 0, group: group.group || 'N/A' })
-    }
-  >
-    {group.group || 'Ученик без группы'}
-  </MenuItem>
-))}
+                    {groups.map((group) => (
+                      <MenuItem
+                        key={group.id}
+                        onClick={() =>
+                          handleGroupSelect({ id: group.id || 0, group: group.group || 'N/A' })
+                        }
+                      >
+                        {group.group || 'Ученик без группы'}
+                      </MenuItem>
+                    ))}
                   </MenuList>
                 </>
               )}
@@ -80,6 +79,5 @@ export default function StudentCard({ student }: { student: AdminStudentCard }):
         </CardBody>
       </Card>
     </Flex>
-
   );
 }
