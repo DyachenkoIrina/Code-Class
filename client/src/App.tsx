@@ -46,9 +46,9 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
+  const groups = useAppSelector((store) => store.adminSlice.groups);
   const stor = useAppSelector((store) => console.log('--->store--->', store));
-  console.log('000000000000000000000000000000', user)
-  console.log('0000000000000000000000000012121211212120000', teacher)
+  console.log('000000000000000000000000000000', groups)
   
   return (
     <>
