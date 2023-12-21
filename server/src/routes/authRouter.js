@@ -13,7 +13,7 @@ const {
 const authRouter = express.Router();
 
 authRouter.post("/login", async (req, res) => {
-  
+  console.log('888888888888888888888888888888888888888888888888888888888888888888888888888888888', req.body)
   try {
     const { email, password } = req.body;
     console.log(req.body);

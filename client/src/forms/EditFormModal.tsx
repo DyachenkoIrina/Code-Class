@@ -15,7 +15,6 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import { userEditModal } from '../redux/slices/modal/modalReducer';
 import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
-import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
 // import { thunkUpdateUser } from '../redux/slices/auth/createAsyncThunks';
 export default function EditFormModal({ show, setShow }: { show: any; setShow: any }): JSX.Element {
   const dispatch = useAppDispatch();
