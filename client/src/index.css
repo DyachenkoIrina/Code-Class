@@ -218,3 +218,12 @@ body {
   padding: 10px 15px;
   border-radius: 20px;
 }
+
+.registration_btn {
+  margin: 25px 25px 0px 25px;
+  width: 200px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
