@@ -1,11 +1,13 @@
 const express = require("express");
-const { Task } = require("../../db/models");
+
+const { Task, Topic } = require("../../db/models");
 
 const tasksRouter = express.Router();
 
 tasksRouter.get("/", async (req, res) => {
   try {
     const data = await Task.findAll();
+    console.log('^^^^^^', data)
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });
@@ -14,30 +16,24 @@ tasksRouter.get("/", async (req, res) => {
 
 
 
+
 tasksRouter.post("/", async (req, res) => {
   try {
-    const { studentWork, user } = req.body;
+    const { title, questions, answer } = req.body;
+    console.log('fdffffffffffffff', req.body);
+    const topic = await Topic.findOne({where:{title}})
 
-    if (!studentWork) {
-      return res
-        .sendStatus(400)
-        .json({ message: "Text is required in the request body!!!!!" });
+    if (!topic) {
+      return res.status(404).json({ success: false, message: "Тема не найдена" });
     }
-
-    await Homework.create({
-      checkWork: studentWork,
-      // status: "Pending",
-      userId: user.id,
-    });
-
-    return res.sendStatus(201);
+    const newTask =  await Task.create({ title, questions, answer, topicId: topic.id });
+    res.status(200).json({ success: true, task: newTask });
   } catch (error) {
-    console.error("Error:", error);
-
-    return res
-      .status(500)
-      .json({ message: "Internal Server Error", error: error.message });
+    console.log(error);
+    res.status(407).json(error);
   }
 });
+
+
 
 module.exports = tasksRouter;

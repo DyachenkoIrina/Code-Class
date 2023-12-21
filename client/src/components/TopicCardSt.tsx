@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Heading, CardBody, CardFooter, Stack, Button, Image, Text } from '@chakra-ui/react';
+import { Card, Heading, CardBody, CardFooter, Stack, Button, Image, Text, TagLabel, FormLabel } from '@chakra-ui/react';
 import type { TopicType } from '../types/topics';
 import { useAppDispatch } from '../redux/hook';
 
@@ -9,13 +9,14 @@ type TopicTypeProps = {
 
 export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
   const dispatch = useAppDispatch();
+
   return (
     <Card
       style={{
         flexDirection: { base: 'column', sm: 'row' },
         overflow: 'hidden',
         border: '1px solid', // Выберите цвет границы по вашему вкусу
-        borderRadius: '4px', // Выберите радиус границы по вашему вкусу
+        borderRadius: '20px', // Выберите радиус границы по вашему вкусу
         maxWidth: '850px',
         maxHeight: '1500px',
         padding: '1',
@@ -47,7 +48,8 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
             overflow: 'hidden',
           }}
         >
-          <Heading size="md">{topic.title}</Heading>
+          <FormLabel>Тема:</FormLabel>
+          <Text size="sm" style={{ overflowWrap: 'break-word' }}>{topic.title}</Text>
           {/* <Text size="md">{topic.description}</Text> */}
           <Button>Дать задание ученику!</Button>
         </CardBody>

@@ -26,6 +26,10 @@ module.exports = {
         unique: true,
         allowNull: false,
       },
+      confirmCode: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       hashpass: {
         type: Sequelize.STRING,
         allowNull: false,

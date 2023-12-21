@@ -13,10 +13,7 @@ type GroupTypeProps = {
 function GroupCard({ group }: GroupTypeProps): JSX.Element {
   const { onOpen } = useDisclosure();
   const dispatch = useAppDispatch();
-  console.log(
-    '=========================================================================================================',
-    group,
-  );
+
 
   const handleOpenModal = (): void => {
     dispatch(groupModal());

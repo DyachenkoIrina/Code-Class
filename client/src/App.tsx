@@ -44,8 +44,6 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-  console.log(teacher, ',.,.,.,.,,.');
-  console.log(user, ',.,.,.DGUFGJFGJFJFGFGFJGFGJFJGJFGFJ,.,,.');
 
   return (
     <>
