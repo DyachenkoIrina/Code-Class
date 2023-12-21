@@ -10,7 +10,6 @@ export default function CheckTopicContainerSt(): JSX.Element {
     // const dispatch = useAppDispatch();
   const topics = useAppSelector((state) => state.topics.topics);
   // const userId = useAppSelector((state) => state.authSlice.user);
-  // console.log('$$$$$$$', userId.id);
   
   // useEffect(() => {
   //   if(userId)

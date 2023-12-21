@@ -6,9 +6,9 @@ import { thunkTeacherGroupLoad } from '../redux/slices/teacher/thunkActions';
 
 export default function TeacherAccountList(): JSX.Element {
   const groups1 = useAppSelector((state) => state.teacherSlice.teacherGroups);
-  // console.log('---groups map--->', groups1)
+
   const teacher = useAppSelector((state) => state.authSlice.user);
-  // console.log('teaher---->', teacher);
+ 
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (teacher.id) {

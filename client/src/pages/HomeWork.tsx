@@ -43,11 +43,11 @@ const theme = extendTheme({
 export default function HomeWork(): JSX.Element {
   const tasks = useAppSelector((state) => state.tasks.tasks);
   const homeWork = useAppSelector((state) => state.homeWorksSlice.homeWork);
-  console.log('----homeWork---->', homeWork);
+ 
 
   const id = 2;
   const currentHomeWork = homeWork.filter((task) => task.id === parseInt(id, 10));
-  console.log('----currentHomeWork---->', currentHomeWork);
+
 
   const dispatch = useAppDispatch();
   const [tabIndex, setTabIndex] = useState(0);

@@ -24,7 +24,7 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const studentId = Number(id);
-  console.log('$$$$---->', studentId);
+
   return (
     <Card
       style={{

@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 import { Container, Grid, GridItem } from '@chakra-ui/react';
-import { useAppSelector } from '../../redux/hook';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import TopicCard from './TopicCard';
-// import { thunkOneTopic } from '../../redux/slices/topics/createAsyncThunk';
+import { thunkOneTopic } from '../../redux/slices/topics/createAsyncThunk';
 
 export default function TopicContainer(): JSX.Element {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const topics = useAppSelector((state) => state.topics.topics);
-  // const userId = useAppSelector((state) => state.authSlice.user);
-  // console.log('$$$$$$$', userId.id);
+  const userId = useAppSelector((state) => state.authSlice.user);
+
   
-  // useEffect(() => {
-  //   if(userId)
-  //   void dispatch(thunkOneTopic(userId?.id));
-  // }, [userId]);
+  useEffect(() => {
+    if(userId)
+    void dispatch(thunkOneTopic(userId?.id));
+  }, [userId]);
   return (
     <Container
       maxW="900px"
