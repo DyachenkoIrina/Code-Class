@@ -9,15 +9,16 @@ export const thunkLoadHomeWork = createAsyncThunk('tasksSlice/thunkLoadHomeWork'
   return response;
 });
 
+// это не надо
 // export const thunkTaskAdd = createAsyncThunk(
 //   'tasksSlice/thunkTaskAdd',
 //   async (formData: AddTaskFormData) => TasksService.addTask(formData),
 // );
 
-export const thunkCheckTopic = createAsyncThunk(
-  'teachersSlise/thunkCheckTopic',
-  async (id: UserType['id']) => {
-    const res = await TeacherServise.getChekTopic(id);
-    return res;
-  },
-);
+// export const thunkCheckTopic = createAsyncThunk(
+//   'teachersSlise/thunkCheckTopic',
+//   async (id: UserType['id']) => {
+//     const res = await TeacherServise.getChekTopic(id);
+//     return res;
+//   },
+// );
