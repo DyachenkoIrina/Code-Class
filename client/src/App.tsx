@@ -47,7 +47,8 @@ function App(): JSX.Element {
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
 
-  const stor = useAppSelector((store) => console.log('--->store--->', store));
+  const groups = useAppSelector((store) => store.adminSlice.groups);
+
   
   return (
     <>

@@ -33,10 +33,8 @@ teacherRouter.get("/student/:id", async (req, res) => {
 
 teacherRouter.get("/studentid/:id", async (req, res) => {
   const { id } = req.params;
-  console.log('------>id student', req.params);
   try {
     const data = await User.findByPk(id);
-    console.log('----> rout one student', data);
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });

@@ -5,6 +5,7 @@ import type { AdminStudentCard } from '../../types/admin';
 import { useAppSelector } from '../../redux/hook';
 
 export default function StudentCard({ student }: { student: AdminStudentCard }): JSX.Element {
+  console.log('45454545454545544444444444545444545454545454545455444444444445454445454545454545454554444444444454544454545454545454545544444444444545444545', student)
   const groups = useAppSelector((state) => state.adminSlice.groups);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group.group || 'N/A');
 
