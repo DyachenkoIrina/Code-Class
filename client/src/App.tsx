@@ -44,13 +44,11 @@ function App(): JSX.Element {
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-  const stor = useAppSelector((store) => console.log('--->store--->', store));
+
   return (
     <>
       <SaasProvider>
-        
-          <SideBar />
-       
+        <SideBar />
       </SaasProvider>
 
       <ChakraProvider>
@@ -86,7 +84,6 @@ function App(): JSX.Element {
           >
             <Route path="/adminlk" element={<AdminPage />} />
           </Route>
-          
         </Routes>
 
         <Footer />
