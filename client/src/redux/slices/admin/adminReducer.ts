@@ -55,11 +55,12 @@ export const adminSlice = createSlice({
       state.groups = action.payload;
     });
     builder.addCase(thunkGiveRole.fulfilled, (state, action) => {
-      // const targetId = action.payload.id;
+      console.log(action.payload, 'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW')
+      const targetId = action.payload.id;
       
-      // const indexOfUser = state.userList.findIndex(user => user.id === targetId);
+      const indexOfUser = state.userList.findIndex(user => user.id === targetId);
     
-      // state.userList = updatedUsers;
+      state.userList[indexOfUser].role = 'Student'
     });
   },
 });
