@@ -30,6 +30,7 @@ export default function NewTaskFormModal(): JSX.Element {
   const finalRef = React.useRef(null);
 
   const [selectedTopic, setSelectedTopic] = React.useState('');
+  console.log('topics front---->', topics)
 
   return (
     <Modal
@@ -43,7 +44,6 @@ export default function NewTaskFormModal(): JSX.Element {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
           console.log('formdata front---->', formData);
-          
           // formData.topicId = selectedTopic;
           void dispatch(thunkTaskAdd(formData));
           dispatch(newTaskModal());
@@ -72,7 +72,7 @@ export default function NewTaskFormModal(): JSX.Element {
                 value={selectedTopic}
                 onChange={(e) => setSelectedTopic(e.target.value)}
               >
-                {topics.map((topic) => (
+                {topics?.map((topic) => (
                   <option key={topic.id} value={topic.id}>
                     {topic.title}
                   </option>
