@@ -31,6 +31,7 @@ export default function SideBar(): JSX.Element {
   const auth = useAppSelector((store) => store.authSlice);
   const user = useAppSelector((store) => store.authSlice.user);
   const idTeacher = useAppSelector((state) => state.authSlice.teacher?.id);
+  const userId = useAppSelector((store) => store.authSlice.user.id);
 
   const navigate = useNavigate();
   return (
@@ -114,7 +115,7 @@ export default function SideBar(): JSX.Element {
                 <NavItem
                   width={isOpen ? '150px' : '8'}
                   icon={<FiUser />}
-                  onClick={() => navigate('/studentlk')}
+                  onClick={() => navigate(`/studentlk/${userId}`)}
                 >
                   Личный кабинет
                 </NavItem>
