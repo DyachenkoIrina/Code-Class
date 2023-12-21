@@ -26,6 +26,7 @@ import HomeWork from './pages/HomeWork';
 
 import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
+import Loader from './components/HOC/Loader';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -33,7 +34,6 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
     void dispatch(thunkLoadHomeWork());
-
     void dispatch(thunkCheckAuth());
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
@@ -42,9 +42,14 @@ function App(): JSX.Element {
     void dispatch(thunkTeacherGroups());
   }, []);
 
+
+
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
   const stor = useAppSelector((store) => console.log('--->store--->', store));
+  console.log('000000000000000000000000000000', user)
+  console.log('0000000000000000000000000012121211212120000', teacher)
+  
   return (
     <>
       <SaasProvider>
@@ -52,35 +57,36 @@ function App(): JSX.Element {
           <SideBar />
        
       </SaasProvider>
-
+      <Loader isLoading={user.status === 'pending'}>
       <ChakraProvider>
         <Routes>
           <Route path="/" element={<MainPageFlex />} />
           <Route
             element={
               <PrivateRouter
-                isAllowed={user.status === 'authenticated' && user?.role !== 'Teacher'}
+                isAllowed={user?.status === 'authenticated' && user?.role === 'Teacher'}
               />
             }
           >
+            <Route path="/teacherlk" element={<TeacherAccountPage />} />
             <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountPageSt />} />
           </Route>
           <Route
             element={
               <PrivateRouter
-                isAllowed={user.status === 'authenticated' && user?.role !== 'Student'}
+                isAllowed={user?.status === 'authenticated' && user?.role === 'Student'}
               />
             }
           >
             <Route path="/studentlk" element={<StudentAccountPage />} />
+            <Route path="/student/task/:id" element={<TaskPage />} />
+            <Route path="/homework" element={<HomeWork />} />
           </Route>
-          <Route path="/student/task/:id" element={<TaskPage />} />
-          <Route path="/homework" element={<HomeWork />} />
           <Route
             element={
               <PrivateRouter
-                isAllowed={user.status === 'authenticated' && user?.role !== 'Admin'}
+                isAllowed={user?.status === 'authenticated' && user?.role === 'Admin'}
               />
             }
           >
@@ -92,6 +98,7 @@ function App(): JSX.Element {
         <Footer />
         <LoginFormModal />
       </ChakraProvider>
+      </Loader>
     </>
   );
 }
