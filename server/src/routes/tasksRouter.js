@@ -19,7 +19,6 @@ tasksRouter.get("/", async (req, res) => {
 tasksRouter.post("/", async (req, res) => {
   try {
     const { title, questions, answer } = req.body;
-    console.log('fdffffffffffffff', req.body);
     const topic = await Topic.findOne({where:{title}})
 
     if (!topic) {

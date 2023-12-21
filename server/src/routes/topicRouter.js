@@ -24,7 +24,6 @@ topicRouter.get("/:id", async (req, res) => {
     });
     res.status(200).json(data);
   } catch ({ message }) {
-    console.log(message);
     res.status(408).json({ message });
   }
 });

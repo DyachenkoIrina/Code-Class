@@ -1,5 +1,5 @@
-const express = require("express");
 const { User, Group, TeacherGroup, Teacher } = require("../../db/models");
+const express = require("express");
 const { Op } = require("sequelize");
 const e = require("express");
 
@@ -32,7 +32,6 @@ adminRouter.get("/groups", async (req, res) => {
 
 
 adminRouter.post("/", async (req, res) => {
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!', req.body)
   try {
     const groupNamesToFind = req.body.Groups.map((el) => el.name);
     const groups = await Group.findAll({
@@ -51,8 +50,6 @@ adminRouter.post("/", async (req, res) => {
     }
 
     const trueGroups = req.body.Groups.filter((el) => el.manages === true);
-
-    console.log(trueGroups);
 
     // Assuming TeacherGroup has a model associated with it
     await TeacherGroup.destroy({
@@ -104,9 +101,11 @@ adminRouter.delete("/:id", async (req, res) => {
 });
 
 adminRouter.get("/groups", async (req, res) => {
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
   try {
     const data = await Group.findAll();
-    // console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", data);
+    console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEeeeeeeeeeeeeee", data);
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });
