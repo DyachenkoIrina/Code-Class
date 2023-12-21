@@ -228,6 +228,7 @@ function ModalFromRegistration(): JSX.Element {
     dispatch(registrModal());
     onOpen();
   };
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
