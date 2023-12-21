@@ -1,38 +1,59 @@
-import React from 'react';
-import { Avatar, Card, CardHeader, CardBody, SimpleGrid, Heading, Text,  Button, Center } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Avatar, Card, CardHeader, CardBody, SimpleGrid, Heading, Text, Button, Center, MenuButton, MenuList, Menu, MenuItem } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@saas-ui/core';
 import type { AdminStudentCard } from '../../types/admin';
+import { useAppSelector } from '../../redux/hook';
 
+export default function StudentCard({ student }: { student: AdminStudentCard }): JSX.Element {
+  const groups = useAppSelector((state) => state.adminSlice.groups);
+  const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group.group || 'N/A');
 
+  const handleGroupSelect = (group: { id: number; group?: string | undefined }) => {
+    setSelectedGroup(group.group || 'N/A');
+    console.log(selectedGroup);
+  };
 
-export default function StudentCard({ student }: { student : AdminStudentCard}): JSX.Element {
   return (
     <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
       <Card>
         <Center>
-      <Avatar
-          size="xl"
-          name={`${student.name}`}
-          src={`http://localhost:3001/img/${student.profileImage}`} 
-
-          mb={4}
-        />
+          <Avatar
+            size="xl"
+            name={`${student.name}`}
+            src={`http://localhost:3001/img/${student.profileImage}`}
+            mb={4}
+          />
         </Center>
         <CardHeader>
           <Heading size='md'>{student.name}</Heading>
         </CardHeader>
         <CardBody>
           <Text>Email: {student.email}</Text>
-          <Text>Название: {student.Group.group || 'N/A'}</Text>
+          <Text>Название: {selectedGroup}</Text>
           <Center>
-            <Button>View here</Button>
+            <Menu>
+              {({ isOpen, onClose }) => (
+                <>
+                  <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
+                    {isOpen ? 'Закрыть' : 'Список групп'}
+                  </MenuButton>
+                  <MenuList>
+                    {groups.map((group) => (
+                      <MenuItem key={group.id} onClick={() => handleGroupSelect({ id: group.id || 0, group: group.group || 'N/A' })}>
+                      {group.group || 'N/A'}
+                    </MenuItem>
+                    ))}
+                  </MenuList>
+                </>
+              )}
+            </Menu>
           </Center>
         </CardBody>
-
-
       </Card>
     </SimpleGrid>
   );
 }
+
 
 
 

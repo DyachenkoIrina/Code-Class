@@ -65,8 +65,8 @@ export default function ModalFromRegistration(): JSX.Element {
         onClick={() => dispatch(registrModal())}
       >
         <ModalOverlay />
-        <ModalContent class="login_modal">
-          <ModalHeader class="login_modal_header">
+        <ModalContent className="login_modal">
+          <ModalHeader className="login_modal_header">
             Пожалуйста, <br /> зарегистрируйтесь
           </ModalHeader>
           <ModalBody pb={6}>
@@ -74,7 +74,7 @@ export default function ModalFromRegistration(): JSX.Element {
               <FormControl>
                 <FormLabel>Имя</FormLabel>
                 <Input
-                  class="login_input"
+                  className="login_input"
                   name="name"
                   type="text"
                   ref={initialRef}
@@ -84,17 +84,17 @@ export default function ModalFromRegistration(): JSX.Element {
 
               <FormControl mt={4}>
                 <FormLabel>Почта</FormLabel>
-                <Input class="login_input" name="email" type="email" placeholder="Почта" />
+                <Input className="login_input" name="email" type="email" placeholder="Почта" />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Пароль</FormLabel>
-                <Input class="login_input" name="password" type="password" placeholder="Пароль" />
+                <Input className="login_input" name="password" type="password" placeholder="Пароль" />
               </FormControl>
-              <Button class="login_btn" colorScheme="blue" type="submit" mr={3}>
+              <Button className="login_btn" colorScheme="blue" type="submit" mr={3}>
                 Save
               </Button>
-              <Button class="login_closebtn" onClick={() => dispatch(registrModal())}>
+              <Button className="login_closebtn" onClick={() => dispatch(registrModal())}>
                 Cancel
               </Button>
             </form>
