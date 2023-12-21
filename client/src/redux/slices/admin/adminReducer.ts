@@ -52,7 +52,7 @@ export const adminSlice = createSlice({
     });
     
     builder.addCase(thunkGroupsLoad.fulfilled, (state, action) => {
-      console.log('LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL', action.payload)
+      // console.log('LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL', action.payload)
       state.groups = action.payload;
       
     });
