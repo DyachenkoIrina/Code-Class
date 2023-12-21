@@ -11,3 +11,7 @@ export const thunkTeacherGroups = createAsyncThunk('groupsSlise/thunkTeacherGrou
 export const thunkDeleteTeacher = createAsyncThunk('groupsSlise/thunkDeleteTeacher', async (teacherToDelete: TeacherGroupType | null) =>
   AdminService.deleteTeacher(teacherToDelete),
 );
+
+export const thunkTeacherManages = createAsyncThunk('groupsSlice/thunkTeacherManages', async (selectedTeacher: TeacherGroupType | null) =>
+  AdminService.changeGroupManage(selectedTeacher),
+);

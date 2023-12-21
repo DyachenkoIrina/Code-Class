@@ -1,3 +1,4 @@
+const path = require("path")
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -35,11 +36,16 @@ app.use("/api/v1/topic", topicRouter);
 app.use("/api/v1/adminlk", adminRouter);
 app.use("/api/v1/teacherlk", teacherRouter);
 app.use("/api/v1/task", tasksRouter);
-app.use("/api/v1/newtask", getnewtaskRouter);
+// app.use("/api/v1/newtask", getnewtaskRouter);
 app.use("/api/v1/tokens", tokensRouter);
 app.use("/api/v1/groupRouter", groupRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/users", apiUsersRouter);
 app.use("/api/v1/homework", homeworkRouter);
+
+app.use(express.static(path.join(__dirname, '..', 'dist')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+});
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

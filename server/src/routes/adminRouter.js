@@ -32,6 +32,7 @@ adminRouter.get("/groups", async (req, res) => {
 
 
 adminRouter.post("/", async (req, res) => {
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!', req.body)
   try {
     const groupNamesToFind = req.body.Groups.map((el) => el.name);
     const groups = await Group.findAll({
@@ -75,7 +76,16 @@ adminRouter.post("/", async (req, res) => {
 
     await createTeacherGroupRows();
 
-    res.status(200).json({ message: 'Operation successful' });
+    const newTeacher = await Teacher.findAll({
+      include: {
+        model: Group,
+      },
+      order: [
+        ['name', 'ASC'],
+      ],
+    });
+
+    res.status(200).json(newTeacher);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -83,9 +93,14 @@ adminRouter.post("/", async (req, res) => {
 });
 
 adminRouter.delete("/:id", async (req, res) => {
+  try{
   await TeacherGroup.destroy({ where: { teacherId: req.params.id } });
   await Teacher.destroy({ where: { id: req.params.id } });
   res.sendStatus(200);
+  }
+  catch(error){
+    res.status(500).console.log(error)
+  }
 });
 
 adminRouter.get("/groups", async (req, res) => {

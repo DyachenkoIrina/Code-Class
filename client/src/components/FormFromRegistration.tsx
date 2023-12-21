@@ -62,11 +62,10 @@ export default function ModalFromRegistration(): JSX.Element {
         }}
       >
         <ModalOverlay />
-        <ModalContent class="login_modal">
-          <ModalHeader class="login_modal_header">
+        <ModalContent className="login_modal">
+          <ModalHeader className="login_modal_header">
             Пожалуйста, <br /> зарегистрируйтесь
           </ModalHeader>
-          <ModalCloseButton onClick={() => dispatch(registrModal())} />
           <ModalBody pb={6}>
             <form
               onSubmit={(e) => {
@@ -81,7 +80,7 @@ export default function ModalFromRegistration(): JSX.Element {
               <FormControl>
                 <FormLabel>Имя</FormLabel>
                 <Input
-                  class="login_input"
+                  className="login_input"
                   name="name"
                   type="text"
                   ref={initialRef}
@@ -91,12 +90,12 @@ export default function ModalFromRegistration(): JSX.Element {
 
               <FormControl mt={4}>
                 <FormLabel>Почта</FormLabel>
-                <Input class="login_input" name="email" type="email" placeholder="Почта" />
+                <Input className="login_input" name="email" type="email" placeholder="Почта" />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Пароль</FormLabel>
-                <Input class="login_input" name="password" type="password" placeholder="Пароль" />
+                <Input className="login_input" name="password" type="password" placeholder="Пароль" />
               </FormControl>
 
               <Button type="submit" class="login_closebtn">

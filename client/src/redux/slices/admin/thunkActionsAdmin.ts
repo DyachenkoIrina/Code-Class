@@ -6,9 +6,9 @@ export const thunkUsersLoad = createAsyncThunk('adminSlice/thunkUsersLoad', asyn
   AdminService.getUserList(),
 );
 
-export const thunkTeacherManages = createAsyncThunk('adminSlice/thunkTeacherManages', async (selectedTeacher: TeacherGroupType | null) =>
-  AdminService.changeGroupManage(selectedTeacher),
-);
+// export const thunkTeacherManages = createAsyncThunk('adminSlice/thunkTeacherManages', async (selectedTeacher: TeacherGroupType | null) =>
+//   AdminService.changeGroupManage(selectedTeacher),
+// );
 
 export const thunkGroupsLoad = createAsyncThunk('adminSlice/thunkGroupsLoad', async () =>
   AdminService.getGroups(),

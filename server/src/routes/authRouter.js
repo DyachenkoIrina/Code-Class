@@ -13,6 +13,7 @@ const {
 const authRouter = express.Router();
 
 authRouter.post("/login", async (req, res) => {
+  
   try {
     const { email, password } = req.body;
     console.log(req.body);
@@ -64,6 +65,7 @@ authRouter.post("/confirm", async (req, res) => {
         name,
         hashpass: await bcrypt.hash(password, 10),
         confirmCode,
+        role: 'Student'
       },
     });
     if (!created)
