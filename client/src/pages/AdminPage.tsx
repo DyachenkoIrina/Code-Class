@@ -1,34 +1,31 @@
-import {
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Box,
-  Text,
-  SimpleGrid,
-  Flex,
-  Button,
-  Center,
-} from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Box, Text, SimpleGrid, Flex, Button, Center, Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import StudentCard from '../components/AdminAccount/StudentList';
 import EditTeacherModal from '../components/AdminAccount/EditTeacherModal';
 import { setSelectedTeacher, setTeacherToDelete } from '../redux/slices/admin/adminReducer';
 import DeleteTeacherModal from '../components/AdminAccount/DeleteTeacherModal';
 import type { UserType } from '../types/auth';
+
 import '../index.css';
+import { ChevronDownIcon } from '@saas-ui/core';
+import { thunkGiveGroup, thunkGiveRole } from '../redux/slices/admin/thunkActionsAdmin';
+
 
 export default function UserSelector(): JSX.Element {
-  const userList = useAppSelector((store) => store.adminSlice.userList);
-  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups);
-  const groups = useAppSelector((state) => state.adminSlice.groups);
-  const dispatch = useAppDispatch();
-  console.log('!!!!!!!!!!!!!', teachers, groups);
+  const userList= useAppSelector((store) => store.adminSlice.userList);
+  const teachers = useAppSelector((state) => state.groupsSlice.teacherGroups)
+  const groups= useAppSelector((state) => state.adminSlice.groups)
+  const dispatch = useAppDispatch()
+  
 
-  const students = userList.filter((user: UserType): boolean => user.role === 'Student');
-  const applications = userList.filter((user) => user.role === 'Application');
+
+  const students = userList.filter((user: UserType):boolean => user.role === 'Student');
+  const nobodies = userList.filter((user: UserType): boolean => user.role !== 'Student' && user.role !== 'Teacher' && user.role !== 'Admin');
+ 
+
 
   return (
     <Tabs variant="soft-rounded" colorScheme="green">
@@ -49,6 +46,7 @@ export default function UserSelector(): JSX.Element {
                   <li key={id}>{group.group}</li>
                 ))}
               </ul>
+
 
               <Center>
                 <Flex gap="30px" alignItems="center" padding="10px 0px 10px 0px">
@@ -76,20 +74,31 @@ export default function UserSelector(): JSX.Element {
 
         <TabPanel marginLeft="150px">
           <Box display="flex" gap="80px" flexWrap="wrap">
-            {students.map(
-              (student) =>
-                student.Group !== null && <StudentCard key={student.id} student={student} />,
-            )}
+            {students
+    .filter((student) => student.role === 'Student') // Filter students with role 'student'
+    .map((student) => (
+      <StudentCard key={student.id} student={student} />
+    ))}
           </Box>
         </TabPanel>
+
         <TabPanel>
-          {applications.map((application) => (
-            <Box key={application.id} p={4} borderWidth="1px" borderRadius="md">
-              <Text>{`Name: ${application.name}`}</Text>
-              <Text>{`Email: ${application.email}`}</Text>
-            </Box>
-          ))}
-        </TabPanel>
+  {nobodies
+    .map((student) => (
+      <Box key={student.id} p={4} borderWidth="1px" borderRadius="md">
+        <Text>{`Name: ${student.name}`}</Text>
+        <Text>{`Email: ${student.email}`}</Text>
+
+        <Center>
+        <Center>
+        <Button colorScheme='green' onClick={() => dispatch(thunkGiveRole(student))}> 
+        Утвердить заявку
+        </Button>
+          </Center>
+        </Center>
+      </Box>
+    ))}
+</TabPanel>
       </TabPanels>
       <EditTeacherModal />
       <DeleteTeacherModal />

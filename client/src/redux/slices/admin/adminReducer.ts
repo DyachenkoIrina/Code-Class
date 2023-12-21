@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { GroupType, GroupsSliceState } from "../../../types/groups";
-import { thunkDeleteTeacher, thunkGroupsLoad, thunkTeacherManages, thunkUsersLoad } from "./thunkActionsAdmin";
+import { thunkDeleteTeacher, thunkGiveRole, thunkGroupsLoad, thunkTeacherManages, thunkUsersLoad } from "./thunkActionsAdmin";
 import type { AdminSliceState, TeacherGroupType } from "../../../types/admin";
 
 
@@ -52,9 +52,14 @@ export const adminSlice = createSlice({
     });
     
     builder.addCase(thunkGroupsLoad.fulfilled, (state, action) => {
-      console.log('LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL', action.payload)
       state.groups = action.payload;
+    });
+    builder.addCase(thunkGiveRole.fulfilled, (state, action) => {
+      // const targetId = action.payload.id;
       
+      // const indexOfUser = state.userList.findIndex(user => user.id === targetId);
+    
+      // state.userList = updatedUsers;
     });
   },
 });

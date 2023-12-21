@@ -19,19 +19,19 @@ import type { AdminStudentCard } from '../../types/admin';
 import { useAppSelector } from '../../redux/hook';
 
 export default function StudentCard({ student }: { student: AdminStudentCard }): JSX.Element {
-  console.log(
-    '45454545454545544444444444545444545454545454545455444444444445454445454545454545454554444444444454544454545454545454545544444444444545444545',
-    student,
-  );
+
   const groups = useAppSelector((state) => state.adminSlice.groups);
-  const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group.group || 'N/A');
+  const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group?.group || 'Ученик без группы');
 
   const handleGroupSelect = (group: { id: number; group?: string | undefined }): void => {
-    setSelectedGroup(group.group || 'N/A');
+
+    setSelectedGroup(group.group || 'Ученик без группы');
+
     console.log(selectedGroup);
   };
 
   return (
+
     <Flex display="flex">
       <Card>
         <Center>
@@ -69,7 +69,7 @@ export default function StudentCard({ student }: { student: AdminStudentCard }):
                           handleGroupSelect({ id: group.id || 0, group: group.group || 'N/A' })
                         }
                       >
-                        {group.group || 'N/A'}
+                        { group.group || 'Ученик без группы''}
                       </MenuItem>
                     ))}
                   </MenuList>
@@ -80,5 +80,6 @@ export default function StudentCard({ student }: { student: AdminStudentCard }):
         </CardBody>
       </Card>
     </Flex>
+
   );
 }
