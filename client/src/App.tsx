@@ -26,10 +26,11 @@ import HomeWork from './pages/HomeWork';
 
 import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
-import { thunkLoad } from './redux/slices/topics/createAsyncThunk';
+import { thunkLoad, thunkOneTopic } from './redux/slices/topics/createAsyncThunk';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const userId = useAppSelector((store) => store.authSlice.user.id);
 
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
@@ -40,18 +41,20 @@ function App(): JSX.Element {
     void dispatch(thunkLoad());
     void dispatch(thunkLoadTask());
     void dispatch(thunkUsersLoad());
+
     void dispatch(thunkTeacherGroups());
   }, []);
 
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
-  // const stor = useAppSelector((store) => console.log('--->store--->', store));
+  const topics = useAppSelector((state) => state.topics.topics);
+  console.log('******', topics);
+
+  const stor = useAppSelector((store) => console.log('--->store--->', store));
   return (
     <>
       <SaasProvider>
-        
-          <SideBar />
-       
+        <SideBar />
       </SaasProvider>
 
       <ChakraProvider>
@@ -74,7 +77,7 @@ function App(): JSX.Element {
               />
             }
           >
-            <Route path="/studentlk" element={<StudentAccountPage />} />
+            <Route path={`/studentlk/${userId}`} element={<StudentAccountPage />} />
           </Route>
           <Route path="/student/task/:id" element={<TaskPage />} />
           <Route path="/homework" element={<HomeWork />} />
@@ -87,7 +90,6 @@ function App(): JSX.Element {
           >
             <Route path="/adminlk" element={<AdminPage />} />
           </Route>
-          
         </Routes>
 
         <Footer />

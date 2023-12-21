@@ -1,5 +1,6 @@
 import axios from 'axios';
 import type { TopicType } from '../../types/topics/index';
+import type { UserType } from '../../types/auth';
 
 export const apiService = axios.create({
   baseURL: 'http://localhost:3001/api/v1/topic',
@@ -9,6 +10,17 @@ class TopicsService {
   static async getTopics(): Promise<TopicType[]> {
     const response = await apiService.get<TopicType[]>('/');
     if (response.status === 200) return response.data;
+    return [];
+  }
+
+  static async getOneTopic(id: UserType['id']): Promise<UserType> {
+    console.log('YYYYYYY YYid', id);
+    const response = await apiService.post<UserType>('/studenttopics', {id:id});
+    console.log('YYYYYYY YY', response);
+    
+    if (response.status === 200) return response.data;
+   
+    
     return [];
   }
 
