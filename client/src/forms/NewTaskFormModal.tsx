@@ -18,7 +18,10 @@ import React from 'react';
 import { thunkTaskAdd } from '../redux/slices/tasks/createAsyncThunk';
 import type { AddTaskFormData } from '../types/task';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
+
 import { newTaskModal } from '../redux/slices/modal/modalReducer';
+
+
 
 export default function NewTaskFormModal(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -41,7 +44,9 @@ export default function NewTaskFormModal(): JSX.Element {
         onSubmit={(e) => {
           e.preventDefault();
           const formData = Object.fromEntries(new FormData(e.currentTarget)) as AddTaskFormData;
+
           formData.theme = selectedTopic;
+
           void dispatch(thunkTaskAdd(formData));
           dispatch(newTaskModal());
         }}
