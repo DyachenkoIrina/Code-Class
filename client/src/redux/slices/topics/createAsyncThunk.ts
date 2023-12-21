@@ -31,10 +31,4 @@ export const thunkOneTopic = createAsyncThunk(
   },
 );
 
-export const thunkChekTopic = createAsyncThunk(
-  'topicsSlice/thunkChekTopic',
-  async (id: UserType['id']) => {
-    const response = await TeacherServise.getChekTopic(id);
-    return response;
-  },
-);
+

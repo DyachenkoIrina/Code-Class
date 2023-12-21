@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import type { TopicSliceState, TopicType } from '../../../types/topics/index';
-import { thunkAddFavoriteTopic, thunkLoad, thunkOneTopic } from './createAsyncThunk';
+import { thunkAddFavoriteTopic, thunkChekTask, thunkLoad, thunkOneTopic } from './createAsyncThunk';
 
 const initialState: TopicSliceState = {
   topics: [],
+  tasksss:[],
   currentTopic: null,
   favoritesTopic: null,
 };
@@ -21,8 +22,9 @@ export const topicsSlice = createSlice({
       state.favoritesTopic = action.payload;
     });
     builder.addCase(thunkOneTopic.fulfilled, (state, action: PayloadAction<TopicType>) => {
-      state.topics =(action.payload);
+      state.topics =action.payload;
     });
+   
   },
 });
 
