@@ -41,7 +41,7 @@ adminRouter.put("/", async (req, res) => {
 
     console.log('User role updated:', updatedUser);
 
-    res.status(200).json({ message: 'User role updated successfully' });
+    res.status(200).json(updatedUser);
   } catch (error) {
     console.error('Error updating user role:', error);
     res.status(500).json({ error: 'Internal Server Error' });
