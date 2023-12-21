@@ -27,6 +27,7 @@ import HomeWork from './pages/HomeWork';
 import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 import Loader from './components/HOC/Loader';
+import { thunkLoad } from './redux/slices/topics/createAsyncThunk';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();

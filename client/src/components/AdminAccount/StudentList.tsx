@@ -62,16 +62,16 @@ export default function StudentCard({ student }: { student: AdminStudentCard }):
                     {isOpen ? 'Закрыть' : 'Список групп'}
                   </MenuButton>
                   <MenuList>
-                    {groups.map((group) => (
-                      <MenuItem
-                        key={group.id}
-                        onClick={() =>
-                          handleGroupSelect({ id: group.id || 0, group: group.group || 'N/A' })
-                        }
-                      >
-                        { group.group || 'Ученик без группы''}
-                      </MenuItem>
-                    ))}
+                  {groups.map((group) => (
+  <MenuItem
+    key={group.id}
+    onClick={() =>
+      handleGroupSelect({ id: group.id || 0, group: group.group || 'N/A' })
+    }
+  >
+    {group.group || 'Ученик без группы'}
+  </MenuItem>
+))}
                   </MenuList>
                 </>
               )}
