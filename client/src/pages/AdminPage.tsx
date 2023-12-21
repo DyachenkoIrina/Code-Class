@@ -57,10 +57,13 @@ export default function UserSelector(): JSX.Element {
 
         <TabPanel>
         <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
-            {students.map((student) => (
-            <StudentCard key={student.id} student={student} />
-                ))}
-        </SimpleGrid>
+  {students.map((student) => (
+    
+    student.Group !== null && (
+      <StudentCard key={student.id} student={student} />
+    )
+  ))}
+</SimpleGrid>
         </TabPanel>
         <TabPanel>
           {applications.map((application) => (

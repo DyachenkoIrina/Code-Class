@@ -43,15 +43,36 @@ export default function CourseOptions(): JSX.Element {
   ];
 
   return (
-    <Tabs isFitted variant="enclosed">
+    // <Tabs isFitted variant="enclosed">
+    //   <TabList width="100%" mb="1em">
+    //     <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+    //       Junior
+    //     </Tab>
+    //     <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+    //       Middle
+    //     </Tab>
+    //     <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+    //       High
+    //     </Tab>
+    //   </TabList>
+    //   <TabPanels width="500px" marginBottom="50px">
+    //     {learningPaths.map((path) => (
+    //       <TabPanel>
+    //         <CourseCard path={path} />
+    //       </TabPanel>
+    //     ))}
+    //   </TabPanels>
+    // </Tabs>
+
+    <Tabs variant="soft-rounded" colorScheme="green">
       <TabList width="100%" mb="1em">
-        <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+        <Tab margin="auto" borderColor="#D7E8D7">
           Junior
         </Tab>
-        <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+        <Tab margin="auto" borderColor="#D7E8D7">
           Middle
         </Tab>
-        <Tab borderColor="#D7E8D7" _hover={{ background: '#D7E8D7' }}>
+        <Tab margin="auto" borderColor="#D7E8D7">
           High
         </Tab>
       </TabList>
