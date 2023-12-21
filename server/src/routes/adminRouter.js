@@ -1,7 +1,7 @@
-const { User, Group, TeacherGroup, Teacher } = require("../../db/models");
 const express = require("express");
 const { Op } = require("sequelize");
 const e = require("express");
+const { User, Group, TeacherGroup, Teacher } = require("../../db/models");
 
 const adminRouter = express.Router();
 
@@ -35,7 +35,7 @@ adminRouter.put("/", async (req, res) => {
     const { id } = req.body;
     const updatedUser = await User.update({ role: 'Student' }, {
       where: {
-        id: id
+        id
       }
     });
     req.body.role = 'Student'
@@ -49,6 +49,16 @@ adminRouter.put("/", async (req, res) => {
   }
 });
 
+
+adminRouter.put("/group", async (req, res) => {
+console.log(req.body)
+const groupId = req.body.groupId
+const studentId = req.body.student.id
+const updatedUser = await User.update({ groupId: groupId }, {
+  where: {id: studentId}
+});
+res.sendStatus(200)
+});
 
 adminRouter.post("/", async (req, res) => {
   try {
