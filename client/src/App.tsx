@@ -27,6 +27,7 @@ import HomeWork from './pages/HomeWork';
 import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 import Loader from './components/HOC/Loader';
+import { thunkLoad } from './redux/slices/topics/createAsyncThunk';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -47,8 +48,8 @@ function App(): JSX.Element {
 
 
   const user = useAppSelector((store) => store.authSlice.user);
-  const userId = useAppSelector((store) => store.authSlice.user.id);
-  console.log('-------->>>>><>', userId);
+  // const userId = useAppSelector((store) => store.authSlice.user.id);
+  // console.log('-------->>>>><>', userId);
   
 
   
@@ -84,8 +85,8 @@ function App(): JSX.Element {
               />
             }
           >
-            {/* <Route path={`/studentlk/${userId}`} element={<StudentAccountPage />} /> */}
-            <Route path="/studentlk" element={<StudentAccountPage />} />
+            <Route path={`/studentlk/${userId}`} element={<StudentAccountPage />} />
+            {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
             <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/homework" element={<HomeWork />} />
           </Route>
