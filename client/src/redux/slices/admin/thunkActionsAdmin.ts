@@ -13,3 +13,6 @@ export const thunkUsersLoad = createAsyncThunk('adminSlice/thunkUsersLoad', asyn
 export const thunkGroupsLoad = createAsyncThunk('adminSlice/thunkGroupsLoad', async () =>
   AdminService.getGroups(),
 );
+export const thunkGiveRole = createAsyncThunk('adminSlice/thunkGiveRole', async (student) =>
+  AdminService.giveRole(student),
+);

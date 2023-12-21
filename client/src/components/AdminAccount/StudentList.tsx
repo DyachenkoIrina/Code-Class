@@ -5,53 +5,40 @@ import type { AdminStudentCard } from '../../types/admin';
 import { useAppSelector } from '../../redux/hook';
 
 export default function StudentCard({ student }: { student: AdminStudentCard }): JSX.Element {
-  console.log('45454545454545544444444444545444545454545454545455444444444445454445454545454545454554444444444454544454545454545454545544444444444545444545', student)
   const groups = useAppSelector((state) => state.adminSlice.groups);
-  const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group.group || 'N/A');
+  const [selectedGroup, setSelectedGroup] = useState<string | null>(student.Group?.group || 'Ученик без группы');
 
-  const handleGroupSelect = (group: { id: number; group?: string | undefined }):void => {
-    setSelectedGroup(group.group || 'N/A');
+  const handleGroupSelect = (group: { id: number; group?: string | undefined }): void => {
+    setSelectedGroup(group.group || 'Ученик без группы');
     console.log(selectedGroup);
   };
 
   return (
-    <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
-      <Card>
+    <Card>
+      {/* ... (rest of the component remains the same) */}
+      <CardBody>
+        <Text>Email: {student.email}</Text>
+        <Text>Название: {selectedGroup}</Text>
         <Center>
-          <Avatar
-            size="xl"
-            name={`${student.name}`}
-            src={`http://localhost:3001/img/${student.profileImage}`}
-            mb={4}
-          />
-        </Center>
-        <CardHeader>
-          <Heading size='md'>{student.name}</Heading>
-        </CardHeader>
-        <CardBody>
-          <Text>Email: {student.email}</Text>
-          <Text>Название: {selectedGroup}</Text>
-          <Center>
-            <Menu>
-              {({ isOpen, onClose }) => (
-                <>
-                  <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
-                    {isOpen ? 'Закрыть' : 'Список групп'}
-                  </MenuButton>
-                  <MenuList>
-                    {groups.map((group) => (
-                      <MenuItem key={group.id} onClick={() => handleGroupSelect({ id: group.id || 0, group: group.group || 'N/A' })}>
-                      {group.group || 'N/A'}
+          <Menu>
+            {({ isOpen, onClose }) => (
+              <>
+                <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
+                  {isOpen ? 'Закрыть' : 'Список групп'}
+                </MenuButton>
+                <MenuList>
+                  {groups.map((group) => (
+                    <MenuItem key={group.id} onClick={() => handleGroupSelect({ id: group.id || 0, group: group.group || 'Ученик без группы' })}>
+                      {group.group || 'Ученик без группы'}
                     </MenuItem>
-                    ))}
-                  </MenuList>
-                </>
-              )}
-            </Menu>
-          </Center>
-        </CardBody>
-      </Card>
-    </SimpleGrid>
+                  ))}
+                </MenuList>
+              </>
+            )}
+          </Menu>
+        </Center>
+      </CardBody>
+    </Card>
   );
 }
 
