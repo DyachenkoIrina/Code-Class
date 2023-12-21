@@ -67,7 +67,6 @@ export default function UserSelector(): JSX.Element {
             <Box key={application.id} p={4} borderWidth="1px" borderRadius="md">
               <Text>{`Name: ${application.name}`}</Text>
               <Text>{`Email: ${application.email}`}</Text>
-              {/* Add more details if needed */}
             </Box>
           ))}
         </TabPanel>
