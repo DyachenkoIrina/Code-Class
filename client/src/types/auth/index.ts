@@ -1,37 +1,36 @@
 import type { GroupType } from '../groups';
 
 export type UserType = {
-  id: number;
+  id?: number | undefined;
   profileImage?: string;
-  name: string;
-  email: string;
-  role: string;
-  groupId: number;
-  lastName: string;
+  name?: string;
+  email?: string;
+  role?: string | null;
+  groupId?: number;
+  lastName?: string;
 };
 
 export type TeacherType = {
-  id: number;
+  id?: number;
   profileImage?: string;
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   role?: string;
-  teacherId: number;
+  teacherId?: number;
 };
 
 export type BackendAuth = { user: UserType; accessToken: string };
 
 export type UserState =
-  | ({ status: 'pending' } )
-  | ({ status: 'guest' } )
-  | ({ status: 'authenticated' } & UserType & TeacherType & { id: number });
+  | ({ status: 'pending' } & UserType )
+  | ({ status: 'guest' }  & UserType)
+  | ({ status: 'authenticated' } & ( UserType | TeacherType));
 
 // Redux Slice State
 export type AuthState = {
   user: UserState;
   accessToken: string;
-  teacher: UserState;
-  id: number;
+  teacher: UserState | null;
 };
 
 export type LoginFormData = {
