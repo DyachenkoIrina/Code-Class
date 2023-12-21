@@ -139,7 +139,7 @@ export default function SideBar(): JSX.Element {
               </NavItem>
             </NavGroup>
             <NavGroup>
-              <NavItem fontWeight={600} fontSize={isOpen ? '12px' : '7px'}>
+              <NavItem fontWeight={600} fontSize={isOpen ? '12px' : '0px'}>
                 {auth.user.status === 'authenticated' ? auth.user.name : 'Привет, гость!'}
               </NavItem>
             </NavGroup>
