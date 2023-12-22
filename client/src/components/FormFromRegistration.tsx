@@ -190,7 +190,7 @@ function RegistrationForm({
             class="login_input"
             name="confirmCode"
             type="password"
-            placeholder="Почта2"
+            placeholder="Введите код подтверждения"
           />
         </FormControl>
       )}

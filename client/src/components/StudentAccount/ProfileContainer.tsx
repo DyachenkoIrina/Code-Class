@@ -26,11 +26,14 @@ export default function ProfileContainer(): JSX.Element {
         />
         <FormLabel textAlign="center">Имя</FormLabel>
         <Text fontSize="xl" fontWeight="bold" mb={2}>
-          {`${user.name}`}
+          {`Привет, ${user.name}!`}
         </Text>
         <FormLabel textAlign="center">Почта</FormLabel>
         <Text fontSize="lg" color="gray.500" mb={4}>
-          {`${user.email}`}
+          {`Email: ${user.email}`}
+        </Text>
+        <Text fontSize="lg" color="gray.500" mb={4}>
+          {`Ваша группа: ${user.groupId}`}
         </Text>
         <ButtonGroup spacing="6">
           <Button onClick={() => setShow(true)}>Редактировать</Button>
