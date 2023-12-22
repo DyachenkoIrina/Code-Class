@@ -20,10 +20,10 @@ export default function TopicCard({ topic }: TopicTypeCard): JSX.Element {
       variant="outline"
       maxW="600px" // Установите максимальную ширину
       maxH="1500px" // Установите максимальную высоту
-      p="1" // Установите внутренний отступ
+      p="1" 
       transition="transform 0.3s" // Добавляем плавный переход при изменении стилей
       _hover={{
-        transform: 'scale(1.1)', // Масштабируем компонент при наведении
+        transform: 'scale(1.1)', 
       }}
     >
       <Image

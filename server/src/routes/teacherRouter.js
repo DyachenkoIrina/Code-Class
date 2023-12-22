@@ -13,12 +13,12 @@ const teacherRouter = express.Router();
 teacherRouter.get("/:id", async (req, res) => {
   try {
     // const teacher = await Teacher.findByPk(req.params.id);
-  
+
     const groupsTeasher = await TeacherGroup.findAll({
       where: { teacherId: req.params.id },
       include: { model: Group, attributes: ["group"] },
     });
-  
+
     res.status(200).json(groupsTeasher);
   } catch ({ message }) {
     res.status(400).json({ message });
@@ -69,7 +69,7 @@ teacherRouter.get("/studentid/:id/homework", async (req, res) => {
         },
       ],
     });
-    console.log("------>chto priidet", user);
+
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }

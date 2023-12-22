@@ -7,15 +7,12 @@ import { useAppSelector } from '../redux/hook';
 
 export default function TaskPage(): JSX.Element {
   const tasks = useAppSelector((state) => state.tasks.tasks);
-type Params = {
-  id: string
-}
-  const { id = '' }= useParams<Params>();
-  
-  const currentTask = tasks.filter((task) => task.topicId === parseInt(id, 10));
+  type Params = {
+    id: string;
+  };
+  const { id = '' } = useParams<Params>();
 
-  console.log('----------->>>', currentTask);
-  
+  const currentTask = tasks.filter((task) => task.topicId === parseInt(id, 10));
 
   return (
     <Container centerContent>
