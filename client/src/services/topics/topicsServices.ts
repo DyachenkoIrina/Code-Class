@@ -11,6 +11,8 @@ class TopicsService {
 
     
     const response = await apiService.get<TopicType[]>('/');
+    console.log("-===-------->", response);
+    
     if (response.status === 200) return response.data;
     return [];
   }
