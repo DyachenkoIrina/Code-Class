@@ -4,9 +4,9 @@ const { Task, Topic } = require("../../db/models");
 
 const tasksRouter = express.Router();
 
-tasksRouter.get("/:id", async (req, res) => {
+tasksRouter.get("/", async (req, res) => {
   try {
-    const idTask = req.params;
+    
     const data = await Task.findAll();
     res.status(200).json(data);
   } catch ({ message }) {
