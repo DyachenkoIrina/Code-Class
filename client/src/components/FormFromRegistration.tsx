@@ -205,7 +205,7 @@ function RegistrationForm({
             class="login_input"
             name="confirmCode"
             type="password"
-            placeholder="Почта2"
+            placeholder="Введите код подтверждения"
           />
         </FormControl>
       )}
@@ -218,6 +218,7 @@ function RegistrationForm({
 }
 
 function ModalFromRegistration(): JSX.Element {
+  const auth = useAppSelector((store) => store.authSlice);
   const [step, setStep] = useState(1); // 1 - регистрация, 2 - подтверждение
 
   const { onOpen, onClose } = useDisclosure();
@@ -245,22 +246,26 @@ function ModalFromRegistration(): JSX.Element {
 
   return (
     <>
-      <Button
-        fontWeight="400"
-        boxShadow="dark-lg"
-        p="6"
-        rounded="md"
-        bg="#D7E8D7"
-        _hover={{ background: '#D9D0FF' }}
-        onClick={handleOpenModal}
-        size="md"
-        height="60px"
-        width="280px"
-        border="none"
-        marginTop="20px"
-      >
-        Записаться на пробное занятие
-      </Button>
+      {auth.user.status !== 'authenticated' ? (
+        <Button
+          fontWeight="400"
+          boxShadow="dark-lg"
+          p="6"
+          rounded="md"
+          bg="#D7E8D7"
+          _hover={{ background: '#D9D0FF' }}
+          onClick={handleOpenModal}
+          size="md"
+          height="60px"
+          width="280px"
+          border="none"
+          marginTop="20px"
+        >
+          Записаться на пробное занятие
+        </Button>
+      ) : (
+        <> </>
+      )}
 
       <Modal
         initialFocusRef={null}

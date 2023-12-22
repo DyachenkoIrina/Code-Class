@@ -9,10 +9,8 @@ export default function TopicContainer(): JSX.Element {
   const topics = useAppSelector((state) => state.topics.topics);
   const userId = useAppSelector((state) => state.authSlice.user);
 
-  
   useEffect(() => {
-    if(userId)
-    void dispatch(thunkOneTopic(userId?.id));
+    if (userId) void dispatch(thunkOneTopic(userId?.id));
   }, [userId]);
   return (
     <Container
@@ -23,6 +21,7 @@ export default function TopicContainer(): JSX.Element {
       p={4}
       overflowY="auto" 
       maxH="700px" 
+      marginTop="50px"
     >
       <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
         {topics.map((topic) => (

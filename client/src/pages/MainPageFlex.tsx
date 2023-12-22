@@ -17,10 +17,10 @@ export default function MainPageFlex(): JSX.Element {
         <Video />
       </Box>
       <Image className="logo" src="../../public/Logo.png" alt="codeClass logo" />
-      <Box flex="1">
+      {/* <Box flex="1">
         <p className="text">Школа программирования для детей</p>
        
-      </Box>
+      </Box> */}
       <Box flex="2">
         <Container>
           <Container className="heading_wrapper">
