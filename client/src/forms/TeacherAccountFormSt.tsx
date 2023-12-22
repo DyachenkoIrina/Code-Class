@@ -28,7 +28,7 @@ export default function TeacherAccountFormSt(): JSX.Element {
           {/* Вкладка "Проверить тему" */}
           <TabPanel style={{ display: 'flex' }}>
             <ProfileContainerSt />
-            <CheckTopicContainerSt />
+            {/* <CheckTopicContainerSt /> */}
           </TabPanel>
         </TabPanels>
       </Tabs>

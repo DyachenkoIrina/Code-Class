@@ -16,14 +16,14 @@ export default function CheckTopicContainerSt(): JSX.Element {
 
   return (
     <Container
-      style={{
-        backgroundColor: '#D7E8D7',
-        //  border: '2px solid gray',
-        borderRadius: '25px',
-        padding: '4px',
-        overflowY: 'auto',
-        maxHeight: '700px',
-      }}
+    style={{
+     //backgroundColor: '#D7E8D7',
+      //  border: '2px solid gray',
+      borderRadius: '25px',
+      padding: '4px',
+      overflowY: 'auto',
+      maxHeight: '700px',
+    }}
     >
       <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
         {tasks.map((tasks) => (
