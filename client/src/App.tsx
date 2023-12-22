@@ -36,8 +36,7 @@ function App(): JSX.Element {
     void dispatch(thunkRefreshToken());
     void dispatch(thunkLoad());
     void dispatch(thunkLoadTask());
-    void dispatch(thunkUsersLoad());
-
+    // void dispatch(thunkUsersLoad());
     void dispatch(thunkTeacherGroups());
   }, []);
 
