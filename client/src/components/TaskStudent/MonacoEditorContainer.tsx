@@ -50,6 +50,7 @@ export default function MonacoEditorContainer({ tasks }: TasksState): JSX.Elemen
         }),
       });
       setShowAlert(true);
+      setEditorValue('');
       setTimeout(() => {
         setShowAlert(false);
       }, 2000);
