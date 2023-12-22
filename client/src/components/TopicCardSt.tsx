@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   Heading,
@@ -10,6 +10,8 @@ import {
   Text,
   TagLabel,
   FormLabel,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import type { TopicType } from '../types/topics';
@@ -21,9 +23,18 @@ type TopicTypeProps = {
 };
 
 export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
+  const [showAlert, setShowAlert] = useState(false);
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const studentId = Number(id);
+
+  const handler = () => {
+    dispatch(thunkAddFavoriteTopic({ studentId, id: topic.id }));
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
 
   return (
     <Card
@@ -33,7 +44,7 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
         border: '1px solid', // Выберите цвет границы по вашему вкусу
         borderRadius: '20px', // Выберите радиус границы по вашему вкусу
         maxWidth: '850px',
-        maxHeight: '1500px',
+        height: '450px',
         padding: '1',
         transition: 'transform 0.3s',
       }}
@@ -44,10 +55,10 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
     >
       <Image
         objectFit="cover"
-        maxW="200px"
-        maxH="250px"
-        // width="300px" // Установите ширину изображения
-        // height="200px" // Установите высоту изображения
+        // maxW="200px"
+        // maxH="250px"
+        width="300px" // Установите ширину изображения
+        height="200px" // Установите высоту изображения
         src={topic?.img}
         alt="Caffe Latte"
       />
@@ -68,9 +79,15 @@ export default function TopicCardSt({ topic }: TopicTypeProps): JSX.Element {
             {topic.title}
           </Text>
           {/* <Text size="md">{topic.description}</Text> */}
-          <Button onClick={() => dispatch(thunkAddFavoriteTopic({ studentId, id: topic.id }))}>
-            Дать задание ученику!
-          </Button>
+          <Button onClick={handler}>Дать задание ученику!</Button>
+          {showAlert && (
+            <Stack spacing={3} marginTop="20px">
+              <Alert status="success" variant="subtle">
+                <AlertIcon />
+                Задача отправлена на проверку!
+              </Alert>
+            </Stack>
+          )}
         </CardBody>
 
         {/* <Button onClick={dispatch()=>{}}>

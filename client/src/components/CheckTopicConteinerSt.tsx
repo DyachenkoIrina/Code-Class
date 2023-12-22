@@ -20,7 +20,7 @@ export default function CheckTopicContainerSt(): JSX.Element {
   return (
     <Container
     style={{
-     backgroundColor: '#D7E8D7',
+     //backgroundColor: '#D7E8D7',
       //  border: '2px solid gray',
       borderRadius: '25px',
       padding: '4px',

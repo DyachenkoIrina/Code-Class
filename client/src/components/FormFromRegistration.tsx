@@ -198,7 +198,7 @@ function RegistrationForm({
 
       {isConfirmationStep && (
         <FormControl mt={4}>
-          <FormLabel>Почта2</FormLabel>
+          <FormLabel>Код подтверждения</FormLabel>
           <Input
             isInvalid
             errorBorderColor="red.300"
