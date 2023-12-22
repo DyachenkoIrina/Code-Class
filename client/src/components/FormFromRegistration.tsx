@@ -121,7 +121,7 @@
 //                     errorBorderColor="red.300"
 //                     class="login_input"
 //                     name="confirmCode"
-//                     type="password" 
+//                     type="password"
 //                     placeholder="Почта2"
 //                   />
 //                 </FormControl>
@@ -195,7 +195,7 @@ function RegistrationForm({
         </FormControl>
       )}
 
-      <Button class="login_btn"  colorScheme="blue" type="submit" mr={3}>
+      <Button class="registration_btn" colorScheme="blue" type="submit" mr={3}>
         {isConfirmationStep ? 'Зарегистрироваться' : 'Подтвердить почту'}
       </Button>
     </form>
@@ -223,7 +223,7 @@ function ModalFromRegistration(): JSX.Element {
       setStep(2);
     } else {
       await dispatch(thunkSignup(formData));
-      onClose()
+      onClose();
     }
   };
 
