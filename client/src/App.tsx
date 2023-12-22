@@ -8,9 +8,7 @@ import TeacherAccountPage from './pages/TeacherAccountPage';
 import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
 import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
-
 import { useAppDispatch, useAppSelector } from './redux/hook';
-
 import StudentAccountPage from './pages/StudentAccountPage';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
 import TaskPage from './pages/TaskPage';
@@ -24,11 +22,9 @@ import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 import Loader from './components/HOC/Loader';
 import { thunkLoad } from './redux/slices/topics/createAsyncThunk';
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const userId = useAppSelector((store) => store.authSlice.user.id);
-
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
     void dispatch(thunkLoadHomeWork());
@@ -39,14 +35,9 @@ function App(): JSX.Element {
     // void dispatch(thunkUsersLoad());
     void dispatch(thunkTeacherGroups());
   }, []);
-
-
-
   const user = useAppSelector((store) => store.authSlice.user);
   const teacher = useAppSelector((store) => store.authSlice.teacher);
   const topics = useAppSelector((state) => state.topics.topics);
-
-
   const stor = useAppSelector((store) => console.log('--->store--->', store));
   return (
     <>
@@ -89,7 +80,6 @@ function App(): JSX.Element {
             <Route path="/adminlk" element={<AdminPage />} />
           </Route>
         </Routes>
-
         <Footer />
         <LoginFormModal />
       </ChakraProvider>
@@ -97,5 +87,4 @@ function App(): JSX.Element {
     </>
   );
 }
-
 export default App;

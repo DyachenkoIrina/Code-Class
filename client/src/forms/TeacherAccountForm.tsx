@@ -15,6 +15,7 @@ export default function TeacherAccountForm(): JSX.Element {
     onOpen();
   };
   return (
+    
     <>
       <FormControl>
         <Button class="add_task_btn" onClick={handleOpenModal} type="submit">

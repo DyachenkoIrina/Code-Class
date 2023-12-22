@@ -33,6 +33,7 @@ export default function SideBar(): JSX.Element {
   const user = useAppSelector((store) => store.authSlice.user);
   const userId = useAppSelector((store) => store.authSlice.user.id);
   const idTeacher = useAppSelector((state) => state.authSlice.teacher?.id);
+  // const userId = useAppSelector((store) => store.authSlice.user.id);
 
   const navigate = useNavigate();
   return (

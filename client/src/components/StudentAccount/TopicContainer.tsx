@@ -19,8 +19,8 @@ export default function TopicContainer(): JSX.Element {
       border="2px solid gray"
       borderRadius="25px"
       p={4}
-      overflowY="auto" // Добавляем вертикальную прокрутку
-      maxH="700px" // Ограничиваем высоту контейнера
+      overflowY="auto" 
+      maxH="700px" 
       marginTop="50px"
     >
       <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>

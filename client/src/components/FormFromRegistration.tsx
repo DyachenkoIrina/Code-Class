@@ -95,7 +95,12 @@
 
 //               <FormControl mt={4}>
 //                 <FormLabel>Пароль</FormLabel>
-//                 <Input className="login_input" name="password" type="password" placeholder="Пароль" />
+//                 <Input
+//                   className="login_input"
+//                   name="password"
+//                   type="password"
+//                   placeholder="Пароль"
+//                 />
 //               </FormControl>
 
 //               <Button type="submit" class="login_closebtn">
@@ -125,7 +130,17 @@
 //                     placeholder="Почта2"
 //                   />
 //                 </FormControl>
-//                 <Button class="login_btn" colorScheme="blue" type="submit" mr={3}>
+//                 <Button
+//                   onClose={() => {
+//                     dispatch(registrModal());
+//                     setShow(false);
+//                     onClose();
+//                   }}
+//                   class="login_btn"
+//                   colorScheme="blue"
+//                   type="submit"
+//                   mr={3}
+//                 >
 //                   Зарегистрироваться
 //                 </Button>
 //               </form>
@@ -214,6 +229,7 @@ function ModalFromRegistration(): JSX.Element {
     dispatch(registrModal());
     onOpen();
   };
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();

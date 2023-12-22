@@ -8,6 +8,22 @@ topicRouter.get("/", async (req, res) => {
     const data = await Topic.findAll();
     res.status(200).json(data);
   } catch ({ message }) {
+    console.log(message);
+    res.status(408).json({ message });
+  }
+});
+
+topicRouter.get("/:id", async (req, res) => {
+  try {
+    console.log("<>-----<>", req.params);
+    const id = req.params;
+    const data = await GetTopic.findAll({
+      where: {
+        userId: id,
+      },
+    });
+    res.status(200).json(data);
+  } catch ({ message }) {
     res.status(408).json({ message });
   }
 });
