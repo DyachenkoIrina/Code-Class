@@ -44,6 +44,11 @@ function App(): JSX.Element {
 
 
   const user = useAppSelector((store) => store.authSlice.user);
+  // const userId = useAppSelector((store) => store.authSlice.user.id);
+  // console.log('-------->>>>><>', userId);
+  
+
+  
   const teacher = useAppSelector((store) => store.authSlice.teacher);
   const topics = useAppSelector((state) => state.topics.topics);
 
@@ -66,7 +71,7 @@ function App(): JSX.Element {
             }
           >
             <Route path="/teacherlk" element={<TeacherAccountPage />} />
-            <Route path="/teacherlk/:id" element={<TeacherAccountPage />} />
+            <Route path='/teacherlk/:id' element={<TeacherAccountPage />} />
             <Route path="/teacherlk/studentid/:id" element={<TeacherAccountPageSt />} />
           </Route>
           <Route
@@ -77,7 +82,8 @@ function App(): JSX.Element {
             }
           >
             <Route path={`/studentlk/${userId}`} element={<StudentAccountPage />} />
-            <Route path="/student/task/:id" element={<TaskPage />} />
+            {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
+            <Route path="/student/task/" element={<TaskPage />} />
             <Route path="/homework" element={<HomeWork />} />
           </Route>
           <Route
