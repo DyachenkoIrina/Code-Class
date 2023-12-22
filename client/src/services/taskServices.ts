@@ -8,7 +8,10 @@ export const apiService = axios.create({
 
 class TasksService {
   static async getTask(): Promise<TaskType[]> {
+  
+    
     const response = await apiService.get<TaskType[]>('/');
+    console.log('test-3');
     if (response.status === 200) return response.data;
     return [];
   }

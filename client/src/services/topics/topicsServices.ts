@@ -9,19 +9,20 @@ export const apiService = axios.create({
 class TopicsService {
   static async getTopics(): Promise<TopicType[]> {
     const response = await apiService.get<TopicType[]>('/');
+
     if (response.status === 200) return response.data;
     return [];
   }
 
   static async getOneTopic(id: UserType['id']): Promise<UserType> {
-    const response = await apiService.post<UserType>('/studenttopics', {id:id});
+    const response = await apiService.post<UserType>('/studenttopics', { id });
     if (response.status === 200) return response.data;
     return [];
   }
 
   static async AddFavoriteTopics(studentId: number, id: TopicType['id']): Promise<TopicType> {
     try {
-      const response = await apiService.post<TopicType>(`/forUser/${studentId}`, { id: id });
+      const response = await apiService.post<TopicType>(`/forUser/${studentId}`, { id });
       if (response.status === 200) {
         return response.data;
       }

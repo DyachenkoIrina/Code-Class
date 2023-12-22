@@ -95,7 +95,12 @@
 
 //               <FormControl mt={4}>
 //                 <FormLabel>Пароль</FormLabel>
-//                 <Input className="login_input" name="password" type="password" placeholder="Пароль" />
+//                 <Input
+//                   className="login_input"
+//                   name="password"
+//                   type="password"
+//                   placeholder="Пароль"
+//                 />
 //               </FormControl>
 
 //               <Button type="submit" class="login_closebtn">
@@ -121,11 +126,21 @@
 //                     errorBorderColor="red.300"
 //                     class="login_input"
 //                     name="confirmCode"
-//                     type="password" 
+//                     type="password"
 //                     placeholder="Почта2"
 //                   />
 //                 </FormControl>
-//                 <Button class="login_btn" colorScheme="blue" type="submit" mr={3}>
+//                 <Button
+//                   onClose={() => {
+//                     dispatch(registrModal());
+//                     setShow(false);
+//                     onClose();
+//                   }}
+//                   class="login_btn"
+//                   colorScheme="blue"
+//                   type="submit"
+//                   mr={3}
+//                 >
 //                   Зарегистрироваться
 //                 </Button>
 //               </form>
@@ -183,7 +198,7 @@ function RegistrationForm({
 
       {isConfirmationStep && (
         <FormControl mt={4}>
-          <FormLabel>Почта2</FormLabel>
+          <FormLabel>Введите код подтверждения</FormLabel>
           <Input
             isInvalid
             errorBorderColor="red.300"
@@ -195,7 +210,7 @@ function RegistrationForm({
         </FormControl>
       )}
 
-      <Button class="login_btn"  colorScheme="blue" type="submit" mr={3}>
+      <Button class="registration_btn" colorScheme="blue" type="submit" mr={3}>
         {isConfirmationStep ? 'Зарегистрироваться' : 'Подтвердить почту'}
       </Button>
     </form>
@@ -223,7 +238,7 @@ function ModalFromRegistration(): JSX.Element {
       setStep(2);
     } else {
       await dispatch(thunkSignup(formData));
-      onClose()
+      onClose();
     }
   };
 
