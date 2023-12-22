@@ -13,15 +13,15 @@ export const thunkUsersLoad = createAsyncThunk('adminSlice/thunkUsersLoad', asyn
 export const thunkGroupsLoad = createAsyncThunk('adminSlice/thunkGroupsLoad', async () =>
   AdminService.getGroups(),
 );
-export const thunkGiveRole = createAsyncThunk('adminSlice/thunkGiveRole', async (student) =>{
+export const thunkGiveRole = createAsyncThunk('adminSlice/thunkGiveRole', async (student) => {
   const res = AdminService.giveRole(student);
-  return res
-  }
-);
+  return res;
+});
 
-export const thunkChangeGroup = createAsyncThunk('adminSlice/thunkChangeGroup', async (dataToSend: DataToSend) =>{
-  console.log('WOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLOWOLOLO')
-  const res = AdminService.changeGroup(dataToSend);
-  return res
-  }
+export const thunkChangeGroup = createAsyncThunk(
+  'adminSlice/thunkChangeGroup',
+  async (dataToSend: DataToSend) => {
+    const res = AdminService.changeGroup(dataToSend);
+    return res;
+  },
 );

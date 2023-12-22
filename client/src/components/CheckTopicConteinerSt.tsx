@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
-import {  Grid, GridItem } from '@chakra-ui/layout';
+import { Grid, GridItem } from '@chakra-ui/layout';
 import { Container } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import TopicCardSt from './TopicCardSt';
 import { thunkCheckTask } from '../redux/slices/teacher/thunkActions';
 
-
 export default function CheckTopicContainerSt(): JSX.Element {
   const dispatch = useAppDispatch();
-  const tasks =useAppSelector((state)=>state.teacherSlice.taskss)
+  const tasks = useAppSelector((state) => state.teacherSlice.taskss);
   const userId = useAppSelector((state) => state.authSlice.user);
-  console.log('topi');
-  
+
   useEffect(() => {
-    if(userId)
-    void dispatch(thunkCheckTask(userId?.id));
+    if (userId) void dispatch(thunkCheckTask(userId?.id));
   }, [userId]);
 
   return (

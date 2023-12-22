@@ -11,6 +11,7 @@ export const thunkLoad = createAsyncThunk('topicsSlice/thunkLoad', async () => {
 
 export const thinkShowAllTopic = createAsyncThunk('topicsSlice/thinkShowAllTopic', async () => {
   const response = await TopicsService.getTopics();
+
   return response;
 });
 
@@ -30,5 +31,3 @@ export const thunkOneTopic = createAsyncThunk(
     return response;
   },
 );
-
-

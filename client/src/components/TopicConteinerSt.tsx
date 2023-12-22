@@ -9,6 +9,7 @@ import { thinkShowAllTopic } from '../redux/slices/topics/createAsyncThunk';
 export default function TopicContainerSt(): JSX.Element {
   const dispatch = useAppDispatch();
   const topics = useAppSelector((state) => state.topics.topics);
+
   useEffect(() => {
     if (topics) void dispatch(thinkShowAllTopic());
   }, [topics]);
