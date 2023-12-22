@@ -28,14 +28,6 @@ body {
   border-top-right-radius: 20px;
   z-index: -1;
 }
-.css-vhc7ah {
-}
-
-/* .container {
-  width: 200px;
-  background-color: #c1ffbc;
- 
-} */
 
 .chakra-ui-light {
   background-color: #d7e8d7;
@@ -228,3 +220,28 @@ body {
   border-radius: 20px;
 }
 
+.save_btn {
+  width: 150px;
+  height: 70px;
+  background-color: #d7e8d7;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.save_btn:hover {
+  background-color: #b8e3b8;
+}
+
+.checkbox {
+  margin-right: 15px;
+}
+.checkbox:hover {
+  cursor: pointer;
+  color: #d9d0ff;
+}
+
+.css-i6ew5e {
+  background-color: #b8e3b8;
+}

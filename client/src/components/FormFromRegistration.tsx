@@ -121,7 +121,7 @@
 //                     errorBorderColor="red.300"
 //                     class="login_input"
 //                     name="confirmCode"
-//                     type="password" 
+//                     type="password"
 //                     placeholder="Почта2"
 //                   />
 //                 </FormControl>
@@ -195,7 +195,7 @@ function RegistrationForm({
         </FormControl>
       )}
 
-      <Button class="login_btn"  colorScheme="blue" type="submit" mr={3}>
+      <Button class="registration_btn" colorScheme="blue" type="submit" mr={3}>
         {isConfirmationStep ? 'Зарегистрироваться' : 'Подтвердить почту'}
       </Button>
     </form>
@@ -203,6 +203,7 @@ function RegistrationForm({
 }
 
 function ModalFromRegistration(): JSX.Element {
+  const auth = useAppSelector((store) => store.authSlice);
   const [step, setStep] = useState(1); // 1 - регистрация, 2 - подтверждение
 
   const { onOpen, onClose } = useDisclosure();
@@ -223,28 +224,32 @@ function ModalFromRegistration(): JSX.Element {
       setStep(2);
     } else {
       await dispatch(thunkSignup(formData));
-      onClose()
+      onClose();
     }
   };
 
   return (
     <>
-      <Button
-        fontWeight="400"
-        boxShadow="dark-lg"
-        p="6"
-        rounded="md"
-        bg="#D7E8D7"
-        _hover={{ background: '#D9D0FF' }}
-        onClick={handleOpenModal}
-        size="md"
-        height="60px"
-        width="280px"
-        border="none"
-        marginTop="20px"
-      >
-        Записаться на пробное занятие
-      </Button>
+      {auth.user.status !== 'authenticated' ? (
+        <Button
+          fontWeight="400"
+          boxShadow="dark-lg"
+          p="6"
+          rounded="md"
+          bg="#D7E8D7"
+          _hover={{ background: '#D9D0FF' }}
+          onClick={handleOpenModal}
+          size="md"
+          height="60px"
+          width="280px"
+          border="none"
+          marginTop="20px"
+        >
+          Записаться на пробное занятие
+        </Button>
+      ) : (
+        <> </>
+      )}
 
       <Modal
         initialFocusRef={null}

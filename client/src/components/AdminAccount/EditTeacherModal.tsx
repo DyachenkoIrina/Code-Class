@@ -17,15 +17,14 @@ import { changeCheckbox, clearSelectedTeacher } from '../../redux/slices/admin/a
 import type { GroupType } from '../../types/groups';
 import { thunkTeacherManages } from '../../redux/slices/groups/thunkActions';
 
+import '../../index.css';
 
 export default function EditTeacherModal(): JSX.Element {
   const selectedTeacher = useAppSelector((store) => store.adminSlice.selectedTeacher);
 
   const dispatch = useAppDispatch();
   const handleCheckboxChange = (group: GroupType, id: number): void => {
-    
-    dispatch(changeCheckbox({selectedTeacher, group, id}))
-    
+    dispatch(changeCheckbox({ selectedTeacher, group, id }));
   };
 
   const handleEdit = () => {
@@ -33,22 +32,22 @@ export default function EditTeacherModal(): JSX.Element {
     dispatch(clearSelectedTeacher());
   };
 
-
   return (
     <Modal isOpen={!!selectedTeacher} onClose={() => dispatch(clearSelectedTeacher())}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Edit Teacher</ModalHeader>
+      <ModalContent class="login_modal">
+        <ModalHeader class="login_modal_header">Редактирование</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Divider />
-          <Center>
+          <Center fontWeight="600" paddingBottom="10px">
             <div>{selectedTeacher?.name}</div>
           </Center>
-          {selectedTeacher?.Groups.map((group:GroupType , id) => (
-            <Center key={id}>
-              <label>
+          {selectedTeacher?.Groups.map((group: GroupType, id) => (
+            <Center paddingBottom="10px" key={id}>
+              <label >
                 <input
+                  className="checkbox"
                   type="checkbox"
                   checked={group.manages}
                   onChange={() => handleCheckboxChange(group, id)}
@@ -58,21 +57,15 @@ export default function EditTeacherModal(): JSX.Element {
             </Center>
           ))}
         </ModalBody>
-        <ModalFooter>
-          <Button colorScheme="green" mr={3} onClick={() => handleEdit()}>
+        <ModalFooter display="flex" gap="15px">
+          <Button class="save_btn" colorScheme="green" mr={3} onClick={() => handleEdit()}>
             Сохранить изменения
           </Button>
-          <Button onClick={() => dispatch(clearSelectedTeacher())}>Закрыть</Button>
+          <Button class="save_btn" onClick={() => dispatch(clearSelectedTeacher())}>
+            Закрыть
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
   );
 }
-
-
-
-
-
-
-
-
