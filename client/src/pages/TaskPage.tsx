@@ -14,6 +14,9 @@ type Params = {
   
   const currentTask = tasks.filter((task) => task.topicId === parseInt(id, 10));
 
+  console.log('----------->>>', currentTask);
+  
+
   return (
     <Container centerContent>
       <Box marginTop="50px" marginBottom="50px" textAlign="center" width="200%">
