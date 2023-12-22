@@ -6,20 +6,20 @@ const tasksRouter = express.Router();
 
 tasksRouter.get("/", async (req, res) => {
   try {
+    
     const data = await Task.findAll();
     res.status(200).json(data);
   } catch ({ message }) {
     res.status(400).json({ message });
   }
 });
-
+//это для нового задания
 tasksRouter.post("/", async (req, res) => {
   try {
     const { title, questions, answer } = req.body;
     console.log("reqbod--->", req.body);
 
-
-    const topic = await Topic.findByPk(title); 
+    const topic = await Topic.findByPk(title);
     console.log("topic", topic);
     if (!topic) {
       return res

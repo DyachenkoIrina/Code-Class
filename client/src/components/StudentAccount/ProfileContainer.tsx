@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Avatar, Text, Box, ButtonGroup, Button, TagLabel } from '@chakra-ui/react';
+import { FormLabel } from 'react-bootstrap';
 import { useAppSelector } from '../../redux/hook';
 import EditFormModal from '../../forms/EditFormModal';
 import type { UserType } from '../../types/auth/index';
-import { FormLabel } from 'react-bootstrap';
 
 export default function ProfileContainer(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user);
