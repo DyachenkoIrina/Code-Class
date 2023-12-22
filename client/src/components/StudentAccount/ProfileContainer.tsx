@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Avatar, Text, Box, ButtonGroup, Button, TagLabel } from '@chakra-ui/react';
 import { FormLabel } from 'react-bootstrap';
-import { FormLabel } from 'react-bootstrap';
 import { useAppSelector } from '../../redux/hook';
 import EditFormModal from '../../forms/EditFormModal';
 import type { UserType } from '../../types/auth/index';
@@ -9,14 +8,14 @@ import type { UserType } from '../../types/auth/index';
 export default function ProfileContainer(): JSX.Element {
   const user = useAppSelector((state) => state.authSlice.user);
   const [show, setShow] = useState<boolean | UserType>(false);
-  console.log('---------->>><>>>>>>', user);
+
 
   return (
     <Container
       bg="#D9D0FF"
-      border="2px solid gray" // Задайте стиль, цвет и толщину границы
-      borderRadius="25px" // Задайте радиус скругления углов
-      p={10} // Задайте внутренний отступ
+      border="2px solid gray"
+      borderRadius="25px" 
+      p={10} 
       maxW="250px"
       marginTop="50px"
     >
@@ -24,7 +23,7 @@ export default function ProfileContainer(): JSX.Element {
         <Avatar
           size="xl"
           name={`${user.name} ${user.name}`}
-          src={`http://localhost:3001/img/${user.profileImage}`} // Предполагается, что в user есть поле profileImageUrl с URL изображения
+          src={`http://localhost:3001/img/${user.profileImage}`} 
           mb={4}
         />
 

@@ -17,7 +17,6 @@ tasksRouter.get("/", async (req, res) => {
 tasksRouter.post("/", async (req, res) => {
   try {
     const { title, questions, answer } = req.body;
-    console.log("reqbod--->", req.body);
 
     const topic = await Topic.findByPk(title);
     console.log("topic", topic);

@@ -52,7 +52,6 @@ authRouter.post("/login", async (req, res) => {
 });
 
 authRouter.post("/confirm", async (req, res) => {
-
   const confirmCode = generateConfirmationCode();
 
   try {
@@ -92,6 +91,7 @@ authRouter.post("/confirm", async (req, res) => {
 authRouter.post("/signup", async (req, res) => {
   try {
     const { email, confirmCode } = req.body;
+
     const user = await User.findOne({
       where: {
         email,

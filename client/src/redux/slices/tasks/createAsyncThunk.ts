@@ -4,6 +4,7 @@ import type { AddTaskFormData } from '../../../types/task';
 
 export const thunkLoadTask = createAsyncThunk('tasksSlice/thunkLoadTask', async () => {
   const response = await TasksService.getTask();
+
   return response;
 });
 
@@ -11,5 +12,3 @@ export const thunkTaskAdd = createAsyncThunk(
   'tasksSlice/thunkTaskAdd',
   async (formData: AddTaskFormData) => TasksService.addTask(formData),
 );
-
-

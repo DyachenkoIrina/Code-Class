@@ -158,7 +158,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -175,9 +174,11 @@ import type { SignupFormData } from '../types/auth';
 function RegistrationForm({
   onSubmit,
   isConfirmationStep,
+  onClose, // Передаем функцию onClose
 }: {
   onSubmit: (data: SignupFormData) => void;
   isConfirmationStep: boolean;
+  onClose: () => void; // Типизация для нового пропа
 }) {
   return (
     <form onSubmit={onSubmit}>
@@ -198,14 +199,15 @@ function RegistrationForm({
 
       {isConfirmationStep && (
         <FormControl mt={4}>
-          <FormLabel>Почта2</FormLabel>
+          <FormLabel>Введите код подтверждения</FormLabel>
           <Input
             isInvalid
             errorBorderColor="red.300"
             class="login_input"
             name="confirmCode"
             type="password"
-            placeholder="Введите код подтверждения"
+
+            placeholder="Код подтверждения"
           />
         </FormControl>
       )}
@@ -213,6 +215,13 @@ function RegistrationForm({
       <Button class="registration_btn" colorScheme="blue" type="submit" mr={3}>
         {isConfirmationStep ? 'Зарегистрироваться' : 'Подтвердить почту'}
       </Button>
+
+      {/* Кнопка для повторной отправки кода */}
+      {isConfirmationStep && (
+        <Button onClick={onClose} variant="link" color="blue.500">
+          Повторная отправка кода
+        </Button>
+      )}
     </form>
   );
 }
@@ -221,15 +230,13 @@ function ModalFromRegistration(): JSX.Element {
   const auth = useAppSelector((store) => store.authSlice);
   const [step, setStep] = useState(1); // 1 - регистрация, 2 - подтверждение
 
-  const { onOpen, onClose } = useDisclosure();
+  const { onOpen, onClose, isOpen } = useDisclosure();
   const dispatch = useAppDispatch();
-  const isOpen = useAppSelector((state) => state.modal.registrModal);
 
   const handleOpenModal = (): void => {
     dispatch(registrModal());
     onOpen();
   };
-  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -240,7 +247,7 @@ function ModalFromRegistration(): JSX.Element {
       setStep(2);
     } else {
       await dispatch(thunkSignup(formData));
-      onClose();
+      onClose(); // Закрываем модальное окно после успешной отправки
     }
   };
 
@@ -271,16 +278,17 @@ function ModalFromRegistration(): JSX.Element {
         initialFocusRef={null}
         finalFocusRef={null}
         isOpen={isOpen}
-        onClick={() => dispatch(registrModal())}
+        onClose={onClose} // Передаем onClose в Modal
       >
         <ModalOverlay />
         <ModalContent class="login_modal">
           <ModalHeader class="login_modal_header">
             Пожалуйста, <br /> {step === 1 ? 'зарегистрируйтесь' : 'подтвердите почту'}
           </ModalHeader>
-          <ModalCloseButton onClick={() => dispatch(registrModal())} />
+          <ModalCloseButton onClick={onClose} />
           <ModalBody pb={6}>
-            <RegistrationForm onSubmit={handleSubmit} isConfirmationStep={step === 2} />
+            {/* Передаем onClose в RegistrationForm */}
+            <RegistrationForm onSubmit={handleSubmit} isConfirmationStep={step === 2} onClose={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>

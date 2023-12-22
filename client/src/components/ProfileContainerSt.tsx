@@ -10,9 +10,6 @@ export default function ProfileContainerSt(): JSX.Element {
   const { id } = useParams();
   const student = useAppSelector((store) => store.studentsSlice.currentStudent);
 
-  // console.log('***---->container', groups );
-  // console.log('****----->component', student);
-
   // через current Student сделать!!
   useEffect(() => {
     if (id) {
@@ -29,24 +26,24 @@ export default function ProfileContainerSt(): JSX.Element {
       borderRadius="25px"
       p={10}
     >
-    {student ? (
-      <Box textAlign="center" p={8}>
-        <Avatar size="xl" name={`${student.name ?? ''}`} src={student.profileImage} />
-        <Spacer h={8} />
-        <FormLabel textAlign="center">Имя</FormLabel>
-        <Text fontSize="xl" fontWeight="bold" mb={2}>
-          {`${student.name ?? ''} ${student.lastName ?? ''}`}
-        </Text>
+      {student ? (
+        <Box textAlign="center" p={8}>
+          <Avatar size="xl" name={`${student.name ?? ''}`} src={student.profileImage} />
+          <Spacer h={8} />
+          <FormLabel textAlign="center">Имя</FormLabel>
+          <Text fontSize="xl" fontWeight="bold" mb={2}>
+            {`${student.name ?? ''} ${student.lastName ?? ''}`}
+          </Text>
 
-        <FormLabel textAlign="center">Почта</FormLabel>
-        <Text fontSize="xl" fontWeight="bold" mb={2}>
-          {`${student.email ?? ''}`}
-        </Text>
-      </Box>
-    ) : (
-      // Обработка случая, когда student равен null
-      <p>Loading...</p>
-    )}
-  </Container>
+          <FormLabel textAlign="center">Почта</FormLabel>
+          <Text fontSize="xl" fontWeight="bold" mb={2}>
+            {`${student.email ?? ''}`}
+          </Text>
+        </Box>
+      ) : (
+        // Обработка случая, когда student равен null
+        <p>Loading...</p>
+      )}
+    </Container>
   );
 }
