@@ -63,7 +63,6 @@ authRouter.post("/confirm", async (req, res) => {
         name,
         hashpass: await bcrypt.hash(password, 10),
         confirmCode,
-        role: 'Student'
       },
     });
     if (!created)
