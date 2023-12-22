@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { GroupType } from '../types/groups';
-import type { AdminStudentCard, TeacherGroupType} from '../types/admin';
+import type { AdminStudentCard, DataToSend, TeacherGroupType} from '../types/admin';
 
 export const apiAdminService = axios.create({
   baseURL: 'http://localhost:3001/api/v1/adminlk',
@@ -14,13 +14,14 @@ interface ServerResponse {
 class AdminService {
   static async getUserList(): Promise<AdminStudentCard[]> {
     const response = await apiAdminService.get<AdminStudentCard[]>('/');
+    console.log('', response)
     if (response.status === 200) return response.data;
     return [];
   }
   
   static async changeGroupManage(selectedTeacher: null | TeacherGroupType): Promise<ServerResponse> {
     const response = await apiAdminService.post<ServerResponse>('/', selectedTeacher);
-    console.log(response.data, 'asdasjkldl;aks;dkas;dka;sldj;asjf;ljfgk;asdgklahlkghfadls')
+    
     if (response.status === 200) return response.data;
     return response;
   }
@@ -30,18 +31,25 @@ class AdminService {
     if (response.status === 200) return teacherToDelete.id;
     return [];
   }
+
+  static async changeGroup(dataToSend: DataToSend , ): Promise< [] | number> {
+    console.log('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS', dataToSend)
+    const response = await apiAdminService.put('/group', dataToSend);
+    if (response.status === 200) return response.data;
+    return [];
+  }
   
   static async giveRole(student: TeacherGroupType): Promise< [] | number> {
-    console.log(student, 'sdfuibghjkubsdfgjkbsdfgbhjksdafgkbjsdfgbhjksdfbjgkhbksdfhjgbsfhjkbsdbhjksdf')
     const response = await apiAdminService.put('/', student);
-    console.log(response, 'RESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSE')
 
-    if (response.status === 200) return teacherToDelete.id;
+    if (response.status === 200) return response.data;
     return [];
   }
 
   static async getGroups(): Promise<GroupType[]> {
+    
     const response = await apiAdminService.get<GroupType[]>('/groups');
+    
     if (response.status === 200) return response.data;
     return [];
   }

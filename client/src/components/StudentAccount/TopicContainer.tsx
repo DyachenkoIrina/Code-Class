@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Container, Grid, GridItem } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../redux/hook';
 import TopicCard from './TopicCard';
@@ -9,7 +8,7 @@ export default function TopicContainer(): JSX.Element {
   const dispatch = useAppDispatch();
   const topics = useAppSelector((state) => state.topics.topics);
   const userId = useAppSelector((state) => state.authSlice.user);
-  console.log('$$$$$$$', userId.id);
+
   
   useEffect(() => {
     if(userId)

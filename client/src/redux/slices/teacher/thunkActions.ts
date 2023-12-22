@@ -10,6 +10,16 @@ export const thunkTeacherGroupLoad = createAsyncThunk(
     const res = await TeacherServise.getGroups(id);
     return res;
   },
+)
+  export const thunkCheckTask = createAsyncThunk(
+  'teachersSlise/thunkCheckTask',
+  async (id: UserType['id']) => {
+    const res = await TeacherServise.getChekTask(id);
+    return res;
+  },
+
 );
+
+
 
 

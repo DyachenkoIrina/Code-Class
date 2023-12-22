@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { TeacherSliceState } from '../../../types/auth';
-import { thunkTeacherGroupLoad } from './thunkActions';
+import { thunkCheckTask, thunkTeacherGroupLoad } from './thunkActions';
 
 const initialState: TeacherSliceState = {
   teacherGroups: [],
+  taskss:[]
+ 
 };
 
 export const teacherSlice = createSlice({
@@ -13,6 +15,10 @@ export const teacherSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(thunkTeacherGroupLoad.fulfilled, (state, action) => {
       state.teacherGroups = action.payload;
+    });
+
+    builder.addCase(thunkCheckTask.fulfilled, (state, action) => {
+      state.tasks= action.payload;
     });
   },
 });

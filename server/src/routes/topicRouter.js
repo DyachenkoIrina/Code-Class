@@ -14,7 +14,7 @@ topicRouter.get("/", async (req, res) => {
 topicRouter.post("/studenttopics", async (req, res) => {
   try {
     const { id } = req.body;
-    // console.log("55555555555555", id, req.body);
+    
     // const data = await User.findAll({include:{model:Topic}} );
     const topics = await Topic.findAll({
       include: {
@@ -24,7 +24,7 @@ topicRouter.post("/studenttopics", async (req, res) => {
         },
       },
     });
-    console.log("%%%%%%%%%%user------>", topics);
+  
     res.status(200).json(topics);
   } catch ({ message }) {
     console.log(message);
@@ -33,12 +33,12 @@ topicRouter.post("/studenttopics", async (req, res) => {
 });
 
 topicRouter.get("/:id", async (req, res) => {
-  // console.log("---------->forUser", req.params);
+
 
   try {
     const { id } = req.params;
     const data = await GetTopic.findAll({ where: { userId: id } });
-    // console.log("****", data);
+
     res.status(200).json(data);
   } catch ({ message }) {
     console.log(message);
@@ -48,7 +48,7 @@ topicRouter.get("/:id", async (req, res) => {
 topicRouter.post("/studenttopics", async (req, res) => {
   try {
     const { id } = req.body;
-    // console.log("55555555555555", id, req.body);
+    
     // const data = await User.findAll({include:{model:Topic}} );
     const topics = await Topic.findAll({
       include: {
@@ -58,7 +58,7 @@ topicRouter.post("/studenttopics", async (req, res) => {
         },
       },
     });
-    console.log("%%%%%%%%%%user------>", topics);
+   
     res.status(200).json(topics);
   } catch ({ message }) {
     console.log(message);
@@ -66,19 +66,18 @@ topicRouter.post("/studenttopics", async (req, res) => {
   }
 });
 
-topicRouter.get("/:id", async (req, res) => {
-  // console.log("---------->forUser", req.params);
+// topicRouter.get("/:id", async (req, res) => {
+  
 
-  try {
-    const { id } = req.params;
-    const data = await GetTopic.findAll({ where: { userId: id } });
-    // console.log("****", data);
-    res.status(200).json(data);
-  } catch ({ message }) {
-    console.log(message);
-    res.status(408).json({ message });
-  }
-});
+//   try {
+//     const { id } = req.params;
+//     const data = await GetTopic.findAll({ where: { userId: id } });
+//     res.status(200).json(data);
+//   } catch ({ message }) {
+//     console.log(message);
+//     res.status(408).json({ message });
+//   }
+// });
 
 topicRouter.post("/forUser/:id", async (req, res) => {
   try {
