@@ -49,7 +49,7 @@ export default function LoginFormModal(): JSX.Element {
 
             <FormControl mt={4}>
               <FormLabel>Пароль</FormLabel>
-              <Input class="login_input" name="password" type="text" placeholder="Пароль" />
+              <Input class="login_input" name="password" type="password" placeholder="Пароль" />
             </FormControl>
             <Button class="login_btn" type="submit" mr={3}>
               Войти

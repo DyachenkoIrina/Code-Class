@@ -4,7 +4,7 @@ const { Task, Topic } = require("../../db/models");
 
 const tasksRouter = express.Router();
 
-tasksRouter.get("/", async (req, res) => {
+tasksRouter.get("/:id", async (req, res) => {
   try {
     const data = await Task.findAll();
     res.status(200).json(data);
@@ -16,10 +16,8 @@ tasksRouter.get("/", async (req, res) => {
 tasksRouter.post("/", async (req, res) => {
   try {
     const { title, questions, answer } = req.body;
-    console.log("reqbod--->", req.body);
 
-
-    const topic = await Topic.findByPk(title); 
+    const topic = await Topic.findByPk(title);
     console.log("topic", topic);
     if (!topic) {
       return res

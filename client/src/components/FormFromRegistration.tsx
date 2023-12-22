@@ -198,7 +198,7 @@ function RegistrationForm({
 
       {isConfirmationStep && (
         <FormControl mt={4}>
-          <FormLabel>Почта2</FormLabel>
+          <FormLabel>Введите код подтверждения</FormLabel>
           <Input
             isInvalid
             errorBorderColor="red.300"
@@ -228,7 +228,6 @@ function ModalFromRegistration(): JSX.Element {
     dispatch(registrModal());
     onOpen();
   };
-  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
