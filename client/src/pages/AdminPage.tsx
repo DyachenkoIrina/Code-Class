@@ -15,7 +15,7 @@ import {
   MenuList,
   MenuItem,
 } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../redux/hook';
 import StudentCard from '../components/AdminAccount/StudentList';
@@ -26,7 +26,7 @@ import type { UserType } from '../types/auth';
 
 import '../index.css';
 import { ChevronDownIcon } from '@saas-ui/core';
-import { thunkGiveGroup, thunkGiveRole } from '../redux/slices/admin/thunkActionsAdmin';
+import { thunkGiveGroup, thunkGiveRole, thunkUsersLoad } from '../redux/slices/admin/thunkActionsAdmin';
 
 export default function UserSelector(): JSX.Element {
   const userList = useAppSelector((store) => store.adminSlice.userList);
@@ -34,11 +34,16 @@ export default function UserSelector(): JSX.Element {
   const groups = useAppSelector((state) => state.adminSlice.groups);
   const dispatch = useAppDispatch();
 
-  const students = userList.filter((user: UserType): boolean => user.role === 'Student');
-  const nobodies = userList.filter(
-    (user: UserType): boolean =>
-      user.role !== 'Student' && user.role !== 'Teacher' && user.role !== 'Admin',
-  );
+    const students = userList.filter((user: UserType): boolean => user.role === 'Student');
+    const nobodies = userList.filter(
+      (user: UserType): boolean =>
+        user.role !== 'Student' && user.role !== 'Teacher' && user.role !== 'Admin',
+    );
+
+    useEffect(() => {
+        void dispatch(thunkUsersLoad());
+    }, []);
+    
 
   return (
     <Tabs variant="soft-rounded" colorScheme="green">
