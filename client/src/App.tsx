@@ -83,7 +83,7 @@ function App(): JSX.Element {
           >
             <Route path={`/studentlk/${userId}`} element={<StudentAccountPage />} />
             {/* <Route path="/studentlk" element={<StudentAccountPage />} /> */}
-            <Route path="/student/task/" element={<TaskPage />} />
+            <Route path="/student/task/:id" element={<TaskPage />} />
             <Route path="/homework" element={<HomeWork />} />
           </Route>
           <Route
