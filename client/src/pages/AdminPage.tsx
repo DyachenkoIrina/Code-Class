@@ -49,13 +49,13 @@ export default function UserSelector(): JSX.Element {
       </TabList>
       <TabPanels textAlign="center">
         <TabPanel marginLeft="120px" display="flex" gap="30px" flexWrap="wrap">
-          {teachers.map((teacher) => (
+          {teachers?.map((teacher) => (
             <Box maxWidth="500px" key={teacher.id} p={4} borderWidth="1px" borderRadius="20px">
               <Text fontWeight="600">{`Имя: ${teacher.name}`}</Text>
               <Text fontWeight="600">{`Почта: ${teacher.email}`}</Text>
               <Text fontWeight="600">Группы:</Text>
               <ul style={{ minHeight: '100px', listStyleType: 'none' }}>
-                {teacher.Groups.map((group, id) => (
+                {teacher.Groups?.map((group, id) => (
                   <li key={id}>{group.group}</li>
                 ))}
               </ul>
@@ -87,7 +87,7 @@ export default function UserSelector(): JSX.Element {
         <TabPanel marginLeft="150px">
           <Box display="flex" gap="80px" flexWrap="wrap">
             {students
-              .filter((student) => student.role === 'Student') // Filter students with role 'student'
+              ?.filter((student) => student.role === 'Student') // Filter students with role 'student'
               .map((student) => (
                 <StudentCard key={student.id} student={student} />
               ))}
@@ -95,7 +95,7 @@ export default function UserSelector(): JSX.Element {
         </TabPanel>
 
         <TabPanel marginLeft="200px" display="flex" flexWrap="wrap" gap="90px">
-          {nobodies.map((student) => (
+          {nobodies?.map((student) => (
             <Box
               minWidth="400px"
               minHeight="200px"

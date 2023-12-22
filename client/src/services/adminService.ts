@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { GroupType } from '../types/groups';
-import type { AdminStudentCard, TeacherGroupType} from '../types/admin';
+import type { AdminStudentCard, DataToSend, TeacherGroupType} from '../types/admin';
 
 export const apiAdminService = axios.create({
   baseURL: 'http://localhost:3001/api/v1/adminlk',
@@ -31,11 +31,16 @@ class AdminService {
     if (response.status === 200) return teacherToDelete.id;
     return [];
   }
+
+  static async changeGroup(dataToSend: DataToSend , ): Promise< [] | number> {
+    console.log('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS', dataToSend)
+    const response = await apiAdminService.put('/group', dataToSend);
+    if (response.status === 200) return response.data;
+    return [];
+  }
   
   static async giveRole(student: TeacherGroupType): Promise< [] | number> {
-    console.log(student, 'sdfuibghjkubsdfgjkbsdfgbhjksdafgkbjsdfgbhjksdfbjgkhbksdfhjgbsfhjkbsdbhjksdf')
     const response = await apiAdminService.put('/', student);
-    console.log(response, 'RESPONSERESPONSERESPONSERESPON!!!!!!!!!!!!!!!!!!!!!!!!!!SERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSERESPONSE')
 
     if (response.status === 200) return response.data;
     return [];

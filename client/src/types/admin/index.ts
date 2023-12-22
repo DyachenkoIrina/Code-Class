@@ -6,6 +6,10 @@ export type UpdatedGroup = {
   manages: boolean;
 }
 
+export type DataToSend = {
+  groupId: string | number | null,
+  student: AdminStudentCard
+}
 
 export type TeacherGroupType = {
   id:number;

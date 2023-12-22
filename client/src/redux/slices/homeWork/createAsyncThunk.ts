@@ -15,10 +15,3 @@ export const thunkLoadHomeWork = createAsyncThunk('tasksSlice/thunkLoadHomeWork'
 //   async (formData: AddTaskFormData) => TasksService.addTask(formData),
 // );
 
-// export const thunkCheckTopic = createAsyncThunk(
-//   'teachersSlise/thunkCheckTopic',
-//   async (id: UserType['id']) => {
-//     const res = await TeacherServise.getChekTopic(id);
-//     return res;
-//   },
-// );
