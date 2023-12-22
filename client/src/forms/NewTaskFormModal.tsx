@@ -115,7 +115,7 @@ export default function NewTaskFormModal(): JSX.Element {
                   marginTop: '15px',
                 }}
               >
-                Ответ
+                Подсказка (:
               </FormLabel>
               <Textarea class="new_task_input" name="answer" type="text" placeholder="Ответ" />
             </FormControl>
