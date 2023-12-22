@@ -18,7 +18,6 @@ teacherRouter.get("/:id", async (req, res) => {
       where: { teacherId: req.params.id },
       include: { model: Group, attributes: ["group"] },
     });
-
     res.status(200).json(groupsTeasher);
   } catch ({ message }) {
     res.status(400).json({ message });

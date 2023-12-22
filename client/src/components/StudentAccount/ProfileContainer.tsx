@@ -17,6 +17,7 @@ export default function ProfileContainer(): JSX.Element {
       borderRadius="25px" 
       p={10} 
       maxW="250px"
+      marginTop="50px"
     >
       <Box textAlign="center" p={8}>
         <Avatar
@@ -30,14 +31,24 @@ export default function ProfileContainer(): JSX.Element {
           Привет, {user.name}!
         </Text>
         <Text fontSize="xl" fontWeight="bold" mb={2}>
-          email: {user.email}
+          {`Привет, ${user.name}!`}
         </Text>
         <FormLabel textAlign="center">Почта</FormLabel>
         <Text fontSize="lg" color="gray.500" mb={4}>
-          Ваша группа: {user.groupId}
+          {`Email: ${user.email}`}
+        </Text>
+        <Text fontSize="lg" color="gray.500" mb={4}>
+          {`Ваша группа: ${user.groupId}`}
         </Text>
         <ButtonGroup spacing="6">
-          <Button onClick={() => setShow(true)}>Редактировать</Button>
+          <Button
+            marginLeft="-22px"
+            backgroundColor="#d7e8d7"
+            borderRadius="20px"
+            onClick={() => setShow(true)}
+          >
+            Редактировать
+          </Button>
         </ButtonGroup>
 
         <EditFormModal show={show} setShow={setShow} />

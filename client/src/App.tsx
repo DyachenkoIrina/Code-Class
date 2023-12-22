@@ -8,9 +8,7 @@ import TeacherAccountPage from './pages/TeacherAccountPage';
 import { thunkTeacherGroups } from './redux/slices/groups/thunkActions';
 import { thunkGroupsLoad, thunkUsersLoad } from './redux/slices/admin/thunkActionsAdmin';
 import Footer from './components/Footer';
-
 import { useAppDispatch, useAppSelector } from './redux/hook';
-
 import StudentAccountPage from './pages/StudentAccountPage';
 import { thunkCheckAuth, thunkRefreshToken } from './redux/slices/auth/createAsyncThunks';
 import TaskPage from './pages/TaskPage';
@@ -24,11 +22,9 @@ import MainPageFlex from './pages/MainPageFlex';
 import TeacherAccountPageSt from './pages/TeacherAccountPageSt';
 import Loader from './components/HOC/Loader';
 import { thunkLoad } from './redux/slices/topics/createAsyncThunk';
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const userId = useAppSelector((store) => store.authSlice.user.id);
-
   useEffect(() => {
     void dispatch(thunkGroupsLoad());
     void dispatch(thunkLoadHomeWork());
@@ -41,7 +37,6 @@ function App(): JSX.Element {
   }, []);
 
   const user = useAppSelector((store) => store.authSlice.user);
-
   const teacher = useAppSelector((store) => store.authSlice.teacher);
   const topics = useAppSelector((state) => state.topics.topics);
 
@@ -51,6 +46,7 @@ function App(): JSX.Element {
         <SideBar />
       </SaasProvider>
       <Loader isLoading={user.status === 'pending'}>
+
         <ChakraProvider>
           <Routes>
             <Route path="/" element={<MainPageFlex />} />
@@ -87,13 +83,12 @@ function App(): JSX.Element {
               <Route path="/adminlk" element={<AdminPage />} />
             </Route>
           </Routes>
-
           <Footer />
           <LoginFormModal />
         </ChakraProvider>
+
       </Loader>
     </>
   );
 }
-
 export default App;
